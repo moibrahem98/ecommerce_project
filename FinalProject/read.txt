@@ -1,0 +1,25 @@
+For frontEnd: 
+
+1.Abdelrahman 
+2.Mohamed Ibrahim
+3.Mohamed Elsayed
+
+use: React - redux (instead of context api) - bootstrap (react-bootstrap)
+
+replace old components ( static) with api components ( collect old with new) 
+
+
+for backEnd: 
+
+1. Amr
+2. Alaa 
+
+
+
+Done making database (using sqlite ) - not good 
+done making api for dashboard 
+
+switch to Postgres 
+
+
+
