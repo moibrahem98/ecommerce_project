@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
 import Rating from "../components/Rating";
 
-export function ProductScreen(product) {
+function ProductScreen(product) {
   return (
     <div>
       <Link to="/" className="btn btn-light my-3">
