@@ -14,11 +14,11 @@ function App() {
             <Route path="/" component={HomeScreen} exact />
             <Route path="/product/:id" component={ProductScreen} />
           </Router>
-        </Container>
+        </Container >
 
-      </main>
+      </main >
       <Footer />
-    </div>
+    </div >
   );
 }
 
