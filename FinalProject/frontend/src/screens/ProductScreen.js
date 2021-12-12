@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
-import { Rating } from "../Rating";
+import Rating from "../components/Rating";
 
 export function ProductScreen(product) {
   return (
@@ -58,7 +58,7 @@ export function ProductScreen(product) {
                 <ListGroup.Item>
                   <Button
                     className="btn-block"
-                    disabled={product.countInStock == 0}
+                    disabled={product.countInStock === 0}
                     type="button"
                   >
                     Add to Cart
