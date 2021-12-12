@@ -1,59 +1,35 @@
-import React from "react";
-import { Container, Navbar, Row, Nav } from "react-bootstrap";
-export const Header = () => {
+import React from 'react'
+import { Navbar, Nav, Container } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
+
+function Header() {
+
   return (
-    <>
-      <Navbar bg="light" expand="lg">
+    <header>
+      <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
         <Container>
-          <Navbar.Brand href="#home">Beauty Shop</Navbar.Brand>
+          <LinkContainer to='/'>
+            <Navbar.Brand>ProShop</Navbar.Brand>
+          </LinkContainer>
+
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#home">Products</Nav.Link>
-              <Nav.Link href="#link">Categories</Nav.Link>
-              <Nav.Link href="#link">Offers</Nav.Link>
+            <Nav className="ml-auto">
 
-              <Row></Row>
+              <LinkContainer to='/cart'>
+                <Nav.Link ><i className="fas fa-shopping-cart"></i>Cart</Nav.Link>
+              </LinkContainer>
+
+              <LinkContainer to='/login'>
+                <Nav.Link><i className="fas fa-user"></i>Login</Nav.Link>
+              </LinkContainer>
+
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      {/* <nav
-        className="navbar fixed-top navbar-light bg-light pb-3"
-        // style={{ backgroundColor: "#ffffff" }}
-      >
-        <a className="navbar-brand ms-5" href="/">
-          Brand Name
-        </a>
-        <ul className="nav justify-content-center">
-          <li className="nav-item">
-            <a className="nav-link cat" href="/">
-              Products
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link cat" href="/">
-              Categories
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link cat" href="/">
-              Offers
-            </a>
-          </li>
-        </ul>
-        <ul className="nav justify-content-right me-5 gap-4">
-          <li className="nav-item">
-            <i className="fas fa-search " style={{ fontsize: "1.5rem" }}></i>
-          </li>
-          <li className="nav-item">
-            <i className="fas fa-user-circle"></i>
-          </li>
-          <li className="nav-item">
-            <i className="fas fa-shopping-bag"></i>
-          </li>
-        </ul>
-      </nav> */}
-    </>
-  );
-};
+    </header>
+  )
+}
+
+export default Header
