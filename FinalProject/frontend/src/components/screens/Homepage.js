@@ -1,7 +1,8 @@
 import { React } from "react";
 import { Row, Col } from "react-bootstrap";
 import { products } from "../../products.js";
-import { Product } from "../product";
+import { Product } from "../Product";
+
 export const HomePage = () => {
   return (
     <div>
