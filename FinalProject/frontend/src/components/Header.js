@@ -1,11 +1,11 @@
 import React from "react";
-import { Nav,NavDropdown, Navbar,Container} from 'react-bootstrap'
+import { Nav, Navbar, Container } from 'react-bootstrap'
 function Header() {
   return (
     <header>
-      <Navbar bg="dark" variant="dark" expand="lg">
+      <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
         <Container>
-          <Navbar.Brand href="/">LOGO</Navbar.Brand>
+          <Navbar.Brand href="/">MidNight</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
@@ -14,7 +14,7 @@ function Header() {
             </Nav>
           </Navbar.Collapse>
         </Container>
-      </Navbar> 
+      </Navbar>
     </header>
   );
 }
