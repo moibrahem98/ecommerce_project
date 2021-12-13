@@ -8,7 +8,7 @@ function ProductScreen({ match }) {
   const [product, setProduct] = useState([]);
   useEffect(() => {
     async function fetchProduct() {
-      const { data } = await axios.get(`/api/products/${match.params.id}`);
+      const { data } = await axios.get(`/api/product/${match.params.id}`);
       setProduct(data);
     }
     fetchProduct();
@@ -33,7 +33,7 @@ function ProductScreen({ match }) {
               <ListGroup.Item>
                 <Rating
                   value={product.rating}
-                  text={`${product.numReviews} reviews`}
+                  text={`${product.reviews} reviews`}
                   color={"#f8e825"}
                 />
               </ListGroup.Item>
@@ -60,9 +60,7 @@ function ProductScreen({ match }) {
                 <ListGroup.Item>
                   <Row>
                     <Col>Status:</Col>
-                    <Col>
-                      {product.countInStock > 0 ? "In Stock" : "Out of Stock"}
-                    </Col>
+                    <Col>{product.stock > 0 ? "In Stock" : "Out of Stock"}</Col>
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>
