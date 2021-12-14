@@ -7,10 +7,10 @@ function Header() {
         <Container>
           <Navbar.Brand href="/">MidNight</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
+          <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
             <Nav className="mr-auto">
-              <Nav.Link href="/card">
-                <i className="fa fa-shopping-cart"></i>Card
+              <Nav.Link href="/cart">
+                <i className="fa fa-shopping-cart"></i>Shopping Cart
               </Nav.Link>
               <Nav.Link href="/login">
                 {" "}
