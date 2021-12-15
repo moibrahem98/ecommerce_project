@@ -23,7 +23,10 @@ function Header() {
           </LinkContainer>
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
+          <Navbar.Collapse
+            id="basic-navbar-nav"
+            className="justify-content-end"
+          >
             <Nav className="ml-auto">
               <LinkContainer to="/cart">
                 <Nav.Link>
