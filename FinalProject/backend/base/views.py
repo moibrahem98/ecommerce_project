@@ -10,6 +10,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from django.contrib.auth.hashers import make_password
 from rest_framework import status
 from base.models import Product, Order, ShippingAddress, OrderItem
+from datetime import datetime
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -148,3 +149,27 @@ def addOrderItems(request):
 
         serializer = OrderSerializer(order, many=False)
         return Response(serializer.data)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def getOredeById(request, pk):
+    user = request.user
+    try:
+        order = Order.objects.get(_id=pk)
+        if user.is_staff or order.user == user:
+            serializer = OrderSerializer(order, many=False)
+            return Response(serializer.data)
+        else:
+            Response({'datails': 'you are not authorized to view this order'}, status=status.HTTP_400_BAD_REQUEST)
+    except:
+        return Response({'datails': 'order dose not exist'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+'''@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def updateOrderPay(request, pk):
+    order = Order.objects.get(_id=pk)
+    order.is_paid = True
+    order.paid_at = datetime.now()
+    return Response('order is paid')'''
