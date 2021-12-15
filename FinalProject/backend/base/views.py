@@ -9,6 +9,7 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from django.contrib.auth.hashers import make_password
 from rest_framework import status
+from base.models import Product, Order, ShippingAddress, OrderItem
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -95,10 +96,17 @@ def getProduct(request, pk):
 def addOrderItems(request):
     user = request.user
     data = request.data
+
     orderItems = data['orderItems']
+
+    print(data)
+
     if orderItems and len(orderItems) == 0:
-        return Response({'details': 'no order Items '}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'detail': 'No Order Items'}, status=status.HTTP_400_BAD_REQUEST)
     else:
+        print('test')
+        # (1) Create order
+
         order = Order.objects.create(
             user=user,
             payment_method=data['paymentMethod'],
@@ -106,15 +114,24 @@ def addOrderItems(request):
             shipping_price=data['shippingPrice'],
             total_price=data['totalPrice']
         )
-        shiping = ShippingAddress.objects.create(
+        print(order)
+
+        # (2) Create shipping address
+
+        shipping = ShippingAddress.objects.create(
             order=order,
             address=data['shippingAddress']['address'],
             city=data['shippingAddress']['city'],
             postal_code=data['shippingAddress']['postalCode'],
             country=data['shippingAddress']['country'],
         )
+
+        # (3) Create order items adn set order to orderItem relationship
+        print('=================')
+        print(orderItems)
         for i in orderItems:
             product = Product.objects.get(_id=i['product'])
+
             item = OrderItem.objects.create(
                 product=product,
                 order=order,
@@ -123,7 +140,11 @@ def addOrderItems(request):
                 price=i['price'],
                 image=product.image.url,
             )
+
+            # (4) Update stock
+
             product.stock -= item.quantity
             product.save()
-    serializer = OrderSerializer(order, many=True)
-    return Response(serializer.data)
+
+        serializer = OrderSerializer(order, many=False)
+        return Response(serializer.data)
