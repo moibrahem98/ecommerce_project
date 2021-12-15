@@ -44,7 +44,7 @@ def register(request):
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+@permission_classes(['IsAuthenticated'])
 def getUserProfile(request):
     user = request.user
     serializer = UserSerializer(user, many=False)
@@ -52,7 +52,7 @@ def getUserProfile(request):
 
 
 @api_view(['PUT'])
-@permission_classes([IsAuthenticated])
+@permission_classes(['IsAuthenticated'])
 def updateUserProfile(request):
     user = request.user
     serializer = UserSerializerWithToken(user, many=False)
@@ -65,15 +65,16 @@ def updateUserProfile(request):
     user.save()
     return Response(serializer.data)
 
+
 @api_view(['GET'])
-@permission_classes([IsAdminUser])
+@permission_classes(['IsAdminUser'])
 def getUsers(request):
     user = User.objects.all()
     serializer = UserSerializer(user, many=True)
     return Response(serializer.data)
 
 
-# ******************* product views
+# ******************* product views ************************
 @api_view(['GET'])
 def getProducts(request):
     products = Product.objects.all()
@@ -86,4 +87,43 @@ def getProduct(request, pk):
     product = Product.objects.get(_id=pk)
     serializer = ProductSerializer(product, )
     return Response(serializer.data)
+
+
 # ****************** order views ******************
+@api_view(['POST'])
+@permission_classes(['IsAuthenticated'])
+def addOrderItems(request):
+    user = request.user
+    data = request.data
+    orderItems = data['orderItems']
+    if orderItems and len(orderItems) == 0:
+        return Response({'details': 'no order Items '}, status=status.HTTP_400_BAD_REQUEST)
+    else:
+        order = Order.objects.create(
+            user=user,
+            payment_method=data['paymentMethod'],
+            tax=0,
+            shipping_price=data['shippingPrice'],
+            total_price=data['totalPrice']
+        )
+        shiping = ShippingAddress.objects.create(
+            order=order,
+            address=data['shippingAddress']['address'],
+            city=data['shippingAddress']['city'],
+            postal_code=data['shippingAddress']['postalCode'],
+            country=data['shippingAddress']['country'],
+        )
+        for i in orderItems:
+            product = Product.objects.get(_id=i['product'])
+            item = OrderItem.objects.create(
+                product=product,
+                order=order,
+                name=product.name,
+                quantity=i['qty'],
+                price=i['price'],
+                image=product.image.url,
+            )
+            product.stock -= item.quantity
+            product.save()
+    serializer = OrderSerializer(order, many=True)
+    return Response(serializer.data)

@@ -20,10 +20,11 @@ class Product(models.Model):
     def __str__(self):
         return str(self.name)
 
+
 class Review(models.Model):
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True) 
-    name = models.CharField(max_length=200, null=True, blank=True) 
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    name = models.CharField(max_length=200, null=True, blank=True)
     rating = models.IntegerField(null=True, blank=True, default=0)
     comment = models.TextField(null=True, blank=True)
     _id = models.AutoField(primary_key=True, editable=False)
@@ -31,8 +32,9 @@ class Review(models.Model):
     def __str__(self):
         return str(self.rating)
 
+
 class Order(models.Model):
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True) 
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     payment_method = models.CharField(max_length=200, null=True, blank=True)
     tax = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
     shipping_price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
@@ -47,6 +49,7 @@ class Order(models.Model):
     def __str__(self):
         return str(self.created_at)
 
+
 class OrderItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
@@ -59,8 +62,9 @@ class OrderItem(models.Model):
     def __str__(self):
         return str(self.name)
 
+
 class ShippingAddress(models.Model):
-    order = models.OneToOneField(Order, on_delete=models.CASCADE)      
+    order = models.OneToOneField(Order, on_delete=models.CASCADE)
     address = models.CharField(max_length=200, null=True, blank=True)
     city = models.CharField(max_length=200, null=True, blank=True)
     postal_code = models.CharField(max_length=200, null=True, blank=True)
