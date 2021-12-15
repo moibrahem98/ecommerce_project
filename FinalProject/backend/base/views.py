@@ -44,7 +44,7 @@ def register(request):
 
 
 @api_view(['GET'])
-@permission_classes(['IsAuthenticated'])
+@permission_classes([IsAuthenticated])
 def getUserProfile(request):
     user = request.user
     serializer = UserSerializer(user, many=False)
@@ -52,7 +52,7 @@ def getUserProfile(request):
 
 
 @api_view(['PUT'])
-@permission_classes(['IsAuthenticated'])
+@permission_classes([IsAuthenticated])
 def updateUserProfile(request):
     user = request.user
     serializer = UserSerializerWithToken(user, many=False)
@@ -67,7 +67,7 @@ def updateUserProfile(request):
 
 
 @api_view(['GET'])
-@permission_classes(['IsAdminUser'])
+@permission_classes([IsAdminUser])
 def getUsers(request):
     user = User.objects.all()
     serializer = UserSerializer(user, many=True)
@@ -91,7 +91,7 @@ def getProduct(request, pk):
 
 # ****************** order views ******************
 @api_view(['POST'])
-@permission_classes(['IsAuthenticated'])
+@permission_classes([IsAuthenticated])
 def addOrderItems(request):
     user = request.user
     data = request.data
