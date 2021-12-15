@@ -10,8 +10,8 @@ function Rating({ value, text, color }) {
             value >= 1
               ? "fa fa-star"
               : value >= 0.5
-              ? "fa fa-star-half-alt"
-              : "far fa-star"
+                ? "fa fa-star-half-alt"
+                : "far fa-star"
           }
         ></i>
       </span>
@@ -22,8 +22,8 @@ function Rating({ value, text, color }) {
             value >= 2
               ? "fa fa-star"
               : value >= 1.5
-              ? "fa fa-star-half-alt"
-              : "far fa-star"
+                ? "fa fa-star-half-alt"
+                : "far fa-star"
           }
         ></i>
       </span>
@@ -33,9 +33,9 @@ function Rating({ value, text, color }) {
           className={
             value >= 3
               ? "fa fa-star"
-              : value >=2.5
-              ? "fa fa-star-half-alt"
-              : "far fa-star"
+              : value >= 2.5
+                ? "fa fa-star-half-alt"
+                : "far fa-star"
           }
         ></i>
       </span>
@@ -46,13 +46,24 @@ function Rating({ value, text, color }) {
             value >= 4
               ? "fa fa-star"
               : value >= 3.5
-              ? "fa fa-star-half-alt"
-              : "far fa-star"
+                ? "fa fa-star-half-alt"
+                : "far fa-star"
           }
         ></i>
       </span>
+      <span>
+        <i style={{ color }} className={
+          value >= 5
+            ? 'fas fa-star'
+            : value >= 4.5
+              ? 'fas fa-star-half-alt'
+              : 'far fa-star'
+        }>
 
-<span>{text && text}</span>
+        </i>
+      </span>
+
+      <span>{text && text}</span>
 
     </div>
   );
