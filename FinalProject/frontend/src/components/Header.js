@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navbar, Nav, Container, Row, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../actions/userActions";
+// import logo from '../logo.png';
 
 function Header() {
+  // const logo = require('../logo')
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
@@ -20,6 +22,7 @@ function Header() {
         <Container>
           <LinkContainer to="/">
             <Navbar.Brand>MidNight</Navbar.Brand>
+            {/* <img src={logo} alt="Logo" /> */}
           </LinkContainer>
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
