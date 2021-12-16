@@ -52,7 +52,7 @@ function LoginScreen({ location, history }) {
           ></Form.Control>
         </Form.Group>
         <br></br>
-        <Button type="submit" variant="primary">
+        <Button type="submit" variant="primary" className="w-100">
           Sign in{" "}
         </Button>
       </Form>

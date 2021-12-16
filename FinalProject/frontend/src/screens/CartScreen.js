@@ -11,7 +11,7 @@ import {
   Card,
 } from "react-bootstrap";
 import Message from "../components/Message";
-import { addToCart , removeFromCart } from "../actions/cartActions";
+import { addToCart, removeFromCart } from "../actions/cartActions";
 
 function CartScreen({ match, location, history }) {
   const productId = match.params.id;
@@ -29,12 +29,12 @@ function CartScreen({ match, location, history }) {
 
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id))
-    
-}
 
-const checkoutHandler = () => {
+  }
+
+  const checkoutHandler = () => {
     history.push('/login?redirect=shipping')
-}
+  }
 
   return (
     <Row>
