@@ -29,3 +29,30 @@ urlpatterns = [
     path('api/orders/<str:pk>/pay/', updateOrderPay, name='pay-order'),
 
 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# video 67 Amr
+    # path('api/create/', createProduct, name='createProduct'),
+    # path('api/update/<int:pk>', updateProduct, name='updateproduct'),

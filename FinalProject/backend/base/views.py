@@ -117,8 +117,10 @@ def getProducts(request):
 @api_view(['GET'])
 def getProduct(request, pk):
     product = Product.objects.get(_id=pk)
-    serializer = ProductSerializer(product, )
+    serializer = ProductSerializer(product, many=False)
     return Response(serializer.data)
+
+
 
 
 # ****************** order views ******************
@@ -212,3 +214,97 @@ def updateOrderPay(request, pk):
     order.is_paid = True
     order.paid_at = datetime.now()
     return Response('order is paid')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# video 67 Amr
+# @api_view(['POST'])
+# @permission_classes([IsAdminUser])
+# def createProduct(request):
+#     user = request.user
+#     product = Product.objects.create(
+#         user=user,
+#         name="sample name",
+#         price=0,
+#         brand='Sample brand',
+#         stock=0,
+#         category='sample category',
+#         description=''
+
+#     )
+#     serializer = ProductSerializer(product, many=False)
+#     return Response(serializer.data)
+
+
+# @api_view(['PUT'])
+# @permission_classes([IsAdminUser])
+# def updateProduct(request, pk):
+#     data = request.data
+#     product = Product.objects.get(_id=pk)
+
+#     product.name = data['name']
+#     product.price = data['price']
+#     product.brand = data['brand']
+#     product.stock = data['stock']
+#     product.category = data['category']
+#     product.description = data['description']
+
+#     product.save()
+
+#     serializer = ProductSerializer(product, many=False)
+#     return Response(serializer.data)
