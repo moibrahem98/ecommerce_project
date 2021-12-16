@@ -14,7 +14,7 @@ function OrderScreen({ match }) {
   const { order, error, loading } = orderDetails;
   if (!loading && !error) {
     order.itemsPrice = order.orderItems
-      .reduce((sum, item) => sum + item.price * item.qty, 0)
+      .reduce((sum, item) => sum + item.price * item.quantity, 0)
       .toFixed(2);
   }
 
