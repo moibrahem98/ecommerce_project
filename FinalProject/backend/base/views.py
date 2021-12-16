@@ -166,10 +166,10 @@ def getOredeById(request, pk):
         return Response({'datails': 'order dose not exist'}, status=status.HTTP_400_BAD_REQUEST)
 
 
-'''@api_view(['PUT'])
+@api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def updateOrderPay(request, pk):
     order = Order.objects.get(_id=pk)
     order.is_paid = True
     order.paid_at = datetime.now()
-    return Response('order is paid')'''
+    return Response('order is paid')
