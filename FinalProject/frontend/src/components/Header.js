@@ -6,7 +6,6 @@ import { logout } from "../actions/userActions";
 import logo from '../logo.png';
 
 function Header() {
-  // const logo = require('../logo')
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
@@ -21,10 +20,10 @@ function Header() {
       <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
         <Container>
           <LinkContainer to="/">
-            {/* <Navbar.Brand className="brand">
+            <Navbar.Brand className="brand">
               <img src={logo} alt="Logo" height={'60px'} />
-            </Navbar.Brand> */}
-            <h3>MidNight</h3>
+              <h3>MidNight</h3>
+            </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse
@@ -43,6 +42,9 @@ function Header() {
                   <LinkContainer to="/profile">
                     <NavDropdown.Item>Profile</NavDropdown.Item>
                   </LinkContainer>
+                  <LinkContainer to="/myorders">
+                    <NavDropdown.Item>My Orders</NavDropdown.Item>
+                  </LinkContainer>
 
                   <NavDropdown.Item onClick={logoutHandler}>
                     Logout
@@ -54,6 +56,22 @@ function Header() {
                     <i className="fas fa-user"></i>Login
                   </Nav.Link>
                 </LinkContainer>
+              )}
+              {userInfo && userInfo.isAdmin && (
+                <NavDropdown title='Admin' id='adminmenue'>
+                  <LinkContainer to='/admin/userlist'>
+                    <NavDropdown.Item>Users</NavDropdown.Item>
+                  </LinkContainer>
+
+                  <LinkContainer to='/admin/productlist'>
+                    <NavDropdown.Item>Products</NavDropdown.Item>
+                  </LinkContainer>
+
+                  <LinkContainer to='/admin/orderlist'>
+                    <NavDropdown.Item>Orders</NavDropdown.Item>
+                  </LinkContainer>
+
+                </NavDropdown>
               )}
             </Nav>
           </Navbar.Collapse>
