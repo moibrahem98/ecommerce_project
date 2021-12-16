@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navbar, Nav, Container, Row, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../actions/userActions";
-// import logo from '../logo.png';
+import logo from '../logo.png';
 
 function Header() {
   // const logo = require('../logo')
@@ -21,10 +21,11 @@ function Header() {
       <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand>MidNight</Navbar.Brand>
-            {/* <img src={logo} alt="Logo" /> */}
+            {/* <Navbar.Brand className="brand">
+              <img src={logo} alt="Logo" height={'60px'} />
+            </Navbar.Brand> */}
+            <h3>MidNight</h3>
           </LinkContainer>
-
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse
             id="basic-navbar-nav"
