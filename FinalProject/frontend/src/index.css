@@ -34,7 +34,6 @@ h3 {
   color: floralwhite;
   font-family: Arial, Helvetica, sans-serif;
 }
-<<<<<<< HEAD
 
 .contact-us {
   background-color: azure;
@@ -49,13 +48,14 @@ h3 {
 .face-icon {
   margin-right: 10px;
 }
-=======
+
 /* carousel */
 .carousel-item-next,
 .carousel-item-prev,
 .carousel-item.active {
   display: flex;
 }
+
 .carousel-caption {
   position: absolute;
   top: 0;
@@ -74,12 +74,13 @@ h3 {
   margin-left: auto;
   margin-right: auto;
 }
+
 .carousel a {
   margin: 0 auto;
 }
+
 @media (max-width: 900px) {
   .carousel-caption h2 {
     font-size: 2.5vw;
   }
 }
->>>>>>> 50c1c885e190ae281c7a1a38fc7c404e85329ae5
