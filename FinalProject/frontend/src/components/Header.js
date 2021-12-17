@@ -4,6 +4,7 @@ import { Navbar, Nav, Container, Row, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../actions/userActions";
 import logo from "../logo.png";
+import SearchBox from "./SearchBox";
 
 function Header() {
   const userLogin = useSelector((state) => state.userLogin);
@@ -30,6 +31,8 @@ function Header() {
             id="basic-navbar-nav"
             className="justify-content-end"
           >
+            <SearchBox />
+
             <Nav className="ml-auto">
               <LinkContainer to="/cart">
                 <Nav.Link>

@@ -20,12 +20,14 @@ urlpatterns = [
 
     # **************** product urls **********************
     path('api/products/', getProducts, name='products'),
-    path('api/review/<int:pk>', createProductReview, name='review'),
+    path('api/products/<int:pk>/reviews/', createProductReview, name='review'),
     path('api/product/<int:pk>', getProduct, name='product'),
     path('api/products/create/', createProduct, name='createProduct'),
     path('api/products/update/<int:pk>/', updateProduct, name='updateproduct'),
     path('api/product/delete/<str:pk>/', deleteProduct, name="product-delete"),
-    path('api/products/upload/', uploadImage, name= 'image-upload'),
+    path('api/products/upload/', uploadImage, name='image-upload'),
+    path('api/products/top/', getTopProducts, name='top-products'),
+
 
     # **************** orders urls **********************
     path('api/orders/add/', addOrderItems, name='orders-add'),
@@ -33,7 +35,8 @@ urlpatterns = [
     path('api/orders/<str:pk>/', getOredeById, name='user-order'),
     path('api/orders/<str:pk>/pay/', updateOrderPay, name='pay-order'),
     path('api/orders/', getOrders, name='getOrders'),
-    path('api/orders/<str:pk>/deliver/',  updateOrderToDelivered, name= 'order-delivered'),
+    path('api/orders/<str:pk>/deliver/',
+         updateOrderToDelivered, name='order-delivered'),
 
 
 ]

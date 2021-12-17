@@ -109,7 +109,11 @@ def deleteUser(request, pk):
 # ******************* product views ************************
 @api_view(['GET'])
 def getProducts(request):
-    products = Product.objects.all()
+    query = request.query_params.get('keyword')
+
+    if query == None:
+        query = ''
+    products = Product.objects.filter(name__icontains = query)
     serializer = ProductSerializer(products, many=True)
     return Response(serializer.data)
 
@@ -118,6 +122,13 @@ def getProducts(request):
 def getProduct(request, pk):
     product = Product.objects.get(_id=pk)
     serializer = ProductSerializer(product, many=False)
+    return Response(serializer.data)
+
+#getTopProducts
+@api_view(['GET'])
+def getTopProducts(request):
+    products = Product.objects.filter(rating__gte=4).order_by('-rating')[0:5]
+    serializer = ProductSerializer(products, many=True)
     return Response(serializer.data)
 
 
@@ -300,12 +311,12 @@ def createProductReview(request, pk):
     alreadyExists= product.review_set.filter(user=user).exists()
 
     if alreadyExists:
-        content = {'details' : 'Product already reviewed'}
+        content = {'detail' : 'Product already reviewed'}
         return Response(content, status=status.HTTP_400_BAD_REQUEST)
 
     # No Rating or 0
     elif data['rating'] == 0:
-        content = {'details' : 'Please select a rating'}
+        content = {'detail' : 'Please select a rating'}
         return Response(content, status=status.HTTP_400_BAD_REQUEST)
 
     # Create Review
@@ -318,7 +329,7 @@ def createProductReview(request, pk):
             comment=data['comment'],
         )
         reviews = product.review_set.all()
-        product.reviews = len(reviews)
+        product.reviews_number = len(reviews)
 
         total = 0
         for i in reviews:
