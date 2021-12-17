@@ -19,7 +19,6 @@ import {
 } from "../actions/productActions";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants";
 import { LinkContainer } from "react-router-bootstrap";
-
 function ProductScreen({ match, history }) {
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
