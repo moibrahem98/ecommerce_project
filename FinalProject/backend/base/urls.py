@@ -31,7 +31,8 @@ urlpatterns = [
     path('api/orders/myorders/', getMyOrders, name='myorders'),
     path('api/orders/<str:pk>/', getOredeById, name='user-order'),
     path('api/orders/<str:pk>/pay/', updateOrderPay, name='pay-order'),
-
+    path('api/orders/', getOrders, name='getOrders'),
+    path('api/orders/<str:pk>/deliver/',  updateOrderToDelivered, name= 'order-delivered'),
 
 
 ]

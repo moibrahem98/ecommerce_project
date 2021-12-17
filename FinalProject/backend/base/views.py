@@ -205,14 +205,32 @@ def getOredeById(request, pk):
     except:
         return Response({'datails': 'order dose not exist'}, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['GET'])
+@permission_classes([IsAdminUser])
+def getOrders(request):
+	orders = Order.objects.all()
+	serializer = OrderSerializer(orders, many=True)
+	return Response(serializer .data)
 
 @api_view(['PUT'])
-@permission_classes([IsAuthenticated])
+@permission_classes([IsAdminUser])
 def updateOrderPay(request, pk):
     order = Order.objects.get(_id=pk)
     order.is_paid = True
     order.paid_at = datetime.now()
+    order.save()
     return Response('order is paid')
+
+
+@api_view(['PUT'])
+@permission_classes([IsAdminUser])
+def updateOrderToDelivered(request, pk):
+	order = Order.objects.get(_id = pk)
+	order.is_delivered = True
+	order.delivered_at = datetime.now()
+	order.save()
+
+	return Response('Order was Delivered')
 
 # Product Views
 
