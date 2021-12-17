@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import FormContainer from "../components/FormContainer";
-import { listProductDetails, updateProduct} from "../actions/productActions";
+import { listProductDetails, updateProduct } from "../actions/productActions";
 import { PRODUCT_UPDATE_RESET } from "../constants/productConstants";
 
 function ProductEditScreen({ match, history }) {
@@ -49,7 +49,7 @@ function ProductEditScreen({ match, history }) {
         setStock(product.stock);
         setDescription(product.description);
       }
-  }
+    }
   }, [dispatch, product, productId, history, successUpdate]);
 
   const submitHandler = (e) => {
@@ -66,7 +66,6 @@ function ProductEditScreen({ match, history }) {
         description,
       })
     );
-    
   };
 
   const uploadFileHandler = async (e) => {
@@ -122,7 +121,7 @@ function ProductEditScreen({ match, history }) {
                 onChange={(e) => setName(e.target.value)}
               ></Form.Control>
             </Form.Group>
-
+            <br></br>
             <Form.Group controlId="price">
               <Form.Label>Price</Form.Label>
               <Form.Control
@@ -132,7 +131,7 @@ function ProductEditScreen({ match, history }) {
                 onChange={(e) => setPrice(e.target.value)}
               ></Form.Control>
             </Form.Group>
-
+            <br></br>
             <Form.Group controlId="image">
               <Form.Label>Image</Form.Label>
               <Form.Control
@@ -141,16 +140,15 @@ function ProductEditScreen({ match, history }) {
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></Form.Control>
-
+              <br></br>
               <Form.File
                 id="image-file"
-                label="Choose File"
                 custom
                 onChange={uploadFileHandler}
               ></Form.File>
               {uploading && <Loader />}
             </Form.Group>
-
+            <br></br>
             <Form.Group controlId="brand">
               <Form.Label>Brand</Form.Label>
               <Form.Control
@@ -160,7 +158,7 @@ function ProductEditScreen({ match, history }) {
                 onChange={(e) => setBrand(e.target.value)}
               ></Form.Control>
             </Form.Group>
-
+            <br></br>
             <Form.Group controlId="stock">
               <Form.Label>Stock</Form.Label>
               <Form.Control
@@ -170,6 +168,7 @@ function ProductEditScreen({ match, history }) {
                 onChange={(e) => setStock(e.target.value)}
               ></Form.Control>
             </Form.Group>
+            <br></br>
 
             <Form.Group controlId="category">
               <Form.Label>Category</Form.Label>
@@ -180,6 +179,7 @@ function ProductEditScreen({ match, history }) {
                 onChange={(e) => setCategory(e.target.value)}
               ></Form.Control>
             </Form.Group>
+            <br></br>
 
             <Form.Group controlId="description">
               <Form.Label>Description</Form.Label>
@@ -190,6 +190,7 @@ function ProductEditScreen({ match, history }) {
                 onChange={(e) => setDescription(e.target.value)}
               ></Form.Control>
             </Form.Group>
+            <br></br>
 
             <Button type="submit" variant="primary">
               Update

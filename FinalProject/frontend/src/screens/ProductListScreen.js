@@ -1,119 +1,150 @@
-import React, { useState, useEffect } from 'react'
-import { Table, Button, Row, Col } from 'react-bootstrap'
-import { useDispatch, useSelector } from 'react-redux'
-import Loader from '../components/Loader'
-import Message from '../components/Message'
-import { listProducts, deleteProduct ,createProduct } from '../actions/productActions'
-import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
+import React, { useState, useEffect } from "react";
+import { Table, Button, Row, Col } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
+import {
+  listProducts,
+  deleteProduct,
+  createProduct,
+} from "../actions/productActions";
+import { PRODUCT_CREATE_RESET } from "../constants/productConstants";
+import { LinkContainer } from "react-router-bootstrap";
 
 function ProductListScreen({ history, match }) {
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch()
+  const productList = useSelector((state) => state.productList);
+  const { loading, error, products } = productList;
 
-    const productList = useSelector(state => state.productList)
-    const { loading, error, products } = productList
+  const productDelete = useSelector((state) => state.productDelete);
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = productDelete;
 
-    const productDelete = useSelector(state => state.productDelete)
-    const { loading: loadingDelete, error: errorDelete, success: successDelete } = productDelete
+  const productCreate = useSelector((state) => state.productCreate);
+  const {
+    loading: loadingCreate,
+    error: errorCreate,
+    success: successCreate,
+    product: createdProduct,
+  } = productCreate;
 
-    const productCreate = useSelector(state => state.productCreate)
-    const { loading: loadingCreate, error: errorCreate, success: successCreate, product: createdProduct } = productCreate
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
-    const userLogin = useSelector(state => state.userLogin)
-    const { userInfo } = userLogin
+  let keyword = history.location.search;
 
-    let keyword = history.location.search
-    
-    useEffect(() => {
-        dispatch({ type: PRODUCT_CREATE_RESET })
+  useEffect(() => {
+    dispatch({ type: PRODUCT_CREATE_RESET });
 
-        if (!userInfo.isAdmin) {
-            history.push('/login')
-        }
-
-        if (successCreate) {
-            history.push(`/admin/product/${createdProduct._id}/edit`)
-        } else {
-            dispatch(listProducts(keyword))
-        }
-
-    }, [dispatch, history, userInfo, successDelete, successCreate, createdProduct, keyword])
-
-
-    const deleteHandler = (id) => {
-
-        if (window.confirm('Are you sure you want to delete this product?')) {
-            dispatch(deleteProduct(id))
-        }
+    if (!userInfo.isAdmin) {
+      history.push("/login");
     }
 
-
-    const createProductHandler = () => {
-        dispatch(createProduct())
+    if (successCreate) {
+      history.push(`/admin/product/${createdProduct._id}/edit`);
+    } else {
+      dispatch(listProducts(keyword));
     }
+  }, [
+    dispatch,
+    history,
+    userInfo,
+    successDelete,
+    successCreate,
+    createdProduct,
+    keyword,
+  ]);
 
+  const deleteHandler = (id) => {
+    if (window.confirm("Are you sure you want to delete this product?")) {
+      dispatch(deleteProduct(id));
+    }
+  };
 
+  const createProductHandler = () => {
+    dispatch(createProduct());
+  };
 
-    return (
+  return (
+    <div>
+      <Row className="align-items-center">
+        <Col md={9}>
+          <h1>Products</h1>
+        </Col>
+
+        <Col className="text-right" md={3}>
+          <Button className="my-3" onClick={createProductHandler}>
+            <i className="fas fa-plus"></i> Create Product
+          </Button>
+        </Col>
+      </Row>
+
+      {loadingDelete && <Loader />}
+      {errorDelete && <Message variant="danger">{errorDelete}</Message>}
+
+      {loadingCreate && <Loader />}
+      {errorCreate && <Message variant="danger">{errorCreate}</Message>}
+
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Message variant="danger">{error}</Message>
+      ) : (
         <div>
-            <Row className='align-items-center'>
-                <Col>
-                    <h1>Products</h1>
-                </Col>
+          <Table striped bordered hover responsive className="table-sm">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>PRICE</th>
+                <th>CATEGORY</th>
+                <th>BRAND</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
 
-                <Col className='text-right'>
-                    <Button className='my-3' onClick={createProductHandler}>
-                        <i className='fas fa-plus'></i> Create Product
+            <tbody>
+              {products.map((product) => (
+                <tr key={product._id}>
+                  <td>{product._id}</td>
+                  <td>
+                    <a href={`/product/${product._id}`}>
+                      <strong>{product.name}</strong>
+                    </a>
+                  </td>
+                  <td>{product.price} L.E</td>
+                  <td>{product.category}</td>
+                  <td>{product.brand}</td>
+                  <td>
+                    {" "}
+                    <LinkContainer to={`/admin/product/${product._id}/edit`}>
+                      <Button variant="light" className="btn-sm">
+                        <i className="fas fa-edit"></i>
+                      </Button>
+                    </LinkContainer>
+                  </td>
+                  <td>
+                    <Button
+                      variant="danger"
+                      className="btn-sm"
+                      onClick={() => deleteHandler(product._id)}
+                    >
+                      <i className="fas fa-trash"></i>
                     </Button>
-                </Col>
-            </Row>
-
-            {loadingDelete && <Loader />}
-            {errorDelete && <Message variant='danger'>{errorDelete}</Message>}
-
-            {loadingCreate && <Loader />}
-            {errorCreate && <Message variant='danger'>{errorCreate}</Message>}
-
-            {loading
-                ? (<Loader />)
-                : error
-                    ? (<Message variant='danger'>{error}</Message>)
-                    : (
-                        <div>
-                            <Table striped bordered hover responsive className='table-sm'>
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>NAME</th>
-                                        <th>PRICE</th>
-                                        <th>CATEGORY</th>
-                                        <th>BRAND</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-                                    {products.map(product => (
-                                        <tr key={product._id}>
-                                            <td>{product._id}</td>
-                                            <td>{product.name}</td>
-                                            <td>${product.price}</td>
-                                            <td>{product.category}</td>
-                                            <td>{product.brand}</td>
-
-                                            <td>
-                                                <Button variant='danger' className='btn-sm' onClick={() => deleteHandler(product._id)}>
-                                                    <i className='fas fa-trash'></i>
-                                                </Button>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </Table>
-                        </div>
-                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
         </div>
-    )
+      )}
+    </div>
+  );
 }
 
-export default ProductListScreen
+export default ProductListScreen;
