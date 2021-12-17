@@ -300,12 +300,12 @@ def createProductReview(request, pk):
     alreadyExists= product.review_set.filter(user=user).exists()
 
     if alreadyExists:
-        content = {'details' : 'Product already reviewed'}
+        content = {'detail' : 'Product already reviewed'}
         return Response(content, status=status.HTTP_400_BAD_REQUEST)
 
     # No Rating or 0
     elif data['rating'] == 0:
-        content = {'details' : 'Please select a rating'}
+        content = {'detail' : 'Please select a rating'}
         return Response(content, status=status.HTTP_400_BAD_REQUEST)
 
     # Create Review
@@ -318,7 +318,7 @@ def createProductReview(request, pk):
             comment=data['comment'],
         )
         reviews = product.review_set.all()
-        product.reviews = len(reviews)
+        product.reviews_number = len(reviews)
 
         total = 0
         for i in reviews:

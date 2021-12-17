@@ -20,7 +20,7 @@ urlpatterns = [
 
     # **************** product urls **********************
     path('api/products/', getProducts, name='products'),
-    path('api/review/<int:pk>', createProductReview, name='review'),
+    path('api/products/<int:pk>/reviews/', createProductReview, name='review'),
     path('api/product/<int:pk>', getProduct, name='product'),
     path('api/products/create/', createProduct, name='createProduct'),
     path('api/products/update/<int:pk>/', updateProduct, name='updateproduct'),
