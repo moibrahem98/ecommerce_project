@@ -30,7 +30,7 @@ urlpatterns = [
     path('api/orders/<str:pk>/', getOredeById, name='user-order'),
     path('api/orders/<str:pk>/pay/', updateOrderPay, name='pay-order'),
 
-    path('api/create/', createProduct, name='createProduct'),
+    path('api/products/create/', createProduct, name='createProduct'),
     path('api/update/<int:pk>', updateProduct, name='updateproduct'),
 
 ]
