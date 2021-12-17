@@ -2,6 +2,10 @@ main {
   min-height: 80vh;
 }
 
+a {
+  text-decoration: none !important;
+}
+
 h1 {
   font-size: 1.8rem;
   padding: 1rem 0;
@@ -29,4 +33,18 @@ h3 {
 .brand h3 {
   color: floralwhite;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.contact-us {
+  background-color: azure;
+  border: 1px solid #ccc;
+  padding: 20px 10px;
+  width: 300px;
+  min-width: 50%;
+  border-radius: 4px;
+  margin: 80px auto;
+}
+
+.face-icon {
+  margin-right: 10px;
 }
