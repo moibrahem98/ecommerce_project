@@ -23,7 +23,7 @@ function Header() {
           <LinkContainer to="/">
             <Navbar.Brand className="brand">
               <img src={logo} alt="Logo" height={"35px"} />
-              <p className="m-2">MidNight</p>
+              MidNight
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -31,9 +31,9 @@ function Header() {
             id="basic-navbar-nav"
             className="justify-content-end"
           >
-            <SearchBox />
+            <SearchBox className="justify-content-center" />
 
-            <Nav className="ml-auto">
+            <Nav className="ml-auto justify-content-end">
               <LinkContainer to="/cart">
                 <Nav.Link>
                   <i className="fas fa-shopping-cart"></i> Cart
@@ -41,12 +41,19 @@ function Header() {
               </LinkContainer>
 
               {userInfo ? (
-                <NavDropdown title={userInfo.name} id="username">
+                <NavDropdown
+                  title={userInfo.name}
+                  id="username"
+                  className="justify-content-end"
+                >
                   <LinkContainer to="/profile">
                     <NavDropdown.Item>Profile</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/myorders">
                     <NavDropdown.Item>My Orders</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/update">
+                    <NavDropdown.Item>Update Profile</NavDropdown.Item>
                   </LinkContainer>
 
                   <NavDropdown.Item onClick={logoutHandler}>

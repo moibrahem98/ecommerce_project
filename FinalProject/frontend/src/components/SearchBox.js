@@ -15,19 +15,24 @@ function SearchBox() {
     }
   };
   return (
-    <Form
-      onSubmit={submitHandler}
-      className="row row-cols-lg-auto g-3 align-items-center"
-    >
-      <Form.Control
+    <Form onSubmit={submitHandler}>
+      {/* <Form.Control
         type="text"
         name="q"
         className="mr-sm-2 ml-sm-5"
         onChange={(event) => setKeyword(event.target.value)}
-      ></Form.Control>
-      <Button variant="outline-success" className="p-2" type="submit">
-        search
+      ></Form.Control> */}
+
+      <Button variant="success" className="p-1" type="submit">
+        <i className=" fa fa-search"></i>
       </Button>
+      <input
+        type="text"
+        name="q"
+        className=" p-1"
+        placeholder="search"
+        onChange={(event) => setKeyword(event.target.value)}
+      />
     </Form>
   );
 }
