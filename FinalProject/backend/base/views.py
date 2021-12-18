@@ -11,6 +11,7 @@ from django.contrib.auth.hashers import make_password
 from rest_framework import status
 from base.models import Product, Order, ShippingAddress, OrderItem
 from datetime import datetime
+from rest_framework import viewsets
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -107,15 +108,30 @@ def deleteUser(request, pk):
 
 
 # ******************* product views ************************
-@api_view(['GET'])
-def getProducts(request):
-    query = request.query_params.get('keyword')
+# @api_view(['GET'])
+# def getProducts(request):
+#     query = request.query_params.get('keyword')
 
-    if query == None:
-        query = ''
-    products = Product.objects.filter(name__icontains = query)
-    serializer = ProductSerializer(products, many=True)
-    return Response(serializer.data)
+#     if query == None:
+#         query = ''
+#     products = Product.objects.filter(name__icontains = query)
+#     serializer = ProductSerializer(products, many=True)
+
+#     filter_fields = (
+#         'category',
+#         'sub_category',
+#     )
+
+#     return Response(serializer.data)
+
+class getProducts(viewsets.ModelViewSet):
+    serializer_class = ProductSerializer
+    queryset = Product.objects.all()
+
+    filter_fields = (
+        'category',
+        'sub_category',
+    )
 
 
 @api_view(['GET'])

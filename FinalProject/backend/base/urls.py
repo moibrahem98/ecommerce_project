@@ -1,9 +1,13 @@
 from django.urls import path
+from rest_framework import routers
+
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
 )
 
 from .views import *
+# router = routers.DefaultRouter()
+# router.register(r'api/products', getProducts, 'product')  # api urls
 
 urlpatterns = [
     # **************** user urls **********************
@@ -19,7 +23,7 @@ urlpatterns = [
     path('api/users/update/<str:pk>/', updateUser, name='delete-user'),
 
     # **************** product urls **********************
-    path('api/products/', getProducts, name='products'),
+    path('api/products/', getProducts.as_view({'get': 'list'}), name='products'),
     path('api/products/<int:pk>/reviews/', createProductReview, name='review'),
     path('api/product/<int:pk>', getProduct, name='product'),
     path('api/products/create/', createProduct, name='createProduct'),
