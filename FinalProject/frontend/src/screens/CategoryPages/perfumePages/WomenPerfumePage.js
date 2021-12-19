@@ -1,26 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col } from "react-bootstrap";
-import Product from "../components/Product";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
-import { listProducts } from "../actions/productActions";
-import ProductCarousel from "../components/ProductCarousel";
-
-function HomeScreen({ history }) {
+import Product from "../../../components/Product";
+import Loader from "../../../components/Loader";
+import Message from "../../../components/Message";
+import { listWomenPerfume } from "../../../actions/categoryActions";
+function WomenPerfumePage() {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
   const { error, loading, products } = productList;
-
-  let keyword = history.location.search;
+  console.log(products);
 
   useEffect(() => {
-    dispatch(listProducts(keyword));
-  }, [dispatch, keyword]);
+    dispatch(listWomenPerfume());
+  }, [dispatch]);
   return (
     <div>
-      {!keyword && <ProductCarousel />}
-      <h1>latest products</h1>
+      <h1>Women</h1>
       {loading ? (
         <Loader></Loader>
       ) : error ? (
@@ -38,4 +34,4 @@ function HomeScreen({ history }) {
   );
 }
 
-export default HomeScreen;
+export default WomenPerfumePage;

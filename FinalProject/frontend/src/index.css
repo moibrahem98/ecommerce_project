@@ -83,4 +83,19 @@ h3 {
   .carousel-caption h2 {
     font-size: 2.5vw;
   }
+  /* }
+@media only screen and (min-width: 960px) {
+  .navbar .navbar-nav .nav-item .nav-link {
+    padding: 5 20px;
+  }
+  .navbar .navbar-nav .nav-item:not(:last-child) .nav-link {
+    border-right: 0.5px solid lightslategrey;
+  }
 }
+#cartLink {
+  padding: 5 20px;
+  border-right: 0.5px solid lightslategrey; */
+}
+/* #CatNavUl {
+  --bs-scroll-height: 100px;
+} */

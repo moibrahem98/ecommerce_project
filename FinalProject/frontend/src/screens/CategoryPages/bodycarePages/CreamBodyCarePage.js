@@ -1,26 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col } from "react-bootstrap";
-import Product from "../components/Product";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
-import { listProducts } from "../actions/productActions";
-import ProductCarousel from "../components/ProductCarousel";
+import Product from "../../../components/Product";
+import Loader from "../../../components/Loader";
+import Message from "../../../components/Message";
+import { listCreamBodycare } from "../../../actions/categoryActions";
 
-function HomeScreen({ history }) {
+function CreamBodyCarePage() {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
   const { error, loading, products } = productList;
-
-  let keyword = history.location.search;
+  console.log(products);
 
   useEffect(() => {
-    dispatch(listProducts(keyword));
-  }, [dispatch, keyword]);
+    dispatch(listCreamBodycare());
+  }, [dispatch]);
   return (
     <div>
-      {!keyword && <ProductCarousel />}
-      <h1>latest products</h1>
+      <h1>CreamBodyCareS</h1>
       {loading ? (
         <Loader></Loader>
       ) : error ? (
@@ -38,4 +35,4 @@ function HomeScreen({ history }) {
   );
 }
 
-export default HomeScreen;
+export default CreamBodyCarePage;

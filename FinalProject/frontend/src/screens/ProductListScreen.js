@@ -102,6 +102,7 @@ function ProductListScreen({ history, match }) {
                 <th>NAME</th>
                 <th>PRICE</th>
                 <th>CATEGORY</th>
+                <th>SUB CATEGORY</th>
                 <th>BRAND</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -119,6 +120,7 @@ function ProductListScreen({ history, match }) {
                   </td>
                   <td>{product.price} L.E</td>
                   <td>{product.category}</td>
+                  <td>{product.sub_category}</td>
                   <td>{product.brand}</td>
                   <td>
                     {" "}

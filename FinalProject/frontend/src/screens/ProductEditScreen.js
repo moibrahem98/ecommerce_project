@@ -17,6 +17,7 @@ function ProductEditScreen({ match, history }) {
   const [image, setImage] = useState("");
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState("");
+  const [subCategory, setSubCategory] = useState("");
   const [stock, setStock] = useState(0);
   const [description, setDescription] = useState("");
   const [uploading, setUploading] = useState(false);
@@ -46,6 +47,7 @@ function ProductEditScreen({ match, history }) {
         setImage(product.image);
         setBrand(product.brand);
         setCategory(product.category);
+        setSubCategory(product.subCategory);
         setStock(product.stock);
         setDescription(product.description);
       }
@@ -62,6 +64,7 @@ function ProductEditScreen({ match, history }) {
         image,
         brand,
         category,
+        subCategory,
         stock,
         description,
       })
@@ -144,6 +147,7 @@ function ProductEditScreen({ match, history }) {
               <Form.File
                 id="image-file"
                 custom
+                label="Choose Image"
                 onChange={uploadFileHandler}
               ></Form.File>
               {uploading && <Loader />}
@@ -173,11 +177,68 @@ function ProductEditScreen({ match, history }) {
             <Form.Group controlId="category">
               <Form.Label>Category</Form.Label>
               <Form.Control
+                as="select"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+              >
+                <option value="">Select</option>
+                <option value="Perfume">Perfume</option>
+                <option value="Makeup"> Makeup</option>
+                <option value="Body Care">Body Care</option>
+                <option value="Hair Care">Hair Care</option>
+              </Form.Control>
+              {/* <Form.Control
                 type="text"
                 placeholder="Enter category"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-              ></Form.Control>
+              ></Form.Control> */}
+            </Form.Group>
+            <br></br>
+
+            <Form.Group controlId="subCategory">
+              <Form.Label>Sub Category</Form.Label>
+              <Form.Control
+                as="select"
+                placeholder="Enter Sub Category"
+                value={subCategory}
+                onChange={(e) => setSubCategory(e.target.value)}
+              >
+                <option value="">Select</option>
+
+                <optgroup label="1.Perfume">
+                  <option value="Men">Men</option>
+                  <option value="Women">Women</option>
+                  <option value="Oriental">Oriental</option>
+                </optgroup>
+
+                <optgroup label="2.Makeup">
+                  <option value="Foundation">Foundation</option>
+                  <option value="Mascara">Mascara</option>
+                  <option value="Eye Shadow">Eye Shadow</option>
+                  <option value="Highlighter">Highlighter</option>
+                  <option value="Bronzer">Bronzer</option>
+                  <option value="Lip Gloss">Lip Gloss</option>
+                  <option value="Rouge">Rouge</option>
+                  <option value="Makeup Remover">Makeup Remover</option>
+                  <option value="Kohl">Kohl</option>
+                </optgroup>
+
+                <optgroup label="3.Body Care">
+                  <option value="Cream">Cream</option>
+                  <option value="Body Lotion">Body Lotion</option>
+                  <option value="Body Mist">Body Mist</option>
+                </optgroup>
+
+                <optgroup label="4.Hair Care">
+                  <option value="Shampo">Shampo</option>
+                  <option value="Serums">Serums</option>
+                  <option value="Conditioner">Conditioner</option>
+                  <option value="Conditioner Cream">Conditioner Cream</option>
+                  <option value="Protein & Creatine">Protein & Creatine</option>
+                  <option value="Oils">Oils</option>
+                </optgroup>
+              </Form.Control>
             </Form.Group>
             <br></br>
 

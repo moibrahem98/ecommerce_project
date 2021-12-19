@@ -132,6 +132,9 @@ class getProducts(viewsets.ModelViewSet):
         'category',
         'sub_category',
     )
+    search_fields = (
+        '^name',
+    )
 
 
 @api_view(['GET'])
@@ -180,11 +183,11 @@ def addOrderItems(request):
             order=order,
             address=data['shippingAddress']['address'],
             city=data['shippingAddress']['city'],
-            postal_code=data['shippingAddress']['postalCode'],
+            telephone_number=data['shippingAddress']['telephoneNumber'],
             country=data['shippingAddress']['country'],
         )
 
-        # (3) Create order items adn set order to orderItem relationship
+        # (3) Create order items and set order to orderItem relationship
         print('=================')
         print(orderItems)
         for i in orderItems:
@@ -273,7 +276,8 @@ def createProduct(request):
         price=0,
         brand='Sample brand',
         stock=0,
-        category='sample category',
+        category='',
+        sub_category='',
         description=''
 
     )
@@ -292,6 +296,7 @@ def updateProduct(request, pk):
     product.brand = data['brand']
     product.stock = data['stock']
     product.category = data['category']
+    product.sub_category = data['subCategory']
     product.description = data['description']
 
     product.save()

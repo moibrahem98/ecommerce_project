@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navbar, Nav, Container, Row, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../actions/userActions";
 import logo from "../logo.png";
@@ -18,23 +18,27 @@ function Header() {
 
   return (
     <header>
-      <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
+      <Navbar bg="light" variant="light" expand="lg" collapseOnSelect>
         <Container>
-          <LinkContainer to="/">
-            <Navbar.Brand className="brand">
-              <img src={logo} alt="Logo" height={"35px"} />
+          <LinkContainer to="/" className="justify-content-start">
+            <Navbar.Brand className="brand justify-content-start">
+              {/* <img src={logo} alt="Logo" height={"35px"} /> */}
               MidNight
             </Navbar.Brand>
           </LinkContainer>
+          <SearchBox className="justify-content-end" />
+
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
           <Navbar.Collapse
             id="basic-navbar-nav"
             className="justify-content-end"
           >
-            <SearchBox className="justify-content-center" />
-
             <Nav className="ml-auto justify-content-end">
-              <LinkContainer to="/cart">
+              <LinkContainer to="/cart" id="cartLink">
+                <Nav.Link>EN</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/cart" id="cartLink">
                 <Nav.Link>
                   <i className="fas fa-shopping-cart"></i> Cart
                 </Nav.Link>
