@@ -1,152 +1,93 @@
 import React from "react";
-import {
-  Navbar,
-  Nav,
-  Container,
-  NavDropdown,
-  Row,
-  Col,
-  Dropdown,
-} from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown, Row, Col } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
+
 import { Link } from "react-router-dom";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function CategoryNavbar() {
   return (
     <div>
-      {/* <Navbar expand="lg" bg="dark" variant="dark">
+      <Navbar bg="light" expand="lg">
         <Container>
+          <Navbar.Brand>
+            <NavDropdown
+              title="ALL CATEGORIES"
+              active
+              style={{ fontWeight: "bold" }}
+              id="basic-nav-dropdown"
+            >
+              <NavDropdown.Item href="/perfume">Perfume</NavDropdown.Item>
+              <NavDropdown.Item href="/makeup">Makeup</NavDropdown.Item>
+              <NavDropdown.Item href="/bodycare">Body Care</NavDropdown.Item>
+              <NavDropdown.Item href="/haircare">Hair Care </NavDropdown.Item>
+            </NavDropdown>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Navbar.Brand>
-                <NavDropdown
-                  className="pr-2 py-2 align-text-top"
-                  title="Events"
-                  id="basic-nav-dropdown"
-                >
-                  <Container className="eventsNav pt-0 mt-0">
-                    <Row>
-                      <Col xs="12" md="6" className="text-left">
-                        <Dropdown.Header>
-                          <FontAwesomeIcon
-                            color="black"
-                            icon={"concierge-bell"}
-                            size="1x"
-                            className="pr-1"
-                          />
-                          {"  "}
-                          Catering
-                        </Dropdown.Header>
-                        <Dropdown.Item>
-                          <Link href="/">
-                            <a className="nav-link" role="button">
-                              Corporate
-                            </a>
-                          </Link>
-                        </Dropdown.Item>
-                        <Dropdown.Item>
-                          <Link href="/">
-                            <a className="nav-link" role="button">
-                              Private
-                            </a>
-                          </Link>
-                        </Dropdown.Item>
-
-                        <Dropdown.Divider />
-                        <Dropdown.Header>
-                          <FontAwesomeIcon
-                            color="black"
-                            icon={"chalkboard-teacher"}
-                            size="1x"
-                            className="pr-1"
-                          />
-                          {"  "}
-                          Classes
-                        </Dropdown.Header>
-                        <Dropdown.Item>
-                          <Link href="/">
-                            <a className="nav-link" role="button">
-                              Barista 101
-                            </a>
-                          </Link>
-                        </Dropdown.Item>
-                        <Dropdown.Item>
-                          <Link href="/">
-                            <a className="nav-link" role="button">
-                              History of Coffee
-                            </a>
-                          </Link>
-                        </Dropdown.Item>
-                        <Dropdown.Item>
-                          <Link href="/">
-                            <a className="nav-link" role="button">
-                              Intro to Cafe Snobbery
-                            </a>
-                          </Link>
-                        </Dropdown.Item>
-                        <Dropdown.Divider className="d-md-none" />
-                      </Col>
-
-                      <Col xs="12" md="6" className="text-left">
-                        <Dropdown.Header>
-                          <FontAwesomeIcon
-                            color="black"
-                            icon={"building"}
-                            size="1x"
-                            className="pr-1"
-                          />
-                          {"  "}
-                          Rentals
-                        </Dropdown.Header>
-                        <Dropdown.Item>
-                          <Link href="/">
-                            <a className="nav-link" role="button">
-                              Fireside Room
-                            </a>
-                          </Link>
-                        </Dropdown.Item>
-                        <Dropdown.Item>
-                          <Link href="/">
-                            <a className="nav-link" role="button">
-                              Roasting Room
-                            </a>
-                          </Link>
-                        </Dropdown.Item>
-                        <Dropdown.Divider />
-                        <Dropdown.Header>
-                          <FontAwesomeIcon
-                            color="black"
-                            icon={"sun"}
-                            size="1x"
-                            className="pr-1"
-                          />
-                          {"  "}
-                          Seasonal
-                        </Dropdown.Header>
-                        <Dropdown.Item>
-                          <Link href="/">
-                            <a className="nav-link" role="button">
-                              Coldbrew Night
-                            </a>
-                          </Link>
-                        </Dropdown.Item>
-                        <Dropdown.Item>
-                          <Link href="/">
-                            <a className="nav-link text-wrap" role="button">
-                              Campfire Coffee Class
-                            </a>
-                          </Link>
-                        </Dropdown.Item>
-                      </Col>
-                    </Row>
-                  </Container>
-                </NavDropdown>
-              </Navbar.Brand>
+              <NavDropdown title="Perfume" id="basic-nav-dropdown">
+                <NavDropdown.Item href="/menperfume">Men</NavDropdown.Item>
+                <NavDropdown.Item href="/womenperfume">Women </NavDropdown.Item>
+                <NavDropdown.Item href="/orientalperfume">
+                  Oriental
+                </NavDropdown.Item>
+              </NavDropdown>
+              <NavDropdown title="Makeup" id="basic-nav-dropdown">
+                <NavDropdown.Item href="/foundationmakeup">
+                  Foundation
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/mascaramakeup">
+                  Mascara
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/eyeshadowmakeup">
+                  Eye Shadow
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/highlightermakeup">
+                  Highlighter
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/bronzermakeup">
+                  Bronzer
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/lipglossmakeup">
+                  Lip Gloss
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/rougemakeup">Rouge </NavDropdown.Item>
+                <NavDropdown.Item href="/kohlmakeup">Kohl </NavDropdown.Item>
+                <NavDropdown.Item href="/makeupremover">
+                  Makeup Remover{" "}
+                </NavDropdown.Item>
+              </NavDropdown>
+              <NavDropdown title="Body Care" id="basic-nav-dropdown">
+                <NavDropdown.Item href="/creambodycare">Cream</NavDropdown.Item>
+                <NavDropdown.Item href="/bodylotionbodycare">
+                  Body Lotion{" "}
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/bodymistbodycare">
+                  Body Mist
+                </NavDropdown.Item>
+              </NavDropdown>
+              <NavDropdown title="Hair Care" id="basic-nav-dropdown">
+                <NavDropdown.Item href="/shampohaircare">
+                  Shmpo
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/serumshaircare">
+                  Serums{" "}
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/conditionerhaircare">
+                  Conditioner{" "}
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/conditionercreamhaircare">
+                  Conditioner Cream{" "}
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/proteinandcreatinehaircare">
+                  Protein And Creatine{" "}
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/oilshaircare">Oils </NavDropdown.Item>
+              </NavDropdown>
             </Nav>
           </Navbar.Collapse>
         </Container>
-      </Navbar> */}
+      </Navbar>
     </div>
   );
 }

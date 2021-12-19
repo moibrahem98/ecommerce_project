@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Card, Button, CardGroup } from "react-bootstrap";
 import Product from "../../../components/Product";
 import Loader from "../../../components/Loader";
 import Message from "../../../components/Message";
@@ -17,7 +17,57 @@ function PerfumePage() {
   }, [dispatch]);
   return (
     <div>
-      <h1>PERFUMES</h1>
+      <CardGroup>
+        <Card
+          className="rounded ml-5 "
+          md={3}
+          style={{ width: "18rem", borders: "1px solid black" }}
+        >
+          <Card.Body>
+            <Card.Title as="h1">Men</Card.Title>
+            <Card.Text>this is description of this sub category</Card.Text>
+            <Button variant="outline-primary" href="/menperfume">
+              Discover !!{" "}
+            </Button>
+          </Card.Body>
+        </Card>
+        <Card
+          className="rounded ml-5 "
+          md={3}
+          style={{ width: "18rem", borders: "1px solid black" }}
+        >
+          <Card.Body>
+            <Card.Title as="h1">Women</Card.Title>
+            <Card.Text>this is description of this sub category</Card.Text>
+            <Button variant="outline-primary" href="/womernperfume">
+              Discover !!{" "}
+            </Button>
+          </Card.Body>
+        </Card>
+        <Card
+          className="rounded ml-5 "
+          md={3}
+          style={{ width: "18rem", borders: "1px solid black" }}
+        >
+          <Card.Body>
+            <Card.Title as="h1">Oriental</Card.Title>
+            <Card.Text>this is description of this sub category</Card.Text>
+            <Button variant="outline-primary" href="/orientalperfume">
+              Discover !!{" "}
+            </Button>
+          </Card.Body>
+        </Card>
+      </CardGroup>
+      <hr></hr>
+      <h3
+        style={{
+          textAlign: "center",
+          fontFamily: "monospace",
+          fontWeight: "bold",
+        }}
+      >
+        All Perfumes
+      </h3>
       {loading ? (
         <Loader></Loader>
       ) : error ? (
