@@ -56,7 +56,7 @@ export const login = (email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "/api/users/login/",
+      "/user/api/users/login/",
       { username: email, password: password },
       config
     );
@@ -99,7 +99,7 @@ export const register = (name, email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "/api/users/register/",
+      "/user/api/users/register/",
       { name: name, email: email, password: password },
       config
     );
@@ -143,7 +143,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/users/${id}/`, config);
+    const { data } = await axios.get(`/user/api/users/${id}/`, config);
 
     dispatch({
       type: USER_DETAILS_SUCCESS,
@@ -178,7 +178,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      `/api/users/profile/update/`,
+      `/user/api/users/profile/update/`,
       user,
       config
     );
@@ -223,7 +223,7 @@ export const listUsers = () => async (dispatch, getState) => {
     }
 
     const { data } = await axios.get(
-      `/api/users/all/`,
+      `/user/api/users/all/`,
       config
     )
 
@@ -262,7 +262,7 @@ export const deleteUser = (id) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.delete(
-      `/api/users/delete/${id}/`,
+      `/user/api/users/delete/${id}/`,
       config
     )
 
@@ -299,7 +299,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
       }
 
       const { data } = await axios.put(
-          `/api/users/update/${user._id}/`,
+          `/user/api/users/update/${user._id}/`,
           user,
           config
       )

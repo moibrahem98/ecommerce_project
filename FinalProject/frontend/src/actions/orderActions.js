@@ -42,7 +42,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post(`/api/orders/add/`, order, config);
+    const { data } = await axios.post(`/order/api/orders/add/`, order, config);
 
     dispatch({
       type: ORDER_CREATE_SUCCESS,
@@ -83,7 +83,7 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/orders/${id}/`, config);
+    const { data } = await axios.get(`/order/api/orders/${id}/`, config);
 
     dispatch({
       type: ORDER_DETAILS_SUCCESS,
@@ -116,7 +116,7 @@ export const listMyOrders = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/orders/myorders/`, config);
+    const { data } = await axios.get(`/order/api/orders/myorders/`, config);
 
     dispatch({
       type: ORDER_LIST_MY_ORDERS_SUCCESS,
@@ -150,7 +150,7 @@ export const listOrders = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/orders/`, config);
+    const { data } = await axios.get(`/order/api/orders/`, config);
 
     dispatch({
       type: ORDER_LIST_SUCCESS,
@@ -185,7 +185,7 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      `/api/orders/${order._id}/deliver/`,
+      `/order/api/orders/${order._id}/deliver/`,
       {},
       config
     );
@@ -223,7 +223,7 @@ export const payOrder = (order) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      `/api/orders/${order._id}/pay/`,
+      `/order/api/orders/${order._id}/pay/`,
       {},
       config
     );

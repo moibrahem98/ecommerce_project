@@ -47,7 +47,9 @@ INSTALLED_APPS = [
 
     'rest_framework',
 
-    'base.apps.BaseConfig',
+    'user',
+    'product',
+    'order',
 ]
 
 REST_FRAMEWORK = {

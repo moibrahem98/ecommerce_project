@@ -10,7 +10,7 @@ export const listPerfume = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
-    const { data } = await axios.get(`/api/products/?category=Perfume`);
+    const { data } = await axios.get(`/product/api/products/?category=Perfume`);
 
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
@@ -30,7 +30,7 @@ export const listMenPerfume = () => async (dispatch) => {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
     const { data } = await axios.get(
-      `/api/products/?category=Perfume&sub_category=Men`
+      `/product/api/products/?category=Perfume&sub_category=Men`
     );
     console.log(data);
 
@@ -51,7 +51,7 @@ export const listWomenPerfume = () => async (dispatch) => {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
     const { data } = await axios.get(
-      `/api/products/?category=Perfume&sub_category=Women`
+      `/product/api/products/?category=Perfume&sub_category=Women`
     );
 
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
@@ -71,7 +71,7 @@ export const listOrientalPerfume = () => async (dispatch) => {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
     const { data } = await axios.get(
-      `/api/products/?category=Perfume&sub_category=Oriental`
+      `/product/api/products/?category=Perfume&sub_category=Oriental`
     );
 
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
@@ -93,7 +93,7 @@ export const listMakeup = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
-    const { data } = await axios.get(`/api/products/?category=Makeup`);
+    const { data } = await axios.get(`/product/api/products/?category=Makeup`);
 
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
@@ -111,7 +111,7 @@ export const listFoundationMakeup = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
-    const { data } = await axios.get(`/api/products/?sub_category=Foundation`);
+    const { data } = await axios.get(`/product/api/products/?sub_category=Foundation`);
 
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
@@ -130,7 +130,7 @@ export const listMascaraMakeup = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
-    const { data } = await axios.get(`/api/products/?sub_category=Mascara`);
+    const { data } = await axios.get(`/product/api/products/?sub_category=Mascara`);
 
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
@@ -149,7 +149,7 @@ export const listEyeShadowMakeup = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
-    const { data } = await axios.get(`/api/products/?sub_category=Eye+Shadow`);
+    const { data } = await axios.get(`/product/api/products/?sub_category=Eye+Shadow`);
 
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
@@ -168,7 +168,7 @@ export const listHighlighterMakeup = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
-    const { data } = await axios.get(`/api/products/?sub_category=Highlighter`);
+    const { data } = await axios.get(`/product/api/products/?sub_category=Highlighter`);
 
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
@@ -187,7 +187,7 @@ export const listBronzerMakeup = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
-    const { data } = await axios.get(`/api/products/?sub_category=Bronzer`);
+    const { data } = await axios.get(`/product/api/products/?sub_category=Bronzer`);
 
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
@@ -206,7 +206,7 @@ export const listLipglossMakeup = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
-    const { data } = await axios.get(`/api/products/?sub_category=Lip+Gloss`);
+    const { data } = await axios.get(`/product/api/products/?sub_category=Lip+Gloss`);
 
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
@@ -224,7 +224,7 @@ export const listRougeMakeup = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
-    const { data } = await axios.get(`/api/products/?sub_category=Rouge`);
+    const { data } = await axios.get(`/product/api/products/?sub_category=Rouge`);
 
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
@@ -243,7 +243,7 @@ export const listMakeupremoverMakeup = () => async (dispatch) => {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
     const { data } = await axios.get(
-      `/api/products/?sub_category=Makeup+Remover`
+      `/product/api/products/?sub_category=Makeup+Remover`
     );
 
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
@@ -262,7 +262,7 @@ export const listKohlMakeup = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
-    const { data } = await axios.get(`/api/products/?sub_category=Kohl`);
+    const { data } = await axios.get(`/product/api/products/?sub_category=Kohl`);
 
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
@@ -282,7 +282,7 @@ export const listBodycare = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
-    const { data } = await axios.get(`/api/products/?category=Body+Care`);
+    const { data } = await axios.get(`/product/api/products/?category=Body+Care`);
 
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
@@ -300,7 +300,7 @@ export const listCreamBodycare = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
-    const { data } = await axios.get(`/api/products/?sub_category=Cream`);
+    const { data } = await axios.get(`/product/api/products/?sub_category=Cream`);
 
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
@@ -318,7 +318,7 @@ export const listBodyLotionBodycare = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
-    const { data } = await axios.get(`/api/products/?sub_category=Body+Lotion`);
+    const { data } = await axios.get(`/product/api/products/?sub_category=Body+Lotion`);
 
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
@@ -336,7 +336,7 @@ export const listBodyMistBodycare = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
-    const { data } = await axios.get(`/api/products/?sub_category=Body+Mist`);
+    const { data } = await axios.get(`/product/api/products/?sub_category=Body+Mist`);
 
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
@@ -355,7 +355,7 @@ export const listHaircare = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
-    const { data } = await axios.get(`/api/products/?category=Hair+Care`);
+    const { data } = await axios.get(`/product/api/products/?category=Hair+Care`);
 
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
@@ -373,7 +373,7 @@ export const listShampoHaircare = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
-    const { data } = await axios.get(`/api/products/?sub_category=Shampo`);
+    const { data } = await axios.get(`/product/api/products/?sub_category=Shampo`);
 
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
@@ -391,7 +391,7 @@ export const listSerumsHaircare = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
-    const { data } = await axios.get(`/api/products/?sub_category=Serums`);
+    const { data } = await axios.get(`/product/api/products/?sub_category=Serums`);
 
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
@@ -409,7 +409,7 @@ export const listConditionerHaircare = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
-    const { data } = await axios.get(`/api/products/?sub_category=Conditioner`);
+    const { data } = await axios.get(`/product/api/products/?sub_category=Conditioner`);
 
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
@@ -431,7 +431,7 @@ export const listConditionerCreamHaircare = () => async (dispatch) => {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
     const { data } = await axios.get(
-      `/api/products/?sub_category=Conditioner+Cream`
+      `/product/api/products/?sub_category=Conditioner+Cream`
     );
 
     dispatch({
@@ -454,7 +454,7 @@ export const listProteinandcreatineHaircare = () => async (dispatch) => {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
     const { data } = await axios.get(
-      `/api/products/?sub_category=Protein+And+Creatine`
+      `/product/api/products/?sub_category=Protein+And+Creatine`
     );
 
     dispatch({
@@ -476,7 +476,7 @@ export const listOilsHaircare = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
-    const { data } = await axios.get(`/api/products/?sub_category=Oils`);
+    const { data } = await axios.get(`/product/api/products/?sub_category=Oils`);
 
     dispatch({
       type: PRODUCT_LIST_SUCCESS,

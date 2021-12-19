@@ -35,7 +35,7 @@ function ProductListScreen({ history, match }) {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  let keyword = history.location.search;
+  // let keyword = history.location.search;
 
   useEffect(() => {
     dispatch({ type: PRODUCT_CREATE_RESET });
@@ -47,7 +47,7 @@ function ProductListScreen({ history, match }) {
     if (successCreate) {
       history.push(`/admin/product/${createdProduct._id}/edit`);
     } else {
-      dispatch(listProducts(keyword));
+      dispatch(listProducts());
     }
   }, [
     dispatch,
@@ -56,7 +56,7 @@ function ProductListScreen({ history, match }) {
     successDelete,
     successCreate,
     createdProduct,
-    keyword,
+    // keyword,
   ]);
 
   const deleteHandler = (id) => {
