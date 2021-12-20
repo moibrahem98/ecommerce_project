@@ -12,14 +12,14 @@ function HomeScreen({ history }) {
   const productList = useSelector((state) => state.productList);
   const { error, loading, products } = productList;
 
-  let keyword = history.location.search;
+  let name = history.location.search;
 
   useEffect(() => {
-    dispatch(listProducts(keyword));
-  }, [dispatch, keyword]);
+    dispatch(listProducts(name));
+  }, [dispatch, name]);
   return (
     <div>
-      {!keyword && <ProductCarousel />}
+      {!name && <ProductCarousel />}
       <h1>latest products</h1>
       {loading ? (
         <Loader></Loader>

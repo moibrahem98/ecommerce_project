@@ -16,7 +16,7 @@ function ProductEditScreen({ match, history }) {
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState("");
   const [brand, setBrand] = useState("");
-  const [category, setCategory] = useState("");
+  const [category1, setCategory] = useState("");
   const [subCategory, setSubCategory] = useState("");
   const [stock, setStock] = useState(0);
   const [description, setDescription] = useState("");
@@ -46,7 +46,7 @@ function ProductEditScreen({ match, history }) {
         setPrice(product.price);
         setImage(product.image);
         setBrand(product.brand);
-        setCategory(product.category);
+        setCategory(product.category1);
         setSubCategory(product.subCategory);
         setStock(product.stock);
         setDescription(product.description);
@@ -63,7 +63,7 @@ function ProductEditScreen({ match, history }) {
         price,
         image,
         brand,
-        category,
+        category1,
         subCategory,
         stock,
         description,
@@ -99,7 +99,11 @@ function ProductEditScreen({ match, history }) {
       setUploading(false);
     }
   };
-
+  // get category data
+  // const {cat_data}=  axios.get("/product/api/categories/",{}).then(res => {
+  //   const date = res.data
+  //    // console.log(date[0].id)
+  //})
   return (
     <div>
       <Link to="/admin/productlist">Go Back</Link>
@@ -174,13 +178,19 @@ function ProductEditScreen({ match, history }) {
             </Form.Group>
             <br></br>
 
-            <Form.Group controlId="category">
+            <Form.Group controlId="category1">
               <Form.Label>Category</Form.Label>
               <Form.Control
               as="select"
-                value={product.category}
+                value={product.category1}
                 onChange={(e) => setCategory(e.target.value)}
               >
+                {/*{[...Array(da).keys()].map((x) => (*/}
+                {/*              <option key={x + 1} value={x + 1}>*/}
+                {/*                {cat_data.name}*/}
+                {/*              </option>*/}
+                {/*            ))}*/}
+
                 {/* <option value="">Select</option>
                 <option value="Perfume">Perfume</option>
                 <option value="Makeup"> Makeup</option>
