@@ -55,10 +55,15 @@ function CartScreen({ match, location, history }) {
                     <Link to={`/product/${item.product}`}>{item.name}</Link>
                   </Col>
 
-                  <Col md={2}>${item.price}</Col>
+                  <Col md={2}>{item.price} L.E</Col>
 
                   <Col md={3}>
                     <Form.Control
+                      rounded
+                      style={{
+                        border: "1px solid  #e3e3e3",
+                        borderRadius: "11px",
+                      }}
                       as="select"
                       value={item.qty}
                       onChange={(e) =>
@@ -78,7 +83,7 @@ function CartScreen({ match, location, history }) {
                   <Col md={1}>
                     <Button
                       type="button"
-                      variant="light"
+                      variant="outline-danger"
                       onClick={() => removeFromCartHandler(item.product)}
                     >
                       <i className="fas fa-trash"></i>
@@ -95,25 +100,26 @@ function CartScreen({ match, location, history }) {
         <Card>
           <ListGroup variant="flush">
             <ListGroup.Item>
-              <h2>
-                Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
-                items
-              </h2>
-              $
+              <h3 style={{ fontFamily: "monospace", textAlign: "center" }}>
+                Sub-Total
+              </h3>
+              <hr />
+              <p>{cartItems.reduce((acc, item) => acc + item.qty, 0)} items</p>
               {cartItems
                 .reduce((acc, item) => acc + item.qty * item.price, 0)
-                .toFixed(2)}
+                .toFixed(2)}{" "}
+              L.E
             </ListGroup.Item>
           </ListGroup>
 
           <ListGroup.Item>
             <Button
               type="button"
-              className="btn-block w-100"
+              className="outline-primary w-100"
               disabled={cartItems.length === 0}
               onClick={checkoutHandler}
             >
-              Proceed To Checkout
+              Checkout
             </Button>
           </ListGroup.Item>
         </Card>
