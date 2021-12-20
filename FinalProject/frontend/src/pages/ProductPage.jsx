@@ -95,7 +95,7 @@ function ProductScreen({ match, history }) {
                     <Rating
                       value={product.rating}
                       text={`${product.reviews_number} reviews`}
-                      color={"#f8e825"}
+                      color={"#e36f10"}
                     />
                   </ListGroup.Item>
 
@@ -178,7 +178,7 @@ function ProductScreen({ match, history }) {
                 {product.reviews.map((review) => (
                   <ListGroup.Item key={review._id}>
                     <strong>{review.name}</strong>
-                    <Rating value={review.rating} color="#f8e825"></Rating>
+                    <Rating value={review.rating} color="#e36f10"></Rating>
                     <p>{review.created_at.substring(0, 10)}</p>
                     <p>{review.comment}</p>
                   </ListGroup.Item>
