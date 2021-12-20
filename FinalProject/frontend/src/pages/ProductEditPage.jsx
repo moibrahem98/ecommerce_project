@@ -71,8 +71,8 @@ function ProductEditScreen({ match, history }) {
     );
   };
 
-  const uploadFileHandler = async (e) => {
-    const file = e.target.files[0];
+  const uploadFileHandler = async (event) => {
+    const file = event.target.files[0];
     const formData = new FormData();
 
     formData.append("image", file);
@@ -141,7 +141,7 @@ function ProductEditScreen({ match, history }) {
                 type="text"
                 placeholder="Enter image"
                 value={image}
-                onChange={(e) => setImage(e.target.value)}
+                onChange={(event) => setImage(event.target.value)}
               ></Form.Control>
               <br></br>
               <Form.File
