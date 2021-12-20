@@ -88,7 +88,7 @@ function ProductEditScreen({ match, history }) {
       };
 
       const { data } = await axios.post(
-        "/api/products/upload/",
+        "/product/api/products/upload/",
         formData,
         config
       );
@@ -177,15 +177,15 @@ function ProductEditScreen({ match, history }) {
             <Form.Group controlId="category">
               <Form.Label>Category</Form.Label>
               <Form.Control
-                as="select"
-                value={category}
+              as="select"
+                value={product.category}
                 onChange={(e) => setCategory(e.target.value)}
               >
-                <option value="">Select</option>
+                {/* <option value="">Select</option>
                 <option value="Perfume">Perfume</option>
                 <option value="Makeup"> Makeup</option>
                 <option value="Body Care">Body Care</option>
-                <option value="Hair Care">Hair Care</option>
+                <option value="Hair Care">Hair Care</option> */}
               </Form.Control>
               {/* <Form.Control
                 type="text"
@@ -196,7 +196,7 @@ function ProductEditScreen({ match, history }) {
             </Form.Group>
             <br></br>
 
-            <Form.Group controlId="subCategory">
+            {/* <Form.Group controlId="subCategory">
               <Form.Label>Sub Category</Form.Label>
               <Form.Control
                 as="select"
@@ -240,7 +240,7 @@ function ProductEditScreen({ match, history }) {
                 </optgroup>
               </Form.Control>
             </Form.Group>
-            <br></br>
+            <br></br> */}
 
             <Form.Group controlId="description">
               <Form.Label>Description</Form.Label>

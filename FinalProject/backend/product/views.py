@@ -12,7 +12,6 @@ from rest_framework import status
 from datetime import datetime
 from rest_framework import viewsets
 
-# ******************* product views ************************
 # @api_view(['GET'])
 # def getProducts(request):
 #     query = request.query_params.get('keyword')
@@ -24,10 +23,10 @@ from rest_framework import viewsets
 
 #     filter_fields = (
 #         'category',
-#         'sub_category',
 #     )
 
 #     return Response(serializer.data)
+
 
 class getProducts(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
@@ -35,11 +34,15 @@ class getProducts(viewsets.ModelViewSet):
 
     filter_fields = (
         'category',
-        'sub_category',
     )
     search_fields = (
         '^name',
     )
+
+
+class getCategories(viewsets.ModelViewSet):
+    serializer_class = CategorySerializer
+    queryset = Category.objects.all()
 
 
 @api_view(['GET'])
@@ -65,8 +68,7 @@ def createProduct(request):
         price=0,
         brand='Sample brand',
         stock=0,
-        category='',
-        sub_category='',
+        # category='Perfume',
         description=''
 
     )
@@ -79,13 +81,13 @@ def createProduct(request):
 def updateProduct(request, pk):
     data = request.data
     product = Product.objects.get(_id=pk)
+    category = Category.objects.get(name=data['category'])
 
     product.name = data['name']
     product.price = data['price']
     product.brand = data['brand']
     product.stock = data['stock']
-    product.category = data['category']
-    product.sub_category = data['subCategory']
+    product.category = category
     product.description = data['description']
 
     product.save()

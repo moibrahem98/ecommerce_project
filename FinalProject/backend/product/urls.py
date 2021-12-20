@@ -12,6 +12,7 @@ from .views import *
 urlpatterns = [
    
     path('api/products/', getProducts.as_view({'get': 'list'}), name='products'),
+    path('api/categories/', getCategories.as_view({'get': 'list'}), name='categories'),
     path('api/products/<int:pk>/reviews/', createProductReview, name='review'),
     path('api/product/<int:pk>', getProduct, name='product'),
     path('api/products/create/', createProduct, name='createProduct'),
