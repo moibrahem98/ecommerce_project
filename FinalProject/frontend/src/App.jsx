@@ -46,7 +46,7 @@ import ConditionerHaircarePage from "./pages/CategoryPages/haircarePages/Conditi
 import ConditionerCreamHaircarePage from "./pages/CategoryPages/haircarePages/ConditionerCreamHaircarePage";
 import ProteinAndCreatineHaircarePage from "./pages/CategoryPages/haircarePages/ProteinAndCreatineHaircarePage";
 import OilsHaircarePage from "./pages/CategoryPages/haircarePages/OilsHaircarePage";
-
+import Cat from "./components/categorySelect";
 function App() {
   return (
     <Router>
@@ -57,6 +57,7 @@ function App() {
           <Switch>
             <Route path="/" component={HomeScreen} exact />
             <Route path="/product/:id" component={ProductScreen} />
+            <Route path="/cat" component={Cat} />
             <Route path="/cart/:id?" component={CartScreen} />
             <Route path="/login/" component={LoginScreen} />
             <Route path="/register/" component={RegisterScreen} />
@@ -81,6 +82,10 @@ function App() {
             {/* category routes */}
             {/* perfume */}
             <Route path="/perfume" component={PerfumePage} />
+            {/* <Route path="/perfume">
+              {" "}
+              <PerfumePage id="1" />
+            </Route> */}
             <Route path="/menperfume" component={MenPerfumePage} />
             <Route path="/womenperfume" component={WomenPerfumePage} />
             <Route path="/orientalperfume" component={OrientalPerfumePage} />

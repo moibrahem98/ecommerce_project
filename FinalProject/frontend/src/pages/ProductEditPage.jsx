@@ -8,6 +8,8 @@ import Message from "../components/Message";
 import FormContainer from "../components/FormContainer";
 import { listProductDetails, updateProduct } from "../actions/productActions";
 import { PRODUCT_UPDATE_RESET } from "../constants/productConstants";
+import Cat from "../components/categorySelect";
+const baseURL = "/product/api/categories/";
 
 function ProductEditScreen({ match, history }) {
   const productId = match.params.id;
@@ -16,11 +18,12 @@ function ProductEditScreen({ match, history }) {
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState("");
   const [brand, setBrand] = useState("");
-  const [category1, setCategory] = useState("");
+  const [category, setCategory] = useState(1);
   const [subCategory, setSubCategory] = useState("");
   const [stock, setStock] = useState(0);
   const [description, setDescription] = useState("");
   const [uploading, setUploading] = useState(false);
+  const [cat, setCat] = React.useState("");
 
   const dispatch = useDispatch();
 
@@ -35,6 +38,21 @@ function ProductEditScreen({ match, history }) {
   } = productUpdate;
 
   useEffect(() => {
+    const getData = async () => {
+      await axios
+        .get("/product/api/categories/")
+        .then((res) => {
+          setCat(res.data);
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getData();
+    // axios.get("/product/api/categories/").then((response) => {
+    //   setCat(response.data);
+    // });
     if (successUpdate) {
       dispatch({ type: PRODUCT_UPDATE_RESET });
       history.push("/admin/productlist");
@@ -46,7 +64,7 @@ function ProductEditScreen({ match, history }) {
         setPrice(product.price);
         setImage(product.image);
         setBrand(product.brand);
-        setCategory(product.category1);
+        setCategory(product.category);
         setSubCategory(product.subCategory);
         setStock(product.stock);
         setDescription(product.description);
@@ -63,8 +81,8 @@ function ProductEditScreen({ match, history }) {
         price,
         image,
         brand,
-        category1,
-        subCategory,
+        category,
+        // subCategory,
         stock,
         description,
       })
@@ -99,11 +117,15 @@ function ProductEditScreen({ match, history }) {
       setUploading(false);
     }
   };
-  // get category data
-  // const {cat_data}=  axios.get("/product/api/categories/",{}).then(res => {
-  //   const date = res.data
-  //    // console.log(date[0].id)
-  //})
+
+  // useEffect(() => {
+  //   axios.get("/product/api/categories/").then((response) => {
+  //     setCat(response.data);
+  //   });
+  // }, []);
+  console.log("cc", cat);
+  if (!cat) return null;
+
   return (
     <div>
       <Link to="/admin/productlist">Go Back</Link>
@@ -178,25 +200,32 @@ function ProductEditScreen({ match, history }) {
             </Form.Group>
             <br></br>
 
-            <Form.Group controlId="category1">
+            <Form.Group controlId="category">
               <Form.Label>Category</Form.Label>
-              <Form.Control
-              as="select"
-                value={product.category1}
+              {/* <Form.Control
+                as="select"
+                value={product.category}
                 onChange={(e) => setCategory(e.target.value)}
               >
-                {/*{[...Array(da).keys()].map((x) => (*/}
-                {/*              <option key={x + 1} value={x + 1}>*/}
-                {/*                {cat_data.name}*/}
-                {/*              </option>*/}
-                {/*            ))}*/}
+                {cat.map((category) => (
+                  <option>{category.name}</option>
+                ))}
+              </Form.Control> */}
+              <select
+                className="form-control"
+                onChange={(e) => setCategory(e.target.value)}
+              >
+                {cat.map((category) => (
+                  <option value={category.id}>{category.name}</option>
+                ))}
+                {/* <option value="1">cat1</option> */}
+              </select>
+              {/* <Form.Control as="select">
+                {cat.map((category) => (
+                  <option>{category.name}</option>
+                ))}
+              </Form.Control> */}
 
-                {/* <option value="">Select</option>
-                <option value="Perfume">Perfume</option>
-                <option value="Makeup"> Makeup</option>
-                <option value="Body Care">Body Care</option>
-                <option value="Hair Care">Hair Care</option> */}
-              </Form.Control>
               {/* <Form.Control
                 type="text"
                 placeholder="Enter category"

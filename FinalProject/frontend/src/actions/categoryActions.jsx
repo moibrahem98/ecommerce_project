@@ -1,23 +1,25 @@
 import axios from "axios";
 
 // list perfumes
-export const listPerfume = () => async (dispatch) => {
-  try {
-    dispatch({ type: "PRODUCT_LIST_REQUEST" });
+export const listPerfume =
+  ({ id }) =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: "PRODUCT_LIST_REQUEST" });
 
-    const { data } = await axios.get(`/product/api/products/?category=1`);
+      const { data } = await axios.get(`/product/api/products/?category=${id}`);
 
-    dispatch({ type: "PRODUCT_LIST_SUCCESS", payload: data });
-  } catch (error) {
-    dispatch({
-      type: "PRODUCT_LIST_FAIL",
-      payload:
-        error.response && error.response.data.detail
-          ? error.response.data.detail
-          : error.message,
-    });
-  }
-};
+      dispatch({ type: "PRODUCT_LIST_SUCCESS", payload: data });
+    } catch (error) {
+      dispatch({
+        type: "PRODUCT_LIST_FAIL",
+        payload:
+          error.response && error.response.data.detail
+            ? error.response.data.detail
+            : error.message,
+      });
+    }
+  };
 
 // list perfumes men
 export const listMenPerfume = () => async (dispatch) => {

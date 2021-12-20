@@ -90,8 +90,8 @@ def createProduct(request):
 def updateProduct(request, pk):
     data = request.data
     product = Product.objects.get(_id=pk)
-    category = Category.objects.get(name=data['category'])
-
+    category = Category.objects.get(id=data['category'])
+    print(category)
     product.name = data['name']
     product.price = data['price']
     product.brand = data['brand']
