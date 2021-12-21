@@ -51,7 +51,7 @@ function ProductEditScreen({ match, history }) {
         });
     };
     getData();
-    const getSubCat=async () => {
+    const getSubCat = async () => {
       await axios
         .get(`/product/api/sub_categories/`)
         .then((res) => {
@@ -139,7 +139,7 @@ function ProductEditScreen({ match, history }) {
   // }, []);
   console.log("cc", cat);
   if (!cat) return null;
-   console.log("cc", subcat);
+  console.log("cc", subcat);
   if (!subcat) return null;
 
   return (
@@ -230,7 +230,7 @@ function ProductEditScreen({ match, history }) {
               <select
                 className="form-control"
                 onChange={(e) => setCategory(e.target.value)}
-                id='category_input'
+                id="category_input"
               >
                 {cat.map((category) => (
                   <option value={category.id}>{category.name}</option>
@@ -254,10 +254,9 @@ function ProductEditScreen({ match, history }) {
             <Form.Group controlId="subCategory">
               <Form.Label>Sub Category</Form.Label>
 
-
               <select
                 className="form-control"
-                onChange={(e) => setSubCategory(e.target.value) }
+                onChange={(e) => setSubCategory(e.target.value)}
               >
                 {/*{subcat.map((subcategory) => (*/}
                 {/*  //<option value={subcategory.id}>{subcategory.name}</option>*/}
@@ -269,8 +268,7 @@ function ProductEditScreen({ match, history }) {
                   </optgroup>
                 ))}
               </select>
-              </Form.Group>
-
+            </Form.Group>
 
             {/* <Form.Group controlId="subCategory">
               <Form.Label>Sub Category</Form.Label>
@@ -330,7 +328,7 @@ function ProductEditScreen({ match, history }) {
             <br></br>
 
             <Button type="submit" variant="primary">
-              Update
+              Add Product
             </Button>
           </Form>
         )}

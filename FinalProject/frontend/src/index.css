@@ -47,6 +47,7 @@ h3 {
 
 .face-icon {
   margin-right: 10px;
+  margin-left: 10px;
 }
 
 /* carousel */
@@ -83,6 +84,7 @@ h3 {
   .carousel-caption h2 {
     font-size: 2.5vw;
   }
+
   /* }
 @media only screen and (min-width: 960px) {
   .navbar .navbar-nav .nav-item .nav-link {
@@ -96,6 +98,48 @@ h3 {
   padding: 5 20px;
   border-right: 0.5px solid lightslategrey; */
 }
+
 /* #CatNavUl {
   --bs-scroll-height: 100px;
 } */
+
+.search_icon {
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  opacity: .8;
+  font-size: 25px;
+}
+
+.contact_link {
+  text-decoration: none;
+  font-size: 1.3rem;
+  color: #fff;
+}
+
+.butn_cart {
+  position: relative;
+  left: 100px;
+}
+
+.contact_link:hover {
+  color: antiquewhite !important;
+}
+
+.fa-shopping-cart {
+
+  font-size: 23px;
+}
+
+@media (max-width :540px) {
+  #search_box {
+    width: 200px !important
+  }
+}
+
+
+@media (min-width :1020px) {
+  #search_box {
+    width: 500px !important
+  }
+}

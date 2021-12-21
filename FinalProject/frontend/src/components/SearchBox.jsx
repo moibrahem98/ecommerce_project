@@ -21,15 +21,18 @@ function SearchBox() {
       <Button variant="success" className="p-1" type="submit">
         <i className=" fa fa-search"></i>
       </Button> */}
-
-      <input
-        type="text"
-        name="q"
-        className="form-control m-2"
-        style={{ width: "700px" }}
-        placeholder="search"
-        onChange={(event) => setName(event.target.value)}
-      />
+      <div className="position-relative">
+        <input
+          id="search_box"
+          type="text"
+          name="q"
+          className="form-control m-2"
+          style={{ width: "400px" }}
+          placeholder="search"
+          onChange={(event) => setName(event.target.value)}
+        />
+        <i class="fas fa-search position-absolute search_icon"></i>
+      </div>
       {/* <button className="btn btn-outline-success" type="submit">
         <i className=" fa fa-search"></i>
       </button> */}

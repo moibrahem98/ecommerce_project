@@ -6,7 +6,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { listProducts } from "../actions/productActions";
 import ProductCarousel from "../components/ProductCarousel";
-
+import CarouselSlider from "../components/CarouselSlider";
 function HomeScreen({ history }) {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
@@ -18,23 +18,28 @@ function HomeScreen({ history }) {
     dispatch(listProducts(name));
   }, [dispatch, name]);
   return (
-    <div>
-      {!name && <ProductCarousel />}
-      <h1>latest products</h1>
-      {loading ? (
-        <Loader></Loader>
-      ) : error ? (
-        <Message variant="danger">{error}</Message>
-      ) : (
-        <Row>
-          {products.map((product) => (
-            <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-              <Product product={product} />
-            </Col>
-          ))}
-        </Row>
-      )}
-    </div>
+    <>
+      {/* <CarouselPage /> */}
+      <div>
+        <CarouselSlider />
+
+        {!name && <ProductCarousel />}
+        <h1>Top Products</h1>
+        {loading ? (
+          <Loader></Loader>
+        ) : error ? (
+          <Message variant="danger">{error}</Message>
+        ) : (
+          <Row>
+            {products.map((product) => (
+              <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+                <Product product={product} />
+              </Col>
+            ))}
+          </Row>
+        )}
+      </div>
+    </>
   );
 }
 
