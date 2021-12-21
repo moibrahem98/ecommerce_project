@@ -50,6 +50,18 @@ class getCategories(viewsets.ModelViewSet):
     queryset = Category.objects.all()
 
 
+"""@api_view(['GET'])
+def getsubcategory(request, pk):
+    subcategory = SubCategory.objects.filter(category_id=pk)
+    serializer = SubCategorySerializer(subcategory, many=True)
+    return Response(serializer.data)"""
+
+
+class getSubCategories(viewsets.ModelViewSet):
+    serializer_class = SubCategorySerializer
+    queryset = SubCategory.objects.all()
+
+
 @api_view(['GET'])
 def getProduct(request, pk):
     product = Product.objects.get(_id=pk)
@@ -70,6 +82,7 @@ def getTopProducts(request):
 def createProduct(request):
     user = request.user
     category = Category.objects.get(id=1)
+    subCategory = SubCategory.objects.get(id=1)
 
     product = Product.objects.create(
         user=user,
@@ -78,6 +91,7 @@ def createProduct(request):
         brand='Sample brand',
         stock=0,
         category=category,
+        sub_category=subCategory,
         description=''
 
     )
@@ -91,12 +105,14 @@ def updateProduct(request, pk):
     data = request.data
     product = Product.objects.get(_id=pk)
     category = Category.objects.get(id=data['category'])
+    subCategory = SubCategory.objects.get(id=data['subCategory'])
     print(category)
     product.name = data['name']
     product.price = data['price']
     product.brand = data['brand']
     product.stock = data['stock']
     product.category = category
+    product.sub_category = subCategory,
     product.description = data['description']
 
     product.save()
@@ -161,3 +177,12 @@ def createProductReview(request, pk):
         product.save()
 
         return Response('Review Added')
+
+
+# ****************************** returns *************************
+@api_view(['POST'])
+@permission_classes([IsAdminUser])
+def list_returns(request):
+    returns = Returns.object.all()
+    serializer = ReturnsSerializer(returns, many=False)
+    return Response(serializer.data)

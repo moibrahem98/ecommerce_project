@@ -19,11 +19,12 @@ function ProductEditScreen({ match, history }) {
   const [image, setImage] = useState("");
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState(1);
-  const [subCategory, setSubCategory] = useState("");
+  const [subCategory, setSubCategory] = useState(1);
   const [stock, setStock] = useState(0);
   const [description, setDescription] = useState("");
   const [uploading, setUploading] = useState(false);
   const [cat, setCat] = React.useState("");
+  const [subcat, setsubCat] = React.useState("");
 
   const dispatch = useDispatch();
 
@@ -50,6 +51,19 @@ function ProductEditScreen({ match, history }) {
         });
     };
     getData();
+    const getSubCat=async () => {
+      await axios
+        .get(`/product/api/sub_categories/`)
+        .then((res) => {
+          setsubCat(res.data);
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getSubCat();
+
     // axios.get("/product/api/categories/").then((response) => {
     //   setCat(response.data);
     // });
@@ -82,7 +96,7 @@ function ProductEditScreen({ match, history }) {
         image,
         brand,
         category,
-        // subCategory,
+        subCategory,
         stock,
         description,
       })
@@ -125,6 +139,8 @@ function ProductEditScreen({ match, history }) {
   // }, []);
   console.log("cc", cat);
   if (!cat) return null;
+   console.log("cc", subcat);
+  if (!subcat) return null;
 
   return (
     <div>
@@ -214,6 +230,7 @@ function ProductEditScreen({ match, history }) {
               <select
                 className="form-control"
                 onChange={(e) => setCategory(e.target.value)}
+                id='category_input'
               >
                 {cat.map((category) => (
                   <option value={category.id}>{category.name}</option>
@@ -234,6 +251,26 @@ function ProductEditScreen({ match, history }) {
               ></Form.Control> */}
             </Form.Group>
             <br></br>
+            <Form.Group controlId="subCategory">
+              <Form.Label>Sub Category</Form.Label>
+
+
+              <select
+                className="form-control"
+                onChange={(e) => setSubCategory(e.target.value) }
+              >
+                {/*{subcat.map((subcategory) => (*/}
+                {/*  //<option value={subcategory.id}>{subcategory.name}</option>*/}
+                {/*  <option >{subcategory.category1.name}</option>*/}
+                {/*))}*/}
+                {subcat.map((subcategory) => (
+                  <optgroup label={subcategory.category1.name}>
+                    <option value={subcategory.id}>{subcategory.name}</option>
+                  </optgroup>
+                ))}
+              </select>
+              </Form.Group>
+
 
             {/* <Form.Group controlId="subCategory">
               <Form.Label>Sub Category</Form.Label>
@@ -301,5 +338,4 @@ function ProductEditScreen({ match, history }) {
     </div>
   );
 }
-
 export default ProductEditScreen;

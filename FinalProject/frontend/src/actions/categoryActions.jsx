@@ -2,12 +2,12 @@ import axios from "axios";
 
 // list perfumes
 export const listPerfume =
-  ({ id }) =>
+  () =>
   async (dispatch) => {
     try {
       dispatch({ type: "PRODUCT_LIST_REQUEST" });
 
-      const { data } = await axios.get(`/product/api/products/?category=${id}`);
+      const { data } = await axios.get(`/product/api/products/?category=cat1`);
 
       dispatch({ type: "PRODUCT_LIST_SUCCESS", payload: data });
     } catch (error) {

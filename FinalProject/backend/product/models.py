@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 #     ('Makeup','Makeup'),
 #     ('Body Care','Body Care'),
 #     ('Hair Care','Hair Care'),
-    
+
 
 # )
 
@@ -49,17 +49,26 @@ class Category(models.Model):
         return str(self.name)
 
 
+class SubCategory(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100, )
+
+    def __str__(self):
+        return str(self.name)
+
+
 class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200, null=True, blank=True)
     image = models.ImageField(null=True, blank=True,
-                            default='/placeholder.png')
+                              default='/placeholder.png')
     brand = models.CharField(max_length=200, null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
+    sub_category = models.ForeignKey(SubCategory, on_delete=models.SET_NULL, null=True)
     description = models.TextField(null=True, blank=True)
     rating = models.DecimalField(
         max_digits=7, decimal_places=2, null=True, blank=True)
-    reviews_number = models.IntegerField(null=True, blank=True, default=0) 
+    reviews_number = models.IntegerField(null=True, blank=True, default=0)
     price = models.DecimalField(
         max_digits=7, decimal_places=2, null=True, blank=True)
     stock = models.IntegerField(null=True, blank=True, default=0)
@@ -68,8 +77,6 @@ class Product(models.Model):
 
     def __str__(self):
         return str(self.name)
-
-
 
 
 class Review(models.Model):
@@ -84,3 +91,19 @@ class Review(models.Model):
     def __str__(self):
         return str(self.rating)
 
+
+class Returns(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    title = models.CharField(max_length=20)
+    order_num = models.IntegerField()
+    product_name = models.CharField(max_length=200)
+    issue = models.CharField(max_length=500,)
+    created_at = models.DateTimeField(auto_now_add=True,null=True)
+    issue_status = models.BooleanField(default=False)
+
+
+class Coupons(models.Model):
+    name = models.CharField(max_length=20)
+    percentage = models.DecimalField(max_digits=7, decimal_places=2)
+    start_date = models.DateField()
+    end_date = models.DateField()
