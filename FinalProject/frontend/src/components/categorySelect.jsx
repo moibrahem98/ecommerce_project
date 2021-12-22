@@ -7,7 +7,6 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import FormContainer from "../components/FormContainer";
 import { listProductDetails, updateProduct } from "../actions/productActions";
-import { PRODUCT_UPDATE_RESET } from "../constants/productConstants";
 const baseURL = "/product/api/categories/";
 
 export default function Cat() {

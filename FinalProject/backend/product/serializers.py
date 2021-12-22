@@ -60,6 +60,6 @@ class SubCategorySerializer(serializers.ModelSerializer):
 
 
 class ReturnsSerializer(serializers.ModelSerializer):
-    class meta:
+    class Meta:
         model = Returns
         fields = '__all__'

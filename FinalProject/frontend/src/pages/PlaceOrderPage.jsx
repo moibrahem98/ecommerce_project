@@ -3,7 +3,6 @@ import { Col, Row, ListGroup, Image, Card, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { createOrder } from "../actions/orderActions";
-import { ORDER_CREATE_RESET } from "../constants/orderConstants";
 import Message from "../components/Message";
 import CheckoutSteps from "../components/CheckoutSteps";
 
@@ -34,7 +33,7 @@ function PlaceOrderScreen({ history }) {
   useEffect(() => {
     if (success) {
       history.push(`/order/${order._id}`);
-      dispatch({ type: ORDER_CREATE_RESET });
+      dispatch({ type: "ORDER_CREATE_RESET" });
     }
   }, [success, history]);
 

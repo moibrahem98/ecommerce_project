@@ -7,9 +7,6 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import FormContainer from "../components/FormContainer";
 import { listProductDetails, updateProduct } from "../actions/productActions";
-import { PRODUCT_UPDATE_RESET } from "../constants/productConstants";
-import Cat from "../components/categorySelect";
-const baseURL = "/product/api/categories/";
 
 function ProductEditScreen({ match, history }) {
   const productId = match.params.id;
@@ -68,7 +65,7 @@ function ProductEditScreen({ match, history }) {
     //   setCat(response.data);
     // });
     if (successUpdate) {
-      dispatch({ type: PRODUCT_UPDATE_RESET });
+      dispatch({ type: "PRODUCT_UPDATE_RESET" });
       history.push("/admin/productlist");
     } else {
       if (!product.name || product._id !== Number(productId)) {

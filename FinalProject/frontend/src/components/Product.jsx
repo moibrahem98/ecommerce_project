@@ -5,26 +5,23 @@ import { Link } from "react-router-dom";
 function Product({ product }) {
   return (
     <Card className="my-3 p-3 rounded text-center">
-      <Link to={`/product/${product._id}`}>
+      <a className="nav-link" href={`/product/${product._id}`}>
         <Card.Img src={product.image} />
-      </Link>
+      </a>
       <Card.Body>
-        <a href={`/product/${product._id}`}>
+        <a className="nav-link" href={`/product/${product._id}`}>
           <Card.Title as="div">
             <strong>{product.name}</strong>
           </Card.Title>
         </a>
-        <Card.Text as="h5">{product.price} L.E</Card.Text>
+        <Card.Text as="h6">
+          <em style={{ fontFamily: "fantasy" }}>{product.price} L.E</em>
+        </Card.Text>
         <Card.Text as="div">
           <div className="my-3">
             <Rating value={`${product.rating} `} color={"#e36f10"} />
           </div>
         </Card.Text>
-        <div className="butn_cart">
-          <Button variant="btn-outline-primary">
-            <i className="fas fa-cart-plus"></i>
-          </Button>
-        </div>
       </Card.Body>
     </Card>
   );

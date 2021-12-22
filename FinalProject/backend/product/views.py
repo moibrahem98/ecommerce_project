@@ -181,11 +181,11 @@ def createProductReview(request, pk):
 
 
 # ****************************** returns *************************
-@api_view(['POST'])
+@api_view(['GET'])
 @permission_classes([IsAdminUser])
 def list_returns(request):
-    returns = Returns.object.all()
-    serializer = ReturnsSerializer(returns, many=False)
+    returns = Returns.objects.all()
+    serializer = ReturnsSerializer(returns, many=True)
     return Response(serializer.data)
 
 
@@ -224,3 +224,18 @@ def updatereturns(request, pk):
         return Response(content, status=status.HTTP_400_BAD_REQUEST)
 
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def getReturnById(request, pk):
+    user = request.user
+    try:
+
+        returns = Returns.objects.get(id=pk)
+        if user.is_staff or returns.user == user:
+            serializer = ReturnsSerializer(returns, many=False)
+            return Response(serializer.data)
+        else:
+            Response({'datails': 'you are not authorized to view this return'},
+                     status=status.HTTP_400_BAD_REQUEST)
+    except:
+        return Response({'datails': 'return dose not exist'}, status=status.HTTP_400_BAD_REQUEST)

@@ -47,6 +47,8 @@ import ConditionerCreamHaircarePage from "./pages/CategoryPages/haircarePages/Co
 import ProteinAndCreatineHaircarePage from "./pages/CategoryPages/haircarePages/ProteinAndCreatineHaircarePage";
 import OilsHaircarePage from "./pages/CategoryPages/haircarePages/OilsHaircarePage";
 import Cat from "./components/categorySelect";
+import ReturnsListPage from "./pages/ReturnsPages/ReturnsListPage";
+import ReturnDetailsPage from "./pages/ReturnsPages/ReturnDetailsPage";
 function App() {
   return (
     <Router>
@@ -69,6 +71,8 @@ function App() {
             <Route path="/placeorder" component={PlaceOrderScreen} />
             <Route path="/order/:id" component={OrderScreen} />
             <Route path="/contactus" component={ContactUs} />
+            <Route path="/returndetails/:id" component={ReturnDetailsPage} />
+            <Route path="/admin/returnslist" component={ReturnsListPage} />
 
             <Route path="/admin/productlist" component={ProductListScreen} />
             <Route path="/admin/orderlist" component={OrderListScreen} />
