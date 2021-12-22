@@ -6,6 +6,7 @@ from .serializers import *
 from .filters import ProductFilter
 from rest_framework import status
 from rest_framework import viewsets
+from order.models import Order
 
 
 # @api_view(['GET'])
@@ -105,14 +106,14 @@ def updateProduct(request, pk):
     data = request.data
     product = Product.objects.get(_id=pk)
     category = Category.objects.get(id=data['category'])
-    subCategory = SubCategory.objects.get(id=data['subCategory'])
-    print(category)
+    #subCategory = SubCategory.objects.get(id=data['subCategory'])
+    print(data,"dsfs5444444444444444444444444444444444444444444444444444")
     product.name = data['name']
     product.price = data['price']
     product.brand = data['brand']
     product.stock = data['stock']
     product.category = category
-    product.sub_category = subCategory,
+    #product.sub_category = subCategory,
     product.description = data['description']
 
     product.save()
@@ -186,3 +187,40 @@ def list_returns(request):
     returns = Returns.object.all()
     serializer = ReturnsSerializer(returns, many=False)
     return Response(serializer.data)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def createreturns(request):
+    data = request.data
+    user = request.user
+    order_exist = Order.objects.get(_id=data['orderNumber'])
+    if (order_exist):
+        returns = Returns.objects.create(
+            user=user,
+            title=data['title'],
+            order_num=data['orderNumber'],
+            product_name=data['productName'],
+            issue=data['issue'],
+        )
+        serializer = ReturnsSerializer(returns, many=False)
+        return Response(serializer.data)
+
+    else:
+        content = {'detail': 'order number in not valid'}
+        return Response(content, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+@permission_classes([IsAdminUser])
+def updatereturns(request, pk):
+    returns = Returns.object.get(id=pk)
+    if returns:
+        returns.issue_status = True
+        serializer = ReturnsSerializer(returns, many=False)
+        return Response(serializer.data)
+    else:
+        content = {'detail': 'returns error'}
+        return Response(content, status=status.HTTP_400_BAD_REQUEST)
+
+

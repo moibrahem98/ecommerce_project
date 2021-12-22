@@ -24,6 +24,8 @@ urlpatterns = [
     path('api/products/upload/', uploadImage, name='image-upload'),
     path('api/products/top/', getTopProducts, name='top-products'),
     # ***************************************
-    path('api/products/returns/', list_returns, name='returns')
+    path('api/products/returns/', list_returns, name='returns'),
+    path('api/products/returns/create', createreturns, name='create_returns'),
+    path('api/products/returns/<str:pk>/update', updatereturns, name='update_returns')
 
 ]
