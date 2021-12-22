@@ -60,8 +60,8 @@ function OrderScreen({ match }) {
   } else {
     return (
       <div>
-        <Message variant="success">
-          <p>order is placed &#10004; </p>
+        <Message variant="success" >
+          <p > order is placed &#10004; </p>
         </Message>
         <Row>
           <Col md={8}>
@@ -154,10 +154,10 @@ function OrderScreen({ match }) {
             </Card>
           </Col>
           <Col md={4}>
-            <Card>
-              <ListGroup variant="flush">
-                <ListGroup.Item>
-                  <h2>Summary</h2>
+            <Card className=" shadow rounded-sm">
+              <ListGroup variant="secondary">
+                <ListGroup.Item variant="secondary">
+                  <h2>Total</h2>
                 </ListGroup.Item>
 
                 <ListGroup.Item>
@@ -178,8 +178,9 @@ function OrderScreen({ match }) {
               {userInfo && userInfo.isAdmin && !order.is_paid && (
                 <ListGroup.Item>
                   <Button
+                  variant="dark"
                     type="button"
-                    className="btn btn-block"
+                    className="btn btn-block text-success"
                     onClick={payHandler}
                   >
                     Mark As Paid
@@ -189,8 +190,9 @@ function OrderScreen({ match }) {
               {userInfo && userInfo.isAdmin && !order.is_delivered && (
                 <ListGroup.Item>
                   <Button
+                  variant="dark"
                     type="button"
-                    className="btn btn-block"
+                    className="btn btn-block text-success"
                     onClick={deliverHandler}
                   >
                     Mark As Delivered

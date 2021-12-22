@@ -30,7 +30,7 @@ function LoginScreen({ location, history }) {
 <Container>
 <Row className="mt-5">
 
-  <Col lg={5} md={6} sm={12} className="p-5 m-auto shadow-lg rounded-lg">
+  <Col lg={5} md={6} sm={12} className="p-5 m-auto shadow rounded-lg">
   <h3 className=" text-success mt-1 p-2 text-center ">CUSTOMER LOGIN</h3>
 
     {" "}

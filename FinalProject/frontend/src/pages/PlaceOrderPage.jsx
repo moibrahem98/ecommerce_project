@@ -210,10 +210,10 @@ function PlaceOrderScreen({ history }) {
           </Card>
         </Col>
         <Col md={4}>
-          <Card className=" shadow-lg rounded-sm">
+          <Card className=" shadow rounded-sm">
             <ListGroup variant="secondary">
               <ListGroup.Item variant="secondary">
-                <h3 className="text-succes"> Total</h3>
+                <h3 > Total</h3>
               </ListGroup.Item>
 
               <ListGroup.Item>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button, Row, Col, Card } from "react-bootstrap";
+import { Form, Button, Row, Col, Card,Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
@@ -57,18 +57,22 @@ function ProfileScreen({ history }) {
   };
   return (
     <>
-      <h2> User Profile</h2>
+    <Container >
+      <div className="border w-50 rounded m-auto"> 
+      <h1  className=" rounded mt-2" style={{ fontFamily: "monospace", textAlign: "center",backgroundColor:"WhiteSmoke"  }}> User Profile</h1>
       <Card md={4}>
         <Card.Body>
-          <Card.Title>Name: {name}</Card.Title>
+          <Card.Text> <strong>Name:</strong> {name}</Card.Text>
           <hr></hr>
-          <Card.Text>Email: {email}</Card.Text>
+          <Card.Text> <strong>Email:</strong> {email}</Card.Text>
           <hr></hr>
-          <a className="btn btn-primary" href="/update">
-            Update Data
+          <a className="btn btn-dark text-success align-center" href="/update">
+           Update Data
           </a>
         </Card.Body>
       </Card>
+      </div>
+      </Container>
     </>
   );
 }
