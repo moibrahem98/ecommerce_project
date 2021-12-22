@@ -24,6 +24,10 @@ h3 {
   margin: 0.1rem;
 }
 
+.big_head {
+  color: #000 !important;
+}
+
 .brand {
   display: flex;
   align-items: center;
@@ -36,8 +40,7 @@ h3 {
 }
 
 .contact-us {
-  background-color: azure;
-  border: 1px solid #ccc;
+  border: .5px solid #ccc;
   padding: 20px 10px;
   width: 300px;
   min-width: 50%;
@@ -57,33 +60,10 @@ h3 {
   display: flex;
 }
 
-.carousel-caption {
-  position: absolute;
-  top: 0;
-}
 
-.carousel-caption h4 {
-  color: #fff;
-}
 
-.carousel img {
-  display: block;
-  height: 300px;
-  padding: 30px;
-  margin: 40px;
-  border-radius: 50%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.carousel a {
-  margin: 0 auto;
-}
 
 @media (max-width: 900px) {
-  .carousel-caption h2 {
-    font-size: 2.5vw;
-  }
 
   /* }
 @media only screen and (min-width: 960px) {
@@ -102,13 +82,16 @@ h3 {
 /* #CatNavUl {
   --bs-scroll-height: 100px;
 } */
+.h3_color {
+  color: "#418993"
+}
 
 .search_icon {
-  top: 15px;
-  right: 15px;
+  top: 18px;
+  right: 16px;
   cursor: pointer;
   opacity: .8;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .contact_link {
@@ -127,9 +110,20 @@ h3 {
 }
 
 .fa-shopping-cart {
-
   font-size: 23px;
 }
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  display: none;
+}
+
+/* 
+.basic-nav-dropdown {
+  transition: .5s all ease-in-out;
+} */
+/* .basic-nav-dropdown:hover  */
+
 
 @media (max-width :540px) {
   #search_box {
@@ -140,6 +134,6 @@ h3 {
 
 @media (min-width :1020px) {
   #search_box {
-    width: 500px !important
+    width: 200px !important
   }
 }

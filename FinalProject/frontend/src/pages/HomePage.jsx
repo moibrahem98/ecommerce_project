@@ -7,6 +7,7 @@ import Message from "../components/Message";
 import { listProducts } from "../actions/productActions";
 import ProductCarousel from "../components/ProductCarousel";
 import CarouselSlider from "../components/CarouselSlider";
+import CatSlider from "../components/CatSlider";
 function HomeScreen({ history }) {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
@@ -20,8 +21,12 @@ function HomeScreen({ history }) {
   return (
     <>
       {/* <CarouselPage /> */}
-      <div>
+      <div className="mt-5">
         <CarouselSlider />
+        <h1 className="text-center" style={{ color: "#418993" }}>
+          Clean Beauty Favorites
+        </h1>
+        <CatSlider />
 
         {!name && <ProductCarousel />}
         <h1>Top Products</h1>

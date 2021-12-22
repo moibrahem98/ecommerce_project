@@ -26,24 +26,24 @@ export default function App() {
 
             <ul className="list-unstyled mb-0">
               <li>
-                <a href="#!" className="text-light">
+                <Link to="#!" className="text-light">
                   Perfuems
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#!" className="text-light">
+                <Link to="#!" className="text-light">
                   Makeup
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#!" className="text-light">
+                <Link to="#!" className="text-light">
                   Body Care
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#!" className="text-light">
+                <Link to="#!" className="text-light">
                   Hair Care
-                </a>
+                </Link>
               </li>
             </ul>
             <hr className="text-light" />

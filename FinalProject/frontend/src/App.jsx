@@ -1,7 +1,7 @@
 import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
-import CategoryNavbar from "./components/CategoryNavbar";
+// import CategoryNavbar from "./components/CategoryNavbar";
 import Footer from "./components/Footer";
 import HomeScreen from "./pages/HomePage";
 import ProductScreen from "./pages/ProductPage";
@@ -51,7 +51,7 @@ function App() {
   return (
     <Router>
       <Header />
-      <CategoryNavbar />
+      {/* <CategoryNavbar /> */}
       <main className="py-5">
         <Container>
           <Switch>

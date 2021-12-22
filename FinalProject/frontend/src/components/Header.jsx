@@ -20,7 +20,7 @@ function Header() {
   navRef.current = navBackground;
   useEffect(() => {
     const handleScroll = () => {
-      const show = window.scrollY > 50;
+      const show = window.scrollY > 30;
       if (navRef.current !== show) {
         setNavBackground(show);
       }
@@ -30,21 +30,23 @@ function Header() {
       document.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   return (
     <header>
       <Navbar
-        bg="dark"
-        variant="dark"
+        bg="light"
+        variant="light"
         expand="lg"
         collapseOnSelect
-        // fixed="top"
-        style={
-          {
-            // transition: ".5s ease",
-            // backgroundColor: navBackground ? "black" : "transparent",
-            // zIndex: "1500",
-          }
-        }
+        fixed="top"
+        className="big_head"
+        style={{
+          transition: ".5s ease",
+          backgroundColor: navBackground ? "gray" : "transparent",
+          borderBottom: "2px solid #ccc",
+          zIndex: "1500",
+          boxShadow: "0px 11px 15px -4px rgba(0,0,0,0.75);",
+        }}
       >
         <Container className="align-items-center">
           <LinkContainer to="/" className="justify-content-start">
@@ -52,11 +54,14 @@ function Header() {
               <img src={logo} alt="Logo" style={{ borderRadius: "8px" }} />
             </Navbar.Brand>
           </LinkContainer>
-          {/* <SearchBox className="justify-content-end" /> */}
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           {/* Categoressssssssssss */}
-          <Navbar.Collapse id="basic-navbar-nav">
+
+          <Navbar.Collapse
+            id="basic-navbar-nav"
+            className="justify-content-center"
+          >
             <Nav className="me-auto">
               <NavDropdown title="Perfume" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/menperfume">Men</NavDropdown.Item>
@@ -119,6 +124,8 @@ function Header() {
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
+          <SearchBox className="justify-content-end" />
+
           <Navbar.Collapse
             id="basic-navbar-nav"
             className="justify-content-end"
@@ -126,7 +133,7 @@ function Header() {
             <Nav className="ml-auto justify-content-end">
               <LinkContainer to="/" id="cartLink">
                 <Nav.Link>
-                  <i class="fas fa-language fa-2x"></i>
+                  <i className="fas fa-globe-africa mt-2"></i>
                 </Nav.Link>
               </LinkContainer>
               <LinkContainer to="/cart">
@@ -137,7 +144,7 @@ function Header() {
 
               {userInfo ? (
                 <NavDropdown
-                  title={userInfo.name}
+                  title={<i class="fas fa-user"></i>}
                   id="username"
                   className="justify-content-end font-weight-bold mt-1"
                 >
@@ -163,7 +170,11 @@ function Header() {
                 </LinkContainer>
               )}
               {userInfo && userInfo.isAdmin && (
-                <NavDropdown title="Admin" id="adminmenue" className="mt-1">
+                <NavDropdown
+                  title={<i class="fas fa-user-shield"></i>}
+                  id="adminmenue"
+                  className="mt-1"
+                >
                   <LinkContainer to="/admin/userlist">
                     <NavDropdown.Item>Users</NavDropdown.Item>
                   </LinkContainer>
