@@ -52,7 +52,7 @@ function App() {
   return (
     <Router>
       <Header />
-      <main className="py-5">
+      <main className="py-5 my-5">
         <Container>
           <Switch>
             <Route path="/" component={HomeScreen} exact />
