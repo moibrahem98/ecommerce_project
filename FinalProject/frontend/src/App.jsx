@@ -48,11 +48,16 @@ import OilsHaircarePage from "./pages/CategoryPages/haircarePages/OilsHaircarePa
 import Cat from "./components/categorySelect";
 import ReturnsListPage from "./pages/ReturnsPages/ReturnsListPage";
 import ReturnDetailsPage from "./pages/ReturnsPages/ReturnDetailsPage";
+import CarouselSlider from "../src/components/CarouselSlider";
+
 function App() {
   return (
     <Router>
       <Header />
-      <main className="py-5">
+      <main className="py-5 my-5">
+        <Switch>
+          <CarouselSlider />
+        </Switch>
         <Container>
           <Switch>
             <Route path="/" component={HomeScreen} exact />

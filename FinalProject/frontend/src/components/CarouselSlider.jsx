@@ -1,9 +1,16 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
 import slide1 from "../slide1.jpg";
+import slide2 from "../slide2.webp";
+import slide3 from "../slide3.jpg";
+
 export default function CarouselSlider() {
   return (
-    <Carousel indicators={false} className="main_slider">
+    <Carousel
+      indicators={false}
+      className="main_slider"
+      style={{ marginTop: "-25px" }}
+    >
       <Carousel.Item>
         <img
           className="d-block w-100 carousel_img"
@@ -14,14 +21,14 @@ export default function CarouselSlider() {
       <Carousel.Item>
         <img
           className="d-block w-100 carousel_img"
-          src={slide1}
+          src={slide2}
           alt="Second slide"
         />
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100 carousel_img"
-          src={slide1}
+          src={slide3}
           alt="Third slide"
         />
       </Carousel.Item>

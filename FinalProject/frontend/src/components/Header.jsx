@@ -32,7 +32,7 @@ function Header() {
   }, []);
 
   return (
-    <header>
+    <header className="mb-5">
       <Navbar
         bg="light"
         variant="light"
