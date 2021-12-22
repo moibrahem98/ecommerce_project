@@ -6,6 +6,11 @@ main {
   min-height: 80vh;
 }
 
+.heading_1 {
+  color: #418993;
+  font-weight: bold !important
+}
+
 .btn_color {
   background-color: #418993 !important;
   color: #fff !important;
@@ -106,7 +111,7 @@ h3 {
 }
 
 .carousel_img_main {
-  height: 70vh;
+  height: 85vh;
 }
 
 .h3_color {
@@ -160,4 +165,25 @@ h3 {
     gap: 1rem;
 
   }
+}
+
+/* ++++++ SCROLL BAR +++++++ */
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ccc;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #418993;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: teal;
 }
