@@ -13,21 +13,21 @@ export default function CarouselSlider() {
     >
       <Carousel.Item>
         <img
-          className="d-block w-100 carousel_img"
+          className="d-block w-100 carousel_img_main"
           src={slide1}
           alt="First slide"
         />
       </Carousel.Item>
       <Carousel.Item>
         <img
-          className="d-block w-100 carousel_img"
+          className="d-block w-100 carousel_img_main"
           src={slide2}
           alt="Second slide"
         />
       </Carousel.Item>
       <Carousel.Item>
         <img
-          className="d-block w-100 carousel_img"
+          className="d-block w-100 carousel_img_main"
           src={slide4}
           alt="Third slide"
         />

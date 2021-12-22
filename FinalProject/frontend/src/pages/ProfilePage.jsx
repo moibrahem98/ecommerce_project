@@ -64,7 +64,7 @@ function ProfileScreen({ history }) {
           <hr></hr>
           <Card.Text>Email: {email}</Card.Text>
           <hr></hr>
-          <a className="btn btn-primary" href="/update">
+          <a className="btn btn-primary btn_color" href="/update">
             Update Data
           </a>
         </Card.Body>

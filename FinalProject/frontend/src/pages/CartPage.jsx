@@ -115,7 +115,7 @@ function CartScreen({ match, location, history }) {
           <ListGroup.Item>
             <Button
               type="button"
-              className="outline-primary w-100"
+              className="outline-primary w-100 btn_color"
               disabled={cartItems.length === 0}
               onClick={checkoutHandler}
             >

@@ -179,7 +179,7 @@ function OrderScreen({ match }) {
                 <ListGroup.Item>
                   <Button
                     type="button"
-                    className="btn btn-block"
+                    className="btn btn-block btn_color"
                     onClick={payHandler}
                   >
                     Mark As Paid
@@ -190,7 +190,7 @@ function OrderScreen({ match }) {
                 <ListGroup.Item>
                   <Button
                     type="button"
-                    className="btn btn-block"
+                    className="btn btn-block btn_color"
                     onClick={deliverHandler}
                   >
                     Mark As Delivered

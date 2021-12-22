@@ -93,7 +93,11 @@ function RegisterScreen({ location, history }) {
               ></Form.Control>
             </Form.Group>
 
-            <Button type="submit" variant="dark" className="w-100 text-success">
+            <Button
+              type="submit"
+              variant="dark"
+              className="w-100 text-success btn_color"
+            >
               CREATE
             </Button>
           </Form>

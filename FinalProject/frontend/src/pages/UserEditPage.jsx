@@ -90,7 +90,7 @@ function UserEditScreen({ match, history }) {
               ></Form.Check>
             </Form.Group>
 
-            <Button type="submit" variant="primary">
+            <Button type="submit" variant="primary" className="btn_color">
               Update
             </Button>
           </Form>

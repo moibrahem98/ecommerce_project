@@ -17,7 +17,6 @@ import {
   listProductDetails,
   createProductReview,
 } from "../actions/productActions";
-import { LinkContainer } from "react-router-bootstrap";
 function ProductScreen({ match, history }) {
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
@@ -83,7 +82,7 @@ function ProductScreen({ match, history }) {
               />
             </Col>
 
-            <Col md={3}>
+            <Col md={6}>
               <Card>
                 <ListGroup variant="flush">
                   <ListGroup.Item>
@@ -105,9 +104,6 @@ function ProductScreen({ match, history }) {
                   </ListGroup.Item>
                 </ListGroup>
               </Card>
-            </Col>
-
-            <Col md={3}>
               <Card>
                 <ListGroup variant="flush">
                   <ListGroup.Item>
@@ -155,7 +151,7 @@ function ProductScreen({ match, history }) {
                   <ListGroup.Item>
                     <Button
                       onClick={addToCartHandler}
-                      className="btn-block w-100"
+                      className="btn-block w-100 btn_color"
                       disabled={product.stock === 0}
                       type="button"
                     >
@@ -165,6 +161,10 @@ function ProductScreen({ match, history }) {
                 </ListGroup>
               </Card>
             </Col>
+
+            {/* <Col md={3}>
+
+            </Col> */}
           </Row>
           <hr></hr>
           <Row>
@@ -225,6 +225,7 @@ function ProductScreen({ match, history }) {
                         disapled={loadingProductReview}
                         type="submit"
                         variant="primary"
+                        className="btn_color w-25"
                       >
                         Add
                       </Button>

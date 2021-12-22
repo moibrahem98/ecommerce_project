@@ -2,6 +2,17 @@ main {
   min-height: 80vh;
 }
 
+.btn_color {
+  background-color: #418993 !important;
+  color: #fff !important;
+  transition: .3s all ease-in-out;
+}
+
+.btn_color:hover {
+  background-color: #418993 !important;
+  opacity: .8;
+}
+
 a {
   text-decoration: none !important;
 }
@@ -81,7 +92,7 @@ h3 {
   display: none;
 }
 
-.carousel_img {
+.carousel_img_main {
   height: 70vh;
 }
 
