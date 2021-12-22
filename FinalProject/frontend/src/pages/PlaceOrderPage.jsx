@@ -53,7 +53,7 @@ function PlaceOrderScreen({ history }) {
 
   return (
     <div>
-      <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
+      {/* <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
       <Row>
         <Col md={8}>
           <Card>
@@ -140,6 +140,106 @@ function PlaceOrderScreen({ history }) {
                 <Button
                   type="button"
                   className="btn-block w-100"
+                  disapled={cart.cartItems === 0}
+                  onClick={placeOrder}
+                >
+                  Place Ordrer
+                </Button>
+              </ListGroup.Item>
+            </ListGroup>
+          </Card>
+        </Col>
+      </Row> */}
+      <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
+      <Row>
+        <Col md={8}>
+          <Card >
+            <ListGroup variant="flush">
+              <ListGroup.Item>
+                <h4 >Shipping Address: </h4>
+
+                <p>
+                  {" "}
+                  {cart.shippingAddress.address} , {cart.shippingAddress.city},{" "}
+                  {cart.shippingAddress.country} , Egypt.{" "}
+                </p>
+              </ListGroup.Item>
+            </ListGroup>
+
+            <ListGroup variant="flush">
+              <ListGroup.Item>
+                <h4 >Payment Method</h4>
+                <p> {cart.paymentMethod}</p>
+              </ListGroup.Item>
+            </ListGroup>
+
+            <ListGroup variant="flush">
+              <ListGroup.Item>
+                <h4 >Items</h4>
+                {cart.cartItems.length === 0 ? (
+                  <Message variant="info">Your Cart Is Empty</Message>
+                ) : (
+                  <ListGroup variant="flush">
+                    {cart.cartItems.map((item, index) => (
+                      <ListGroup.Item key={index}>
+                        <Row>
+                          <Col md={1}>
+                            <Image
+                              src={item.image}
+                              alt={item.name}
+                              fluid
+                              rounded
+                            />
+                          </Col>
+                          <Col>
+                            <Link to={`/product/${item.product}`}   >
+                              {item.name}
+                            </Link>
+                          </Col>
+                          <Col>
+                            {item.qty} X {item.price} L.E ={" "}
+                            {(item.qty * item.price).toFixed(2)} L.E
+                          </Col>
+                        </Row>
+                      </ListGroup.Item>
+                    ))}
+                  </ListGroup>
+                )}
+              </ListGroup.Item>
+            </ListGroup>
+          </Card>
+        </Col>
+        <Col md={4}>
+          <Card className=" shadow-lg rounded-sm">
+            <ListGroup variant="secondary">
+              <ListGroup.Item variant="secondary">
+                <h3 className="text-succes"> Total</h3>
+              </ListGroup.Item>
+
+              <ListGroup.Item>
+                <Col>ItemsPrice:</Col>
+                <Col>{cart.itemsPrice} L.E</Col>
+              </ListGroup.Item>
+
+              <ListGroup.Item>
+                <Col>Shipping:</Col>
+                <Col>{cart.shippingPrice} L.E</Col>
+              </ListGroup.Item>
+
+              <ListGroup.Item>
+                <Col>Total:</Col>
+                <Col>{cart.totalPrice} L.E</Col>
+              </ListGroup.Item>
+
+              <ListGroup.Item>
+                {error && <Message variant="danger">{error}</Message>}
+              </ListGroup.Item>
+
+              <ListGroup.Item>
+                <Button
+                  variant="dark"
+                  type="button"
+                  className="btn  text-success w-100"
                   disapled={cart.cartItems === 0}
                   onClick={placeOrder}
                 >
