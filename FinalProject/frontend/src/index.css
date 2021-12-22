@@ -76,6 +76,15 @@ h3 {
   margin-left: 10px;
 }
 
+.fa-globe-africa {
+  font-size: 18px;
+  color: gray;
+}
+
+.fa-globe-africa:hover {
+  color: #444;
+}
+
 
 /* 
 .main_slider {

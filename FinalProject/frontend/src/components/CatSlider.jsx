@@ -1,10 +1,9 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
-import { Link } from "react-router-bootstrap";
-import slide1 from "../hair.png";
-import slide2 from "../makeup.png";
-import slide3 from "../body.jpg";
-import slide4 from "../perfume.png";
+import slide1 from "../images/hair.png";
+import slide2 from "../images/makeup.png";
+import slide3 from "../images/body.jpg";
+import slide4 from "../images/perfume.png";
 export default function CarouselSlider() {
   return (
     <>
