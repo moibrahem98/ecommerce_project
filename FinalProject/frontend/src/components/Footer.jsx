@@ -59,7 +59,7 @@ export default function App() {
                 >
                   <i className="fab fa-2x fa-whatsapp text-light"></i>
                 </a>
-                <a href="https://api.whatsapp.com/send?phone=2001150508507&app=facebook&entry_point=page_cta&fbclid=IwAR0PGOyWWnceZltN1I_tgeb5n1NoisWf9qfItSdoHcvfUAqAbrIE0zLg6u8">
+                <a href="#!">
                   <i className="fab fa-2x fa-instagram text-light"></i>
                 </a>
               </li>

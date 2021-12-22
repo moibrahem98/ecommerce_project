@@ -3,7 +3,7 @@ import { Carousel } from "react-bootstrap";
 import slide1 from "../slide1.jpg";
 export default function CarouselSlider() {
   return (
-    <Carousel indicators={false}>
+    <Carousel indicators={false} className="main_slider">
       <Carousel.Item>
         <img
           className="d-block w-100 carousel_img"

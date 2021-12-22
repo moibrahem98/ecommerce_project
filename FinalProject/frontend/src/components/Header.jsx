@@ -54,10 +54,11 @@ function Header() {
               <img src={logo} alt="Logo" style={{ borderRadius: "8px" }} />
             </Navbar.Brand>
           </LinkContainer>
+          <SearchBox className="justify-content-end" />
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          {/* Categoressssssssssss */}
 
+          {/* Categoressssssssssss */}
           <Navbar.Collapse
             id="basic-navbar-nav"
             className="justify-content-center"
@@ -124,13 +125,12 @@ function Header() {
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
-          <SearchBox className="justify-content-end" />
 
           <Navbar.Collapse
             id="basic-navbar-nav"
             className="justify-content-end"
           >
-            <Nav className="ml-auto justify-content-end">
+            <Nav className="ml-auto justify-content-end main_icons">
               <LinkContainer to="/" id="cartLink">
                 <Nav.Link>
                   <i className="fas fa-globe-africa mt-2"></i>
