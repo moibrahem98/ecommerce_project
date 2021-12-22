@@ -8,7 +8,6 @@ import {
   deleteProduct,
   createProduct,
 } from "../actions/productActions";
-import { PRODUCT_CREATE_RESET } from "../constants/productConstants";
 import { LinkContainer } from "react-router-bootstrap";
 
 function ProductListScreen({ history, match }) {
@@ -38,7 +37,7 @@ function ProductListScreen({ history, match }) {
   // let keyword = history.location.search;
 
   useEffect(() => {
-    dispatch({ type: PRODUCT_CREATE_RESET });
+    dispatch({ type: "PRODUCT_CREATE_RESET" });
 
     if (!userInfo.isAdmin) {
       history.push("/login");
@@ -119,7 +118,7 @@ function ProductListScreen({ history, match }) {
                     </a>
                   </td>
                   <td>{product.price} L.E</td>
-                  <td>{product.category}</td>
+                  <td>{product.category1.name}</td>
                   <td>{product.sub_category}</td>
                   <td>{product.brand}</td>
                   <td>

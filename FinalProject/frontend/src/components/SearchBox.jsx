@@ -3,13 +3,13 @@ import { Form, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
 function SearchBox() {
-  const [keyword, setKeyword] = useState("");
+  const [name, setName] = useState("");
 
   let history = useHistory();
   const submitHandler = (event) => {
     event.preventDefault();
-    if (keyword) {
-      history.push(`/?keyword=${keyword}`);
+    if (name) {
+      history.push(`/?name=${name}`);
     } else {
       history.push(history.push(history.location.pathname));
     }
@@ -21,15 +21,18 @@ function SearchBox() {
       <Button variant="success" className="p-1" type="submit">
         <i className=" fa fa-search"></i>
       </Button> */}
-
-      <input
-        type="text"
-        name="q"
-        className="form-control m-2"
-        style={{ width: "700px" }}
-        placeholder="search"
-        onChange={(event) => setKeyword(event.target.value)}
-      />
+      <div className="position-relative">
+        <input
+          id="search_box"
+          type="text"
+          name="q"
+          className="form-control m-2"
+          style={{ width: "200px" }}
+          placeholder="search"
+          onChange={(event) => setName(event.target.value)}
+        />
+        <i class="fas fa-search position-absolute search_icon"></i>
+      </div>
       {/* <button className="btn btn-outline-success" type="submit">
         <i className=" fa fa-search"></i>
       </button> */}

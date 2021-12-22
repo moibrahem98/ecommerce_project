@@ -9,10 +9,7 @@ import {
 } from "../actions/orderActions";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import {
-  ORDER_PAY_RESET,
-  ORDER_DELIVER_RESET,
-} from "../constants/orderConstants";
+
 function OrderScreen({ match }) {
   const orderId = match.params.id;
   const dispatch = useDispatch();
@@ -42,8 +39,8 @@ function OrderScreen({ match }) {
       successDeliver ||
       successPay
     ) {
-      dispatch({ type: ORDER_PAY_RESET });
-      dispatch({ type: ORDER_DELIVER_RESET });
+      dispatch({ type: "ORDER_PAY_RESET" });
+      dispatch({ type: "ORDER_DELIVER_RESET" });
       dispatch(getOrderDetails(orderId));
     }
   }, [dispatch, order, orderId, successPay, successDeliver]);

@@ -1,7 +1,6 @@
 import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
-import CategoryNavbar from "./components/CategoryNavbar";
 import Footer from "./components/Footer";
 import HomeScreen from "./pages/HomePage";
 import ProductScreen from "./pages/ProductPage";
@@ -46,17 +45,19 @@ import ConditionerHaircarePage from "./pages/CategoryPages/haircarePages/Conditi
 import ConditionerCreamHaircarePage from "./pages/CategoryPages/haircarePages/ConditionerCreamHaircarePage";
 import ProteinAndCreatineHaircarePage from "./pages/CategoryPages/haircarePages/ProteinAndCreatineHaircarePage";
 import OilsHaircarePage from "./pages/CategoryPages/haircarePages/OilsHaircarePage";
-
+import Cat from "./components/categorySelect";
+import ReturnsListPage from "./pages/ReturnsPages/ReturnsListPage";
+import ReturnDetailsPage from "./pages/ReturnsPages/ReturnDetailsPage";
 function App() {
   return (
     <Router>
       <Header />
-      <CategoryNavbar />
       <main className="py-5">
         <Container>
           <Switch>
             <Route path="/" component={HomeScreen} exact />
             <Route path="/product/:id" component={ProductScreen} />
+            <Route path="/cat" component={Cat} />
             <Route path="/cart/:id?" component={CartScreen} />
             <Route path="/login/" component={LoginScreen} />
             <Route path="/register/" component={RegisterScreen} />
@@ -68,6 +69,8 @@ function App() {
             <Route path="/placeorder" component={PlaceOrderScreen} />
             <Route path="/order/:id" component={OrderScreen} />
             <Route path="/contactus" component={ContactUs} />
+            <Route path="/returndetails/:id" component={ReturnDetailsPage} />
+            <Route path="/admin/returnslist" component={ReturnsListPage} />
 
             <Route path="/admin/productlist" component={ProductListScreen} />
             <Route path="/admin/orderlist" component={OrderListScreen} />
@@ -81,6 +84,10 @@ function App() {
             {/* category routes */}
             {/* perfume */}
             <Route path="/perfume" component={PerfumePage} />
+            {/* <Route path="/perfume">
+              {" "}
+              <PerfumePage id="1" />
+            </Route> */}
             <Route path="/menperfume" component={MenPerfumePage} />
             <Route path="/womenperfume" component={WomenPerfumePage} />
             <Route path="/orientalperfume" component={OrientalPerfumePage} />

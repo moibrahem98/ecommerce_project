@@ -17,7 +17,6 @@ import {
   listProductDetails,
   createProductReview,
 } from "../actions/productActions";
-import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants";
 import { LinkContainer } from "react-router-bootstrap";
 function ProductScreen({ match, history }) {
   const [qty, setQty] = useState(1);
@@ -43,7 +42,7 @@ function ProductScreen({ match, history }) {
     if (successProductReview) {
       setRating(0);
       setComment("");
-      dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
+      dispatch({ type: "PRODUCT_CREATE_REVIEW_RESET" });
     }
     dispatch(listProductDetails(match.params.id));
   }, [dispatch, match, successProductReview]);

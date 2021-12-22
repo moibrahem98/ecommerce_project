@@ -1,15 +1,34 @@
 import axios from "axios";
 
-export const listProducts = () => async (dispatch) => {
+export const listProducts =
+  (name = "") =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: "PRODUCT_LIST_REQUEST" });
+
+      const { data } = await axios.get(`/product/api/products/${name}`);
+
+      dispatch({ type: "PRODUCT_LIST_SUCCESS", payload: data });
+    } catch (error) {
+      dispatch({
+        type: "PRODUCT_LIST_FAIL",
+        payload:
+          error.response && error.response.data.detail
+            ? error.response.data.detail
+            : error.message,
+      });
+    }
+  };
+export const listCategory = () => async (dispatch) => {
   try {
-    dispatch({ type: "PRODUCT_LIST_REQUEST" });
+    dispatch({ type: "CATEGORY_LIST_REQUEST" });
 
-    const { data } = await axios.get(`/product/api/products`);
+    const { data } = await axios.get(`/product/api/categories`);
 
-    dispatch({ type: "PRODUCT_LIST_SUCCESS", payload: data });
+    dispatch({ type: "CATEGORY_LIST_SUCCESS", payload: data });
   } catch (error) {
     dispatch({
-      type: "PRODUCT_LIST_FAIL",
+      type: "CATEGORY_LIST_FAIL",
       payload:
         error.response && error.response.data.detail
           ? error.response.data.detail
@@ -17,7 +36,6 @@ export const listProducts = () => async (dispatch) => {
     });
   }
 };
-
 export const listTopProducts = () => async (dispatch) => {
   try {
     dispatch({ type: "PRODUCT_TOP_REQUEST" });
@@ -212,3 +230,73 @@ export const createProductReview =
       });
     }
   };
+
+// Returns:
+
+export const listReturns = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: "RETURNS_LIST_REQUEST",
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.get(`/product/api/returns/`, config);
+
+    dispatch({
+      type: "RETURNS_LIST_SUCCESS",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "RETURNS_LIST_FAIL",
+      payload:
+        error.response && error.response.data.detail
+          ? error.response.data.detail
+          : error.message,
+    });
+  }
+};
+
+export const getReturnsDetails = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: "RETURNS_DETAILS_REQUEST",
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.get(`/product/api/returns/${id}/`, config);
+
+    dispatch({
+      type: "RETURNS_DETAILS_SUCCESS",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "RETURNS_DETAILS_FAIL",
+      payload:
+        error.response && error.response.data.detail
+          ? error.response.data.detail
+          : error.message,
+    });
+  }
+};

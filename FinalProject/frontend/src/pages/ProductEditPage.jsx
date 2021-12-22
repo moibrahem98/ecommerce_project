@@ -7,7 +7,6 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import FormContainer from "../components/FormContainer";
 import { listProductDetails, updateProduct } from "../actions/productActions";
-import { PRODUCT_UPDATE_RESET } from "../constants/productConstants";
 
 function ProductEditScreen({ match, history }) {
   const productId = match.params.id;
@@ -16,11 +15,13 @@ function ProductEditScreen({ match, history }) {
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState("");
   const [brand, setBrand] = useState("");
-  const [category, setCategory] = useState("");
-  const [subCategory, setSubCategory] = useState("");
+  const [category, setCategory] = useState(1);
+  const [subCategory, setSubCategory] = useState(1);
   const [stock, setStock] = useState(0);
   const [description, setDescription] = useState("");
   const [uploading, setUploading] = useState(false);
+  const [cat, setCat] = React.useState("");
+  const [subcat, setsubCat] = React.useState("");
 
   const dispatch = useDispatch();
 
@@ -35,8 +36,36 @@ function ProductEditScreen({ match, history }) {
   } = productUpdate;
 
   useEffect(() => {
+    const getData = async () => {
+      await axios
+        .get("/product/api/categories/")
+        .then((res) => {
+          setCat(res.data);
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getData();
+    const getSubCat = async () => {
+      await axios
+        .get(`/product/api/sub_categories/`)
+        .then((res) => {
+          setsubCat(res.data);
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getSubCat();
+
+    // axios.get("/product/api/categories/").then((response) => {
+    //   setCat(response.data);
+    // });
     if (successUpdate) {
-      dispatch({ type: PRODUCT_UPDATE_RESET });
+      dispatch({ type: "PRODUCT_UPDATE_RESET" });
       history.push("/admin/productlist");
     } else {
       if (!product.name || product._id !== Number(productId)) {
@@ -99,6 +128,16 @@ function ProductEditScreen({ match, history }) {
       setUploading(false);
     }
   };
+
+  // useEffect(() => {
+  //   axios.get("/product/api/categories/").then((response) => {
+  //     setCat(response.data);
+  //   });
+  // }, []);
+  console.log("cc", cat);
+  if (!cat) return null;
+  console.log("cc", subcat);
+  if (!subcat) return null;
 
   return (
     <div>
@@ -176,17 +215,31 @@ function ProductEditScreen({ match, history }) {
 
             <Form.Group controlId="category">
               <Form.Label>Category</Form.Label>
-              <Form.Control
-              as="select"
+              {/* <Form.Control
+                as="select"
                 value={product.category}
                 onChange={(e) => setCategory(e.target.value)}
               >
-                {/* <option value="">Select</option>
-                <option value="Perfume">Perfume</option>
-                <option value="Makeup"> Makeup</option>
-                <option value="Body Care">Body Care</option>
-                <option value="Hair Care">Hair Care</option> */}
-              </Form.Control>
+                {cat.map((category) => (
+                  <option>{category.name}</option>
+                ))}
+              </Form.Control> */}
+              <select
+                className="form-control"
+                onChange={(e) => setCategory(e.target.value)}
+                id="category_input"
+              >
+                {cat.map((category) => (
+                  <option value={category.id}>{category.name}</option>
+                ))}
+                {/* <option value="1">cat1</option> */}
+              </select>
+              {/* <Form.Control as="select">
+                {cat.map((category) => (
+                  <option>{category.name}</option>
+                ))}
+              </Form.Control> */}
+
               {/* <Form.Control
                 type="text"
                 placeholder="Enter category"
@@ -195,6 +248,24 @@ function ProductEditScreen({ match, history }) {
               ></Form.Control> */}
             </Form.Group>
             <br></br>
+            <Form.Group controlId="subCategory">
+              <Form.Label>Sub Category</Form.Label>
+
+              <select
+                className="form-control"
+                onChange={(e) => setSubCategory(e.target.value)}
+              >
+                {/*{subcat.map((subcategory) => (*/}
+                {/*  //<option value={subcategory.id}>{subcategory.name}</option>*/}
+                {/*  <option >{subcategory.category1.name}</option>*/}
+                {/*))}*/}
+                {subcat.map((subcategory) => (
+                  <optgroup label={subcategory.category1.name}>
+                    <option value={subcategory.id}>{subcategory.name}</option>
+                  </optgroup>
+                ))}
+              </select>
+            </Form.Group>
 
             {/* <Form.Group controlId="subCategory">
               <Form.Label>Sub Category</Form.Label>
@@ -254,7 +325,7 @@ function ProductEditScreen({ match, history }) {
             <br></br>
 
             <Button type="submit" variant="primary">
-              Update
+              Add Product
             </Button>
           </Form>
         )}
@@ -262,5 +333,4 @@ function ProductEditScreen({ match, history }) {
     </div>
   );
 }
-
 export default ProductEditScreen;
