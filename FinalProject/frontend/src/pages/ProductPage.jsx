@@ -9,6 +9,8 @@ import {
   Card,
   Button,
   Form,
+  Tab,
+  Tabs,
 } from "react-bootstrap";
 import Rating from "../components/Rating";
 import Loader from "../components/Loader";
@@ -92,15 +94,9 @@ function ProductScreen({ match, history }) {
                   <ListGroup.Item>
                     <Rating
                       value={product.rating}
-                      text={`${product.reviews_number} reviews`}
+                      text={`${product.reviews_number} Reviews`}
                       color={"#e36f10"}
                     />
-                  </ListGroup.Item>
-
-                  <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
-
-                  <ListGroup.Item>
-                    Description: {product.description}
                   </ListGroup.Item>
                 </ListGroup>
               </Card>
@@ -161,86 +157,99 @@ function ProductScreen({ match, history }) {
                 </ListGroup>
               </Card>
             </Col>
-
-            {/* <Col md={3}>
-
-            </Col> */}
           </Row>
           <hr></hr>
-          <Row>
-            <Col md={6}>
-              <h4>Reviews</h4>
-              {product.reviews.length === 0 && (
-                <Message variant="info"> No Reviews Yet.</Message>
-              )}
-              <ListGroup variant="flush">
-                {product.reviews.map((review) => (
-                  <ListGroup.Item key={review._id}>
-                    <strong>{review.name}</strong>
-                    <Rating value={review.rating} color="#e36f10"></Rating>
-                    <p>{review.created_at.substring(0, 10)}</p>
-                    <p>{review.comment}</p>
-                  </ListGroup.Item>
-                ))}
 
-                <ListGroup.Item>
-                  <br></br>
-                  <h4>Add a review</h4>
-                  {loadingProductReview && <Loader></Loader>}
-                  {successProductReview && (
-                    <Message variant="success">review is added</Message>
+          <Tabs
+            defaultActiveKey="profile"
+            id="uncontrolled-tab-example"
+            className="mb-3"
+          >
+            <Tab eventKey="profile" title="Description">
+              <h3>Description</h3>
+              {product.description}
+            </Tab>
+            <Tab eventKey="home" title="Reviews">
+              <Row>
+                <Col md={6}>
+                  <h4>Reviews</h4>
+                  {product.reviews.length === 0 && (
+                    <Message variant="info"> No Reviews Yet.</Message>
                   )}
-                  {errorProductReview && (
-                    <Message variant="danger">{errorProductReview}</Message>
-                  )}
-                  {userInfo ? (
-                    <Form onSubmit={submitHandler}>
-                      <Form.Group controlId="rating">
-                        <Form.Label>Rating:</Form.Label>
-                        <Form.Control
-                          as="select"
-                          value={rating}
-                          onChange={(event) => setRating(event.target.value)}
-                        >
-                          <option value="">Select</option>
-                          <option value="1">1 Not Good</option>
-                          <option value="2">2 Fair</option>
-                          <option value="3">3 Good</option>
-                          <option value="4">4 Very Good</option>
-                          <option value="5">5 Excellent</option>
-                        </Form.Control>
-                      </Form.Group>
+                  <ListGroup variant="flush">
+                    {product.reviews.map((review) => (
+                      <ListGroup.Item key={review._id}>
+                        <strong>{review.name}</strong>
+                        <Rating value={review.rating} color="#e36f10"></Rating>
+                        <p>{review.created_at.substring(0, 10)}</p>
+                        <p>{review.comment}</p>
+                      </ListGroup.Item>
+                    ))}
+
+                    <ListGroup.Item>
                       <br></br>
-                      <Form.Group controlId="comment">
-                        <Form.Label>Comment:</Form.Label>
-                        <Form.Control
-                          as="textarea"
-                          rows="5"
-                          value={comment}
-                          onChange={(event) => setComment(event.target.value)}
-                        ></Form.Control>
-                      </Form.Group>
-                      <br></br>
-                      <Button
-                        disapled={loadingProductReview}
-                        type="submit"
-                        variant="primary"
-                        className="btn_color w-25"
-                      >
-                        Add
-                      </Button>
-                    </Form>
-                  ) : (
-                    <Message variant="info">
-                      Please
-                      <Link to="/login"> login </Link>
-                      to review this product
-                    </Message>
-                  )}
-                </ListGroup.Item>
-              </ListGroup>
-            </Col>
-          </Row>
+                      <h4>Add a review</h4>
+                      {loadingProductReview && <Loader></Loader>}
+                      {successProductReview && (
+                        <Message variant="success">review is added</Message>
+                      )}
+                      {errorProductReview && (
+                        <Message variant="danger">{errorProductReview}</Message>
+                      )}
+                      {userInfo ? (
+                        <Form onSubmit={submitHandler}>
+                          <Form.Group controlId="rating">
+                            <Form.Label>Rating:</Form.Label>
+                            <Form.Control
+                              as="select"
+                              value={rating}
+                              onChange={(event) =>
+                                setRating(event.target.value)
+                              }
+                            >
+                              <option value="">Select</option>
+                              <option value="1">1 Not Good</option>
+                              <option value="2">2 Fair</option>
+                              <option value="3">3 Good</option>
+                              <option value="4">4 Very Good</option>
+                              <option value="5">5 Excellent</option>
+                            </Form.Control>
+                          </Form.Group>
+                          <br></br>
+                          <Form.Group controlId="comment">
+                            <Form.Label>Comment:</Form.Label>
+                            <Form.Control
+                              as="textarea"
+                              rows="5"
+                              value={comment}
+                              onChange={(event) =>
+                                setComment(event.target.value)
+                              }
+                            ></Form.Control>
+                          </Form.Group>
+                          <br></br>
+                          <Button
+                            disapled={loadingProductReview}
+                            type="submit"
+                            variant="primary"
+                            className="btn_color w-25"
+                          >
+                            Add
+                          </Button>
+                        </Form>
+                      ) : (
+                        <Message variant="info">
+                          Please
+                          <Link to="/login"> login </Link>
+                          to review this product
+                        </Message>
+                      )}
+                    </ListGroup.Item>
+                  </ListGroup>
+                </Col>
+              </Row>
+            </Tab>
+          </Tabs>
         </div>
       )}
     </div>

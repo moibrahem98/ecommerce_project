@@ -153,10 +153,10 @@ function PlaceOrderScreen({ history }) {
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
       <Row>
         <Col md={8}>
-          <Card >
+          <Card>
             <ListGroup variant="flush">
               <ListGroup.Item>
-                <h4 >Shipping Address: </h4>
+                <h4>Shipping Address: </h4>
 
                 <p>
                   {" "}
@@ -168,14 +168,14 @@ function PlaceOrderScreen({ history }) {
 
             <ListGroup variant="flush">
               <ListGroup.Item>
-                <h4 >Payment Method</h4>
+                <h4>Payment Method</h4>
                 <p> {cart.paymentMethod}</p>
               </ListGroup.Item>
             </ListGroup>
 
             <ListGroup variant="flush">
               <ListGroup.Item>
-                <h4 >Items</h4>
+                <h4>Items</h4>
                 {cart.cartItems.length === 0 ? (
                   <Message variant="info">Your Cart Is Empty</Message>
                 ) : (
@@ -192,7 +192,7 @@ function PlaceOrderScreen({ history }) {
                             />
                           </Col>
                           <Col>
-                            <Link to={`/product/${item.product}`}   >
+                            <Link to={`/product/${item.product}`}>
                               {item.name}
                             </Link>
                           </Col>
@@ -239,7 +239,7 @@ function PlaceOrderScreen({ history }) {
                 <Button
                   variant="dark"
                   type="button"
-                  className="btn  text-success w-100"
+                  className="btn text-success w-100 btn_color"
                   disapled={cart.cartItems === 0}
                   onClick={placeOrder}
                 >
