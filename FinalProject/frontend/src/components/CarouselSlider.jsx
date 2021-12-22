@@ -2,7 +2,7 @@ import React from "react";
 import { Carousel } from "react-bootstrap";
 import slide1 from "../slide1.jpg";
 import slide2 from "../slide2.webp";
-import slide3 from "../slide3.jpg";
+import slide4 from "../slide4.jpg";
 
 export default function CarouselSlider() {
   return (
@@ -28,7 +28,7 @@ export default function CarouselSlider() {
       <Carousel.Item>
         <img
           className="d-block w-100 carousel_img"
-          src={slide3}
+          src={slide4}
           alt="Third slide"
         />
       </Carousel.Item>

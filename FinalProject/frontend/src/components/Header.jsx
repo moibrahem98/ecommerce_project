@@ -165,7 +165,7 @@ function Header() {
               ) : (
                 <LinkContainer to="/login">
                   <Nav.Link>
-                    <i className="fas fa-user"></i>Login
+                    <i className="fas fa-user mt-2">Login</i>
                   </Nav.Link>
                 </LinkContainer>
               )}

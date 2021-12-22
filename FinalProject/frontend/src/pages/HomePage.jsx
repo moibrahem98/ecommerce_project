@@ -7,7 +7,8 @@ import Message from "../components/Message";
 import { listProducts } from "../actions/productActions";
 import ProductCarousel from "../components/ProductCarousel";
 import CatSlider from "../components/CatSlider";
-import CarouselSlider from "../components/CarouselSlider";
+// import ProductCarousel from "../components/ProductCarousel";
+// import CarouselSlider from "../components/CarouselSlider";
 function HomeScreen({ history }) {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
