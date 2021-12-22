@@ -26,7 +26,11 @@ function PerfumePage() {
           <Card.Body>
             <Card.Title as="h1">Men</Card.Title>
             <Card.Text>this is description of this sub category</Card.Text>
-            <Button variant="outline-primary" href="/menperfume">
+            <Button
+              variant="outline-primary"
+              href="/menperfume"
+              className="btn_color"
+            >
               Discover !!{" "}
             </Button>
           </Card.Body>
@@ -52,7 +56,11 @@ function PerfumePage() {
           <Card.Body>
             <Card.Title as="h1">Oriental</Card.Title>
             <Card.Text>this is description of this sub category</Card.Text>
-            <Button variant="outline-primary" href="/orientalperfume">
+            <Button
+              className="btn_color"
+              variant="outline-primary"
+              href="/orientalperfume"
+            >
               Discover !!{" "}
             </Button>
           </Card.Body>

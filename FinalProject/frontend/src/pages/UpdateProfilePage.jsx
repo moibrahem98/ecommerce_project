@@ -105,7 +105,11 @@ function UpdateProfileScreen({ history }) {
             ></Form.Control>
           </Form.Group>
 
+<<<<<<< HEAD
           <Button type="submit" variant="dark" className="w-100 text-success">
+=======
+          <Button type="submit" variant="primary" className="w-100 btn_color">
+>>>>>>> bbcf45379f96c83c3bd405f820897dd77d6a04f4
             Update
           </Button>
         </Form>

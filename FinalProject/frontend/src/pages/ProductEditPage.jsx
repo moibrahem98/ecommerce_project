@@ -324,7 +324,7 @@ function ProductEditScreen({ match, history }) {
             </Form.Group>
             <br></br>
 
-            <Button type="submit" variant="primary">
+            <Button type="submit" variant="primary" className="btn_color">
               Add Product
             </Button>
           </Form>

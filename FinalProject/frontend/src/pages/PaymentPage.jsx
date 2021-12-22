@@ -40,7 +40,11 @@ function PaymentScreen({ history }) {
           </Col>
         </Form.Group>
         <br></br>
-        <Button type="submit" variant="dark" className="w-100 text-success">
+        <Button
+          type="submit"
+          variant="dark"
+          className="w-100 text-success btn_color"
+        >
           Continue
         </Button>
       </Form>

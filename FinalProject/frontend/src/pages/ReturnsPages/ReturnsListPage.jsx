@@ -62,7 +62,7 @@ function ReturnsListPage({ history }) {
                 </td>
                 <td>
                   <LinkContainer to={`/returndetails/${ret.id}`}>
-                    <Button variant="light" className="btn-sm">
+                    <Button variant="light" className="btn-sm btn_color">
                       Details{" "}
                     </Button>
                   </LinkContainer>

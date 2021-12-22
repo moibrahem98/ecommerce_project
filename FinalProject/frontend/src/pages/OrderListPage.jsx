@@ -68,7 +68,7 @@ function OrderListScreen({ history }) {
 
                 <td>
                   <LinkContainer to={`/order/${order._id}`}>
-                    <Button variant="light" className="btn-sm">
+                    <Button variant="light" className="btn-sm btn_color">
                       Details{" "}
                     </Button>
                   </LinkContainer>

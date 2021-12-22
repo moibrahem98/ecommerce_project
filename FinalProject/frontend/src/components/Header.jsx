@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../actions/userActions";
-import logo from "../brand.jpg";
+import logo from "../images/brand.png";
 import SearchBox from "./SearchBox";
 
 function Header() {
@@ -51,7 +51,11 @@ function Header() {
         <Container className="align-items-center">
           <LinkContainer to="/" className="justify-content-start">
             <Navbar.Brand className="brand justify-content-start">
-              <img src={logo} alt="Logo" style={{ borderRadius: "8px" }} />
+              <img
+                src={logo}
+                alt="Logo"
+                style={{ borderRadius: "8px", height: "34px" }}
+              />
             </Navbar.Brand>
           </LinkContainer>
           <SearchBox className="justify-content-end" />
@@ -165,7 +169,7 @@ function Header() {
               ) : (
                 <LinkContainer to="/login">
                   <Nav.Link>
-                    <i className="fas fa-user"></i>Login
+                    <i className="fas fa-user mt-2">Login</i>
                   </Nav.Link>
                 </LinkContainer>
               )}
