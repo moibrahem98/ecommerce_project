@@ -29,54 +29,56 @@ function LoginScreen({ location, history }) {
   return (
     <Container>
       <Row className="mt-5">
-  <Col lg={5} md={6} sm={12} className="p-5 m-auto shadow rounded-lg">
-  <h3 className=" text-success mt-1 p-2 text-center ">CUSTOMER LOGIN</h3>
+        <Col lg={5} md={6} sm={12} className="p-5 m-auto shadow rounded-lg">
+          <h3 className="mt-1 p-2 text-center">CUSTOMER LOGIN</h3>{" "}
+          <Form onSubmit={submitHandler}>
+            {error && <Message variant="danger">{error}</Message>}
+            {loading && <Loader></Loader>}
 
-    {" "}
-    <Form onSubmit={submitHandler}>
-      {error && <Message variant="danger">{error}</Message>}
-      {loading && <Loader></Loader>}
-
-      <Form.Group controlId="email">
-        <Form.Label>Email</Form.Label>
-        <Form.Control
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        ></Form.Control>
-      </Form.Group>
-      <br></br>
-      <Form.Group controlId="password">
-        <Form.Label>Password</Form.Label>
-        <Form.Control
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        ></Form.Control>
-      </Form.Group>
-      <br></br>
-      <Button type="submit" variant="dark" className="w-100 text-success">
-       LOGLN{" "}
-      </Button>
-    </Form>
-    <br></br>
-    <Row>
-      <Col>
-        Don't Have Account ?{" "}
-        <Link
-          className="btn btn-secondary "
-          to={redirect ? `/register?redirect=${redirect}` : "/register"}
-        >
-          CREATE ACCOUNT
-        </Link>
-      </Col>{" "}
-    </Row>
-  </Col>
-</Row>
-</Container>
-);
+            <Form.Group controlId="email">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <br></br>
+            <Form.Group controlId="password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <br></br>
+            <Button
+              type="submit"
+              variant="dark"
+              className="w-100 text-success btn_color"
+            >
+              LOGLN{" "}
+            </Button>
+          </Form>
+          <br></br>
+          <Row>
+            <Col>
+              Don't Have Account ?{" "}
+              <Link
+                className="btn btn-secondary "
+                to={redirect ? `/register?redirect=${redirect}` : "/register"}
+              >
+                CREATE ACCOUNT
+              </Link>
+            </Col>{" "}
+          </Row>
+        </Col>
+      </Row>
+    </Container>
+  );
 }
 
 export default LoginScreen;

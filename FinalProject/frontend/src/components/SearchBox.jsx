@@ -31,7 +31,7 @@ function SearchBox() {
           placeholder="search"
           onChange={(event) => setName(event.target.value)}
         />
-        <i class="fas fa-search position-absolute search_icon"></i>
+        {/* <i class="fas fa-search position-absolute search_icon"></i> */}
       </div>
       {/* <button className="btn btn-outline-success" type="submit">
         <i className=" fa fa-search"></i>
