@@ -50,7 +50,6 @@ function PlaceOrderScreen({ history }) {
       })
     );
   };
-
   return (
     <div>
       {/* <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
@@ -157,7 +156,7 @@ function PlaceOrderScreen({ history }) {
             <ListGroup variant="flush">
               <ListGroup.Item>
                 <h4>Shipping Address: </h4>
-
+                <p>Phone Number: {cart.shippingAddress.telephoneNumber}</p>
                 <p>
                   {" "}
                   {cart.shippingAddress.address} , {cart.shippingAddress.city},{" "}
@@ -169,7 +168,29 @@ function PlaceOrderScreen({ history }) {
             <ListGroup variant="flush">
               <ListGroup.Item>
                 <h4>Payment Method</h4>
-                <p> {cart.paymentMethod}</p>
+                <p>
+                  {" "}
+                  {cart.paymentMethod === "paymob" ? (
+                    <Row>
+                      <Col>
+                        {" "}
+                        {cart.paymentMethod}
+                        <br />
+                        <button
+                          value="Paymob"
+                          className="btn disabled text-success btn_color"
+                          onclick={window.open(
+                            "http://127.0.0.1:8000/order/api/orders/payment/"
+                          )}
+                        >
+                          Paymob
+                        </button>
+                      </Col>
+                    </Row>
+                  ) : (
+                    <p>{cart.paymentMethod} </p>
+                  )}
+                </p>
               </ListGroup.Item>
             </ListGroup>
 
@@ -213,7 +234,7 @@ function PlaceOrderScreen({ history }) {
           <Card className=" shadow rounded-sm">
             <ListGroup variant="secondary">
               <ListGroup.Item variant="secondary">
-                <h3 > Total</h3>
+                <h3> Total</h3>
               </ListGroup.Item>
 
               <ListGroup.Item>

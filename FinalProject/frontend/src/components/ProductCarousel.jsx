@@ -25,12 +25,12 @@ function ProductCarousel() {
       {products.map((product) => (
         <Carousel.Item key={product._id}>
           <Link to={`/product/${product._id}`}>
-            <Image src={product.image} alt={product.name} fluid />
-            <Carousel.Caption className="carousel.caption">
-              <h4>
+            <Image src={product.image} alt={product.name} />
+            {/* <Carousel.Caption className="carousel.caption"> */}
+            {/* <h4>
                 {product.name} (${product.price})
-              </h4>
-            </Carousel.Caption>
+              </h4> */}
+            {/* </Carousel.Caption> */}
           </Link>
         </Carousel.Item>
       ))}

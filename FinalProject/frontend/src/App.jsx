@@ -48,6 +48,8 @@ import OilsHaircarePage from "./pages/CategoryPages/haircarePages/OilsHaircarePa
 import Cat from "./components/categorySelect";
 import ReturnsListPage from "./pages/ReturnsPages/ReturnsListPage";
 import ReturnDetailsPage from "./pages/ReturnsPages/ReturnDetailsPage";
+import ReturnCreatePage from "./pages/ReturnsPages/ReturnCreatePage";
+import AdminPanalPage from "./pages/AdminPages/AdminPanalPage";
 function App() {
   return (
     <Router>
@@ -69,7 +71,9 @@ function App() {
           <Route path="/order/:id" component={OrderScreen} />
           <Route path="/contactus" component={ContactUs} />
           <Route path="/returndetails/:id" component={ReturnDetailsPage} />
+          <Route path="/createreturn" component={ReturnCreatePage} />
           <Route path="/admin/returnslist" component={ReturnsListPage} />
+          <Route path="/admin/adminpanal" component={AdminPanalPage} />
 
           <Route path="/admin/productlist" component={ProductListScreen} />
           <Route path="/admin/orderlist" component={OrderListScreen} />

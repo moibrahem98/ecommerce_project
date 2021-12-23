@@ -156,10 +156,7 @@ export const returnsListReducer = (state = { returns: [] }, action) => {
   }
 };
 
-export const returnDetailsReducer = (
-  state = { loading: true, orderItems: [], shippingAddress: {} },
-  action
-) => {
+export const returnDetailsReducer = (state = {}, action) => {
   switch (action.type) {
     case "RETURNS_DETAILS_REQUEST":
       return {
@@ -170,7 +167,7 @@ export const returnDetailsReducer = (
     case "RETURNS_DETAILS_SUCCESS":
       return {
         loading: false,
-        order: action.payload,
+        returns: action.payload,
       };
 
     case "RETURNS_DETAILS_FAIL":
@@ -183,3 +180,65 @@ export const returnDetailsReducer = (
       return state;
   }
 };
+export const returnIssueStateReducr = (state = {}, action) => {
+  switch (action.type) {
+    case "ISSUE_STATE_REQUEST":
+      return {
+        loading: true,
+      };
+
+    case "ISSUE_STATE_SUCCESS":
+      return {
+        loading: false,
+        success: true,
+      };
+
+    case "ISSUE_STATE_FAIL":
+      return {
+        loading: false,
+        error: action.payload,
+      };
+
+    case "ISSUE_STATE_RESET":
+      return {};
+
+    default:
+      return state;
+  }
+};
+export const returnCreateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "RETURN_CREATE_REQUEST":
+      return { loading: true };
+
+    case "RETURN_CREATE_SUCCESS":
+      return { loading: false, success: true, returns: action.payload };
+
+    case "RETURN_CREATE_FAIL":
+      return { loading: false, error: action.payload };
+
+    case "RETURN_CREATE_RESET":
+      return {};
+
+    default:
+      return state;
+  }
+};
+// export const productDetailsReducer = (
+//   state = { product: { reviews: [] } },
+//   action
+// ) => {
+//   switch (action.type) {
+//     case "PRODUCT_DETAILS_REQUEST":
+//       return { loading: true, ...state };
+
+//     case "PRODUCT_DETAILS_SUCCESS":
+//       return { loading: false, product: action.payload };
+
+//     case "PRODUCT_DETAILS_FAIL":
+//       return { loading: false, error: action.payload };
+
+//     default:
+//       return state;
+//   }
+// };

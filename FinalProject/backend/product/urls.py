@@ -25,9 +25,9 @@ urlpatterns = [
     path('api/products/top/', getTopProducts, name='top-products'),
     # ***************************************
     path('api/returns/', list_returns, name='returns'),
-    path('api/returns/<str:pk>/', getReturnById, name='user-order'),
+    path('api/returns/<str:pk>/', getReturnById, name='returns-details'),
 
-    path('api/returns/create', createreturns, name='create_returns'),
-    path('api/returns/<str:pk>/update', updatereturns, name='update_returns')
+    path('api/returns/create/', createreturns, name='create_returns'),
+    path('api/returns/<str:pk>/update/', updatereturns, name='update_returns')
 
 ]

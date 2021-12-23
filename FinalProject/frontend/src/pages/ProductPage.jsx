@@ -108,7 +108,7 @@ function ProductScreen({ match, history }) {
                       <Row>
                         <Col>Price:</Col>
                         <Col>
-                          <strong>${product.price}</strong>
+                          <strong>{product.price} L.E</strong>
                         </Col>
                       </Row>
                     </ListGroup.Item>
@@ -123,10 +123,11 @@ function ProductScreen({ match, history }) {
                     {product.stock > 0 && (
                       <ListGroup.Item>
                         <Row>
-                          <Col className="m-2">Qty</Col>
+                          <Col className="m-2">Quantity</Col>
                           <Col xs="auto" className="">
                             <Form.Control
                               rounded
+                              className="p-1"
                               style={{
                                 textAlign: "center",
                                 border: "1px solid  #e3e3e3",

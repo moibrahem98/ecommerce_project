@@ -182,25 +182,34 @@ def createProductReview(request, pk):
 
 # ****************************** returns *************************
 @api_view(['GET'])
-@permission_classes([IsAdminUser])
+# @permission_classes([IsAdminUser])
 def list_returns(request):
-    returns = Returns.objects.all()
+    returns = Returns.objects.order_by('-created_at')
     serializer = ReturnsSerializer(returns, many=True)
     return Response(serializer.data)
 
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def createreturns(request):
     data = request.data
     user = request.user
-    order_exist = Order.objects.get(_id=data['orderNumber'])
+    # returns = Returns.objects.create(
+    #         user=user,
+    #         title=data['title'],
+    #         order_num=data['ordernumber'],
+    #         product_name=data['productname'],
+    #         issue=data['issue'],
+    #         issue_status = False, 
+    #     )
+    # returns.save()
+    order_exist = Order.objects.get(_id=data['ordernumber'])
     if (order_exist):
         returns = Returns.objects.create(
             user=user,
             title=data['title'],
-            order_num=data['orderNumber'],
-            product_name=data['productName'],
+            order_num=data['ordernumber'],
+            product_name=data['productname'],
             issue=data['issue'],
         )
         serializer = ReturnsSerializer(returns, many=False)
@@ -211,26 +220,33 @@ def createreturns(request):
         return Response(content, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['POST'])
+
+@api_view(['PUT'])
 @permission_classes([IsAdminUser])
 def updatereturns(request, pk):
-    returns = Returns.object.get(id=pk)
-    if returns:
-        returns.issue_status = True
-        serializer = ReturnsSerializer(returns, many=False)
-        return Response(serializer.data)
-    else:
-        content = {'detail': 'returns error'}
-        return Response(content, status=status.HTTP_400_BAD_REQUEST)
+    returns = Returns.objects.get(id=pk)
+    returns.issue_status = True
+    returns.save()
+    return Response ('issue status updated')
+    # if returns:
+    #     returns.issue_status = True
+    #     serializer = ReturnsSerializer(returns, many=False)
+    #     return Response(serializer.data)
+    # else:
+    #     content = {'detail': 'returns error'}
+    #     return Response(content, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def getReturnById(request, pk):
     user = request.user
+    print(user, "0000000000000000000")
     try:
 
         returns = Returns.objects.get(id=pk)
+        # serializer = ReturnsSerializer(returns, many=False)
+        # return Response(serializer.data)
         if user.is_staff or returns.user == user:
             serializer = ReturnsSerializer(returns, many=False)
             return Response(serializer.data)

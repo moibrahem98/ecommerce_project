@@ -60,8 +60,8 @@ function OrderScreen({ match }) {
   } else {
     return (
       <div>
-        <Message variant="success" >
-          <p > order is placed &#10004; </p>
+        <Message variant="success">
+          <p> order is placed &#10004; </p>
         </Message>
         <Row>
           <Col md={8}>
@@ -73,6 +73,7 @@ function OrderScreen({ match }) {
                     <strong>Name:</strong>
                     {order.user.name}
                   </p>
+                  <p>Phone Number: {order.shippingAddress.telephone_number}</p>
                   <p>
                     {order.shippingAddress.address} ,{" "}
                     {order.shippingAddress.city},{" "}
@@ -178,13 +179,9 @@ function OrderScreen({ match }) {
               {userInfo && userInfo.isAdmin && !order.is_paid && (
                 <ListGroup.Item>
                   <Button
-                  variant="dark"
+                    variant="dark"
                     type="button"
-<<<<<<< HEAD
-                    className="btn btn-block text-success"
-=======
                     className="btn btn-block btn_color"
->>>>>>> bbcf45379f96c83c3bd405f820897dd77d6a04f4
                     onClick={payHandler}
                   >
                     Mark As Paid
@@ -194,13 +191,9 @@ function OrderScreen({ match }) {
               {userInfo && userInfo.isAdmin && !order.is_delivered && (
                 <ListGroup.Item>
                   <Button
-                  variant="dark"
+                    variant="dark"
                     type="button"
-<<<<<<< HEAD
-                    className="btn btn-block text-success"
-=======
                     className="btn btn-block btn_color"
->>>>>>> bbcf45379f96c83c3bd405f820897dd77d6a04f4
                     onClick={deliverHandler}
                   >
                     Mark As Delivered

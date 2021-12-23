@@ -1,7 +1,7 @@
 from django.db.models import fields
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from rest_framework_simplejwt.tokens import RefreshToken
+from user.serializers import UserSerializer 
 
 from .models import *
 
@@ -60,6 +60,12 @@ class SubCategorySerializer(serializers.ModelSerializer):
 
 
 class ReturnsSerializer(serializers.ModelSerializer):
+    user = serializers.SerializerMethodField(read_only=True)
+
     class Meta:
         model = Returns
         fields = '__all__'
+    def get_user(self, obj):
+        user = obj.user
+        serializer = UserSerializer(user, many=False)
+        return serializer.data

@@ -251,7 +251,6 @@ export const listReturns = () => async (dispatch, getState) => {
     };
 
     const { data } = await axios.get(`/product/api/returns/`, config);
-
     dispatch({
       type: "RETURNS_LIST_SUCCESS",
       payload: data,
@@ -293,6 +292,80 @@ export const getReturnsDetails = (id) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: "RETURNS_DETAILS_FAIL",
+      payload:
+        error.response && error.response.data.detail
+          ? error.response.data.detail
+          : error.message,
+    });
+  }
+};
+
+export const issueStatus = (returns) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: "ISSUE_STATE_REQUEST",
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.put(
+      `/product/api/returns/${returns.id}/update/`,
+      {},
+      config
+    );
+
+    dispatch({
+      type: "ISSUE_STATE_SUCCESS",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "ISSUE_STATE_FAIL",
+      payload:
+        error.response && error.response.data.detail
+          ? error.response.data.detail
+          : error.message,
+    });
+  }
+};
+export const createReturn = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: "RETURN_CREATE_REQUEST",
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.post(
+      `/product/api/returns/create/`,
+      {},
+      config
+    );
+    dispatch({
+      type: "RETURN_CREATE_SUCCESS",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "RETURN_CREATE_FAIL",
       payload:
         error.response && error.response.data.detail
           ? error.response.data.detail

@@ -22,7 +22,6 @@ function ReturnsListPage({ history }) {
       history.push("/login");
     }
   }, [dispatch, history, userInfo]);
-
   return (
     <div>
       <h1>Orders</h1>
@@ -49,7 +48,7 @@ function ReturnsListPage({ history }) {
               <tr key={ret.id}>
                 <td>{ret.id}</td>
                 <td>{ret.title}</td>
-                <td>{ret.user}</td>
+                <td>{ret.user.name}</td>
                 <td>{ret.created_at.substring(0, 10)}</td>
                 <td>{ret.product_name}</td>
                 <td>{ret.order_num}</td>

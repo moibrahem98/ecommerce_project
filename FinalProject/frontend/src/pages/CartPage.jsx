@@ -116,37 +116,6 @@ function CartScreen({ match, location, history }) {
               </ListGroup.Item>
             </ListGroup>
 
-<<<<<<< HEAD
-      <Col md={4}>
-        <Card className=" shadow rounded-sm">
-          <ListGroup >
-            <ListGroup.Item >
-              <h3  className=" rounded " style={{ fontFamily: "monospace", textAlign: "center",backgroundColor:"WhiteSmoke"  }}>
-                Sub-Total
-              </h3>
-              <hr />
-              <p>{cartItems.reduce((acc, item) => acc + item.qty, 0)} items</p>
-              {cartItems
-                .reduce((acc, item) => acc + item.qty * item.price, 0)
-                .toFixed(2)}{" "}
-              L.E
-            </ListGroup.Item>
-          </ListGroup>
-
-          <ListGroup.Item>
-            <Button
-              variant="dark"
-              className=" text-success w-100"
-              disabled={cartItems.length === 0}
-              onClick={checkoutHandler}
-            >
-              Checkout
-            </Button>
-          </ListGroup.Item>
-        </Card>
-      </Col>
-    </Row>
-=======
             <ListGroup.Item>
               <Button
                 type="button"
@@ -161,7 +130,6 @@ function CartScreen({ match, location, history }) {
         </Col>
       </Row>
     </Container>
->>>>>>> bbcf45379f96c83c3bd405f820897dd77d6a04f4
   );
 }
 
