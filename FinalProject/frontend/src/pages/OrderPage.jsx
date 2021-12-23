@@ -180,11 +180,7 @@ function OrderScreen({ match }) {
                   <Button
                   variant="dark"
                     type="button"
-<<<<<<< HEAD
-                    className="btn btn-block text-success"
-=======
-                    className="btn btn-block btn_color"
->>>>>>> bbcf45379f96c83c3bd405f820897dd77d6a04f4
+                    className="btn btn-block text-success btn_color"
                     onClick={payHandler}
                   >
                     Mark As Paid
@@ -196,11 +192,7 @@ function OrderScreen({ match }) {
                   <Button
                   variant="dark"
                     type="button"
-<<<<<<< HEAD
-                    className="btn btn-block text-success"
-=======
-                    className="btn btn-block btn_color"
->>>>>>> bbcf45379f96c83c3bd405f820897dd77d6a04f4
+                    className="btn btn-block text-success btn_color"
                     onClick={deliverHandler}
                   >
                     Mark As Delivered

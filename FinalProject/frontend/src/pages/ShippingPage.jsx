@@ -76,7 +76,7 @@ function ShippingScreen({ history }) {
         ></Form.Control>
       </Form.Group>
 
-      <Button type="submit" variant="dark" className="w-100 text-success">
+      <Button type="submit" variant="dark" className="w-100 text-success btn_color">
         Continue
       </Button>
     </Form>
@@ -84,18 +84,6 @@ function ShippingScreen({ history }) {
       </Row>
   </Container>
 
-<<<<<<< HEAD
-=======
-        <Button
-          type="submit"
-          variant="dark"
-          className="w-100 text-success btn_color"
-        >
-          Continue
-        </Button>
-      </Form>
-    </FormContainer>
->>>>>>> bbcf45379f96c83c3bd405f820897dd77d6a04f4
   );
 }
 
