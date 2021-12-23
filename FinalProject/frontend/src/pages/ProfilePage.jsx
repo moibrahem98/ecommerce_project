@@ -82,7 +82,10 @@ function ProfileScreen({ history }) {
                 <strong>Email:</strong> {email}
               </Card.Text>
               <hr></hr>
-              <a className="btn btn-primary btn_color" href="/update">
+              <a
+                className="btn btn-dark text-success align-center btn_color"
+                href="/update"
+              >
                 Update Data
               </a>
             </Card.Body>

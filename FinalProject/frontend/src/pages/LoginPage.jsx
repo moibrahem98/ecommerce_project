@@ -29,10 +29,8 @@ function LoginScreen({ location, history }) {
   return (
     <Container>
       <Row className="mt-5">
-        <Col lg={5} md={6} sm={12} className="p-5 m-auto shadow-lg rounded-lg">
-          <h3 className=" text-success mt-1 p-2 text-center ">
-            CUSTOMER LOGIN
-          </h3>{" "}
+        <Col lg={5} md={6} sm={12} className="p-5 m-auto shadow rounded-lg">
+          <h3 className="mt-1 p-2 text-center">CUSTOMER LOGIN</h3>{" "}
           <Form onSubmit={submitHandler}>
             {error && <Message variant="danger">{error}</Message>}
             {loading && <Loader></Loader>}

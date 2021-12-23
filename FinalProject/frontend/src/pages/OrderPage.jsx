@@ -181,7 +181,7 @@ function OrderScreen({ match }) {
                   <Button
                     variant="dark"
                     type="button"
-                    className="btn btn-block btn_color"
+                    className="btn btn-block text-success btn_color"
                     onClick={payHandler}
                   >
                     Mark As Paid
@@ -193,7 +193,11 @@ function OrderScreen({ match }) {
                   <Button
                     variant="dark"
                     type="button"
+<<<<<<< HEAD
                     className="btn btn-block btn_color"
+=======
+                    className="btn btn-block text-success btn_color"
+>>>>>>> 9df8f92064ab5667fdd88b7c4874e24a2e460d23
                     onClick={deliverHandler}
                   >
                     Mark As Delivered

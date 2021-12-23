@@ -99,10 +99,17 @@ function CartScreen({ match, location, history }) {
         </Col>
 
         <Col md={4}>
-          <Card>
-            <ListGroup variant="flush">
+          <Card className=" shadow rounded-sm">
+            <ListGroup>
               <ListGroup.Item>
-                <h3 style={{ fontFamily: "monospace", textAlign: "center" }}>
+                <h3
+                  className=" rounded "
+                  style={{
+                    fontFamily: "monospace",
+                    textAlign: "center",
+                    backgroundColor: "WhiteSmoke",
+                  }}
+                >
                   Sub-Total
                 </h3>
                 <hr />
@@ -118,8 +125,8 @@ function CartScreen({ match, location, history }) {
 
             <ListGroup.Item>
               <Button
-                type="button"
-                className="outline-primary w-100 btn_color"
+                variant="dark"
+                className=" text-success w-100 btn_color"
                 disabled={cartItems.length === 0}
                 onClick={checkoutHandler}
               >
