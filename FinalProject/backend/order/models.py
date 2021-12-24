@@ -49,3 +49,10 @@ class ShippingAddress(models.Model):
 
     def __str__(self):
         return str(self.address)
+
+
+class Coupons(models.Model):
+    name = models.CharField(max_length=20)
+    percentage = models.DecimalField(max_digits=7, decimal_places=2)
+    start_date = models.DateField()
+    end_date = models.DateField()

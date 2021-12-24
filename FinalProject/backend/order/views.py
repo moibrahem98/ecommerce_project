@@ -15,6 +15,7 @@ from rest_framework import viewsets
 import requests
 import random
 
+
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def addOrderItems(request):
@@ -98,12 +99,14 @@ def getOredeById(request, pk):
     except:
         return Response({'datails': 'order dose not exist'}, status=status.HTTP_400_BAD_REQUEST)
 
+
 @api_view(['GET'])
 @permission_classes([IsAdminUser])
 def getOrders(request):
-	orders = Order.objects.all()
-	serializer = OrderSerializer(orders, many=True)
-	return Response(serializer .data)
+    orders = Order.objects.all()
+    serializer = OrderSerializer(orders, many=True)
+    return Response(serializer.data)
+
 
 @api_view(['PUT'])
 @permission_classes([IsAdminUser])
@@ -118,97 +121,99 @@ def updateOrderPay(request, pk):
 @api_view(['PUT'])
 @permission_classes([IsAdminUser])
 def updateOrderToDelivered(request, pk):
-	order = Order.objects.get(_id = pk)
-	order.is_delivered = True
-	order.delivered_at = datetime.now()
-	order.save()
+    order = Order.objects.get(_id=pk)
+    order.is_delivered = True
+    order.delivered_at = datetime.now()
+    order.save()
 
-	return Response('Order was Delivered')
+    return Response('Order was Delivered')
+
 
 @api_view(['GET'])
 # @permission_classes([IsAuthenticated])
 def payment(request):
     r1 = requests.post('https://accept.paymob.com/api/auth/tokens',
-    json={'api_key' : 'ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6VXhNaUo5LmV5SndjbTltYVd4bFgzQnJJam94TkRVd01UTXNJbU5zWVhOeklqb2lUV1Z5WTJoaGJuUWlMQ0p1WVcxbElqb2lhVzVwZEdsaGJDSjkuMlQzcTdKVGx4MEdSUWR3aFpFUFNLYUJSeGNvMVZpTDBzSEcxbmtVSnlEQWZDUG9pYUFYRFowR1JOakxDN2FKWThUSjVrNGRBaFlXYlhKRWlFbjkzNXc='})
+                       json={
+                           'api_key': 'ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6VXhNaUo5LmV5SndjbTltYVd4bFgzQnJJam94TkRVd01UTXNJbU5zWVhOeklqb2lUV1Z5WTJoaGJuUWlMQ0p1WVcxbElqb2lhVzVwZEdsaGJDSjkuMlQzcTdKVGx4MEdSUWR3aFpFUFNLYUJSeGNvMVZpTDBzSEcxbmtVSnlEQWZDUG9pYUFYRFowR1JOakxDN2FKWThUSjVrNGRBaFlXYlhKRWlFbjkzNXc='})
     auth_token = r1.json()['token']
 
     # ............................................................................................................
 
     r2 = requests.post('https://accept.paymob.com/api/ecommerce/orders',
-    json={
-            "auth_token":  auth_token,
-            "delivery_needed": "false",
-            "amount_cents": "100",
-            "currency": "EGP",
-            "merchant_order_id": random.random(),
-            "items": [
-                {
-                    "name": "ASC1515",
-                    "amount_cents": "500000",
-                    "description": "Smart Watch",
-                    "quantity": "1"
-                },
-                { 
-                    "name": "ERT6565",
-                    "amount_cents": "200000",
-                    "description": "Power Bank",
-                    "quantity": "1"
-                }
-                ],
-            "shipping_data": {
-                "apartment": "803", 
-                "email": "claudette09@exa.com", 
-                "floor": "42", 
-                "first_name": "Clifford", 
-                "street": "Ethan Land", 
-                "building": "8028", 
-                "phone_number": "+86(8)9135210487", 
-                "postal_code": "01898", 
-                "extra_description": "8 Ram , 128 Giga",
-                "city": "Jaskolskiburgh", 
-                "country": "CR", 
-                "last_name": "Nicolas", 
-                "state": "Utah"
-            },
-                "shipping_details": {
-                    "notes" : " test",
-                    "number_of_packages": 1,
-                    "weight" : 1,
-                    "weight_unit" : "Kilogram",
-                    "length" : 1,
-                    "width" :1,
-                    "height" :1,
-                    "contents" : "product of some sorts"
-                }
-        })
+                       json={
+                           "auth_token": auth_token,
+                           "delivery_needed": "false",
+                           "amount_cents": "100",
+                           "currency": "EGP",
+                           "merchant_order_id": random.random(),
+                           "items": [
+                               {
+                                   "name": "ASC1515",
+                                   "amount_cents": "500000",
+                                   "description": "Smart Watch",
+                                   "quantity": "1"
+                               },
+                               {
+                                   "name": "ERT6565",
+                                   "amount_cents": "200000",
+                                   "description": "Power Bank",
+                                   "quantity": "1"
+                               }
+                           ],
+                           "shipping_data": {
+                               "apartment": "803",
+                               "email": "claudette09@exa.com",
+                               "floor": "42",
+                               "first_name": "Clifford",
+                               "street": "Ethan Land",
+                               "building": "8028",
+                               "phone_number": "+86(8)9135210487",
+                               "postal_code": "01898",
+                               "extra_description": "8 Ram , 128 Giga",
+                               "city": "Jaskolskiburgh",
+                               "country": "CR",
+                               "last_name": "Nicolas",
+                               "state": "Utah"
+                           },
+                           "shipping_details": {
+                               "notes": " test",
+                               "number_of_packages": 1,
+                               "weight": 1,
+                               "weight_unit": "Kilogram",
+                               "length": 1,
+                               "width": 1,
+                               "height": 1,
+                               "contents": "product of some sorts"
+                           }
+                       })
     order_id = r2.json()['id']
-    
+
     # ..............................................................................................................
 
     r3 = requests.post('https://accept.paymob.com/api/acceptance/payment_keys',
-    json={
-    "auth_token": auth_token,
-    "amount_cents": "100", 
-    "expiration": 3600, 
-    "order_id": order_id,
-    "billing_data": {
-        "apartment": "803", 
-        "email": "claudette09@exa.com", 
-        "floor": "42", 
-        "first_name": "Clifford", 
-        "street": "Ethan Land", 
-        "building": "8028", 
-        "phone_number": "+86(8)9135210487", 
-        "shipping_method": "PKG", 
-        "postal_code": "01898", 
-        "city": "Jaskolskiburgh", 
-        "country": "CR", 
-        "last_name": "Nicolas", 
-        "state": "Utah"
-    }, 
-    "currency": "EGP", 
-    "integration_id": 1654230
-})
+                       json={
+                           "auth_token": auth_token,
+                           "amount_cents": "100",
+                           "expiration": 3600,
+                           "order_id": order_id,
+                           "billing_data": {
+                               "apartment": "803",
+                               "email": "claudette09@exa.com",
+                               "floor": "42",
+                               "first_name": "Clifford",
+                               "street": "Ethan Land",
+                               "building": "8028",
+                               "phone_number": "+86(8)9135210487",
+                               "shipping_method": "PKG",
+                               "postal_code": "01898",
+                               "city": "Jaskolskiburgh",
+                               "country": "CR",
+                               "last_name": "Nicolas",
+                               "state": "Utah"
+                           },
+                           "currency": "EGP",
+                           "integration_id": 1654230
+                       })
 
     # ......................................................................................................................
     payment_token = r3.json()['token']

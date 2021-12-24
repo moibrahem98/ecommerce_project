@@ -4,7 +4,8 @@ from django.contrib.auth.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from .models import *
-from user.serializers import UserSerializer 
+from user.serializers import UserSerializer
+
 
 class ShippingAddressSerializer(serializers.ModelSerializer):
     class Meta:
@@ -44,3 +45,9 @@ class OrderSerializer(serializers.ModelSerializer):
         user = obj.user
         serializer = UserSerializer(user, many=False)
         return serializer.data
+
+
+class CouponsSerializer(serializers.ModelSerializer):
+    class Mate:
+        model = Coupons
+        fields = '__all__'
