@@ -24,11 +24,13 @@ urlpatterns = [
     path('api/products/upload/', uploadImage, name='image-upload'),
     path('api/products/top/', getTopProducts, name='top-products'),
     path('api/products/category/<str:pk>/',getProductByCategory,name="produsts_by_category"),
+    path('api/products/subcategory/<str:pk>/',getProductBySubCategory,name="produsts_by_subcategory"),
     # ***************************************
+    path('api/returns/create/', createreturns, name='create_returns'),
     path('api/returns/', list_returns, name='returns'),
     path('api/returns/<str:pk>/', getReturnById, name='returns-details'),
 
-    path('api/returns/create/', createreturns, name='create_returns'),
+    
     path('api/returns/<str:pk>/update/', updatereturns, name='update_returns')
 
 ]

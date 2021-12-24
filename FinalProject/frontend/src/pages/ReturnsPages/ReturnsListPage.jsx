@@ -11,7 +11,7 @@ function ReturnsListPage({ history }) {
 
   const returnsList = useSelector((state) => state.returnsList);
   const { loading, error, returns } = returnsList;
-
+  console.log(returnsList, "listllllllllllllllllllllll");
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
@@ -24,7 +24,7 @@ function ReturnsListPage({ history }) {
   }, [dispatch, history, userInfo]);
   return (
     <div>
-      <h1>Orders</h1>
+      <h1>Returns Requests</h1>
       {loading ? (
         <Loader />
       ) : error ? (

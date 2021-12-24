@@ -373,3 +373,145 @@ export const createReturn = () => async (dispatch, getState) => {
     });
   }
 };
+// ==========================================================
+// Categories
+
+export const listCategories = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: "CATEGORIES_LIST_REQUEST",
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    const { data } = await axios.get(`/product/api/categories/`, config);
+    dispatch({
+      type: "CATEGORIES_LIST_SUCCESS",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "CATEGORIES_LIST_FAIL",
+      payload:
+        error.response && error.response.data.detail
+          ? error.response.data.detail
+          : error.message,
+    });
+  }
+};
+
+export const getProductByCategory = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: "PRODUCT_CATEGORY_LIST_REQUEST",
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.get(
+      `/product/api/products/category/${id}/`,
+      config
+    );
+
+    dispatch({
+      type: "PRODUCT_CATEGORY_LIST_SUCCESS",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "PRODUCT_CATEGORY_LIST_FAIL",
+      payload:
+        error.response && error.response.data.detail
+          ? error.response.data.detail
+          : error.message,
+    });
+  }
+};
+// ==========================================================
+// Sub Categories
+
+export const listSubCategories = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: "SUB_CATEGORY_LIST_REQUEST",
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    const { data } = await axios.get(`/product/api/sub_categories/`, config);
+    dispatch({
+      type: "SUB_CATEGORY_LIST_SUCCESS",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "SUB_CATEGORY_LIST_FAIL",
+      payload:
+        error.response && error.response.data.detail
+          ? error.response.data.detail
+          : error.message,
+    });
+  }
+};
+
+export const getProductBySubCategory = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: "PRODUCT_SUB_CATEGORY_LIST_REQUEST",
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.get(
+      `/product/api/products/subcategory/${id}/`,
+      config
+    );
+
+    dispatch({
+      type: "PRODUCT_SUB_CATEGORY_LIST_SUCCESS",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "PRODUCT_SUB_CATEGORY_LIST_FAIL",
+      payload:
+        error.response && error.response.data.detail
+          ? error.response.data.detail
+          : error.message,
+    });
+  }
+};

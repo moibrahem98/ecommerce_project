@@ -224,6 +224,109 @@ export const returnCreateReducer = (state = {}, action) => {
       return state;
   }
 };
+// =============================================
+// CATEGORIES
+
+export const categoriesListReducer = (state = { categories: [] }, action) => {
+  switch (action.type) {
+    case "CATEGORIES_LIST_REQUEST":
+      return {
+        loading: true,
+      };
+
+    case "CATEGORIES_LIST_SUCCESS":
+      return {
+        loading: false,
+        categories: action.payload,
+      };
+
+    case "CATEGORIES_LIST_FAIL":
+      return {
+        loading: false,
+        error: action.payload,
+      };
+
+    default:
+      return state;
+  }
+};
+export const getProductByCategoryReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "PRODUCT_CATEGORY_LIST_REQUEST":
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case "PRODUCT_CATEGORY_LIST_SUCCESS":
+      return {
+        loading: false,
+        products: action.payload,
+      };
+
+    case "PRODUCT_CATEGORY_LIST_FAIL":
+      return {
+        loading: false,
+        error: action.payload,
+      };
+
+    default:
+      return state;
+  }
+};
+// ============================================
+// Sub Category:
+
+export const subcategoriesListReducer = (
+  state = { subcategories: [] },
+  action
+) => {
+  switch (action.type) {
+    case "SUB_CATEGORY_LIST_REQUEST":
+      return {
+        loading: true,
+      };
+
+    case "SUB_CATEGORY_LIST_SUCCESS":
+      return {
+        loading: false,
+        subcategories: action.payload,
+      };
+
+    case "SUB_CATEGORY_LIST_FAIL":
+      return {
+        loading: false,
+        error: action.payload,
+      };
+
+    default:
+      return state;
+  }
+};
+export const getProductBySubCategoryReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "PRODUCT_SUB_CATEGORY_LIST_REQUEST":
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case "PRODUCT_SUB_CATEGORY_LIST_SUCCESS":
+      return {
+        loading: false,
+        product: action.payload,
+      };
+
+    case "PRODUCT_SUB_CATEGORY_LIST_FAIL":
+      return {
+        loading: false,
+        error: action.payload,
+      };
+
+    default:
+      return state;
+  }
+};
 // export const productDetailsReducer = (
 //   state = { product: { reviews: [] } },
 //   action

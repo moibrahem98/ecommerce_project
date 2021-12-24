@@ -1,15 +1,30 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../actions/userActions";
 import logo from "../images/brand.png";
 import SearchBox from "./SearchBox";
+import { listCategories, listSubCategories } from "../actions/productActions";
 
 function Header() {
+  const categoriesList = useSelector((state) => state.categoriesList);
+  const { categories } = categoriesList;
+  const subcategoriesList = useSelector((state) => state.subcategoriesList);
+  const {
+    loading: subcategoriesLoading,
+    error: subcategoriesError,
+    subcategories,
+  } = subcategoriesList;
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-
+  const [show, setShow] = useState(false);
+  const showDropdown = (e) => {
+    setShow(!show);
+  };
+  const hideDropdown = (e) => {
+    setShow(false);
+  };
   const dispatch = useDispatch();
 
   const logoutHandler = () => {
@@ -19,6 +34,9 @@ function Header() {
   const navRef = useRef();
   navRef.current = navBackground;
   useEffect(() => {
+    dispatch(listCategories());
+    dispatch(listSubCategories());
+
     const handleScroll = () => {
       const show = window.scrollY > 30;
       if (navRef.current !== show) {
@@ -30,6 +48,10 @@ function Header() {
       document.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  if (!categories) return null;
+  console.log(categories, "category");
+  console.log(subcategories, "subbbbbbbbbbcategory");
+  if (!subcategories) return null;
 
   return (
     <header className="mb-5">
@@ -68,67 +90,33 @@ function Header() {
             className="justify-content-center"
           >
             <Nav className="me-auto">
-              <NavDropdown title="Perfume" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/menperfume">Men</NavDropdown.Item>
-                <NavDropdown.Item href="/womenperfume">Women </NavDropdown.Item>
-                <NavDropdown.Item href="/orientalperfume">
-                  Oriental
-                </NavDropdown.Item>
-              </NavDropdown>
-              <NavDropdown title="Makeup" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/foundationmakeup">
-                  Foundation
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/mascaramakeup">
-                  Mascara
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/eyeshadowmakeup">
-                  Eye Shadow
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/highlightermakeup">
-                  Highlighter
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/bronzermakeup">
-                  Bronzer
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/lipglossmakeup">
-                  Lip Gloss
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/rougemakeup">Rouge </NavDropdown.Item>
-                <NavDropdown.Item href="/kohlmakeup">Kohl </NavDropdown.Item>
-                <NavDropdown.Item href="/makeupremover">
-                  Makeup Remover{" "}
-                </NavDropdown.Item>
-              </NavDropdown>
-              <NavDropdown title="Body Care" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/creambodycare">Cream</NavDropdown.Item>
-                <NavDropdown.Item href="/bodylotionbodycare">
-                  Body Lotion{" "}
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/bodymistbodycare">
-                  Body Mist
-                </NavDropdown.Item>
-              </NavDropdown>
-              <NavDropdown title="Hair Care" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/shampohaircare">
-                  Shmpo
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/serumshaircare">
-                  Serums{" "}
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/conditionerhaircare">
-                  Conditioner{" "}
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/conditionercreamhaircare">
-                  Conditioner Cream{" "}
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/proteinandcreatinehaircare">
-                  Protein And Creatine{" "}
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/oilshaircare">Oils </NavDropdown.Item>
-              </NavDropdown>
+              {categories.map((category) => (
+                <div>
+                  <NavDropdown title={category.name} id="basic-nav-dropdown">
+                    {subcategories.map((subcategory) => (
+                      <p>
+                        {subcategory.category === subcategory.category1.id && (
+                          <NavDropdown.Item>
+                            <strong>{subcategory.name}</strong>
+                          </NavDropdown.Item>
+                        )}
+                      </p>
+                    ))}
+                    {/* {subcategories.map((subcategory) => (
+                      // {subcategory.category == subcategory.category1.id &&()}
+
+                      <NavDropdown.Item>{subcategory.name}</NavDropdown.Item>
+                    ))} */}
+                  </NavDropdown>
+                </div>
+              ))}
             </Nav>
           </Navbar.Collapse>
+          {/* <LinkContainer to={`/categoryproducts/${category.id}`}>
+                    <Button variant="light" className="btn-sm btn_color">
+                      Details{" "}
+                    </Button>
+                  </LinkContainer> */}
 
           <Navbar.Collapse
             id="basic-navbar-nav"

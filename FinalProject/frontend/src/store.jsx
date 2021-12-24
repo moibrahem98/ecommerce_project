@@ -13,6 +13,10 @@ import {
   returnDetailsReducer,
   returnIssueStateReducr,
   returnCreateReducer,
+  getProductByCategoryReducer,
+  categoriesListReducer,
+  subcategoriesListReducer,
+  getProductBySubCategoryReducer,
 } from "./reducers/productReducers";
 import { cartReducer } from "./reducers/cartReducers";
 import {
@@ -46,6 +50,10 @@ const reducer = combineReducers({
   returnsList: returnsListReducer,
   returnIssueState: returnIssueStateReducr,
   returnCreate: returnCreateReducer,
+  categoryProducts: getProductByCategoryReducer,
+  subcategoryProducts: getProductBySubCategoryReducer,
+  categoriesList: categoriesListReducer,
+  subcategoriesList: subcategoriesListReducer,
 
   // cart
   cart: cartReducer,

@@ -1,35 +1,41 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Form, Button } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { LinkContainer } from "react-router-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-import FormContainer from "../components/FormContainer";
-import { listProductDetails, updateProduct } from "../actions/productActions";
-const baseURL = "/product/api/categories/";
+import { listCategories } from "../actions/productActions";
 
-export default function Cat() {
-  const [cat, setCat] = React.useState(null);
+function ReturnsListPage({ history }) {
+  const dispatch = useDispatch();
 
-  React.useEffect(() => {
-    axios.get(baseURL).then((response) => {
-      setCat(response.data);
-    });
-  }, []);
+  const categoriesList = useSelector((state) => state.categoriesList);
+  const { categories } = categoriesList;
+  console.log(categoriesList);
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
-  console.log(cat);
-  if (!cat) return null;
+  useEffect(() => {
+    dispatch(listCategories());
+  }, [dispatch, history]);
 
+  console.log(categories, "cccccccccccccccccccccccc");
+  if (!categories) return null;
   return (
     <div>
-      <h1>categories</h1>
-      <Form.Control as="select">
-        {cat.map((category) => (
-          <option>{category.name}</option>
-        ))}
-      </Form.Control>
-      <div></div>
+      <h1>All Categories</h1>
+      {categories.map((category) => (
+        <div>
+          <p>{category.name}</p>
+          <LinkContainer to={`/categoryproducts/${category.id}`}>
+            <Button variant="light" className="btn-sm btn_color">
+              Details{" "}
+            </Button>
+          </LinkContainer>
+        </div>
+      ))}
     </div>
   );
 }
+
+export default ReturnsListPage;

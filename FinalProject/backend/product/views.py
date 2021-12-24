@@ -128,6 +128,12 @@ def getProductByCategory(request, pk):
     serializer = ProductSerializer(product, many=True)
     return Response(serializer.data)
 
+@api_view(['GET'])
+def getProductBySubCategory(request, pk):
+    product = Product.objects.filter(sub_category_id=pk)
+    serializer = ProductSerializer(product, many=True)
+    return Response(serializer.data)
+
 
 @api_view(['DELETE'])
 @permission_classes([IsAdminUser])
@@ -201,30 +207,30 @@ def list_returns(request):
 def createreturns(request):
     data = request.data
     user = request.user
-    # returns = Returns.objects.create(
-    #         user=user,
-    #         title=data['title'],
-    #         order_num=data['ordernumber'],
-    #         product_name=data['productname'],
-    #         issue=data['issue'],
-    #         issue_status = False, 
-    #     )
-    # returns.save()
-    order_exist = Order.objects.get(_id=data['ordernumber'])
-    if (order_exist):
-        returns = Returns.objects.create(
+    returns = Returns.objects.create(
             user=user,
             title=data['title'],
             order_num=data['ordernumber'],
             product_name=data['productname'],
             issue=data['issue'],
+            issue_status = False, 
         )
-        serializer = ReturnsSerializer(returns, many=False)
-        return Response(serializer.data)
+    returns.save()
+    # order_exist = Order.objects.get(_id=data['ordernumber'])
+    # if (order_exist):
+    #     returns = Returns.objects.create(
+    #         user=user,
+    #         title=data['title'],
+    #         order_num=data['ordernumber'],
+    #         product_name=data['productname'],
+    #         issue=data['issue'],
+    #     )
+    #     serializer = ReturnsSerializer(returns, many=False)
+    #     return Response(serializer.data)
 
-    else:
-        content = {'detail': 'order number in not valid'}
-        return Response(content, status=status.HTTP_400_BAD_REQUEST)
+    # else:
+    #     content = {'detail': 'order number in not valid'}
+    #     return Response(content, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['PUT'])
