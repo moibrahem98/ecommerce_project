@@ -255,10 +255,6 @@ function ProductEditScreen({ match, history }) {
                 className="form-control"
                 onChange={(e) => setSubCategory(e.target.value)}
               >
-                {/*{subcat.map((subcategory) => (*/}
-                {/*  //<option value={subcategory.id}>{subcategory.name}</option>*/}
-                {/*  <option >{subcategory.category1.name}</option>*/}
-                {/*))}*/}
                 {subcat.map((subcategory) => (
                   <optgroup label={subcategory.category1.name}>
                     <option value={subcategory.id}>{subcategory.name}</option>

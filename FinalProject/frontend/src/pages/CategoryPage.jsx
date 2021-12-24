@@ -47,18 +47,12 @@ function CategoryPage({ match, history }) {
                 {subcategory.category == match.params.id && (
                   <Row sm={12} md={6} lg={4} xl={3}>
                     <Col className="m-2" style={{ width: "250px" }}>
-                      <Card className="my-3 p-3 rounded text-center">
-                        <Card.Body>
-                          <a
-                            className="nav-link"
-                            href={`/subcategoryproducts/${subcategory.id}`}
-                          >
-                            <Card.Title as="div">
-                              <strong>{subcategory.name}</strong>
-                            </Card.Title>
-                          </a>
-                        </Card.Body>
-                      </Card>
+                      <a
+                        className="nav-link"
+                        href={`/subcategoryproducts/${subcategory.id}`}
+                      >
+                        <Card.Img src={subcategory.img} />
+                      </a>
                     </Col>
                   </Row>
                 )}

@@ -84,31 +84,15 @@ function Header() {
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-          {/* Categoressssssssssss */}
           <Navbar.Collapse
             id="basic-navbar-nav"
             className="justify-content-center"
           >
             <Nav className="me-auto">
               {categories.map((category) => (
-                <div>
-                  <NavDropdown title={category.name} id="basic-nav-dropdown">
-                    {subcategories.map((subcategory) => (
-                      <p>
-                        {subcategory.category === subcategory.category1.id && (
-                          <NavDropdown.Item>
-                            <strong>{subcategory.name}</strong>
-                          </NavDropdown.Item>
-                        )}
-                      </p>
-                    ))}
-                    {/* {subcategories.map((subcategory) => (
-                      // {subcategory.category == subcategory.category1.id &&()}
-
-                      <NavDropdown.Item>{subcategory.name}</NavDropdown.Item>
-                    ))} */}
-                  </NavDropdown>
-                </div>
+                <LinkContainer to={`/categoryproducts/${category.id}`}>
+                  <Nav.Link id="basic-nav-dropdown">{category.name}</Nav.Link>
+                </LinkContainer>
               ))}
             </Nav>
           </Navbar.Collapse>

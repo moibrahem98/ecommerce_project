@@ -106,14 +106,16 @@ def updateProduct(request, pk):
     data = request.data
     product = Product.objects.get(_id=pk)
     category = Category.objects.get(id=data['category'])
-    # subCategory = SubCategory.objects.get(id=data['subCategory'])
+    subCategory = SubCategory.objects.get(id=data['subCategory'])
+    print(category, "----------------------------")
+    print(data['subCategory'], "+++++++++++++++++++++++++++")
     print(data, "dsfs5444444444444444444444444444444444444444444444444444")
     product.name = data['name']
     product.price = data['price']
     product.brand = data['brand']
     product.stock = data['stock']
     product.category = category
-    # product.sub_category = subCategory,
+    product.sub_category = subCategory
     product.description = data['description']
 
     product.save()
