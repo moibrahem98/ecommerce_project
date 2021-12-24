@@ -31,48 +31,40 @@ function App() {
   return (
     <Router>
       <Header />
-      <main className="py-5 ">
+      <Switch>
+        <Route path="/" component={HomeScreen} exact />
+      </Switch>
+
+      <Container>
         <Switch>
-          <Route path="/" component={HomeScreen} exact />
+          <Route path="/product/:id" component={ProductScreen} />
+          <Route path="/cat" component={Cat} />
+          <Route path="/categoryproducts/:id" component={CategoryPage} />
+          <Route path="/subcategoryproducts/:id" component={SubCategoryPage} />
+          <Route path="/cart/:id?" component={CartScreen} />
+          <Route path="/login/" component={LoginScreen} />
+          <Route path="/register/" component={RegisterScreen} />
+          <Route path="/profile" component={ProfileScreen} />
+          <Route path="/update" component={UpdateProfileScreen} />
+          <Route path="/myorders" component={MyOrdersScreen} />
+          <Route path="/shipping" component={ShippingScreen} />
+          <Route path="/payment" component={PaymentScreen} />
+          <Route path="/placeorder" component={PlaceOrderScreen} />
+          <Route path="/order/:id" component={OrderScreen} />
+          <Route path="/contactus" component={ContactUs} />
+          <Route path="/returndetails/:id" component={ReturnDetailsPage} />
+          <Route path="/admin/returnslist" component={ReturnsListPage} />
+          <Route path="/createreturn" component={ReturnCreatePage} />
+          <Route path="/admin/adminpanal" component={AdminPanalPage} />
+
+          <Route path="/admin/productlist" component={ProductListScreen} />
+          <Route path="/admin/orderlist" component={OrderListScreen} />
+          <Route path="/admin/product/:id/edit" component={ProductEditScreen} />
+
+          <Route path="/admin/userlist" component={UserListScreen} />
+          <Route path="/admin/user/:id/edit" component={UserEditScreen} />
         </Switch>
-
-        <Container>
-          <Switch>
-            <Route path="/product/:id" component={ProductScreen} />
-            <Route path="/cat" component={Cat} />
-            <Route path="/categoryproducts/:id" component={CategoryPage} />
-            <Route
-              path="/subcategoryproducts/:id"
-              component={SubCategoryPage}
-            />
-            <Route path="/cart/:id?" component={CartScreen} />
-            <Route path="/login/" component={LoginScreen} />
-            <Route path="/register/" component={RegisterScreen} />
-            <Route path="/profile" component={ProfileScreen} />
-            <Route path="/update" component={UpdateProfileScreen} />
-            <Route path="/myorders" component={MyOrdersScreen} />
-            <Route path="/shipping" component={ShippingScreen} />
-            <Route path="/payment" component={PaymentScreen} />
-            <Route path="/placeorder" component={PlaceOrderScreen} />
-            <Route path="/order/:id" component={OrderScreen} />
-            <Route path="/contactus" component={ContactUs} />
-            <Route path="/returndetails/:id" component={ReturnDetailsPage} />
-            <Route path="/admin/returnslist" component={ReturnsListPage} />
-            <Route path="/createreturn" component={ReturnCreatePage} />
-            <Route path="/admin/adminpanal" component={AdminPanalPage} />
-
-            <Route path="/admin/productlist" component={ProductListScreen} />
-            <Route path="/admin/orderlist" component={OrderListScreen} />
-            <Route
-              path="/admin/product/:id/edit"
-              component={ProductEditScreen}
-            />
-
-            <Route path="/admin/userlist" component={UserListScreen} />
-            <Route path="/admin/user/:id/edit" component={UserEditScreen} />
-          </Switch>
-        </Container>
-      </main>
+      </Container>
       <Footer />
     </Router>
   );

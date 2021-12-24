@@ -73,7 +73,7 @@ def getProduct(request, pk):
 # getTopProducts
 @api_view(['GET'])
 def getTopProducts(request):
-    products = Product.objects.filter(rating__gte=4).order_by('-rating')[0:5]
+    products = Product.objects.filter(rating__gte=4).order_by('-rating')[0:10]
     serializer = ProductSerializer(products, many=True)
     return Response(serializer.data)
 
@@ -129,6 +129,7 @@ def getProductByCategory(request, pk):
     product = Product.objects.filter(category_id=pk)
     serializer = ProductSerializer(product, many=True)
     return Response(serializer.data)
+
 
 @api_view(['GET'])
 def getProductBySubCategory(request, pk):
@@ -210,13 +211,13 @@ def createreturns(request):
     data = request.data
     user = request.user
     returns = Returns.objects.create(
-            user=user,
-            title=data['title'],
-            order_num=data['ordernumber'],
-            product_name=data['productname'],
-            issue=data['issue'],
-            issue_status = False, 
-        )
+        user=user,
+        title=data['title'],
+        order_num=data['ordernumber'],
+        product_name=data['productname'],
+        issue=data['issue'],
+        issue_status=False,
+    )
     returns.save()
     # order_exist = Order.objects.get(_id=data['ordernumber'])
     # if (order_exist):

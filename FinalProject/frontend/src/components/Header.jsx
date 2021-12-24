@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navbar, Nav, Container, NavDropdown, Button } from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../actions/userActions";
 import logo from "../images/brand.png";
@@ -38,7 +38,7 @@ function Header() {
     dispatch(listSubCategories());
 
     const handleScroll = () => {
-      const show = window.scrollY > 30;
+      const show = window.scrollY > 50;
       if (navRef.current !== show) {
         setNavBackground(show);
       }
@@ -54,33 +54,30 @@ function Header() {
   if (!subcategories) return null;
 
   return (
-    <header className="mb-5">
+    <header>
       <Navbar
-        bg="light"
-        variant="light"
         expand="lg"
         collapseOnSelect
         fixed="top"
-        className="big_head"
         style={{
           transition: ".5s ease",
-          backgroundColor: navBackground ? "gray" : "transparent",
-          borderBottom: "2px solid #ccc",
+          backgroundColor: navBackground ? "#fff" : "transparent",
           zIndex: "1500",
-          boxShadow: "0px 11px 15px -4px rgba(0,0,0,0.75);",
+          color: "#232323",
         }}
       >
-        <Container className="align-items-center">
+        <Container className="align-items-center navbar">
           <LinkContainer to="/" className="justify-content-start">
             <Navbar.Brand className="brand justify-content-start">
               <img
                 src={logo}
+                className="logo_img"
                 alt="Logo"
                 style={{ borderRadius: "8px", height: "34px" }}
               />
             </Navbar.Brand>
           </LinkContainer>
-          <SearchBox className="justify-content-end" />
+          <SearchBox />
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
@@ -96,11 +93,6 @@ function Header() {
               ))}
             </Nav>
           </Navbar.Collapse>
-          {/* <LinkContainer to={`/categoryproducts/${category.id}`}>
-                    <Button variant="light" className="btn-sm btn_color">
-                      Details{" "}
-                    </Button>
-                  </LinkContainer> */}
 
           <Navbar.Collapse
             id="basic-navbar-nav"

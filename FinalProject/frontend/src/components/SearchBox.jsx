@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
 function SearchBox() {
@@ -16,11 +16,6 @@ function SearchBox() {
   };
   return (
     <Form onSubmit={submitHandler} inline>
-      {/*       
-
-      <Button variant="success" className="p-1" type="submit">
-        <i className=" fa fa-search"></i>
-      </Button> */}
       <div className="position-relative">
         <input
           id="search_box"
@@ -31,11 +26,7 @@ function SearchBox() {
           placeholder="search"
           onChange={(event) => setName(event.target.value)}
         />
-        {/* <i class="fas fa-search position-absolute search_icon"></i> */}
       </div>
-      {/* <button className="btn btn-outline-success" type="submit">
-        <i className=" fa fa-search"></i>
-      </button> */}
     </Form>
   );
 }

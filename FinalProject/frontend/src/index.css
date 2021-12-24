@@ -7,8 +7,7 @@ main {
 }
 
 .heading_1 {
-  color: #418993;
-  font-weight: bold !important
+  color: #202020;
 }
 
 .btn_color {
@@ -47,10 +46,6 @@ h3 {
   margin: 0.1rem;
 }
 
-.big_head {
-  color: #000 !important;
-}
-
 .brand {
   display: flex;
   align-items: center;
@@ -60,16 +55,6 @@ h3 {
 .brand h3 {
   color: floralwhite;
   font-family: Arial, Helvetica, sans-serif;
-}
-
-
-
-.search_icon {
-  top: 18px;
-  right: 16px;
-  cursor: pointer;
-  opacity: .8;
-  font-size: 20px;
 }
 
 .fa-shopping-cart {
@@ -91,11 +76,6 @@ h3 {
 }
 
 
-/* 
-.main_slider {
-  height: 80vh;
-} */
-
 /* carousel */
 .carousel-item-next,
 .carousel-item-prev,
@@ -111,7 +91,7 @@ h3 {
 }
 
 .carousel_img_main {
-  height: 85vh;
+  height: 90vh;
 }
 
 .h3_color {
@@ -119,10 +99,10 @@ h3 {
 }
 
 
+
 .contact_link {
   text-decoration: none;
   font-size: 1.3rem;
-  color: #fff;
 }
 
 .butn_cart {
@@ -131,7 +111,7 @@ h3 {
 }
 
 .contact_link:hover {
-  color: antiquewhite !important;
+  color: #202020 !important;
 }
 
 
@@ -145,10 +125,32 @@ h3 {
   margin: 80px auto;
 }
 
+footer {
+  background: #f8f8f8;
+  border-top: 1px solid #d6d5d5;
+  color: #202020;
+  padding-top: 30px;
+  margin-top: 30px;
+}
 
-@media (max-width :540px) {
+.blackiconcolor {
+  color: #555;
+}
+
+
+@media (max-width :306px) {
+  .navbar {
+    flex-direction: column !important;
+  }
+}
+
+@media (max-width :450px) {
   #search_box {
-    width: 200px !important
+    width: 150px !important
+  }
+
+  .logo_img {
+    width: 120px !important;
   }
 }
 
