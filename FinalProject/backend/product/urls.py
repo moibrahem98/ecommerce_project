@@ -23,6 +23,7 @@ urlpatterns = [
     path('api/product/delete/<str:pk>/', deleteProduct, name="product-delete"),
     path('api/products/upload/', uploadImage, name='image-upload'),
     path('api/products/top/', getTopProducts, name='top-products'),
+    path('api/products/category/<str:pk>/',getProductByCategory,name="produsts_by_category"),
     # ***************************************
     path('api/returns/', list_returns, name='returns'),
     path('api/returns/<str:pk>/', getReturnById, name='returns-details'),

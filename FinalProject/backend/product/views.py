@@ -106,19 +106,26 @@ def updateProduct(request, pk):
     data = request.data
     product = Product.objects.get(_id=pk)
     category = Category.objects.get(id=data['category'])
-    #subCategory = SubCategory.objects.get(id=data['subCategory'])
-    print(data,"dsfs5444444444444444444444444444444444444444444444444444")
+    # subCategory = SubCategory.objects.get(id=data['subCategory'])
+    print(data, "dsfs5444444444444444444444444444444444444444444444444444")
     product.name = data['name']
     product.price = data['price']
     product.brand = data['brand']
     product.stock = data['stock']
     product.category = category
-    #product.sub_category = subCategory,
+    # product.sub_category = subCategory,
     product.description = data['description']
 
     product.save()
 
     serializer = ProductSerializer(product, many=False)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def getProductByCategory(request, pk):
+    product = Product.objects.filter(category_id=pk)
+    serializer = ProductSerializer(product, many=True)
     return Response(serializer.data)
 
 
@@ -220,14 +227,13 @@ def createreturns(request):
         return Response(content, status=status.HTTP_400_BAD_REQUEST)
 
 
-
 @api_view(['PUT'])
 @permission_classes([IsAdminUser])
 def updatereturns(request, pk):
     returns = Returns.objects.get(id=pk)
     returns.issue_status = True
     returns.save()
-    return Response ('issue status updated')
+    return Response('issue status updated')
     # if returns:
     #     returns.issue_status = True
     #     serializer = ReturnsSerializer(returns, many=False)
