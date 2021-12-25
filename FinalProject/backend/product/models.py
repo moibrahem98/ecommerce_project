@@ -2,45 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-# CATEGORY = (
-#     ('Perfume','Perfume'),
-#     ('Makeup','Makeup'),
-#     ('Body Care','Body Care'),
-#     ('Hair Care','Hair Care'),
-
-
-# )
-
-
-# SUBCATEGORY = (
-#     # 1.perfume
-#     ('Men','Men'),
-#     ('Women','Women'),
-#     ('Oriental','Oriental'),
-#     # 2.Makeup
-#     ('Foundation','Foundation'),
-#     ('Mascara','Mascara'),
-#     ('Eye Shadow','Eye Shadow'),
-#     ('Highlighter','Highlighter'),
-#     ('Bronzer','Bronzer'),
-#     ('Lip Gloss','Lip Gloss'),
-#     ('Rouge','Rouge'),
-#     ('Makeup Remover','Makeup Remover'),
-#     ('Kohl','Kohl'),
-#     # 3.Body Care
-#     ('Cream','Cream'),
-#     ('Body Lotion','Body Lotion'),
-#     ('Body Mist','Body Mist'),
-#     # 4.Hair Care
-#     ('Shampo','Shampo'),
-#     ('Serums','Serums'),
-#     ('Conditioner','Conditioner'),
-#     ('Conditioner Cream','Conditioner Cream'),
-#     ('Protein And Creatine','Protein And Creatine'),
-#     ('Oils','Oils'),
-
-
-# )
 
 def saveCatImg(instance, filename):
     return f"category/{instance.name}/{filename}"

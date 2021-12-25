@@ -119,8 +119,8 @@ function ProductListScreen({ history, match }) {
                   </td>
                   <td>{product.price} L.E</td>
                   <td>{product.category1.name}</td>
-                  <td>{product.sub_category}</td>
-                  <td>{product.brand}</td>
+                  <td>{product.subcategory1.name}</td>
+                  <td>{product.brand1.name}</td>
                   <td>
                     {" "}
                     <LinkContainer to={`/admin/product/${product._id}/edit`}>

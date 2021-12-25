@@ -1,43 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { LinkContainer } from "react-router-bootstrap";
+
+import { useDispatch, useSelector } from "react-redux";
 import { Row, Col } from "react-bootstrap";
-import slide1 from "../images/cat1.jpg";
-import slide2 from "../images/cat2.jpg";
-import slide3 from "../images/cat3.jpg";
-import slide4 from "../images/cat4.jpg";
+
+import { listCategories } from "../actions/productActions";
+
 export default function CarouselSlider() {
+  const dispatch = useDispatch();
+
+  const categoriesList = useSelector((state) => state.categoriesList);
+  const { categories } = categoriesList;
+  useEffect(() => {
+    dispatch(listCategories());
+  }, [dispatch]);
+  if (!categories) return null;
+
   return (
     <>
       <Row>
-        <Col xs={12} md={6} lg={3}>
-          <img
-            className="d-block w-100 carousel_img"
-            src={slide1}
-            alt="First slide"
-          />
-        </Col>
-        <Col xs={12} md={6} lg={3}>
-          <img
-            className="d-block w-100 carousel_img"
-            src={slide2}
-            alt="Second slide"
-          />
-        </Col>
-
-        <Col xs={12} md={6} lg={3}>
-          <img
-            className="d-block w-100 carousel_img"
-            src={slide3}
-            alt="Third slide"
-          />
-        </Col>
-
-        <Col xs={12} md={6} lg={3}>
-          <img
-            className="d-block w-100 carousel_img"
-            src={slide4}
-            alt="Fourth slide"
-          />
-        </Col>
+        {categories.map((category) => (
+          <Col xs={12} md={6} lg={3}>
+            <a href={`/categoryproducts/${category.id}`}>
+              <img
+                className="d-block w-100 carousel_img"
+                src={category.img}
+                alt="First slide"
+              />
+            </a>
+          </Col>
+        ))}
       </Row>
     </>
   );

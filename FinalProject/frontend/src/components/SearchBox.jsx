@@ -21,7 +21,7 @@ function SearchBox() {
           id="search_box"
           type="text"
           name="q"
-          className="form-control m-2"
+          className="form-control m-1"
           style={{ width: "200px" }}
           placeholder="search"
           onChange={(event) => setName(event.target.value)}

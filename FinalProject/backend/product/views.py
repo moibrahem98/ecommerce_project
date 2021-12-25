@@ -83,13 +83,13 @@ def getTopProducts(request):
 def createProduct(request):
     user = request.user
     category = Category.objects.get(id=1)
-    subCategory = SubCategory.objects.get(id=1)
-
+    subCategory = SubCategory.objects.get(id=2)
+    brand = Brand.objects.get(id =1)
     product = Product.objects.create(
         user=user,
-        name="sample name",
+        name="product",
         price=0,
-        brand=None,
+        brand=brand,
         stock=0,
         category=category,
         sub_category=subCategory,
@@ -104,17 +104,15 @@ def createProduct(request):
 @permission_classes([IsAdminUser])
 def updateProduct(request, pk):
     data = request.data
+    print(data, "dddddddddddddddddddd333333333333")
     product = Product.objects.get(_id=pk)
     category = Category.objects.get(id=data['category'])
     subCategory = SubCategory.objects.get(id=data['subCategory'])
-    print(category, "----------------------------")
-    print(data['subCategory'], "+++++++++++++++++++++++++++")
-    print(data, "dsfs5444444444444444444444444444444444444444444444444444")
+    brand = Brand.objects.get(id= data['brand'])
+    
     product.name = data['name']
     product.price = data['price']
-    if data['brand'] != '':
-        brand = Brand.objects.get(id=data['brand'])
-        product.brand = brand
+    product.brand = brand
     product.stock = data['stock']
     product.category = category
     product.sub_category = subCategory

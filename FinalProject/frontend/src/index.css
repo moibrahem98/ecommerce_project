@@ -1,5 +1,5 @@
 body {
-  font-family: 'Cairo', sans-serif;
+  font-family: "Cairo", sans-serif;
 }
 
 main {
@@ -13,12 +13,12 @@ main {
 .btn_color {
   background-color: #418993 !important;
   color: #fff !important;
-  transition: .3s all ease-in-out;
+  transition: 0.3s all ease-in-out;
 }
 
 .btn_color:hover {
   background-color: #418993 !important;
-  opacity: .8;
+  opacity: 0.8;
 }
 
 a {
@@ -29,7 +29,6 @@ h1 {
   font-size: 1.8rem;
   padding: 1rem 0;
   color: #418993;
-
 }
 
 h2 {
@@ -75,7 +74,6 @@ h3 {
   color: #444;
 }
 
-
 /* carousel */
 .carousel-item-next,
 .carousel-item-prev,
@@ -83,22 +81,18 @@ h3 {
   display: flex;
 }
 
-
-
 .carousel-control-next-icon,
 .carousel-control-prev-icon {
   display: none;
 }
 
 .carousel_img_main {
-  height: 90vh;
+  height: 105vh;
 }
 
 .h3_color {
-  color: "#418993"
+  color: "#418993";
 }
-
-
 
 .contact_link {
   text-decoration: none;
@@ -114,10 +108,8 @@ h3 {
   color: #202020 !important;
 }
 
-
-
 .contact-us {
-  border: .5px solid #ccc;
+  border: 0.5px solid #ccc;
   padding: 20px 10px;
   width: 300px;
   min-width: 50%;
@@ -137,16 +129,15 @@ footer {
   color: #555;
 }
 
-
-@media (max-width :306px) {
+@media (max-width: 306px) {
   .navbar {
     flex-direction: column !important;
   }
 }
 
-@media (max-width :450px) {
+@media (max-width: 450px) {
   #search_box {
-    width: 150px !important
+    width: 150px !important;
   }
 
   .logo_img {
@@ -154,18 +145,16 @@ footer {
   }
 }
 
-
-@media (min-width :1020px) {
+@media (min-width: 1020px) {
   #search_box {
-    width: 200px !important
+    width: 200px !important;
   }
 }
 
-@media (max-width :991px) {
+@media (max-width: 991px) {
   .main_icons {
     flex-direction: row-reverse !important;
     gap: 1rem;
-
   }
 }
 

@@ -25,13 +25,22 @@ function HomeScreen({ history }) {
     <>
       <CarouselSlider />
       <Container fluid>
-        <CatSlider />
-        <Image src={banner} alt="photo" style={{ maxWidth: "100%" }} />
+        {/* <Image src={banner} alt="photo" style={{ maxWidth: "100%" }} /> */}
       </Container>
-      <Container>
-        <h3 className="heading_1">Top Rated Products</h3>
+      <Container style={{ marginTop: " 20px" }}>
+        <h3 style={{ textAlign: "center" }} className="heading_1">
+          Shop By Category
+        </h3>
+        <CatSlider />
+        <hr />
+        <h3 style={{ textAlign: "center" }} className="heading_1">
+          Top Rated Products
+        </h3>
         {!name && <ProductCarousel />}
-        <h3 className="heading_1 mt-5">Top Products</h3>
+        <br /> <hr />
+        <h3 style={{ textAlign: "center" }} className="heading_1 mt-5">
+          Latest Products
+        </h3>
         {loading ? (
           <Loader></Loader>
         ) : error ? (
@@ -46,11 +55,11 @@ function HomeScreen({ history }) {
           </Row>
         )}
       </Container>
-      <Image
+      {/* <Image
         src={before}
         alt="photo"
         style={{ maxWidth: "100%", marginBottom: "-30px" }}
-      />
+      /> */}
     </>
   );
 }

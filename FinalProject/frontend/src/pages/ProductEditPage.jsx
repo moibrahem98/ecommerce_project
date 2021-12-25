@@ -14,14 +14,15 @@ function ProductEditScreen({ match, history }) {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState("");
-  const [brand, setBrand] = useState("");
-  const [category, setCategory] = useState(1);
-  const [subCategory, setSubCategory] = useState(1);
+  const [brand, setBrand] = useState(0);
+  const [category, setCategory] = useState();
+  const [subCategory, setSubCategory] = useState(0);
   const [stock, setStock] = useState(0);
   const [description, setDescription] = useState("");
   const [uploading, setUploading] = useState(false);
   const [cat, setCat] = React.useState("");
   const [subcat, setsubCat] = React.useState("");
+  const [getbrand, setGetBrand] = React.useState("");
 
   const dispatch = useDispatch();
 
@@ -60,10 +61,19 @@ function ProductEditScreen({ match, history }) {
         });
     };
     getSubCat();
+    const getBrand = async () => {
+      await axios
+        .get(`/product/api/brand/`)
+        .then((res) => {
+          setGetBrand(res.data);
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getBrand();
 
-    // axios.get("/product/api/categories/").then((response) => {
-    //   setCat(response.data);
-    // });
     if (successUpdate) {
       dispatch({ type: "PRODUCT_UPDATE_RESET" });
       history.push("/admin/productlist");
@@ -138,6 +148,8 @@ function ProductEditScreen({ match, history }) {
   if (!cat) return null;
   console.log("cc", subcat);
   if (!subcat) return null;
+  console.log("cc", getbrand);
+  if (!getbrand) return null;
 
   return (
     <div>
@@ -194,12 +206,14 @@ function ProductEditScreen({ match, history }) {
             <br></br>
             <Form.Group controlId="brand">
               <Form.Label>Brand</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter brand"
-                value={brand}
+              <select
+                className="form-control"
                 onChange={(e) => setBrand(e.target.value)}
-              ></Form.Control>
+              >
+                {getbrand.map((brand) => (
+                  <option value={parseInt(brand.id)}>{brand.name}</option>
+                ))}
+              </select>
             </Form.Group>
             <br></br>
             <Form.Group controlId="stock">
@@ -215,15 +229,7 @@ function ProductEditScreen({ match, history }) {
 
             <Form.Group controlId="category">
               <Form.Label>Category</Form.Label>
-              {/* <Form.Control
-                as="select"
-                value={product.category}
-                onChange={(e) => setCategory(e.target.value)}
-              >
-                {cat.map((category) => (
-                  <option>{category.name}</option>
-                ))}
-              </Form.Control> */}
+
               <select
                 className="form-control"
                 onChange={(e) => setCategory(e.target.value)}
@@ -232,20 +238,7 @@ function ProductEditScreen({ match, history }) {
                 {cat.map((category) => (
                   <option value={category.id}>{category.name}</option>
                 ))}
-                {/* <option value="1">cat1</option> */}
               </select>
-              {/* <Form.Control as="select">
-                {cat.map((category) => (
-                  <option>{category.name}</option>
-                ))}
-              </Form.Control> */}
-
-              {/* <Form.Control
-                type="text"
-                placeholder="Enter category"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-              ></Form.Control> */}
             </Form.Group>
             <br></br>
             <Form.Group controlId="subCategory">
@@ -255,6 +248,7 @@ function ProductEditScreen({ match, history }) {
                 className="form-control"
                 onChange={(e) => setSubCategory(e.target.value)}
               >
+                <option>None</option>
                 {subcat.map((subcategory) => (
                   <optgroup label={subcategory.category1.name}>
                     <option value={subcategory.id}>{subcategory.name}</option>
@@ -262,52 +256,6 @@ function ProductEditScreen({ match, history }) {
                 ))}
               </select>
             </Form.Group>
-
-            {/* <Form.Group controlId="subCategory">
-              <Form.Label>Sub Category</Form.Label>
-              <Form.Control
-                as="select"
-                placeholder="Enter Sub Category"
-                value={subCategory}
-                onChange={(e) => setSubCategory(e.target.value)}
-              >
-                <option value="">Select</option>
-
-                <optgroup label="1.Perfume">
-                  <option value="Men">Men</option>
-                  <option value="Women">Women</option>
-                  <option value="Oriental">Oriental</option>
-                </optgroup>
-
-                <optgroup label="2.Makeup">
-                  <option value="Foundation">Foundation</option>
-                  <option value="Mascara">Mascara</option>
-                  <option value="Eye Shadow">Eye Shadow</option>
-                  <option value="Highlighter">Highlighter</option>
-                  <option value="Bronzer">Bronzer</option>
-                  <option value="Lip Gloss">Lip Gloss</option>
-                  <option value="Rouge">Rouge</option>
-                  <option value="Makeup Remover">Makeup Remover</option>
-                  <option value="Kohl">Kohl</option>
-                </optgroup>
-
-                <optgroup label="3.Body Care">
-                  <option value="Cream">Cream</option>
-                  <option value="Body Lotion">Body Lotion</option>
-                  <option value="Body Mist">Body Mist</option>
-                </optgroup>
-
-                <optgroup label="4.Hair Care">
-                  <option value="Shampo">Shampo</option>
-                  <option value="Serums">Serums</option>
-                  <option value="Conditioner">Conditioner</option>
-                  <option value="Conditioner Cream">Conditioner Cream</option>
-                  <option value="Protein & Creatine">Protein & Creatine</option>
-                  <option value="Oils">Oils</option>
-                </optgroup>
-              </Form.Control>
-            </Form.Group>
-            <br></br> */}
 
             <Form.Group controlId="description">
               <Form.Label>Description</Form.Label>

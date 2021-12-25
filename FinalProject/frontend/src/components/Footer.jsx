@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { listCategories } from "../actions/productActions";
 import { Container, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export default function App() {
+  const dispatch = useDispatch();
+
+  const categoriesList = useSelector((state) => state.categoriesList);
+  const { categories } = categoriesList;
+
+  useEffect(() => {
+    dispatch(listCategories());
+  }, [dispatch]);
+
+  if (!categories) return null;
   return (
     <footer className="text-lg-left pt-5">
       <Container>
@@ -18,6 +30,7 @@ export default function App() {
             <Link className="contact_link blackiconcolor" to="/contactus">
               Contact Us
             </Link>
+
             <ul className="list-unstyled mt-2">
               <li>
                 <Link to="https://www.facebook.com/Mid4Night">
@@ -40,26 +53,24 @@ export default function App() {
             <h3 className="text-uppercase ">Products</h3>
 
             <ul className="list-unstyled mb-0">
-              <li className="mb-3">
-                <Link to="#!" className="blackiconcolor">
-                  Perfuems
-                </Link>
-              </li>
-              <li className="mb-3">
-                <Link to="#!" className="blackiconcolor">
-                  Makeup
-                </Link>
-              </li>
-              <li className="mb-3">
-                <Link to="#!" className="blackiconcolor">
-                  Body Care
-                </Link>
-              </li>
-              <li className="mb-3">
-                <Link to="#!" className="blackiconcolor">
-                  Hair Care
-                </Link>
-              </li>
+              {categories.map((category) => (
+                <li
+                  style={{
+                    color: "black",
+                    margin: "5px",
+                    padding: "5px",
+                  }}
+                >
+                  <Link
+                    style={{
+                      color: "black",
+                    }}
+                    to={`/categoryproducts/${category.id}`}
+                  >
+                    {category.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </Col>
 

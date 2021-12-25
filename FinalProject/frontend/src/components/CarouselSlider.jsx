@@ -10,7 +10,7 @@ export default function CarouselSlider() {
     <Carousel
       indicators={false}
       className="main_slider"
-      style={{ marginTop: "-25px" }}
+      style={{ marginTop: "-75px" }}
     >
       <Carousel.Item>
         <img

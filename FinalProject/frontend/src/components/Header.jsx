@@ -54,7 +54,7 @@ function Header() {
   if (!subcategories) return null;
 
   return (
-    <header>
+    <header style={{ marginBottom: "75px" }}>
       <Navbar
         expand="lg"
         collapseOnSelect
@@ -77,7 +77,6 @@ function Header() {
               />
             </Navbar.Brand>
           </LinkContainer>
-          <SearchBox />
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
@@ -85,7 +84,7 @@ function Header() {
             id="basic-navbar-nav"
             className="justify-content-center"
           >
-            <Nav className="me-auto">
+            <Nav className="me-auto" style={{ marginLeft: " 180px" }}>
               {categories.map((category) => (
                 <LinkContainer to={`/categoryproducts/${category.id}`}>
                   <Nav.Link id="basic-nav-dropdown">{category.name}</Nav.Link>
@@ -99,11 +98,7 @@ function Header() {
             className="justify-content-end"
           >
             <Nav className="ml-auto justify-content-end main_icons">
-              <LinkContainer to="/" id="cartLink">
-                <Nav.Link>
-                  <i className="fas fa-globe-africa mt-2"></i>
-                </Nav.Link>
-              </LinkContainer>
+              <SearchBox />
               <LinkContainer to="/cart">
                 <Nav.Link>
                   <i className="fas fa-shopping-cart mt-1"></i>

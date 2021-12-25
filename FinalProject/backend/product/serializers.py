@@ -10,7 +10,8 @@ class ProductSerializer(serializers.ModelSerializer):
     reviews = serializers.SerializerMethodField(read_only=True)
     category1 = serializers.SerializerMethodField(read_only=True)
     subcategory1 = serializers.SerializerMethodField(read_only=True)
-
+    brand1 = serializers.SerializerMethodField(read_only=True)
+    
     class Meta:
         model = Product
         fields = '__all__'
@@ -30,6 +31,12 @@ class ProductSerializer(serializers.ModelSerializer):
         print("****************", obj.sub_category)
         category1 = SubCategory.objects.get(name=obj.sub_category)
         serializer = CategorySerializer(category1, many=False)
+        return serializer.data
+
+    def get_brand1(self, obj):
+        print( "++++++++++++++++++++++++++++++",obj.brand)
+        brand1 = Brand.objects.get(name=obj.brand)
+        serializer = CategorySerializer(brand1, many=False)
         return serializer.data
 
 
