@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from product.models import Product
 
+
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     payment_method = models.CharField(max_length=200, null=True, blank=True)
@@ -41,7 +42,7 @@ class ShippingAddress(models.Model):
     order = models.OneToOneField(Order, on_delete=models.CASCADE)
     address = models.CharField(max_length=200, null=True, blank=True)
     city = models.CharField(max_length=200, null=True, blank=True)
-    telephone_number = models.CharField(max_length=200, null=True, blank=True) # <<<<<
+    telephone_number = models.CharField(max_length=200, null=True, blank=True)  # <<<<<
     country = models.CharField(max_length=200, null=True, blank=True)
     shipping_price = models.DecimalField(
         max_digits=7, decimal_places=2, null=True, blank=True)
@@ -52,7 +53,9 @@ class ShippingAddress(models.Model):
 
 
 class Coupons(models.Model):
-    name = models.CharField(max_length=20)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    name = models.CharField(max_length=20,unique=True)
     percentage = models.DecimalField(max_digits=7, decimal_places=2)
     start_date = models.DateField()
     end_date = models.DateField()
+    status = models.BooleanField(default=True)

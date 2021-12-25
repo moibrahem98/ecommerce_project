@@ -48,6 +48,6 @@ class OrderSerializer(serializers.ModelSerializer):
 
 
 class CouponsSerializer(serializers.ModelSerializer):
-    class Mate:
+    class Meta:
         model = Coupons
         fields = '__all__'

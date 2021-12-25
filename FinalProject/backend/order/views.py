@@ -1,17 +1,12 @@
 import random
 from django.shortcuts import render, redirect
-from django.http import JsonResponse
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 from .models import *
 from .serializers import *
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from rest_framework_simplejwt.views import TokenObtainPairView
-from django.contrib.auth.hashers import make_password
 from rest_framework import status
 from datetime import datetime
-from rest_framework import viewsets
 import requests
 import random
 
@@ -21,17 +16,13 @@ import random
 def addOrderItems(request):
     user = request.user
     data = request.data
-
     orderItems = data['orderItems']
-
     print(data)
-
     if orderItems and len(orderItems) == 0:
         return Response({'detail': 'No Order Items'}, status=status.HTTP_400_BAD_REQUEST)
     else:
         print('test')
         # (1) Create order
-
         order = Order.objects.create(
             user=user,
             payment_method=data['paymentMethod'],
@@ -127,6 +118,42 @@ def updateOrderToDelivered(request, pk):
     order.save()
 
     return Response('Order was Delivered')
+
+
+# --------------------------------coupons----------------
+@api_view(['GET'])
+# @permission_classes([IsAdminUser])
+def listcoupons(request):
+    coupons = Coupons.objects.all()
+    serializer = CouponsSerializer(coupons, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['POST'])
+# @permission_classes([IsAdminUser])
+def createcoupons(request):
+    data = request.data
+    user = request.user
+    coupons = Coupons.objects.create(
+        user=user,
+        name=data['name'],
+        percentage=data['percentage'],
+        start_date=data['startDate'],
+        end_date=data['endDate'],
+    )
+    serializer = CouponsSerializer(coupons, many=False)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+# @permission_classes([IsAdminUser])
+def getCouponByName(request, name):
+    try:
+        coupons = Coupons.objects.get(name=name)
+        serializer = CouponsSerializer(coupons, many=False)
+        return Response(serializer.data)
+    except:
+        return Response({'datails': 'coupons dose not exist'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET'])
