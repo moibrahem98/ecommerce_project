@@ -1,7 +1,7 @@
 from django.db.models import fields
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from user.serializers import UserSerializer 
+from user.serializers import UserSerializer
 
 from .models import *
 
@@ -65,7 +65,14 @@ class ReturnsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Returns
         fields = '__all__'
+
     def get_user(self, obj):
         user = obj.user
         serializer = UserSerializer(user, many=False)
         return serializer.data
+
+
+class BrandSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Brand
+        fields = '__all__'

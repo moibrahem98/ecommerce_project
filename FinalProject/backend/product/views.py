@@ -89,7 +89,7 @@ def createProduct(request):
         user=user,
         name="sample name",
         price=0,
-        brand='Sample brand',
+        brand=None,
         stock=0,
         category=category,
         sub_category=subCategory,
@@ -112,7 +112,9 @@ def updateProduct(request, pk):
     print(data, "dsfs5444444444444444444444444444444444444444444444444444")
     product.name = data['name']
     product.price = data['price']
-    product.brand = data['brand']
+    if data['brand'] != '':
+        brand = Brand.objects.get(id=data['brand'])
+        product.brand = brand
     product.stock = data['stock']
     product.category = category
     product.sub_category = subCategory
@@ -270,3 +272,12 @@ def getReturnById(request, pk):
                      status=status.HTTP_400_BAD_REQUEST)
     except:
         return Response({'datails': 'return dose not exist'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+# ***************************** brand **********************
+@api_view(['GET'])
+def getbrands(request):
+    brand = Brand.objects.all()
+    serializer = BrandSerializer(brand, many=True)
+    return Response(serializer.data)
+

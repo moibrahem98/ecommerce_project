@@ -54,6 +54,10 @@ def saveSubCatImg(instance, filename):
     return f"category/{instance.category}/{instance.name}/{filename}"
 
 
+def saveBrandImg(instance, filename):
+    return f"brand/{instance.name}/{filename}"
+
+
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
     img = models.ImageField(upload_to=saveCatImg)
@@ -76,7 +80,7 @@ class Product(models.Model):
     name = models.CharField(max_length=200, null=True, blank=True)
     image = models.ImageField(null=True, blank=True,
                               default='/placeholder.png', upload_to=saveProductImg)
-    brand = models.CharField(max_length=200, null=True, blank=True)
+    brand = models.ForeignKey('Brand', on_delete=models.CASCADE, null=True, blank=True, default=None)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     sub_category = models.ForeignKey(SubCategory, on_delete=models.SET_NULL, null=True)
     description = models.TextField(null=True, blank=True)
@@ -117,3 +121,11 @@ class Returns(models.Model):
 
     def __str__(self):
         return str(self.title)
+
+
+class Brand(models.Model):
+    name = models.CharField(max_length=20, unique=True)
+    img = models.ImageField(upload_to=saveBrandImg)
+
+    def __str__(self):
+        return str(self.name)

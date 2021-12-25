@@ -31,6 +31,7 @@ urlpatterns = [
     path('api/returns/<str:pk>/', getReturnById, name='returns-details'),
 
     
-    path('api/returns/<str:pk>/update/', updatereturns, name='update_returns')
+    path('api/returns/<str:pk>/update/', updatereturns, name='update_returns'),
+    path('api/brand/', getbrands, name="brand"),
 
 ]
