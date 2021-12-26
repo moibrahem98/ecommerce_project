@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Table, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import {
@@ -33,6 +35,7 @@ function ProductListScreen({ history, match }) {
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+  let hist = useHistory();
 
   // let keyword = history.location.search;
 
@@ -70,6 +73,9 @@ function ProductListScreen({ history, match }) {
 
   return (
     <div>
+      <Button onClick={() => hist.goBack()} className="btn btn-light my-3">
+        Go Back
+      </Button>
       <Row className="align-items-center">
         <Col md={9}>
           <h1>Products</h1>

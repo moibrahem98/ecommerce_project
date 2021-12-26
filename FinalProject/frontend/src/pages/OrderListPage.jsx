@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { LinkContainer } from "react-router-bootstrap";
+import { useHistory } from "react-router-dom";
+
 import { Table, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
@@ -23,9 +25,13 @@ function OrderListScreen({ history }) {
     }
   }, [dispatch, history, userInfo]);
 
+  let hist = useHistory();
   return (
     <div>
-      <h1>Orders</h1>
+      <Button onClick={() => hist.goBack()} className="btn btn-light my-3">
+        Go Back
+      </Button>
+      <h2>Orders</h2>
       {loading ? (
         <Loader />
       ) : error ? (

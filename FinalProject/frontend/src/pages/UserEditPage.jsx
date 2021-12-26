@@ -53,7 +53,7 @@ function UserEditScreen({ match, history }) {
         Go Back
       </Button>
       <FormContainer>
-        <h1>Edit User</h1>
+        <h2>Edit User</h2>
         {loadingUpdate && <Loader />}
         {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
 

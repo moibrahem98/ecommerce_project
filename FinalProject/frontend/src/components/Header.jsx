@@ -4,7 +4,7 @@ import { Navbar, Nav, Container, NavDropdown, L } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../actions/userActions";
 import logo from "../images/brand.png";
-import SearchBox from "./SearchBox";
+// import SearchBox from "./SearchBox";
 import { listCategories, listSubCategories } from "../actions/productActions";
 import { Link } from "react-router-dom";
 // import DarkMode from "../DarkMode";
@@ -129,7 +129,7 @@ function Header() {
                   </Nav.Link>
                 </LinkContainer>
               )}
-               {/* <DarkMode /> */}
+              {/* <DarkMode /> */}
               {userInfo && userInfo.isAdmin && (
                 <NavDropdown
                   className="dropdown-toggle-split"
@@ -153,8 +153,7 @@ function Header() {
                 </NavDropdown>
               )}
 
-                    {/* <DarkMode /> */}
-
+              {/* <DarkMode /> */}
             </Nav>
           </Navbar.Collapse>
         </Container>

@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
+
 import { LinkContainer } from "react-router-bootstrap";
 import { Table, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,8 +24,13 @@ function ReturnsListPage({ history }) {
       history.push("/login");
     }
   }, [dispatch, history, userInfo]);
+  let hist = useHistory();
+
   return (
     <div>
+      <Button onClick={() => hist.goBack()} className="btn btn-light my-3">
+        Go Back
+      </Button>
       <h2>Returns Requests</h2>
       {loading ? (
         <Loader />
