@@ -26,7 +26,6 @@ class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
 
-# ****************** user views ********************
 @api_view(['POST'])
 def register(request):
     data = request.data

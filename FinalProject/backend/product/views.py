@@ -9,20 +9,14 @@ from rest_framework import viewsets
 from order.models import Order
 
 
-# @api_view(['GET'])
-# def getProducts(request):
-#     query = request.query_params.get('keyword')
 
-#     if query == None:
-#         query = ''
-#     products = Product.objects.filter(name__icontains = query)
-#     serializer = ProductSerializer(products, many=True)
+class getCategories(viewsets.ModelViewSet):
+    serializer_class = CategorySerializer
+    queryset = Category.objects.all()
 
-#     filter_fields = (
-#         'category',
-#     )
-
-#     return Response(serializer.data)
+class getSubCategories(viewsets.ModelViewSet):
+    serializer_class = SubCategorySerializer
+    queryset = SubCategory.objects.all()
 
 @api_view(['GET'])
 def product_list(request):
@@ -33,50 +27,17 @@ def product_list(request):
     serializer = ProductSerializer(queryset, many=True)
     return Response(serializer.data)
 
-
-"""class getProducts(viewsets.ModelViewSet):
-    serializer_class = ProductSerializer
-    queryset = Product.objects.all()
-
-    filter_fields = (
-        'category',
-    )
-    search_fields = (
-        '^name',
-    )"""
-
-
-class getCategories(viewsets.ModelViewSet):
-    serializer_class = CategorySerializer
-    queryset = Category.objects.all()
-
-
-"""@api_view(['GET'])
-def getsubcategory(request, pk):
-    subcategory = SubCategory.objects.filter(category_id=pk)
-    serializer = SubCategorySerializer(subcategory, many=True)
-    return Response(serializer.data)"""
-
-
-class getSubCategories(viewsets.ModelViewSet):
-    serializer_class = SubCategorySerializer
-    queryset = SubCategory.objects.all()
-
-
 @api_view(['GET'])
 def getProduct(request, pk):
     product = Product.objects.get(_id=pk)
     serializer = ProductSerializer(product, many=False)
     return Response(serializer.data)
 
-
-# getTopProducts
 @api_view(['GET'])
 def getTopProducts(request):
     products = Product.objects.filter(rating__gte=4).order_by('-rating')[0:10]
     serializer = ProductSerializer(products, many=True)
     return Response(serializer.data)
-
 
 @api_view(['POST'])
 @permission_classes([IsAdminUser])
@@ -104,7 +65,6 @@ def createProduct(request):
 @permission_classes([IsAdminUser])
 def updateProduct(request, pk):
     data = request.data
-    print(data, "dddddddddddddddddddd333333333333")
     product = Product.objects.get(_id=pk)
     category = Category.objects.get(id=data['category'])
     subCategory = SubCategory.objects.get(id=data['subCategory'])
@@ -123,7 +83,6 @@ def updateProduct(request, pk):
     serializer = ProductSerializer(product, many=False)
     return Response(serializer.data)
 
-
 @api_view(['GET'])
 def getProductByCategory(request, pk):
     product = Product.objects.filter(category_id=pk)
@@ -133,13 +92,11 @@ def getProductByCategory(request, pk):
     serializer = ProductSerializer(product, many=True)
     return Response(serializer.data)
 
-
 @api_view(['GET'])
 def getProductBySubCategory(request, pk):
     product = Product.objects.filter(sub_category_id=pk)
     serializer = ProductSerializer(product, many=True)
     return Response(serializer.data)
-
 
 @api_view(['DELETE'])
 @permission_classes([IsAdminUser])
@@ -147,7 +104,6 @@ def deleteProduct(request, pk):
     product = Product.objects.get(_id=pk)
     product.delete()
     return Response('Product Deleted')
-
 
 @api_view(['POST'])
 def uploadImage(request):
@@ -158,7 +114,6 @@ def uploadImage(request):
     product.save()
     return Response('Image Uploaded')
 
-
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def createProductReview(request, pk):
@@ -166,19 +121,16 @@ def createProductReview(request, pk):
     product = Product.objects.get(_id=pk)
     data = request.data
 
-    # Review already exists
-    alreadyExists = product.review_set.filter(user=user).exists()
+    alreadyExists = product.review.filter(user=user).exists()
 
     if alreadyExists:
         content = {'detail': 'Product already reviewed'}
         return Response(content, status=status.HTTP_400_BAD_REQUEST)
 
-    # No Rating or 0
     elif data['rating'] == 0:
         content = {'detail': 'Please select a rating'}
         return Response(content, status=status.HTTP_400_BAD_REQUEST)
 
-    # Create Review
     else:
         review = Review.objects.create(
             user=user,
@@ -187,7 +139,7 @@ def createProductReview(request, pk):
             rating=data['rating'],
             comment=data['comment'],
         )
-        reviews = product.review_set.all()
+        reviews = product.review.all()
         product.reviews_number = len(reviews)
 
         total = 0
@@ -199,7 +151,6 @@ def createProductReview(request, pk):
         return Response('Review Added')
 
 
-# ****************************** returns *************************
 @api_view(['GET'])
 # @permission_classes([IsAdminUser])
 def list_returns(request):
@@ -213,7 +164,6 @@ def list_returns(request):
 def createreturns(request):
     data = request.data
     user = request.user
-    print(data, "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr")
     returns = Returns.objects.create(
         user=user,
         title=data['title'],
@@ -228,9 +178,6 @@ def createreturns(request):
     serializer = ReturnsSerializer(returns, many=False)
     return Response(serializer.data)
 
-    
-
-
 @api_view(['PUT'])
 @permission_classes([IsAdminUser])
 def updatereturns(request, pk):
@@ -238,31 +185,21 @@ def updatereturns(request, pk):
     returns.issue_status = True
     returns.save()
     return Response('issue status updated')
-    # if returns:
-    #     returns.issue_status = True
-    #     serializer = ReturnsSerializer(returns, many=False)
-    #     return Response(serializer.data)
-    # else:
-    #     content = {'detail': 'returns error'}
-    #     return Response(content, status=status.HTTP_400_BAD_REQUEST)
-
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def getReturnById(request, pk):
     user = request.user
-    print(user, "0000000000000000000")
     try:
 
         returns = Returns.objects.get(id=pk)
-        # serializer = ReturnsSerializer(returns, many=False)
-        # return Response(serializer.data)
+        
         if user.is_staff or returns.user == user:
             serializer = ReturnsSerializer(returns, many=False)
             return Response(serializer.data)
         else:
             Response({'datails': 'you are not authorized to view this return'},
-                     status=status.HTTP_400_BAD_REQUEST)
+                    status=status.HTTP_400_BAD_REQUEST)
     except:
         return Response({'datails': 'return dose not exist'}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -273,10 +210,38 @@ def getMyReturns(request):
     returns = user.returns_set.all()
     serializer = ReturnsSerializer(returns, many=True)
     return Response(serializer.data)
-# ***************************** brand **********************
+
+
 @api_view(['GET'])
 def getbrands(request):
     brand = Brand.objects.all()
     serializer = BrandSerializer(brand, many=True)
     return Response(serializer.data)
+
+
+@api_view(['GET'])
+def getbanners(request):
+    banners = Banner.objects.all()
+    serializer = BrandSerializer(banners, many=True)
+    return Response(serializer.data)   
+
+@api_view(['POST'])
+@permission_classes([IsAdminUser])
+def createBanner(request): 
+    user = request.user
+    data = request.data
+    banner = Banner.objects.create(
+        user = user,
+        img = data['img']
+    )
+
+    serializer = BannerSerializer(banner, many=False)
+    return Response(serializer.data)
+
+@api_view(['DELETE'])
+@permission_classes([IsAdminUser])
+def deleteBanner(request, pk):
+    banner = Banner.objects.get(_id=pk)
+    banner.delete()
+    return Response('Banner Deleted')    
 
