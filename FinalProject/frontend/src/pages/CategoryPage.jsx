@@ -42,7 +42,7 @@ function CategoryPage({ match, history }) {
         <Message variant="danger">{error}</Message>
       ) : (
         <Container>
-          <InternalSearch />
+          {/* <InternalSearch /> */}
           <Row md={8}>
             {subcategories.map((subcategory) => (
               <p>
