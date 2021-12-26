@@ -20,10 +20,10 @@ export default function CarouselSlider() {
     <>
       <Row>
         {categories.map((category) => (
-          <Col xs={12} md={6} lg={3}>
+          <Col xs={12} sm={6} lg={3}>
             <a href={`/categoryproducts/${category.id}`}>
               <img
-                className="d-block w-100 carousel_img"
+                className="d-block w-100 carousel_img mb-4"
                 src={category.img}
                 alt="First slide"
               />
