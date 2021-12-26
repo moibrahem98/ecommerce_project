@@ -51,104 +51,7 @@ function PlaceOrderScreen({ history }) {
     );
   };
   return (
-    <div>
-      {/* <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
-      <Row>
-        <Col md={8}>
-          <Card>
-            <ListGroup variant="flush">
-              <ListGroup.Item>
-                <h2>Shipping Address</h2>
-                <p>
-                  {cart.shippingAddress.address} , {cart.shippingAddress.city},{" "}
-                  {cart.shippingAddress.country} , Egypt.
-                </p>
-              </ListGroup.Item>
-            </ListGroup>
-
-            <ListGroup variant="flush">
-              <ListGroup.Item>
-                <h2>Payment Method</h2>
-                <p>Method: {cart.paymentMethod}</p>
-              </ListGroup.Item>
-            </ListGroup>
-
-            <ListGroup variant="flush">
-              <ListGroup.Item>
-                <h2>Items</h2>
-                {cart.cartItems.length === 0 ? (
-                  <Message variant="info">Your Cart Is Empty</Message>
-                ) : (
-                  <ListGroup variant="flush">
-                    {cart.cartItems.map((item, index) => (
-                      <ListGroup.Item key={index}>
-                        <Row>
-                          <Col md={1}>
-                            <Image
-                              src={item.image}
-                              alt={item.name}
-                              fluid
-                              rounded
-                            />
-                          </Col>
-                          <Col>
-                            <Link to={`/product/${item.product}`}>
-                              {item.name}
-                            </Link>
-                          </Col>
-                          <Col>
-                            {item.qty} X {item.price} L.E ={" "}
-                            {(item.qty * item.price).toFixed(2)} L.E
-                          </Col>
-                        </Row>
-                      </ListGroup.Item>
-                    ))}
-                  </ListGroup>
-                )}
-              </ListGroup.Item>
-            </ListGroup>
-          </Card>
-        </Col>
-        <Col md={4}>
-          <Card>
-            <ListGroup variant="flush">
-              <ListGroup.Item>
-                <h2>Summary</h2>
-              </ListGroup.Item>
-
-              <ListGroup.Item>
-                <Col>Items:</Col>
-                <Col>{cart.itemsPrice} L.E</Col>
-              </ListGroup.Item>
-
-              <ListGroup.Item>
-                <Col>Shipping:</Col>
-                <Col>{cart.shippingPrice} L.E</Col>
-              </ListGroup.Item>
-
-              <ListGroup.Item>
-                <Col>Total:</Col>
-                <Col>{cart.totalPrice} L.E</Col>
-              </ListGroup.Item>
-
-              <ListGroup.Item>
-                {error && <Message variant="danger">{error}</Message>}
-              </ListGroup.Item>
-
-              <ListGroup.Item>
-                <Button
-                  type="button"
-                  className="btn-block w-100"
-                  disapled={cart.cartItems === 0}
-                  onClick={placeOrder}
-                >
-                  Place Ordrer
-                </Button>
-              </ListGroup.Item>
-            </ListGroup>
-          </Card>
-        </Col>
-      </Row> */}
+    <div className="py-5">
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
       <Row>
         <Col md={8}>
@@ -231,9 +134,9 @@ function PlaceOrderScreen({ history }) {
           </Card>
         </Col>
         <Col md={4}>
-          <Card className=" shadow rounded-sm">
+          <Card className="shadow rounded-sm">
             <ListGroup variant="secondary">
-              <ListGroup.Item variant="secondary">
+              <ListGroup.Item>
                 <h3> Total</h3>
               </ListGroup.Item>
 

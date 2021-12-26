@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button, Row, Col ,Container } from "react-bootstrap";
+import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
@@ -55,65 +55,70 @@ function UpdateProfileScreen({ history }) {
     }
   };
   return (
-    <Container>
-    <Row className="mt-5">
-    <Col lg={5} md={6} sm={12} className="p-3 m-auto shadow rounded-lg">
-     <h1 className=" text-succes mt-1 p-1 text-center ">Update User Profile</h1>
+    <Container className="py-5">
+      <Row className="mt-5">
+        <Col lg={5} md={6} sm={12} className="p-3 m-auto shadow rounded-lg">
+          <h1 className=" text-succes mt-1 p-1 text-center ">
+            Update User Profile
+          </h1>
 
-      {message && <Message variant="danger">{message}</Message>}
-      {error && <Message variant="danger">{error}</Message>}
-      {loading && <Loader />}
-      <Form onSubmit={submitHandler}>
-        <Form.Group controlId="name">
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            required
-            type="name"
-            placeholder="Enter name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
+          {message && <Message variant="danger">{message}</Message>}
+          {error && <Message variant="danger">{error}</Message>}
+          {loading && <Loader />}
+          <Form onSubmit={submitHandler}>
+            <Form.Group controlId="name">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                required
+                type="name"
+                placeholder="Enter name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
 
-        <Form.Group controlId="email">
-          <Form.Label>Email Address</Form.Label>
-          <Form.Control
-            required
-            type="email"
-            placeholder="Enter Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
+            <Form.Group controlId="email">
+              <Form.Label>Email Address</Form.Label>
+              <Form.Control
+                required
+                type="email"
+                placeholder="Enter Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
 
-        <Form.Group controlId="password">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Enter Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
+            <Form.Group controlId="password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Enter Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
 
-        <Form.Group controlId="passwordConfirm">
-          <Form.Label>Confirm Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Confirm Password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
+            <Form.Group controlId="passwordConfirm">
+              <Form.Label>Confirm Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Confirm Password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
 
-        <Button type="submit" variant="dark" className="w-100 text-success btn_color">
-          Update
-        </Button>
-      </Form>
-    </Col>
-  </Row>
-  </Container>
-
+            <Button
+              type="submit"
+              variant="dark"
+              className="w-100 text-success btn_color"
+            >
+              Update
+            </Button>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

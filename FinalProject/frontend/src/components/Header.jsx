@@ -54,7 +54,7 @@ function Header() {
   if (!subcategories) return null;
 
   return (
-    <header style={{ marginBottom: "75px" }}>
+    <header style={{ marginBottom: "75px", alignItems: "center" }}>
       <Navbar
         expand="lg"
         collapseOnSelect
@@ -66,14 +66,14 @@ function Header() {
           color: "#232323",
         }}
       >
-        <Container className="navbar">
+        <Container className="navbar align-items-center">
           <LinkContainer to="/">
             <Navbar.Brand>
               <img
                 src={logo}
                 className="logo_img"
                 alt="Logo"
-                style={{ borderRadius: "8px", height: "34px" }}
+                style={{ height: "33px" }}
               />
             </Navbar.Brand>
           </LinkContainer>
@@ -95,14 +95,14 @@ function Header() {
 
           <Navbar.Collapse
             id="basic-navbar-nav"
-            className="justify-content-end"
+            className="justify-content-end bottom_nav"
           >
-            <SearchBox />
+            {/* <SearchBox /> */}
 
             <Nav className="main_icons">
               <LinkContainer to="/cart">
                 <Nav.Link>
-                  <i className="fal fa-cart-plus mt-1 icon_size"></i>
+                  <i className="fal fa-cart-plus icon_size"></i>
                 </Nav.Link>
               </LinkContainer>
 
@@ -110,38 +110,19 @@ function Header() {
                 <>
                   <LinkContainer to="/userpanal">
                     <Nav.Link>
-                      <i className="fal fa-user mt-1 icon_size"></i>
+                      <i className="fal fa-user icon_size"></i>
                     </Nav.Link>
                   </LinkContainer>
                   <Link onClick={logoutHandler}>
                     <Nav.Link>
-                      <i className="far fa-sign-out-alt mt-1 icon_size"></i>
+                      <i className="far fa-sign-out-alt icon_size"></i>
                     </Nav.Link>
                   </Link>
                 </>
               ) : (
-                // <NavDropdown
-                //   title={<i className="fal fa-user icon_size"></i>}
-                //   id="username"
-                //   className="justify-content-end font-weight-bold mt-1"
-                // >
-                //   <LinkContainer to="/profile">
-                //     <NavDropdown.Item>Profile</NavDropdown.Item>
-                //   </LinkContainer>
-                //   <LinkContainer to="/myorders">
-                //     <NavDropdown.Item>My Orders</NavDropdown.Item>
-                //   </LinkContainer>
-                //   <LinkContainer to="/update">
-                //     <NavDropdown.Item>Update Profile</NavDropdown.Item>
-                //   </LinkContainer>
-
-                //   <NavDropdown.Item onClick={logoutHandler}>
-                //     Logout
-                //   </NavDropdown.Item>
-                // </NavDropdown>
                 <LinkContainer to="/login">
                   <Nav.Link>
-                    <i className="fa fa-user mt-1 icon_size">Login</i>
+                    <i className="fal fa-user icon_size"></i>
                   </Nav.Link>
                 </LinkContainer>
               )}
@@ -149,7 +130,6 @@ function Header() {
                 <NavDropdown
                   title={<i className="fal fa-user-shield icon_size"></i>}
                   id="adminmenue"
-                  className="mt-1"
                 >
                   <LinkContainer to="/admin/userlist">
                     <NavDropdown.Item>Users</NavDropdown.Item>

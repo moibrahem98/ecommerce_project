@@ -8,6 +8,12 @@
   margin-left: 3px;
   box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
     rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+  height: 150px;
+  max-height: 170px !important;
+  padding: 10px;
+  font-family: monospace;
+  color: #fff !important;
+  padding: 20px;
 }
 
 .l-bg-cherry {
@@ -66,4 +72,17 @@
 .l-bg-cyan {
   background: linear-gradient(135deg, #289cf5, #84c0ec) !important;
   color: #fff;
+}
+
+.card-title {
+  color: #fff;
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.ad_icon {
+  font-size: 22px;
 }

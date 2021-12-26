@@ -24,7 +24,7 @@ function ReturnsListPage({ history }) {
   }, [dispatch, history, userInfo]);
   return (
     <div>
-      <h1>Returns Requests</h1>
+      <h2>Returns Requests</h2>
       {loading ? (
         <Loader />
       ) : error ? (

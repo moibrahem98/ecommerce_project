@@ -38,128 +38,81 @@ function UserPanal({ history }) {
   if (!returns) return null;
   return (
     <div>
-      <h1>Profile</h1>
+      <h2 className="h2">Profile</h2>
 
       <div className="container">
         <Row>
           <Col md={6}>
-            <div className="card bg-success" style={{ height: "200px" }}>
-              <div className="card-statistic-3 p-4">
-                <div
-                  className="card-icon card-icon-large"
-                  style={{ fontSize: "75px" }}
-                >
-                  <i class="far fa-user-circle"></i>
-                </div>
-                <div className="mb-4">
+            <div className="card bg-success">
+              <div className="card-statistic-3">
+                <div>
                   <a href="/profile">
-                    {" "}
-                    <h4 style={{ color: "white" }} className="card-title mb-0">
-                      Profile
-                    </h4>
+                    <h2 className="card-title d-inline-block pr-1">Profile</h2>
+                    <i class="far fa-user-circle text-light ad_icon"></i>
                   </a>
                 </div>
-                <div className="row align-items-center mb-2 d-flex">
+                <div className="row align-items-center d-flex">
                   <div className="col-8">
-                    <h1
-                      style={{
-                        color: "white",
-                        marginTop: "40px",
-                        fontSize: "30px",
-                        fontFamily: "monospace",
-                      }}
-                      className="d-flex align-items-center mb-0"
-                    >
+                    <h2 className="d-flex align-items-center">
                       {userInfo.name}
-                    </h1>
+                    </h2>
                   </div>
                 </div>
               </div>
             </div>
           </Col>
           <Col md={6}>
-            <div className="card bg-warning" style={{ height: "200px" }}>
-              <div className="card-statistic-3 p-4">
-                <div
-                  className="card-icon card-icon-large"
-                  style={{ fontSize: "75px" }}
-                >
-                  <i class="far fa-shopping-bag"></i>
-                </div>
-                <div className="mb-4">
+            <div className="card bg-warning">
+              <div className="card-statistic-3">
+                <div>
                   <a href="/myorders">
                     {" "}
-                    <h4 style={{ color: "white" }} className="card-title mb-0">
-                      My Orders
-                    </h4>
+                    <h2 className="card-title d-inline-block pr-2"> Orders</h2>
+                    <i class="far fa-shopping-bag text-light ad_icon"></i>
                   </a>
                 </div>
-                <div className="row align-items-center mb-2 d-flex">
+                <div className="row align-items-center d-flex">
                   <div className="col-8">
-                    <h1
-                      style={{
-                        color: "white",
-                        marginTop: "20px",
-                        fontSize: "60px",
-                      }}
-                      className="d-flex align-items-center mb-0"
-                    >
+                    <h2 className="d-flex align-items-center">
                       {orders.length}
-                    </h1>
+                    </h2>
                   </div>
                 </div>
               </div>
             </div>
           </Col>
           <Col md={6}>
-            <div className="card bg-danger" style={{ height: "200px" }}>
-              <div className="card-statistic-3 p-4">
-                <div
-                  className="card-icon card-icon-large"
-                  style={{ fontSize: "75px" }}
-                >
-                  <i class="far fa-undo-alt"></i>
-                </div>
-                <div className="mb-4">
+            <div className="card bg-danger">
+              <div className="card-statistic-3">
+                <div>
                   <a href="/myreturns">
-                    {" "}
-                    <h4 style={{ color: "white" }} className="card-title mb-0">
+                    <h2 className="card-title d-inline-block pr-2">
                       My Returns
-                    </h4>
+                    </h2>
+                    <i class="far fa-undo-alt text-light ad_icon"></i>
                   </a>
                 </div>
-                <div className="row align-items-center mb-2 d-flex">
+                <div className="row align-items-centr d-flex">
                   <div className="col-8">
-                    <h1
-                      style={{
-                        color: "white",
-                        marginTop: "20px",
-                        fontSize: "60px",
-                      }}
-                      className="d-flex align-items-center mb-0"
-                    >
+                    <h2 className="d-flex align-items-center">
                       {returns.length}
-                    </h1>
+                    </h2>
                   </div>
                 </div>
               </div>
             </div>
           </Col>
           <Col md={6}>
-            <div className="card bg-info" style={{ height: "200px" }}>
-              <div className="card-statistic-3 p-4">
-                <div
-                  className="card-icon card-icon-large"
-                  style={{ fontSize: "75px" }}
-                >
-                  <i class="far fa-pencil"></i>
-                </div>
-                <div className="mb-4">
+            <div className="card bg-info">
+              <div className="card-statistic-3">
+                <div>
                   <a href="/update">
                     {" "}
-                    <h4 style={{ color: "white" }} className="card-title mb-0">
-                      Update Profile{" "}
-                    </h4>
+                    <h2 className="card-title d-inline-block pr-2">
+                      Update Profile
+                    </h2>
+                    <i className="far fa-pencil text-light ad_icon"></i>
+                    <button className="btn btn-block btn-light">Click</button>
                   </a>
                 </div>
               </div>

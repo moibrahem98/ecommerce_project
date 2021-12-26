@@ -34,8 +34,8 @@ function CategoryPage({ match, history }) {
   if (!subcategories) return null;
 
   return (
-    <div>
-      <h1>{products[0].category1.name}</h1>
+    <div className="py-5">
+      <h2 className="h1 heading_1">{products[0].category1.name}</h2>
       {loading ? (
         <Loader></Loader>
       ) : error ? (

@@ -37,7 +37,7 @@ function CartScreen({ match, location, history }) {
   };
 
   return (
-    <Container>
+    <Container className="pt-5">
       <Row>
         <Col md={8}>
           <h1>Shopping Cart</h1>

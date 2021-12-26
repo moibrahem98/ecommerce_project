@@ -59,7 +59,7 @@ function OrderScreen({ match }) {
     return <Message variant="danger">{error}</Message>;
   } else {
     return (
-      <div>
+      <div className="py-5">
         <Message variant="success">
           <p> order is placed &#10004; </p>
         </Message>
