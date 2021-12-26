@@ -1,4 +1,4 @@
-import { Card, Col, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import "./UserPanal.css";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
@@ -43,11 +43,13 @@ function UserPanal({ history }) {
       <div className="container">
         <Row>
           <Col md={6}>
-            <div className="card bg-success">
+            <div className="ad_card bg-success">
               <div className="card-statistic-3">
                 <div>
                   <a href="/profile">
-                    <h2 className="card-title d-inline-block pr-1">Profile</h2>
+                    <h2 className="ad_card_title d-inline-block pr-1">
+                      Profile
+                    </h2>
                     <i class="far fa-user-circle text-light ad_icon"></i>
                   </a>
                 </div>
@@ -62,12 +64,14 @@ function UserPanal({ history }) {
             </div>
           </Col>
           <Col md={6}>
-            <div className="card bg-warning">
+            <div className="ad_card bg-warning">
               <div className="card-statistic-3">
                 <div>
                   <a href="/myorders">
-                    {" "}
-                    <h2 className="card-title d-inline-block pr-2"> Orders</h2>
+                    <h2 className="ad_card_title d-inline-block pr-2">
+                      {" "}
+                      Orders
+                    </h2>
                     <i class="far fa-shopping-bag text-light ad_icon"></i>
                   </a>
                 </div>
@@ -82,11 +86,11 @@ function UserPanal({ history }) {
             </div>
           </Col>
           <Col md={6}>
-            <div className="card bg-danger">
+            <div className="ad_card bg-danger">
               <div className="card-statistic-3">
                 <div>
                   <a href="/myreturns">
-                    <h2 className="card-title d-inline-block pr-2">
+                    <h2 className="ad_card_title d-inline-block pr-2">
                       My Returns
                     </h2>
                     <i class="far fa-undo-alt text-light ad_icon"></i>
@@ -103,12 +107,12 @@ function UserPanal({ history }) {
             </div>
           </Col>
           <Col md={6}>
-            <div className="card bg-info">
+            <div className="ad_card bg-info">
               <div className="card-statistic-3">
                 <div>
                   <a href="/update">
                     {" "}
-                    <h2 className="card-title d-inline-block pr-2">
+                    <h2 className="ad_card_title d-inline-block pr-2">
                       Update Profile
                     </h2>
                     <i className="far fa-pencil text-light ad_icon"></i>

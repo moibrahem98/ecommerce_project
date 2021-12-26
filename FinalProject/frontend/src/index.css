@@ -119,6 +119,7 @@ h3 {
   min-width: 50%;
   border-radius: 4px;
   margin: 80px auto;
+  margin-top: 130px;
 }
 
 footer {
@@ -148,7 +149,6 @@ footer {
 }
 
 .navbar-nav {
-  padding-top: 20px;
   align-items: center !important;
 }
 
