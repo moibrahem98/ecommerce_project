@@ -66,9 +66,9 @@ function Header() {
           color: "#232323",
         }}
       >
-        <Container className="align-items-center navbar">
-          <LinkContainer to="/" className="justify-content-start">
-            <Navbar.Brand className="brand justify-content-start">
+        <Container className="navbar">
+          <LinkContainer to="/">
+            <Navbar.Brand>
               <img
                 src={logo}
                 className="logo_img"
@@ -81,10 +81,10 @@ function Header() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
           <Navbar.Collapse
-            id="basic-navbar-nav"
             className="justify-content-center"
+            id="basic-navbar-nav"
           >
-            <Nav className="me-auto" style={{ marginLeft: " 180px" }}>
+            <Nav>
               {categories.map((category) => (
                 <LinkContainer to={`/categoryproducts/${category.id}`}>
                   <Nav.Link id="basic-nav-dropdown">{category.name}</Nav.Link>
@@ -97,17 +97,18 @@ function Header() {
             id="basic-navbar-nav"
             className="justify-content-end"
           >
-            <Nav className="ml-auto justify-content-end main_icons">
-              <SearchBox />
+            <SearchBox />
+
+            <Nav className="main_icons">
               <LinkContainer to="/cart">
                 <Nav.Link>
-                  <i className="fas fa-shopping-cart mt-1"></i>
+                  <i className="fal fa-cart-plus mt-1 icon_size"></i>
                 </Nav.Link>
               </LinkContainer>
 
               {userInfo ? (
                 <NavDropdown
-                  title={<i class="fas fa-user"></i>}
+                  title={<i className="fal fa-user icon_size"></i>}
                   id="username"
                   className="justify-content-end font-weight-bold mt-1"
                 >
@@ -128,13 +129,13 @@ function Header() {
               ) : (
                 <LinkContainer to="/login">
                   <Nav.Link>
-                    <i className="fas fa-user mt-2">Login</i>
+                    <i className="fa fa-user mt-1 icon_size">Login</i>
                   </Nav.Link>
                 </LinkContainer>
               )}
               {userInfo && userInfo.isAdmin && (
                 <NavDropdown
-                  title={<i class="fas fa-user-shield"></i>}
+                  title={<i className="fal fa-user-shield icon_size"></i>}
                   id="adminmenue"
                   className="mt-1"
                 >

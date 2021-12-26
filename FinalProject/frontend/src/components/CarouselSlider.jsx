@@ -8,6 +8,7 @@ import slide4 from "../images/4.jpg";
 export default function CarouselSlider() {
   return (
     <Carousel
+      fade
       indicators={false}
       className="main_slider"
       style={{ marginTop: "-75px" }}

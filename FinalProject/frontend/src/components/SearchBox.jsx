@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 function SearchBox() {
@@ -16,16 +17,17 @@ function SearchBox() {
   };
   return (
     <Form onSubmit={submitHandler} inline>
-      <div className="position-relative">
+      <div className="search_bar">
         <input
-          id="search_box"
           type="text"
           name="q"
-          className="form-control m-1"
-          style={{ width: "200px" }}
+          className="typing"
           placeholder="search"
           onChange={(event) => setName(event.target.value)}
         />
+        <Link className="btn" to="#!">
+          <i className="fas fa-search"></i>
+        </Link>
       </div>
     </Form>
   );

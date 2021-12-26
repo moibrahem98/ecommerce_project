@@ -42,7 +42,7 @@ export default function App() {
                 >
                   <i className="fab fa-2x fa-whatsapp blackiconcolor"></i>
                 </Link>
-                <Link to="#!">
+                <Link to="https://www.instagram.com/midnight6088">
                   <i className="fab fa-2x fa-instagram blackiconcolor"></i>
                 </Link>
               </li>

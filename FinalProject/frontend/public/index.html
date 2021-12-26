@@ -12,8 +12,8 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
+
 
   <!--
 
@@ -47,16 +47,16 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
 
-    <!-- chatbot  -->
-    <script type="text/javascript">
-      (function(d, m){
-          var kommunicateSettings = 
-              {"appId":"162c51cf566f83c708f01e075b3656f01","popupWidget":true,"automaticChatOpenOnNavigation":true};
-          var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
-          s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
-          var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
-          window.kommunicate = m; m._globals = kommunicateSettings;
-      })(document, window.kommunicate || {});
+  <!-- chatbot  -->
+  <script type="text/javascript">
+    (function (d, m) {
+      var kommunicateSettings =
+        { "appId": "162c51cf566f83c708f01e075b3656f01", "popupWidget": true, "automaticChatOpenOnNavigation": true };
+      var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+      s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+      var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+      window.kommunicate = m; m._globals = kommunicateSettings;
+    })(document, window.kommunicate || {});
   /* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
   </script>
 </body>
