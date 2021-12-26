@@ -33,10 +33,8 @@ function MyReturnsPage({ history }) {
   }, [dispatch, history, userInfo, user]);
 
   return (
-    <div
-      style={{ marginTop: "100px", alignItems: "center", textAlign: "center" }}
-    >
-      <h1 style={{ textAlign: "center" }}>My Returns</h1>
+    <div className="py-5 text-center" style={{ alignItems: "center" }}>
+      <h2 style={{ textAlign: "center" }}>My Returns</h2>
       <Row md={9}>
         {loadingReturns ? (
           <Loader />

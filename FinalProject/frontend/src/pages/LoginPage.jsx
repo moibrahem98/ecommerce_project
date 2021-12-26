@@ -27,8 +27,8 @@ function LoginScreen({ location, history }) {
     dispatch(login(email, password));
   };
   return (
-    <Container>
-      <Row className="mt-5">
+    <Container className="py-5">
+      <Row>
         <Col lg={5} md={6} sm={12} className="p-5 m-auto shadow rounded-lg">
           <h3 className="mt-1 p-2 text-center">CUSTOMER LOGIN</h3>{" "}
           <Form onSubmit={submitHandler}>

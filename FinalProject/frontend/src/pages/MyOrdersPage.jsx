@@ -29,59 +29,60 @@ function MyOrdersScreen({ history }) {
   }, [dispatch, history, userInfo, user]);
 
   return (
-    <Row md={9}>
-      <h2>My Orders</h2>
-      {loadingOrders ? (
-        <Loader />
-      ) : errorOrders ? (
-        <Message variant="danger">{errorOrders}</Message>
-      ) : (
-        <Table striped responsive className="table-sm">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Date</th>
-              <th>Total</th>
-              <th>Paid</th>
-              <th>Delivered</th>
-              <th>order details</th>
-            </tr>
-          </thead>
-          <tbody>
-            {orders.map((order) => (
-              <tr key={order._id}>
-                <td>{order._id}</td>
-                <td>{order.created_at.substring(0, 10)}</td>
-                <td>{order.total_price} L.E</td>
-                <td>
-                  {order.is_paid ? (
-                    order.paid_at.substring(0, 10)
-                  ) : (
-                    <i className="fas fa-times" style={{ color: "red" }}></i>
-                  )}
-                </td>
-                <td>
-                  {order.is_delivered ? (
-                    order.delivered_at.substring(0, 10)
-                  ) : (
-                    <i className="fas fa-times" style={{ color: "red" }}></i>
-                  )}
-                </td>
-                <td>
-                  <LinkContainer to={`/order/${order._id}`}>
-                    <Button variant="light" className=" btn-sm ">
-                      {" "}
-                      Details{" "}
-                    </Button>
-                  </LinkContainer>
-                </td>
+    <div className="py-5">
+      <Row md={9}>
+        <h2>My Orders</h2>
+        {loadingOrders ? (
+          <Loader />
+        ) : errorOrders ? (
+          <Message variant="danger">{errorOrders}</Message>
+        ) : (
+          <Table striped responsive className="table-sm">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Total</th>
+                <th>Paid</th>
+                <th>Delivered</th>
+                <th>order details</th>
               </tr>
-            ))}
-          </tbody>
-        </Table>
-      )}
-      <Col></Col>
-    </Row>
+            </thead>
+            <tbody>
+              {orders.map((order) => (
+                <tr key={order._id}>
+                  <td>{order._id}</td>
+                  <td>{order.created_at.substring(0, 10)}</td>
+                  <td>{order.total_price} L.E</td>
+                  <td>
+                    {order.is_paid ? (
+                      order.paid_at.substring(0, 10)
+                    ) : (
+                      <i className="fas fa-times" style={{ color: "red" }}></i>
+                    )}
+                  </td>
+                  <td>
+                    {order.is_delivered ? (
+                      order.delivered_at.substring(0, 10)
+                    ) : (
+                      <i className="fas fa-times" style={{ color: "red" }}></i>
+                    )}
+                  </td>
+                  <td>
+                    <LinkContainer to={`/order/${order._id}`}>
+                      <Button variant="light" className=" btn-sm ">
+                        {" "}
+                        Details{" "}
+                      </Button>
+                    </LinkContainer>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        )}
+      </Row>
+    </div>
   );
 }
 

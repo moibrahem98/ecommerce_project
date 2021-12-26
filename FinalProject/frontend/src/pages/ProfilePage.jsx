@@ -38,19 +38,17 @@ function ProfileScreen({ history }) {
       ) : error ? (
         <Message>{error}</Message>
       ) : (
-        <Container style={{ marginTop: "150px", marginBottom: "150px" }}>
-          <div className="border w-50 rounded m-auto">
-            <h1
-              className=" rounded mt-2"
+        <Container>
+          <div className="w-50 m-auto py-5">
+            <h2
+              className="h2 mt-2"
               style={{
                 fontFamily: "monospace",
                 textAlign: "center",
-                backgroundColor: "WhiteSmoke",
               }}
             >
-              {" "}
               User Profile
-            </h1>
+            </h2>
             <Card md={4}>
               <Card.Body>
                 <Card.Text>
@@ -63,10 +61,7 @@ function ProfileScreen({ history }) {
                   <strong>Email:</strong> {email}
                 </Card.Text>
                 <hr></hr>
-                <a
-                  className="btn btn-dark text-success align-center btn_color"
-                  href="/update"
-                >
+                <a className="btn btn_color" href="/update">
                   Update Data
                 </a>
               </Card.Body>

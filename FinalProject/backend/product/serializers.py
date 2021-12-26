@@ -17,24 +17,21 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_reviews(self, obj):
-        reviews = obj.review_set.all()
+        reviews = obj.review.all()
         serializer = ReviewSerializer(reviews, many=True)
         return serializer.data
 
     def get_category1(self, obj):
-        print("sadasdasdasasdasdasd", obj.category)
         category1 = Category.objects.get(name=obj.category)
         serializer = CategorySerializer(category1, many=False)
         return serializer.data
 
     def get_subcategory1(self, obj):
-        print("****************", obj.sub_category)
         category1 = SubCategory.objects.get(name=obj.sub_category)
         serializer = CategorySerializer(category1, many=False)
         return serializer.data
 
     def get_brand1(self, obj):
-        print( "++++++++++++++++++++++++++++++",obj.brand)
         brand1 = Brand.objects.get(name=obj.brand)
         serializer = CategorySerializer(brand1, many=False)
         return serializer.data
@@ -60,7 +57,6 @@ class SubCategorySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_category1(self, obj):
-        print("sadasdasdasasdasdasd", obj.category)
         category1 = Category.objects.get(name=obj.category)
         serializer = CategorySerializer(category1, many=False)
         return serializer.data
@@ -82,4 +78,10 @@ class ReturnsSerializer(serializers.ModelSerializer):
 class BrandSerializer(serializers.ModelSerializer):
     class Meta:
         model = Brand
+        fields = '__all__'
+
+
+class BannerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Banner
         fields = '__all__'

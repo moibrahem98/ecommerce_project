@@ -2,12 +2,13 @@ body {
   font-family: "Cairo", sans-serif;
 }
 
-main {
-  min-height: 80vh;
+.heading_2 {
+  color: #202020;
 }
 
 .heading_1 {
-  color: #202020;
+  color: #418993;
+
 }
 
 .btn_color {
@@ -28,7 +29,6 @@ a {
 h1 {
   font-size: 1.8rem;
   padding: 1rem 0;
-  color: #418993;
 }
 
 h2 {
@@ -119,6 +119,7 @@ h3 {
   min-width: 50%;
   border-radius: 4px;
   margin: 80px auto;
+  margin-top: 130px;
 }
 
 footer {
@@ -133,22 +134,77 @@ footer {
   color: #555;
 }
 
-.navbar-collapse {
-  /* background-color: #fff; */
-  /* align-items: center; */
-  /* padding: 10px; */
+
+.bottom_nav {
+  border-radius: 0 0 10px 10px;
 }
 
 .main_icons {
   justify-content: center;
 }
 
-/* .navbar-nav {
-  align-items: center;
-} */
-.navbar {
-  justify-content: space-between;
+.navbar-nav {
+  align-items: center !important;
 }
+
+.carousel_img {
+  max-width: 100%;
+}
+
+
+
+
+@media (max-width: 991px) {
+  .navbar-collapse {
+    background-color: #fff;
+    padding-top: 22px;
+    border-bottom: 1px solid #d6d5d5;
+    border: 1px solid #d6d5d5;
+  }
+
+  .main_icons {
+    flex-direction: row-reverse !important;
+    gap: 1rem;
+  }
+
+  .carousel_img_main {
+    height: 70vh;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+
+  .carousel_img_main {
+    height: 50vh;
+  }
+
+  .carousel_img {
+    width: 300px !important;
+    height: 350px;
+  }
+}
+
+@media (max-width: 600px) {
+  .carousel_img_main {
+    height: 40vh;
+  }
+}
+
+@media (max-width: 575px) {
+  .carousel_img {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 450px) {
+  .carousel_img_main {
+    height: 40vh;
+  }
+
+}
+
 
 @media (max-width: 306px) {
   .navbar {
@@ -156,21 +212,7 @@ footer {
   }
 }
 
-@media (max-width: 450px) {
-  .logo_img {
-    width: 120px !important;
-  }
-}
-
-@media (max-width: 991px) {
-  .main_icons {
-    flex-direction: row-reverse !important;
-    gap: 1rem;
-  }
-}
-
-@media (min-width: 1020px) {
-}
+@media (min-width: 1020px) {}
 
 /* ++++++ SCROLL BAR +++++++ */
 /* width */
@@ -203,20 +245,18 @@ footer {
 .search_bar {
   height: 40px;
   padding: 8px;
-  /* background: #fff; */
   color: #202020;
   border-radius: 30px;
   transition: all 1s ease;
   border: 0.5px solid #202020;
 }
 
-.btn {
+.btn_search {
   display: flex;
   cursor: pointer;
   justify-content: center;
   align-items: center;
   float: right;
-  /* width: 10px; */
   transition: 0.4s;
   height: 100%;
   border-radius: 20px;
@@ -236,7 +276,7 @@ footer {
   height: 100%;
 }
 
-.search_bar:hover > .typing,
+.search_bar:hover>.typing,
 .typing:focus {
   padding: 0 6px;
   max-width: 150px;
