@@ -7,6 +7,8 @@ import logo from "../images/brand.png";
 import SearchBox from "./SearchBox";
 import { listCategories, listSubCategories } from "../actions/productActions";
 import { Link } from "react-router-dom";
+import DarkMode from "../DarkMode";
+
 function Header() {
   const categoriesList = useSelector((state) => state.categoriesList);
   const { categories } = categoriesList;
@@ -54,8 +56,8 @@ function Header() {
   if (!subcategories) return null;
 
   return (
-    <header style={{ marginBottom: "75px" }}>
-      <Navbar
+    <header style={{ marginBottom: "75px" }}  >
+      <Navbar 
         expand="lg"
         collapseOnSelect
         fixed="top"
@@ -65,8 +67,9 @@ function Header() {
           zIndex: "1500",
           color: "#232323",
         }}
+        className="hea"
       >
-        <Container className="navbar">
+        <Container className="navbar hea">
           <LinkContainer to="/">
             <Navbar.Brand>
               <img
@@ -145,6 +148,7 @@ function Header() {
                   </Nav.Link>
                 </LinkContainer>
               )}
+               {/* <DarkMode /> */}
               {userInfo && userInfo.isAdmin && (
                 <NavDropdown
                   title={<i className="fal fa-user-shield icon_size"></i>}
@@ -167,6 +171,9 @@ function Header() {
                   </LinkContainer>
                 </NavDropdown>
               )}
+
+                    <DarkMode />
+
             </Nav>
           </Navbar.Collapse>
         </Container>
