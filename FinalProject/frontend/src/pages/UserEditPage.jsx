@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
@@ -46,10 +46,12 @@ function UserEditScreen({ match, history }) {
     dispatch(updateUser({ _id: user._id, name, email, isAdmin }));
   };
 
+  let hist = useHistory();
   return (
     <div>
-      <Link to="/admin/userlist">Go Back</Link>
-
+      <Button onClick={() => hist.goBack()} className="btn btn-light my-3">
+        Go Back
+      </Button>
       <FormContainer>
         <h1>Edit User</h1>
         {loadingUpdate && <Loader />}
@@ -90,7 +92,7 @@ function UserEditScreen({ match, history }) {
               ></Form.Check>
             </Form.Group>
 
-            <Button type="submit" variant="dark" className="text-success">
+            <Button type="submit" className="btn_color">
               Update
             </Button>
           </Form>

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Row,
@@ -36,11 +36,13 @@ function CartScreen({ match, location, history }) {
     history.push("/login?redirect=shipping");
   };
 
+  let hist = useHistory();
+
   return (
     <Container className="pt-5">
       <Row>
         <Col md={8}>
-          <h1>Shopping Cart</h1>
+          <h3>Shopping Cart</h3>
           {cartItems.length === 0 ? (
             <Message variant="info">
               Your cart is empty <Link to="">Go Back</Link>

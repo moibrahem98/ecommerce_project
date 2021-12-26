@@ -128,6 +128,7 @@ function Header() {
               )}
               {userInfo && userInfo.isAdmin && (
                 <NavDropdown
+                  className="dropdown-toggle-split"
                   title={<i className="fal fa-user-shield icon_size"></i>}
                   id="adminmenue"
                 >

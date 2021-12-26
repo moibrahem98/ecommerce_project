@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
   Row,
   Col,
@@ -63,12 +63,14 @@ function ProductScreen({ match, history }) {
     );
   };
 
+  let hist = useHistory();
+
   return (
     <Container>
       <div>
-        <Link to="/" className="btn btn-light my-3">
+        <Button onClick={() => hist.goBack()} className="btn btn-light my-3">
           Go Back
-        </Link>
+        </Button>
         {loading ? (
           <Loader />
         ) : error ? (
