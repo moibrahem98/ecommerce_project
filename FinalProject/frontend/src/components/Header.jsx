@@ -66,7 +66,7 @@ function Header() {
           color: "#232323",
         }}
       >
-        <Container className="navbar align-items-center">
+        <Container fluid className="navbar align-items-center">
           <LinkContainer to="/">
             <Navbar.Brand>
               <img
