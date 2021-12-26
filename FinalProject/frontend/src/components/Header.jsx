@@ -7,6 +7,8 @@ import logo from "../images/brand.png";
 import SearchBox from "./SearchBox";
 import { listCategories, listSubCategories } from "../actions/productActions";
 import { Link } from "react-router-dom";
+// import DarkMode from "../DarkMode";
+
 function Header() {
   const categoriesList = useSelector((state) => state.categoriesList);
   const { categories } = categoriesList;
@@ -65,6 +67,7 @@ function Header() {
           zIndex: "1500",
           color: "#232323",
         }}
+        className="hea"
       >
         <Container fluid className="navbar align-items-center">
           <LinkContainer to="/">
@@ -126,6 +129,7 @@ function Header() {
                   </Nav.Link>
                 </LinkContainer>
               )}
+               {/* <DarkMode /> */}
               {userInfo && userInfo.isAdmin && (
                 <NavDropdown
                   className="dropdown-toggle-split"
@@ -148,6 +152,9 @@ function Header() {
                   </LinkContainer>
                 </NavDropdown>
               )}
+
+                    {/* <DarkMode /> */}
+
             </Nav>
           </Navbar.Collapse>
         </Container>
