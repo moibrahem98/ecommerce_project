@@ -9,6 +9,7 @@ from rest_framework import viewsets
 from order.models import Order
 
 
+
 class getCategories(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
     queryset = Category.objects.all()
@@ -120,7 +121,7 @@ def createProductReview(request, pk):
     product = Product.objects.get(_id=pk)
     data = request.data
 
-    alreadyExists = product.review_set.filter(user=user).exists()
+    alreadyExists = product.review.filter(user=user).exists()
 
     if alreadyExists:
         content = {'detail': 'Product already reviewed'}
@@ -138,7 +139,7 @@ def createProductReview(request, pk):
             rating=data['rating'],
             comment=data['comment'],
         )
-        reviews = product.review_set.all()
+        reviews = product.review.all()
         product.reviews_number = len(reviews)
 
         total = 0

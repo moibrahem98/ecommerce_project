@@ -17,7 +17,7 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_reviews(self, obj):
-        reviews = obj.review_set.all()
+        reviews = obj.review.all()
         serializer = ReviewSerializer(reviews, many=True)
         return serializer.data
 
@@ -57,7 +57,6 @@ class SubCategorySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_category1(self, obj):
-        print("sadasdasdasasdasdasd", obj.category)
         category1 = Category.objects.get(name=obj.category)
         serializer = CategorySerializer(category1, many=False)
         return serializer.data
