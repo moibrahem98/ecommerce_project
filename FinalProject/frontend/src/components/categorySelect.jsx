@@ -1,41 +1,91 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { LinkContainer } from "react-router-bootstrap";
-import { Table, Button } from "react-bootstrap";
+import {
+  Table,
+  Button,
+  Form,
+  Col,
+  ListGroup,
+  Card,
+  ListGroupItem,
+} from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { listCategories } from "../actions/productActions";
+import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-function ReturnsListPage({ history }) {
+function InternalSearch() {
   const dispatch = useDispatch();
+  const [name, setName] = useState("");
+  const [minprice, setMinprice] = useState("");
+  const [maxprice, setMaxprice] = useState("");
 
-  const categoriesList = useSelector((state) => state.categoriesList);
-  const { categories } = categoriesList;
-  console.log(categoriesList);
-  const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
+  let history = useHistory();
+  const submitHandler = (event) => {
+    event.preventDefault();
+    if (name) {
+      history.push(
+        `/?name=${name}&price_min=${minprice}&price_max=${maxprice}`
+      );
+    } else {
+      history.push(history.push(history.location.pathname));
+    }
+  };
 
-  useEffect(() => {
-    dispatch(listCategories());
-  }, [dispatch, history]);
-
-  console.log(categories, "cccccccccccccccccccccccc");
-  if (!categories) return null;
   return (
     <div>
-      <h1>All Categories</h1>
-      {categories.map((category) => (
-        <div>
-          <p>{category.name}</p>
-          <LinkContainer to={`/categoryproducts/${category.id}`}>
-            <Button variant="light" className="btn-sm btn_color">
-              Details{" "}
-            </Button>
-          </LinkContainer>
-        </div>
-      ))}
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <Col md={4}>
+        <Card className=" shadow rounded-sm" style={{ alignItems: "center" }}>
+          <Form onSubmit={submitHandler} inline style={{ marginTop: "15px" }}>
+            <ListGroup>
+              <label for="search" class="form-label">
+                Search
+              </label>
+
+              <input
+                className="form-control d-inline m-3"
+                type="text"
+                name="q"
+                placeholder="search"
+                onChange={(event) => setName(event.target.value)}
+              />
+            </ListGroup>
+            <ListGroup>
+              <label for="search" class="form-label">
+                Price
+              </label>
+
+              <div className="d-inline">
+                <input
+                  type="text"
+                  price="1"
+                  style={{ width: "150px " }}
+                  className=" form-control d-inline"
+                  onChange={(event) => setMinprice(event.target.value)}
+                  placeholder="Min Price"
+                />
+                <input
+                  type="text"
+                  price="1"
+                  style={{ width: "150px " }}
+                  className=" form-control d-inline"
+                  onChange={(event) => setMaxprice(event.target.value)}
+                  placeholder="Max Price"
+                />
+              </div>
+            </ListGroup>
+          </Form>
+        </Card>
+      </Col>
     </div>
   );
 }
 
-export default ReturnsListPage;
+export default InternalSearch;

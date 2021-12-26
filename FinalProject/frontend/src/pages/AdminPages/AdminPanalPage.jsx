@@ -14,9 +14,12 @@ export default function AdminPanalPage() {
       <div className="col-md-10 ">
         <div className="row ">
           <div className="col-xl-3 col-lg-6">
-            <div className="card l-bg-cherry">
+            <divs className="card l-bg-cherry">
               <div className="card-statistic-3 p-4">
-                <div className="card-icon card-icon-large">
+                <div
+                  className="card-icon card-icon-large"
+                  style={{ fontSize: "110px" }}
+                >
                   <i className="fas fa-shopping-cart"></i>
                 </div>
                 <div className="mb-4">
@@ -53,7 +56,7 @@ export default function AdminPanalPage() {
                   ></div>
                 </div>
               </div>
-            </div>
+            </divs>
           </div>
 
           <div className="col-xl-3 col-lg-6">

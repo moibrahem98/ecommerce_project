@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Row, Col, Container, Image } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import Product from "../components/Product";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
@@ -8,8 +8,6 @@ import { listProducts } from "../actions/productActions";
 import ProductCarousel from "../components/ProductCarousel";
 import CatSlider from "../components/CatSlider";
 import CarouselSlider from "../components/CarouselSlider";
-import before from "../images/before.jpg";
-import banner from "../images/banner.jpg";
 
 function HomeScreen({ history }) {
   const dispatch = useDispatch();
@@ -55,6 +53,7 @@ function HomeScreen({ history }) {
           </Row>
         )}
       </Container>
+
       {/* <Image
         src={before}
         alt="photo"

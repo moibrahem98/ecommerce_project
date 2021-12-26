@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown, L } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../actions/userActions";
 import logo from "../images/brand.png";
 import SearchBox from "./SearchBox";
 import { listCategories, listSubCategories } from "../actions/productActions";
-
+import { Link } from "react-router-dom";
 function Header() {
   const categoriesList = useSelector((state) => state.categoriesList);
   const { categories } = categoriesList;
@@ -107,26 +107,38 @@ function Header() {
               </LinkContainer>
 
               {userInfo ? (
-                <NavDropdown
-                  title={<i className="fal fa-user icon_size"></i>}
-                  id="username"
-                  className="justify-content-end font-weight-bold mt-1"
-                >
-                  <LinkContainer to="/profile">
-                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                <>
+                  <LinkContainer to="/userpanal">
+                    <Nav.Link>
+                      <i className="fal fa-user mt-1 icon_size"></i>
+                    </Nav.Link>
                   </LinkContainer>
-                  <LinkContainer to="/myorders">
-                    <NavDropdown.Item>My Orders</NavDropdown.Item>
-                  </LinkContainer>
-                  <LinkContainer to="/update">
-                    <NavDropdown.Item>Update Profile</NavDropdown.Item>
-                  </LinkContainer>
-
-                  <NavDropdown.Item onClick={logoutHandler}>
-                    Logout
-                  </NavDropdown.Item>
-                </NavDropdown>
+                  <Link onClick={logoutHandler}>
+                    <Nav.Link>
+                      <i className="far fa-sign-out-alt mt-1 icon_size"></i>
+                    </Nav.Link>
+                  </Link>
+                </>
               ) : (
+                // <NavDropdown
+                //   title={<i className="fal fa-user icon_size"></i>}
+                //   id="username"
+                //   className="justify-content-end font-weight-bold mt-1"
+                // >
+                //   <LinkContainer to="/profile">
+                //     <NavDropdown.Item>Profile</NavDropdown.Item>
+                //   </LinkContainer>
+                //   <LinkContainer to="/myorders">
+                //     <NavDropdown.Item>My Orders</NavDropdown.Item>
+                //   </LinkContainer>
+                //   <LinkContainer to="/update">
+                //     <NavDropdown.Item>Update Profile</NavDropdown.Item>
+                //   </LinkContainer>
+
+                //   <NavDropdown.Item onClick={logoutHandler}>
+                //     Logout
+                //   </NavDropdown.Item>
+                // </NavDropdown>
                 <LinkContainer to="/login">
                   <Nav.Link>
                     <i className="fa fa-user mt-1 icon_size">Login</i>

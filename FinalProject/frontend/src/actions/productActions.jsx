@@ -265,7 +265,39 @@ export const listReturns = () => async (dispatch, getState) => {
     });
   }
 };
+export const listMyReturnsFunction = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: "LIST_MY_RETURNS_REQUEST",
+    });
 
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.get(`/product/api/myreturns/`, config);
+    console.log(data, "rrrrrrrrrrrrrrrrrrrrrrreeeeeee");
+    dispatch({
+      type: "LIST_MY_RETURNS_SUCCESS",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "LIST_MY_RETURNS_FAIL",
+      payload:
+        error.response && error.response.data.detail
+          ? error.response.data.detail
+          : error.message,
+    });
+  }
+};
 export const getReturnsDetails = (id) => async (dispatch, getState) => {
   try {
     dispatch({
@@ -337,42 +369,51 @@ export const issueStatus = (returns) => async (dispatch, getState) => {
     });
   }
 };
-export const createReturn = () => async (dispatch, getState) => {
-  try {
-    dispatch({
-      type: "RETURN_CREATE_REQUEST",
-    });
+export const createReturn =
+  (title, productname, issue, ordernumber, phonenumber) =>
+  async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: "RETURN_CREATE_REQUEST",
+      });
 
-    const {
-      userLogin: { userInfo },
-    } = getState();
+      const {
+        userLogin: { userInfo },
+      } = getState();
 
-    const config = {
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    };
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
 
-    const { data } = await axios.post(
-      `/product/api/returns/create/`,
-      {},
-      config
-    );
-    dispatch({
-      type: "RETURN_CREATE_SUCCESS",
-      payload: data,
-    });
-  } catch (error) {
-    dispatch({
-      type: "RETURN_CREATE_FAIL",
-      payload:
-        error.response && error.response.data.detail
-          ? error.response.data.detail
-          : error.message,
-    });
-  }
-};
+      const { data } = await axios.post(
+        `/product/api/returns/create/`,
+        {
+          title: title,
+          productname: productname,
+          issue: issue,
+          ordernumber: ordernumber,
+          phonenumber: phonenumber,
+        },
+        config
+      );
+
+      dispatch({
+        type: "RETURN_CREATE_SUCCESS",
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: "RETURN_CREATE_FAIL",
+        payload:
+          error.response && error.response.data.detail
+            ? error.response.data.detail
+            : error.message,
+      });
+    }
+  };
 // ==========================================================
 // Categories
 
@@ -382,17 +423,7 @@ export const listCategories = () => async (dispatch, getState) => {
       type: "CATEGORIES_LIST_REQUEST",
     });
 
-    const {
-      userLogin: { userInfo },
-    } = getState();
-
-    const config = {
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    };
-    const { data } = await axios.get(`/product/api/categories/`, config);
+    const { data } = await axios.get(`/product/api/categories/`);
     dispatch({
       type: "CATEGORIES_LIST_SUCCESS",
       payload: data,
@@ -408,42 +439,32 @@ export const listCategories = () => async (dispatch, getState) => {
   }
 };
 
-export const getProductByCategory = (id) => async (dispatch, getState) => {
-  try {
-    dispatch({
-      type: "PRODUCT_CATEGORY_LIST_REQUEST",
-    });
+export const getProductByCategory =
+  (id, name = "") =>
+  async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: "PRODUCT_CATEGORY_LIST_REQUEST",
+      });
 
-    const {
-      userLogin: { userInfo },
-    } = getState();
+      const { data } = await axios.get(
+        `/product/api/products/category/${id}/${name}`
+      );
 
-    const config = {
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    };
-
-    const { data } = await axios.get(
-      `/product/api/products/category/${id}/`,
-      config
-    );
-
-    dispatch({
-      type: "PRODUCT_CATEGORY_LIST_SUCCESS",
-      payload: data,
-    });
-  } catch (error) {
-    dispatch({
-      type: "PRODUCT_CATEGORY_LIST_FAIL",
-      payload:
-        error.response && error.response.data.detail
-          ? error.response.data.detail
-          : error.message,
-    });
-  }
-};
+      dispatch({
+        type: "PRODUCT_CATEGORY_LIST_SUCCESS",
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: "PRODUCT_CATEGORY_LIST_FAIL",
+        payload:
+          error.response && error.response.data.detail
+            ? error.response.data.detail
+            : error.message,
+      });
+    }
+  };
 // ==========================================================
 // Sub Categories
 
@@ -453,17 +474,7 @@ export const listSubCategories = () => async (dispatch, getState) => {
       type: "SUB_CATEGORY_LIST_REQUEST",
     });
 
-    const {
-      userLogin: { userInfo },
-    } = getState();
-
-    const config = {
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    };
-    const { data } = await axios.get(`/product/api/sub_categories/`, config);
+    const { data } = await axios.get(`/product/api/sub_categories/`);
     dispatch({
       type: "SUB_CATEGORY_LIST_SUCCESS",
       payload: data,
@@ -485,20 +496,8 @@ export const getProductBySubCategory = (id) => async (dispatch, getState) => {
       type: "PRODUCT_SUB_CATEGORY_LIST_REQUEST",
     });
 
-    const {
-      userLogin: { userInfo },
-    } = getState();
-
-    const config = {
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    };
-
     const { data } = await axios.get(
-      `/product/api/products/subcategory/${id}/`,
-      config
+      `/product/api/products/subcategory/${id}/`
     );
 
     dispatch({

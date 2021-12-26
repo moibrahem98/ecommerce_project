@@ -155,7 +155,33 @@ export const returnsListReducer = (state = { returns: [] }, action) => {
       return state;
   }
 };
+export const listMyReturnsReducer = (state = { returns: [] }, action) => {
+  switch (action.type) {
+    case "LIST_MY_RETURNS_REQUEST":
+      return {
+        loading: true,
+      };
 
+    case "LIST_MY_RETURNS_SUCCESS":
+      return {
+        loading: false,
+        returns: action.payload,
+      };
+
+    case "LIST_MY_RETURNS_FAIL":
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    case "LIST_MY_RETURNS_RESET":
+      return {
+        returns: [],
+      };
+
+    default:
+      return state;
+  }
+};
 export const returnDetailsReducer = (state = {}, action) => {
   switch (action.type) {
     case "RETURNS_DETAILS_REQUEST":

@@ -127,6 +127,9 @@ def updateProduct(request, pk):
 @api_view(['GET'])
 def getProductByCategory(request, pk):
     product = Product.objects.filter(category_id=pk)
+    filterset = ProductFilter(request.GET, queryset=product)
+    if filterset.is_valid():
+        product = filterset.qs
     serializer = ProductSerializer(product, many=True)
     return Response(serializer.data)
 
@@ -210,30 +213,22 @@ def list_returns(request):
 def createreturns(request):
     data = request.data
     user = request.user
+    print(data, "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr")
     returns = Returns.objects.create(
         user=user,
         title=data['title'],
         order_num=data['ordernumber'],
         product_name=data['productname'],
+        phone_number = data['phonenumber'],
         issue=data['issue'],
         issue_status=False,
     )
     returns.save()
-    # order_exist = Order.objects.get(_id=data['ordernumber'])
-    # if (order_exist):
-    #     returns = Returns.objects.create(
-    #         user=user,
-    #         title=data['title'],
-    #         order_num=data['ordernumber'],
-    #         product_name=data['productname'],
-    #         issue=data['issue'],
-    #     )
-    #     serializer = ReturnsSerializer(returns, many=False)
-    #     return Response(serializer.data)
 
-    # else:
-    #     content = {'detail': 'order number in not valid'}
-    #     return Response(content, status=status.HTTP_400_BAD_REQUEST)
+    serializer = ReturnsSerializer(returns, many=False)
+    return Response(serializer.data)
+
+    
 
 
 @api_view(['PUT'])
@@ -271,7 +266,13 @@ def getReturnById(request, pk):
     except:
         return Response({'datails': 'return dose not exist'}, status=status.HTTP_400_BAD_REQUEST)
 
-
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def getMyReturns(request):
+    user = request.user
+    returns = user.returns_set.all()
+    serializer = ReturnsSerializer(returns, many=True)
+    return Response(serializer.data)
 # ***************************** brand **********************
 @api_view(['GET'])
 def getbrands(request):

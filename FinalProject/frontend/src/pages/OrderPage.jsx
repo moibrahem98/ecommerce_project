@@ -176,6 +176,17 @@ function OrderScreen({ match }) {
                   <Col>{order.total_price} L.E</Col>
                 </ListGroup.Item>
               </ListGroup>
+              {userInfo && order.is_paid && order.is_delivered && (
+                <ListGroup.Item>
+                  <Link
+                    variant="dark"
+                    className="btn btn-block text-success btn_color"
+                    to="/createreturn"
+                  >
+                    File Return Request{" "}
+                  </Link>
+                </ListGroup.Item>
+              )}
               {userInfo && userInfo.isAdmin && !order.is_paid && (
                 <ListGroup.Item>
                   <Button

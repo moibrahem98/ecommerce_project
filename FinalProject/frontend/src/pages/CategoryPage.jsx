@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Row, Col, Container, Card } from "react-bootstrap";
 import Product from "../components/Product";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import {
   getProductByCategory,
   listSubCategories,
 } from "../actions/productActions";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
+import InternalSearch from "../components/categorySelect";
 
 function CategoryPage({ match, history }) {
   const dispatch = useDispatch();
@@ -22,13 +22,14 @@ function CategoryPage({ match, history }) {
     subcategories,
   } = subcategoriesList;
 
-  const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
-
+  let name = history.location.search;
   useEffect(() => {
     dispatch(listSubCategories());
-    dispatch(getProductByCategory(match.params.id));
-  }, [dispatch, match]);
+    dispatch(getProductByCategory(match.params.id, name));
+  }, [dispatch, match, name]);
+
+  console.log(products, "lllllllllllllllllllllllllllllllll");
+
   if (!products) return null;
   if (!subcategories) return null;
 
@@ -41,7 +42,8 @@ function CategoryPage({ match, history }) {
         <Message variant="danger">{error}</Message>
       ) : (
         <Container>
-          <Row>
+          <InternalSearch />
+          <Row md={8}>
             {subcategories.map((subcategory) => (
               <p>
                 {subcategory.category == match.params.id && (

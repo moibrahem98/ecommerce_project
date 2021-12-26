@@ -157,13 +157,10 @@ footer {
 }
 
 @media (max-width: 450px) {
-
   .logo_img {
     width: 120px !important;
   }
 }
-
-
 
 @media (max-width: 991px) {
   .main_icons {
@@ -172,7 +169,8 @@ footer {
   }
 }
 
-@media (min-width: 1020px) {}
+@media (min-width: 1020px) {
+}
 
 /* ++++++ SCROLL BAR +++++++ */
 /* width */
@@ -209,7 +207,7 @@ footer {
   color: #202020;
   border-radius: 30px;
   transition: all 1s ease;
-  border: .5px solid #202020;
+  border: 0.5px solid #202020;
 }
 
 .btn {
@@ -218,10 +216,10 @@ footer {
   justify-content: center;
   align-items: center;
   float: right;
-  width: 10px;
+  /* width: 10px; */
   transition: 0.4s;
   height: 100%;
-  border-radius: 30px;
+  border-radius: 20px;
 }
 
 .typing {
@@ -238,7 +236,7 @@ footer {
   height: 100%;
 }
 
-.search_bar:hover>.typing,
+.search_bar:hover > .typing,
 .typing:focus {
   padding: 0 6px;
   max-width: 150px;

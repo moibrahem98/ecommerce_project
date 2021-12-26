@@ -26,6 +26,7 @@ urlpatterns = [
     path('api/products/category/<str:pk>/',getProductByCategory,name="produsts_by_category"),
     path('api/products/subcategory/<str:pk>/',getProductBySubCategory,name="produsts_by_subcategory"),
     # ***************************************
+    path('api/myreturns/', getMyReturns, name='myreturns'),
     path('api/returns/create/', createreturns, name='create_returns'),
     path('api/returns/', list_returns, name='returns'),
     path('api/returns/<str:pk>/', getReturnById, name='returns-details'),

@@ -13,21 +13,18 @@ function ReturnCreatePage({ location, history }) {
   const [productname, setProductName] = useState("");
   const [issue, setIssue] = useState("");
   const [ordernumber, setOrderNumber] = useState("");
+  const [phonenumber, setPhonenumber] = useState("");
 
   const dispatch = useDispatch();
-
-  //   const createReturn = useSelector((state) => state.createReturn);
-  //   const { error, loading, userInfo } = createReturn;
-
-  //   useEffect(() => {
-  //     if (userInfo) {
-  //       history.push(redirect);
-  //     }
-  //   }, [history, userInfo, redirect]);
-
+  const returnCreate = useSelector((state) => state.returnCreate);
+  const { success: successCreate } = returnCreate;
+  if (successCreate) {
+    dispatch({ type: "RETURN_CREATE_RESET" });
+    history.push("/myreturns");
+  }
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(createReturn(title, productname, issue, ordernumber));
+    dispatch(createReturn(title, productname, issue, ordernumber, phonenumber));
   };
 
   return (
@@ -46,6 +43,16 @@ function ReturnCreatePage({ location, history }) {
                 placeholder="Enter Complain"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId="phonenumber">
+              <Form.Label>Phone Number</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="Enter Complain"
+                value={phonenumber}
+                onChange={(e) => setPhonenumber(e.target.value)}
               ></Form.Control>
             </Form.Group>
             <Form.Group controlId="productname">

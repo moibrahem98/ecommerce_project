@@ -17,6 +17,7 @@ import {
   categoriesListReducer,
   subcategoriesListReducer,
   getProductBySubCategoryReducer,
+  listMyReturnsReducer,
 } from "./reducers/productReducers";
 import { cartReducer } from "./reducers/cartReducers";
 import {
@@ -54,6 +55,7 @@ const reducer = combineReducers({
   subcategoryProducts: getProductBySubCategoryReducer,
   categoriesList: categoriesListReducer,
   subcategoriesList: subcategoriesListReducer,
+  listMyReturns: listMyReturnsReducer,
 
   // cart
   cart: cartReducer,
