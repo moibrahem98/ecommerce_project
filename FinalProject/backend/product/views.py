@@ -1,3 +1,4 @@
+from django.core import paginator
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
@@ -7,6 +8,7 @@ from .filters import ProductFilter
 from rest_framework import status
 from rest_framework import viewsets
 from order.models import Order
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 class getCategories(viewsets.ModelViewSet):
@@ -25,8 +27,25 @@ def product_list(request):
     filterset = ProductFilter(request.GET, queryset=queryset)
     if filterset.is_valid():
         queryset = filterset.qs
+
+    page = request.query_params.get('page')
+    paginator = Paginator(queryset, 1)
+
+    try:
+        queryset = paginator.page(page)
+    except PageNotAnInteger:
+        queryset = paginator.page(1)
+    except EmptyPage:
+        queryset = paginator.page(paginator.num_pages)
+
+    if page == None or '':
+        page = 1
+
+    # page = int(page)
+
+
     serializer = ProductSerializer(queryset, many=True)
-    return Response(serializer.data)
+    return Response({"products" : serializer.data, 'page' : page, 'pages': paginator.num_pages})
 
 
 @api_view(['GET'])
