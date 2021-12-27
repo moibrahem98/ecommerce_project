@@ -16,12 +16,15 @@ urlpatterns = [
     path('api/product/delete/<str:pk>/', deleteProduct, name="product-delete"),
     path('api/products/upload/', uploadImage, name='image-upload'),
     path('api/products/top/', getTopProducts, name='top-products'),
-    path('api/products/category/<str:pk>/',getProductByCategory,name="produsts_by_category"),
-    path('api/products/subcategory/<str:pk>/',getProductBySubCategory,name="produsts_by_subcategory"),
+    path('api/products/category/<str:pk>/', getProductByCategory, name="produsts_by_category"),
+    path('api/products/subcategory/<str:pk>/', getProductBySubCategory, name="produsts_by_subcategory"),
     path('api/products/', product_list, name='products'),
+    path('api/products/latest/', latestProduct, name='latest-products'),
 
     path('api/categories/', getCategories.as_view({'get': 'list'}), name='categories'),
     path('api/sub_categories/', getSubCategories.as_view({'get': 'list'}), name='subcategories'),
+
+    # ****** returns ***************
 
     path('api/myreturns/', getMyReturns, name='myreturns'),
     path('api/returns/create/', createreturns, name='create_returns'),
@@ -29,7 +32,13 @@ urlpatterns = [
     path('api/returns/<str:pk>/', getReturnById, name='returns-details'),
     path('api/returns/<str:pk>/update/', updatereturns, name='update_returns'),
 
-    path('api/brand/', getbrands, name="brand"),
+    # ****** brand ***************
+
+    path('api/brand/create', createbrand, name="create-brands"),
+    path('api/brands/', getbrands, name="all_brands"),
+    path('api/brand/<str:pk>', GetbrandById, name="brand"),
+    path('api/brand/<str:pk>/products', getProductByBrand, name='products_by_brand'),
+
 
     path('api/banners/create', createBanner, name="create_banner"),
     path('api/banners/<str:pk>', deleteBanner, name="delete_banner"),
