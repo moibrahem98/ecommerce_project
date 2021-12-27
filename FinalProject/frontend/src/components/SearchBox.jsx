@@ -10,24 +10,31 @@ function SearchBox() {
   const submitHandler = (event) => {
     event.preventDefault();
     if (name) {
-      history.push(`/?name=${name}`);
+      history.push(`/search?name=${name}`);
     } else {
       history.push(history.push(history.location.pathname));
     }
   };
   return (
     <Form onSubmit={submitHandler} inline>
-      <div className="search_bar">
+      <div
+        className="justify-contnet-center  mb-3"
+        style={{
+          textAlign: "center",
+          alignItems: "center",
+          alignContent: "center",
+        }}
+      >
         <input
+          className="form-control"
           type="text"
           name="q"
-          className="typing"
           placeholder="search"
           onChange={(event) => setName(event.target.value)}
         />
-        <Link className="btn btn_search" to="#!">
-          <i className="fas fa-search"></i>
-        </Link>
+        <button className="btn btn-outline-primary">
+          <i className="fas fa-search "></i>
+        </button>
       </div>
     </Form>
   );

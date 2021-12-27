@@ -56,6 +56,26 @@ export const listTopProducts = () => async (dispatch) => {
     });
   }
 };
+export const listLatestProducts = () => async (dispatch) => {
+  try {
+    dispatch({ type: "LATEST_PRODUCTS_REQUEST" });
+
+    const { data } = await axios.get(`/product/api/products/latest/`);
+
+    dispatch({
+      type: "LATEST_PRODUCTS_SUCCESS",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "LATEST_PRODUCTS_FAIL",
+      payload:
+        error.response && error.response.data.detail
+          ? error.response.data.detail
+          : error.message,
+    });
+  }
+};
 
 export const listProductDetails = (id) => async (dispatch) => {
   try {

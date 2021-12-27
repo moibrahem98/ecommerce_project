@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomeScreen from "./pages/HomePage";
+import SearchPage from "./pages/SearchPage";
 import ProductScreen from "./pages/ProductPage";
 import CartScreen from "./pages/CartPage";
 import LoginScreen from "./pages/LoginPage";
@@ -40,6 +41,7 @@ function App() {
         <Switch>
           <Route path="/product/:id" component={ProductScreen} />
           <Route path="/cat" component={InternalSearch} />
+          <Route path="/search" component={SearchPage} />
           <Route path="/categoryproducts/:id" component={CategoryPage} />
           <Route path="/subcategoryproducts/:id" component={SubCategoryPage} />
           <Route path="/cart/:id?" component={CartScreen} />

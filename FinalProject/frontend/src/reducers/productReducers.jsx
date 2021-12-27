@@ -130,6 +130,22 @@ export const productTopRatedReducer = (state = { products: [] }, action) => {
   }
 };
 
+export const latestProductsReducer = (state = { products: [] }, action) => {
+  switch (action.type) {
+    case "LATEST_PRODUCTS_REQUEST":
+      return { loading: true, products: [] };
+
+    case "LATEST_PRODUCTS_SUCCESS":
+      return { loading: false, products: action.payload };
+
+    case "LATEST_PRODUCTS_FAIL":
+      return { loading: false, error: action.payload };
+
+    default:
+      return state;
+  }
+};
+
 // RETURNS
 
 export const returnsListReducer = (state = { returns: [] }, action) => {
@@ -353,21 +369,3 @@ export const getProductBySubCategoryReducer = (state = {}, action) => {
       return state;
   }
 };
-// export const productDetailsReducer = (
-//   state = { product: { reviews: [] } },
-//   action
-// ) => {
-//   switch (action.type) {
-//     case "PRODUCT_DETAILS_REQUEST":
-//       return { loading: true, ...state };
-
-//     case "PRODUCT_DETAILS_SUCCESS":
-//       return { loading: false, product: action.payload };
-
-//     case "PRODUCT_DETAILS_FAIL":
-//       return { loading: false, error: action.payload };
-
-//     default:
-//       return state;
-//   }
-// };

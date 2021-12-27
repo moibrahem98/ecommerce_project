@@ -87,7 +87,7 @@ function Header() {
             className="justify-content-center"
             id="basic-navbar-nav"
           >
-            <Nav>
+            <Nav className="justify-content-center">
               {categories.map((category) => (
                 <LinkContainer to={`/categoryproducts/${category.id}`}>
                   <Nav.Link id="basic-nav-dropdown">{category.name}</Nav.Link>
@@ -103,6 +103,11 @@ function Header() {
             {/* <SearchBox /> */}
 
             <Nav className="main_icons">
+              <LinkContainer to="/search">
+                <Nav.Link>
+                  <i className="far fa-search icon_size"></i>{" "}
+                </Nav.Link>
+              </LinkContainer>
               <LinkContainer to="/cart">
                 <Nav.Link>
                   <i className="fal fa-cart-plus icon_size"></i>
@@ -131,26 +136,31 @@ function Header() {
               )}
               {/* <DarkMode /> */}
               {userInfo && userInfo.isAdmin && (
-                <NavDropdown
-                  className="dropdown-toggle-split"
-                  title={<i className="fal fa-user-shield icon_size"></i>}
-                  id="adminmenue"
-                >
-                  <LinkContainer to="/admin/userlist">
-                    <NavDropdown.Item>Users</NavDropdown.Item>
-                  </LinkContainer>
+                <LinkContainer to="/admin/adminpanal">
+                  <Nav.Link>
+                    <i className="fal fa-user-shield icon_size"></i>{" "}
+                  </Nav.Link>
+                </LinkContainer>
+                // <NavDropdown
+                //   className="dropdown-toggle-split"
+                //   title={<i className="fal fa-user-shield icon_size"></i>}
+                //   id="adminmenue"
+                // >
+                //   <LinkContainer to="/admin/userlist">
+                //     <NavDropdown.Item>Users</NavDropdown.Item>
+                //   </LinkContainer>
 
-                  <LinkContainer to="/admin/productlist">
-                    <NavDropdown.Item>Products</NavDropdown.Item>
-                  </LinkContainer>
+                //   <LinkContainer to="/admin/productlist">
+                //     <NavDropdown.Item>Products</NavDropdown.Item>
+                //   </LinkContainer>
 
-                  <LinkContainer to="/admin/orderlist">
-                    <NavDropdown.Item>Orders</NavDropdown.Item>
-                  </LinkContainer>
-                  <LinkContainer to="/admin/returnslist">
-                    <NavDropdown.Item>Returns</NavDropdown.Item>
-                  </LinkContainer>
-                </NavDropdown>
+                //   <LinkContainer to="/admin/orderlist">
+                //     <NavDropdown.Item>Orders</NavDropdown.Item>
+                //   </LinkContainer>
+                //   <LinkContainer to="/admin/returnslist">
+                //     <NavDropdown.Item>Returns</NavDropdown.Item>
+                //   </LinkContainer>
+                // </NavDropdown>
               )}
 
               {/* <DarkMode /> */}

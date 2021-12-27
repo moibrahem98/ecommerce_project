@@ -6,6 +6,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { listProducts } from "../actions/productActions";
 import ProductCarousel from "../components/ProductCarousel";
+import LatestProductsCarousel from "../components/LatestProductsCarousel";
 import CatSlider from "../components/CatSlider";
 import CarouselSlider from "../components/CarouselSlider";
 
@@ -22,9 +23,7 @@ function HomeScreen({ history }) {
   return (
     <>
       <CarouselSlider />
-      <Container fluid>
-        {/* <Image src={banner} alt="photo" style={{ maxWidth: "100%" }} /> */}
-      </Container>
+
       <Container style={{ marginTop: " 20px" }}>
         <h3 style={{ textAlign: "center" }} className="heading_1">
           Shop By Category
@@ -39,26 +38,8 @@ function HomeScreen({ history }) {
         <h3 style={{ textAlign: "center" }} className="heading_1 mt-5">
           Latest Products
         </h3>
-        {loading ? (
-          <Loader></Loader>
-        ) : error ? (
-          <Message variant="danger">{error}</Message>
-        ) : (
-          <Row>
-            {products.map((product) => (
-              <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                <Product product={product} />
-              </Col>
-            ))}
-          </Row>
-        )}
+        {!name && <LatestProductsCarousel />}
       </Container>
-
-      {/* <Image
-        src={before}
-        alt="photo"
-        style={{ maxWidth: "100%", marginBottom: "-30px" }}
-      /> */}
     </>
   );
 }
