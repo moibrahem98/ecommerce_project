@@ -3,12 +3,12 @@ import { Card } from "react-bootstrap";
 import Rating from "./Rating";
 function Product({ product }) {
   return (
-    <Card className="pt-2 rounded text-center">
+    <Card className="pt-2 rounded text-center product_card">
       <a className="nav-link" href={`/product/${product._id}`}>
-        <Card.Img src={product.image} height={"185px"} />
+        <Card.Img src={product.image} className="product_img" />
       </a>
       <Card.Body>
-        <a className="nav-link" href={`/product/${product._id}`}>
+        <a className="nav-link ellipsis" href={`/product/${product._id}`}>
           <Card.Title as="div">
             <strong>{product.name}</strong>
           </Card.Title>

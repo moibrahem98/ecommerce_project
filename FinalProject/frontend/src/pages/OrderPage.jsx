@@ -157,7 +157,7 @@ function OrderScreen({ match }) {
           <Col md={4}>
             <Card className=" shadow rounded-sm">
               <ListGroup variant="secondary">
-                <ListGroup.Item variant="secondary">
+                <ListGroup.Item>
                   <h2>Total</h2>
                 </ListGroup.Item>
 

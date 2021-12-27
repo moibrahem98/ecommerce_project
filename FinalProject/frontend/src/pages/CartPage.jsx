@@ -36,12 +36,10 @@ function CartScreen({ match, location, history }) {
     history.push("/login?redirect=shipping");
   };
 
-  let hist = useHistory();
-
   return (
     <Container className="pt-5">
       <Row>
-        <Col md={8}>
+        <Col md={8} sm={12}>
           <h3>Shopping Cart</h3>
           {cartItems.length === 0 ? (
             <Message variant="info">
@@ -52,7 +50,7 @@ function CartScreen({ match, location, history }) {
               {cartItems.map((item) => (
                 <ListGroup.Item key={item.product}>
                   <Row>
-                    <Col md={2} style={{ height: "50px" }}>
+                    <Col md={2}>
                       <Image src={item.image} alt={item.name} fluid rounded />
                     </Col>
                     <Col md={3}>
@@ -61,13 +59,14 @@ function CartScreen({ match, location, history }) {
 
                     <Col md={2}>{item.price} L.E</Col>
 
-                    <Col md={3}>
+                    <Col md={3} className="d-flex justify-content-between my-3">
                       <Form.Control
                         rounded
                         style={{
                           border: "1px solid  #e3e3e3",
                           borderRadius: "11px",
                         }}
+                        className="mr-3"
                         as="select"
                         value={item.qty}
                         onChange={(e) =>
@@ -82,17 +81,20 @@ function CartScreen({ match, location, history }) {
                           </option>
                         ))}
                       </Form.Control>
+                      <div>
+                        <Button
+                          type="button"
+                          variant="outline-danger"
+                          onClick={() => removeFromCartHandler(item.product)}
+                        >
+                          <i className="fas fa-trash"></i>
+                        </Button>
+                      </div>
                     </Col>
-
+                    {/* 
                     <Col md={1}>
-                      <Button
-                        type="button"
-                        variant="outline-danger"
-                        onClick={() => removeFromCartHandler(item.product)}
-                      >
-                        <i className="fas fa-trash"></i>
-                      </Button>
-                    </Col>
+
+                    </Col> */}
                   </Row>
                 </ListGroup.Item>
               ))}
@@ -100,12 +102,12 @@ function CartScreen({ match, location, history }) {
           )}
         </Col>
 
-        <Col md={4}>
+        <Col md={4} sm={12}>
           <Card className=" shadow rounded-sm">
             <ListGroup>
               <ListGroup.Item>
                 <h3
-                  className=" rounded "
+                  className="rounded p-3"
                   style={{
                     fontFamily: "monospace",
                     textAlign: "center",
