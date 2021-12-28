@@ -78,7 +78,7 @@ function Header() {
             className="justify-content-end"
             id="basic-navbar-nav"
           >
-            <Nav >
+            <Nav>
               {categories.map((category) => (
                 <LinkContainer to={`/categoryproducts/${category.id}`}>
                   <Nav.Link id="basic-nav-dropdown">{category.name}</Nav.Link>

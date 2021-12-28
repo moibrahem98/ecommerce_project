@@ -17,21 +17,13 @@ function SearchBox() {
   };
   return (
     <Form onSubmit={submitHandler} inline>
-      <div
-        className="justify-contnet-center  mb-3"
-        style={{
-          textAlign: "center",
-          alignItems: "center",
-          alignContent: "center",
-        }}
-      >
+      <div className="justify-contnet-center text-center my-2 d-flex">
         <input
-          className="form-control"
+          className="form-control w-80"
           type="text"
           name="q"
           placeholder="search"
           onChange={(event) => setName(event.target.value)}
-          style={{width : "700px"}}
         />
         <button className="btn btn-outline-primary">
           <i className="fas fa-search "></i>

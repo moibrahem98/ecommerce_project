@@ -18,7 +18,7 @@ export default function CarouselSlider() {
 
   return (
     <>
-      <Row>
+      <Row className="container" className="position-relative">
         {categories.map((category) => (
           <Col xs={12} sm={6} lg={3}>
             <a href={`/categoryproducts/${category.id}`}>
@@ -27,6 +27,9 @@ export default function CarouselSlider() {
                 src={category.img}
                 alt="First slide"
               />
+              <div class="middle">
+                <div class="text">{category.name}</div>
+              </div>
             </a>
           </Col>
         ))}

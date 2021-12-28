@@ -22,13 +22,13 @@ function SearchPage({ history }) {
     <>
       <Container
         style={{
-          marginTop: " 20px",
+          marginTop: " 100px",
           textAlign: "center",
           alignItems: "center",
           alignContent: "center",
         }}
       >
-        <h3 style={{ textAlign: "center" }} className="heading_1 mt-5">
+        <h3 style={{ textAlign: "center" }} className="heading_1">
           Search
         </h3>
         <div

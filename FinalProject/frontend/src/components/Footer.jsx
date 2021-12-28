@@ -23,9 +23,9 @@ export default function App() {
             <h3 className="text-uppercase">Mid Night</h3>
 
             <p>
-              Our products are unique in terms of design and
-              quality. We are committed to providing products and services that
-              meet the needs of our customers.
+              Our products are unique in terms of design and quality. We are
+              committed to providing products and services that meet the needs
+              of our customers.
             </p>
             <Link className="contact_link blackiconcolor" to="/contactus">
               Contact Us
@@ -33,18 +33,28 @@ export default function App() {
 
             <ul className="list-unstyled mt-2">
               <li>
-                <Link to="https://www.facebook.com/Mid4Night">
+                <a
+                  href="https://www.facebook.com/Mid4Night"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <i className="fab fa-2x fa-facebook blackiconcolor"></i>
-                </Link>
-                <Link
-                  to="https://api.whatsapp.com/send?phone=2001150508507&app=facebook&entry_point=page_cta&fbclid=IwAR0PGOyWWnceZltN1I_tgeb5n1NoisWf9qfItSdoHcvfUAqAbrIE0zLg6u8"
+                </a>
+                <a
+                  href="https://api.whatsapp.com/send?phone=2001150508507&app=facebook&entry_point=page_cta&fbclid=IwAR0PGOyWWnceZltN1I_tgeb5n1NoisWf9qfItSdoHcvfUAqAbrIE0zLg6u8"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="face-icon"
                 >
                   <i className="fab fa-2x fa-whatsapp blackiconcolor"></i>
-                </Link>
-                <Link to="https://www.instagram.com/midnight6088">
+                </a>
+                <a
+                  href="https://www.instagram.com/midnight6088"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <i className="fab fa-2x fa-instagram blackiconcolor"></i>
-                </Link>
+                </a>
               </li>
             </ul>
           </Col>
@@ -90,9 +100,8 @@ export default function App() {
           <Col>
             <hr />
             <p className="text-center">
-              MidNight Created By ITI Team 
+              MidNight Created By ITI Team All Rights @ Reserved 2022
             </p>
-            <p className="text-center">All Rights @ Reserved 2022</p>
           </Col>
         </Row>
       </Container>
