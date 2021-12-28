@@ -61,7 +61,7 @@ function OrderScreen({ match }) {
     return (
       <div className="py-5">
         <Message variant="success">
-          <p> order is placed &#10004; </p>
+          <p> order placed successfully &#10004; </p>
         </Message>
         <Row>
           <Col md={8}>
@@ -70,7 +70,7 @@ function OrderScreen({ match }) {
                 <ListGroup.Item>
                   <h2>Shipping Address</h2>
                   <p>
-                    <strong>Name:</strong>
+                    <span>Name: </span>
                     {order.user.name}
                   </p>
                   <p>Phone Number: {order.shippingAddress.telephone_number}</p>

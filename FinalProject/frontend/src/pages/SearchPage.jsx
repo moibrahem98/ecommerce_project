@@ -29,7 +29,7 @@ function SearchPage({ history }) {
         }}
       >
         <h3 style={{ textAlign: "center" }} className="heading_1 mt-5">
-          Search All Products
+          Search
         </h3>
         <div
           style={{

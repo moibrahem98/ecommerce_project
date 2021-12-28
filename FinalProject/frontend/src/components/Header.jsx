@@ -75,10 +75,10 @@ function Header() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
           <Navbar.Collapse
-            className="justify-content-center"
+            className="justify-content-end"
             id="basic-navbar-nav"
           >
-            <Nav className="justify-content-center">
+            <Nav >
               {categories.map((category) => (
                 <LinkContainer to={`/categoryproducts/${category.id}`}>
                   <Nav.Link id="basic-nav-dropdown">{category.name}</Nav.Link>
@@ -93,15 +93,15 @@ function Header() {
           >
             {/* <SearchBox /> */}
 
-            <Nav className="main_icons">
+            <Nav className="main_icons ">
               <LinkContainer to="/search">
                 <Nav.Link>
-                  <i className="far fa-search icon_size"></i>{" "}
+                  <i className="far fa-search icon_size mr-4"></i>{" "}
                 </Nav.Link>
               </LinkContainer>
               <LinkContainer to="/cart">
                 <Nav.Link>
-                  <i className="fal fa-cart-plus icon_size"></i>
+                  <i className="fal fa-cart-plus icon_size mx-2"></i>
                 </Nav.Link>
               </LinkContainer>
 
@@ -109,19 +109,19 @@ function Header() {
                 <>
                   <LinkContainer to="/userpanal">
                     <Nav.Link>
-                      <i className="fal fa-user icon_size"></i>
+                      <i className="fal fa-user icon_size mx-2"></i>
                     </Nav.Link>
                   </LinkContainer>
                   <Link onClick={logoutHandler}>
                     <Nav.Link>
-                      <i className="far fa-sign-out-alt icon_size"></i>
+                      <i className="far fa-sign-out-alt icon_size mx-2"></i>
                     </Nav.Link>
                   </Link>
                 </>
               ) : (
                 <LinkContainer to="/login">
                   <Nav.Link>
-                    <i className="fal fa-user icon_size"></i>
+                    <i className="fal fa-user icon_size mx-2"></i>
                   </Nav.Link>
                 </LinkContainer>
               )}

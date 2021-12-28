@@ -23,9 +23,9 @@ export default function App() {
             <h3 className="text-uppercase">Mid Night</h3>
 
             <p>
-              mid night shop Our products are unique in terms of design and
+              Our products are unique in terms of design and
               quality. We are committed to providing products and services that
-              meet the needs of our customers
+              meet the needs of our customers.
             </p>
             <Link className="contact_link blackiconcolor" to="/contactus">
               Contact Us
@@ -90,8 +90,9 @@ export default function App() {
           <Col>
             <hr />
             <p className="text-center">
-              MidnNight Created By iti Team All Right @ Reseved 2022
+              MidNight Created By ITI Team 
             </p>
+            <p className="text-center">All Rights @ Reserved 2022</p>
           </Col>
         </Row>
       </Container>

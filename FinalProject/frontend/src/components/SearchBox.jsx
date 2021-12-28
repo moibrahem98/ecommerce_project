@@ -31,6 +31,7 @@ function SearchBox() {
           name="q"
           placeholder="search"
           onChange={(event) => setName(event.target.value)}
+          style={{width : "700px"}}
         />
         <button className="btn btn-outline-primary">
           <i className="fas fa-search "></i>
