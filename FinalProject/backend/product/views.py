@@ -28,24 +28,25 @@ def product_list(request):
     if filterset.is_valid():
         queryset = filterset.qs
 
-    page = request.query_params.get('page')
-    paginator = Paginator(queryset, 1)
+    # page = request.query_params.get('page')
+    # paginator = Paginator(queryset, 100)
 
-    try:
-        queryset = paginator.page(page)
-    except PageNotAnInteger:
-        queryset = paginator.page(1)
-    except EmptyPage:
-        queryset = paginator.page(paginator.num_pages)
+    # try:
+    #     queryset = paginator.page(page)
+    # except PageNotAnInteger:
+    #     queryset = paginator.page(1)
+    # except EmptyPage:
+    #     queryset = paginator.page(paginator.num_pages)
 
-    if page == None or '':
-        page = 1
+    # if page == None or '':
+    #     page = 1
 
-    # page = int(page)
+    # # page = int(page)
 
 
     serializer = ProductSerializer(queryset, many=True)
-    return Response({"products" : serializer.data, 'page' : page, 'pages': paginator.num_pages})
+    return Response(serializer.data)
+    # return Response({"products" : serializer.data, 'page' : page, 'pages': paginator.num_pages})
 
 
 @api_view(['GET'])
@@ -304,14 +305,26 @@ def GetbrandById(request, pk):
 
 
 @api_view(['POST'])
-@permission_classes([IsAdminUser])
+# @permission_classes([IsAdminUser])
 def createbrand(request):
     data = request.data
-    print(data)
+    print(data, 'ssssssssssssssssssssss')
     brand = Brand.objects.create(
         name=data['name'],
+        img = request.FILES.get('img')
         # img=data['img']
     )
+    brand.save()
+
     serializer = BrandSerializer(brand)
     return Response(serializer.data)
 
+
+
+# @api_view(['POST'])
+# def uploadBrandImage(request):
+#     data = request.data
+#     brand = Brand.objects.get(id=data['name'])
+#     brand.img = request.FILES.get('img')
+#     brand.save()
+#     return Response('Image Uploaded')

@@ -8,7 +8,7 @@ import {
 } from "../actions/productActions";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import InternalSearch from "../components/categorySelect";
+// import InternalSearch from "../components/categorySelect";
 
 function CategoryPage({ match, history }) {
   const dispatch = useDispatch();
@@ -27,8 +27,6 @@ function CategoryPage({ match, history }) {
     dispatch(listSubCategories());
     dispatch(getProductByCategory(match.params.id, name));
   }, [dispatch, match, name]);
-
-  console.log(products, "lllllllllllllllllllllllllllllllll");
 
   if (!products) return null;
   if (!subcategories) return null;

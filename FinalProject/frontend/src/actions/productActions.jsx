@@ -303,7 +303,6 @@ export const listMyReturnsFunction = () => async (dispatch, getState) => {
     };
 
     const { data } = await axios.get(`/product/api/myreturns/`, config);
-    console.log(data, "rrrrrrrrrrrrrrrrrrrrrrreeeeeee");
     dispatch({
       type: "LIST_MY_RETURNS_SUCCESS",
       payload: data,
@@ -534,3 +533,123 @@ export const getProductBySubCategory = (id) => async (dispatch, getState) => {
     });
   }
 };
+// Brands:
+
+export const listBrandsFunction = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: "BRAND_LIST_REQUEST",
+    });
+
+    const { data } = await axios.get(`/product/api/brands/`);
+    dispatch({
+      type: "BRAND_LIST_SUCCESS",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "BRAND_LIST_FAIL",
+      payload:
+        error.response && error.response.data.detail
+          ? error.response.data.detail
+          : error.message,
+    });
+  }
+};
+
+export const getBrandDetails = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: "BRAND_DETAILS_REQUEST",
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.get(`/product/api/brand/${id}`, config);
+    dispatch({
+      type: "BRAND_DETAILS_SUCCESS",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "BRAND_DETAILS_FAIL",
+      payload:
+        error.response && error.response.data.detail
+          ? error.response.data.detail
+          : error.message,
+    });
+  }
+};
+
+export const getProductByBrand = (id) => async (dispatch) => {
+  try {
+    dispatch({
+      type: "PRODUCT_BY_BRAND_REQUEST",
+    });
+
+    const { data } = await axios.get(`/product/api/brand/${id}/products`);
+
+    dispatch({
+      type: "PRODUCT_BY_BRAND_SUCCESS",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "PRODUCT_BY_BRAND_FAIL",
+      payload:
+        error.response && error.response.data.detail
+          ? error.response.data.detail
+          : error.message,
+    });
+  }
+};
+
+// export const addBrandFunction = (name, img) => async (dispatch, getState) => {
+//   try {
+//     dispatch({
+//       type: "BRAND_ADD_REQUEST",
+//     });
+
+//     const {
+//       userLogin: { userInfo },
+//     } = getState();
+
+//     const config = {
+//       headers: {
+//         "Content-type": "application/json",
+//         Authorization: `Bearer ${userInfo.token}`,
+//       },
+//     };
+
+//     const { data } = await axios.post(
+//       `/product/api/brands/create/`,
+//       {
+//         name: name,
+//         img: img,
+//       },
+//       config
+//     );
+
+//     dispatch({
+//       type: "BRAND_ADD_SUCCESS",
+//       payload: data,
+//     });
+//   } catch (error) {
+//     dispatch({
+//       type: "BRAND_ADD_FAIL",
+//       payload:
+//         error.response && error.response.data.detail
+//           ? error.response.data.detail
+//           : error.message,
+//     });
+//   }
+// };

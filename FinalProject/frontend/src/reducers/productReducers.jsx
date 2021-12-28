@@ -3,9 +3,8 @@ export const productListReducers = (state = { products: [] }, action) => {
     case "PRODUCT_LIST_REQUEST":
       return { loading: true, products: [] };
     case "PRODUCT_LIST_SUCCESS":
-      return { loading: false, products: action.payload.products,
-        page: action.payload.page,
-        pages: action.payload.pages };
+      return { loading: false, products: action.payload };
+
     case "PRODUCT_LIST_FAIL":
       return { loading: false, error: action.payload };
 
@@ -371,3 +370,95 @@ export const getProductBySubCategoryReducer = (state = {}, action) => {
       return state;
   }
 };
+// Brands:
+export const listBrandsReducer = (state = { brands: [] }, action) => {
+  switch (action.type) {
+    case "BRAND_LIST_REQUEST":
+      return {
+        loading: true,
+      };
+
+    case "BRAND_LIST_SUCCESS":
+      return {
+        loading: false,
+        brands: action.payload,
+      };
+
+    case "BRAND_LIST_FAIL":
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export const brandDetailsReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "BRAND_DETAILS_REQUEST":
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case "BRAND_DETAILS_SUCCESS":
+      return {
+        loading: false,
+        brand: action.payload,
+      };
+
+    case "BRAND_DETAILS_FAIL":
+      return {
+        loading: false,
+        error: action.payload,
+      };
+
+    default:
+      return state;
+  }
+};
+
+export const getProductByBrandReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "PRODUCT_BY_BRAND_REQUEST":
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case "PRODUCT_BY_BRAND_SUCCESS":
+      return {
+        loading: false,
+        product: action.payload,
+      };
+
+    case "PRODUCT_BY_BRAND_FAIL":
+      return {
+        loading: false,
+        error: action.payload,
+      };
+
+    default:
+      return state;
+  }
+};
+
+// export const brandCreateReducer = (state = {}, action) => {
+//   switch (action.type) {
+//     case "BRAND_ADD_REQUEST":
+//       return { loading: true };
+
+//     case "BRAND_ADD_SUCCESS":
+//       return { loading: false, success: true, brand: action.payload };
+
+//     case "BRAND_ADD_FAIL":
+//       return { loading: false, error: action.payload };
+
+//     case "BRAND_ADD_RESET":
+//       return {};
+
+//     default:
+//       return state;
+//   }
+// };

@@ -1,21 +1,11 @@
 import React, { useState, useEffect } from "react";
-import {
-  Col,
-  Row,
-  ListGroup,
-  Image,
-  Card,
-  Button,
-  Container,
-  Table,
-} from "react-bootstrap";
+import { Col, Row, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { payOrder } from "../../actions/orderActions";
 import { getReturnsDetails, issueStatus } from "../../actions/productActions";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
-import axios from "axios";
 
 function ReturnsDetailsPage({ match, history }) {
   const dispatch = useDispatch();

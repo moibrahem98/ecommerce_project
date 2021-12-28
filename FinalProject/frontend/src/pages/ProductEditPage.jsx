@@ -63,7 +63,7 @@ function ProductEditScreen({ match, history }) {
     getSubCat();
     const getBrand = async () => {
       await axios
-        .get(`/product/api/brand/`)
+        .get(`/product/api/brands/`)
         .then((res) => {
           setGetBrand(res.data);
           console.log(res);
@@ -139,16 +139,8 @@ function ProductEditScreen({ match, history }) {
     }
   };
 
-  // useEffect(() => {
-  //   axios.get("/product/api/categories/").then((response) => {
-  //     setCat(response.data);
-  //   });
-  // }, []);
-  console.log("cc", cat);
   if (!cat) return null;
-  console.log("cc", subcat);
   if (!subcat) return null;
-  console.log("cc", getbrand);
   if (!getbrand) return null;
 
   return (

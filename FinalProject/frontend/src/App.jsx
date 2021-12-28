@@ -15,8 +15,8 @@ import PaymentScreen from "./pages/PaymentPage";
 import PlaceOrderScreen from "./pages/PlaceOrderPage";
 import OrderScreen from "./pages/OrderPage";
 import MyOrdersScreen from "./pages/MyOrdersPage";
-import UserListScreen from "./pages/UserListPage";
-import UserEditScreen from "./pages/UserEditPage";
+import UserListScreen from "./pages/UserPages/UserListPage";
+import UserEditScreen from "./pages/UserPages/UserEditPage";
 import ProductListScreen from "./pages/ProductListPage";
 import ProductEditScreen from "./pages/ProductEditPage";
 import OrderListScreen from "./pages/OrderListPage";
@@ -30,6 +30,9 @@ import AdminPanalPage from "./pages/AdminPages/AdminPanalPage";
 import CategoryPage from "./pages/CategoryPage";
 import SubCategoryPage from "./pages/SubCategoryPage";
 import UserPanal from "./pages/UserPages/UserPanal/UserPanal";
+import BrandsListPage from "./pages/BrandPages/BrandListPage";
+import BrandDetailsPage from "./pages/BrandPages/BrandDetailsPage";
+// import AddBrandPage from "./pages/BrandPages/AddBrandPage";
 function App() {
   return (
     <Router>
@@ -69,6 +72,10 @@ function App() {
 
           <Route path="/admin/userlist" component={UserListScreen} />
           <Route path="/admin/user/:id/edit" component={UserEditScreen} />
+          {/* Brand: */}
+          <Route path="/admin/brands" component={BrandsListPage} />
+          <Route path="/brand/:id" component={BrandDetailsPage} />
+          {/* <Route path="/brand/addbrand" component={AddBrandPage} /> */}
         </Switch>
       </Container>
       <Footer />

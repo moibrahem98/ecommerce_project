@@ -5,19 +5,14 @@ import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../actions/userActions";
 import logo from "../images/brand.png";
 // import SearchBox from "./SearchBox";
-import { listCategories, listSubCategories } from "../actions/productActions";
+import { listCategories } from "../actions/productActions";
 import { Link } from "react-router-dom";
 // import DarkMode from "../DarkMode";
 
 function Header() {
   const categoriesList = useSelector((state) => state.categoriesList);
   const { categories } = categoriesList;
-  const subcategoriesList = useSelector((state) => state.subcategoriesList);
-  const {
-    loading: subcategoriesLoading,
-    error: subcategoriesError,
-    subcategories,
-  } = subcategoriesList;
+
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   const [show, setShow] = useState(false);
@@ -37,7 +32,6 @@ function Header() {
   navRef.current = navBackground;
   useEffect(() => {
     dispatch(listCategories());
-    dispatch(listSubCategories());
 
     const handleScroll = () => {
       const show = window.scrollY > 50;
@@ -51,9 +45,6 @@ function Header() {
     };
   }, []);
   if (!categories) return null;
-  console.log(categories, "category");
-  console.log(subcategories, "subbbbbbbbbbcategory");
-  if (!subcategories) return null;
 
   return (
     <header style={{ marginBottom: "75px", alignItems: "center" }}>

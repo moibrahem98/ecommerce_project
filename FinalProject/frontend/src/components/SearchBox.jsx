@@ -10,7 +10,7 @@ function SearchBox() {
   const submitHandler = (event) => {
     event.preventDefault();
     if (name) {
-      history.push(`/search?name=${name}&page=1`);
+      history.push(`/search?name=${name}`);
     } else {
       history.push(history.push(history.location.pathname));
     }
