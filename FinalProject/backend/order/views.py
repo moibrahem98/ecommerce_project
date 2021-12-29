@@ -59,18 +59,17 @@ def addOrderItems(request):
 @permission_classes([IsAuthenticated])
 def getMyOrders(request):
     user = request.user
-    orders = user.order_set.all()
+    orders = user.order.all()
     serializer = OrderSerializer(orders, many=True)
     return Response(serializer.data)
 
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def getOredeById(request, pk):
+def getOredeById(request, id):
     user = request.user
     try:
-        order = Order.objects.get(_id=pk)
-        print(order, "getordergetordergetordergetordergetorder")
+        order = Order.objects.get(_id=id)
         if user.is_staff or order.user == user:
             serializer = OrderSerializer(order, many=False)
             return Response(serializer.data)
@@ -91,8 +90,8 @@ def getOrders(request):
 
 @api_view(['PUT'])
 @permission_classes([IsAdminUser])
-def updateOrderPay(request, pk):
-    order = Order.objects.get(_id=pk)
+def updateOrderPay(request, id):
+    order = Order.objects.get(_id=id)
     order.is_paid = True
     order.paid_at = datetime.now()
     order.save()
@@ -101,8 +100,8 @@ def updateOrderPay(request, pk):
 
 @api_view(['PUT'])
 @permission_classes([IsAdminUser])
-def updateOrderToDelivered(request, pk):
-    order = Order.objects.get(_id=pk)
+def updateOrderToDelivered(request, id):
+    order = Order.objects.get(_id=id)
     order.is_delivered = True
     order.delivered_at = datetime.now()
     order.save()
@@ -111,7 +110,7 @@ def updateOrderToDelivered(request, pk):
 
 
 @api_view(['GET'])
-# @permission_classes([IsAdminUser])
+@permission_classes([IsAdminUser])
 def listcoupons(request):
     coupons = Coupons.objects.all()
     serializer = CouponsSerializer(coupons, many=True)
@@ -119,7 +118,7 @@ def listcoupons(request):
 
 
 @api_view(['POST'])
-# @permission_classes([IsAdminUser])
+@permission_classes([IsAdminUser])
 def createcoupons(request):
     data = request.data
     user = request.user
@@ -135,7 +134,7 @@ def createcoupons(request):
 
 
 @api_view(['GET'])
-# @permission_classes([IsAdminUser])
+@permission_classes([IsAdminUser])
 def getCouponByName(request, name):
     try:
         coupons = Coupons.objects.get(name=name)
@@ -220,7 +219,7 @@ def payment(request, pk):
                             "street": "Ethan Land",
                             "building": "8028",
                             "phone_number": "+86(8)9135210487",
-                            "shipping_method": "PKG",
+                            "shipping_method": "idG",
                             "postal_code": "01898",
                             "city": "Jaskolskiburgh",
                             "country": "CR",

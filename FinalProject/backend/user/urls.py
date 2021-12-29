@@ -13,9 +13,9 @@ urlpatterns = [
         updateUserProfile, name='update_user_profile'),
     path('api/users/all/', getUsers, name='all_users'),
     path('api/users/register/', register, name='register'),
-    path('api/users/<str:pk>/', getUserByID, name='user'),
-    path('api/users/delete/<str:pk>/', deleteUser, name='update-user'),
-    path('api/users/update/<str:pk>/', updateUser, name='delete-user'),
+    path('api/users/<str:id>/', getUserByID, name='user'),
+    path('api/users/delete/<str:id>/', deleteUser, name='update-user'),
+    path('api/users/update/<str:id>/', updateUser, name='delete-user'),
 
 
 ]
