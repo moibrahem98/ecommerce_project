@@ -5,7 +5,7 @@ from product.models import Product
 
 class Order(models.Model):
     _id = models.AutoField(primary_key=True, editable=False)
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(User, related_name='order', on_delete=models.SET_NULL, null=True)
     payment_method = models.CharField(max_length=200, null=True, blank=True)
     tax = models.DecimalField(
         max_digits=7, decimal_places=2, null=True, blank=True)
@@ -27,7 +27,7 @@ class Order(models.Model):
 class OrderItem(models.Model):
     _id = models.AutoField(primary_key=True, editable=False)
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
-    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
+    order = models.ForeignKey(Order, related_name='orderitem', on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200, null=True, blank=True)
     quantity = models.IntegerField(null=True, blank=True, default=0)
     price = models.DecimalField(

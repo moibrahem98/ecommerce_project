@@ -57,8 +57,8 @@ def latestProduct(request):
 
 
 @api_view(['GET'])
-def getProduct(request, pk):
-    product = Product.objects.get(_id=pk)
+def getProduct(request, id):
+    product = Product.objects.get(_id=id)
     serializer = ProductSerializer(product, many=False)
     return Response(serializer.data)
 
@@ -94,9 +94,9 @@ def createProduct(request):
 
 @api_view(['PUT'])
 @permission_classes([IsAdminUser])
-def updateProduct(request, pk):
+def updateProduct(request, id):
     data = request.data
-    product = Product.objects.get(_id=pk)
+    product = Product.objects.get(_id=id)
     category = Category.objects.get(id=data['category'])
     subCategory = SubCategory.objects.get(id=data['subCategory'])
     brand = Brand.objects.get(id=data['brand'])
@@ -116,8 +116,8 @@ def updateProduct(request, pk):
 
 
 @api_view(['GET'])
-def getProductByCategory(request, pk):
-    product = Product.objects.filter(category_id=pk)
+def getProductByCategory(request, id):
+    product = Product.objects.filter(category_id=id)
     filterset = ProductFilter(request.GET, queryset=product)
     if filterset.is_valid():
         product = filterset.qs
@@ -126,16 +126,16 @@ def getProductByCategory(request, pk):
 
 
 @api_view(['GET'])
-def getProductBySubCategory(request, pk):
-    product = Product.objects.filter(sub_category_id=pk)
+def getProductBySubCategory(request, id):
+    product = Product.objects.filter(sub_category_id=id)
     serializer = ProductSerializer(product, many=True)
     return Response(serializer.data)
 
 
 @api_view(['DELETE'])
 @permission_classes([IsAdminUser])
-def deleteProduct(request, pk):
-    product = Product.objects.get(_id=pk)
+def deleteProduct(request, id):
+    product = Product.objects.get(_id=id)
     product.delete()
     return Response('Product Deleted')
 
@@ -152,9 +152,9 @@ def uploadImage(request):
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def createProductReview(request, pk):
+def createProductReview(request, id):
     user = request.user
-    product = Product.objects.get(_id=pk)
+    product = Product.objects.get(_id=id)
     data = request.data
 
     alreadyExists = product.review.filter(user=user).exists()
@@ -217,8 +217,8 @@ def createreturns(request):
 
 @api_view(['PUT'])
 @permission_classes([IsAdminUser])
-def updatereturns(request, pk):
-    returns = Returns.objects.get(id=pk)
+def updatereturns(request, id):
+    returns = Returns.objects.get(id=id)
     returns.issue_status = True
     returns.save()
     return Response('issue status updated')
@@ -226,11 +226,11 @@ def updatereturns(request, pk):
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def getReturnById(request, pk):
+def getReturnById(request, id):
     user = request.user
     try:
 
-        returns = Returns.objects.get(id=pk)
+        returns = Returns.objects.get(id=id)
 
         if user.is_staff or returns.user == user:
             serializer = ReturnsSerializer(returns, many=False)
@@ -274,8 +274,8 @@ def createBanner(request):
 
 @api_view(['DELETE'])
 @permission_classes([IsAdminUser])
-def deleteBanner(request, pk):
-    banner = Banner.objects.get(_id=pk)
+def deleteBanner(request, id):
+    banner = Banner.objects.get(_id=id)
     banner.delete()
     return Response('Banner Deleted')
 
@@ -291,15 +291,15 @@ def getbrands(request):
 
 
 @api_view(['GET'])
-def getProductByBrand(request, pk):
-    product = Product.objects.filter(brand_id=pk)
+def getProductByBrand(request, id):
+    product = Product.objects.filter(brand_id=id)
     serializer = ProductSerializer(product, many=True)
     return Response(serializer.data)
 
 
 @api_view(['GET'])
-def GetbrandById(request, pk):
-    brand = Brand.objects.get(id=pk)
+def GetbrandById(request, id):
+    brand = Brand.objects.get(id=id)
     serializer = BrandSerializer(brand, many=False)
     return Response(serializer.data)
 
