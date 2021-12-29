@@ -134,42 +134,53 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
   }
 };
 
-export const createProduct = () => async (dispatch, getState) => {
-  try {
-    dispatch({
-      type: "PRODUCT_CREATE_REQUEST",
-    });
+export const createProduct =
+  (name, price, brand, category, subCategory, stock, description, image) =>
+  async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: "PRODUCT_CREATE_REQUEST",
+      });
 
-    const {
-      userLogin: { userInfo },
-    } = getState();
+      const {
+        userLogin: { userInfo },
+      } = getState();
 
-    const config = {
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    };
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
 
-    const { data } = await axios.post(
-      `/product/api/products/create/`,
-      {},
-      config
-    );
-    dispatch({
-      type: "PRODUCT_CREATE_SUCCESS",
-      payload: data,
-    });
-  } catch (error) {
-    dispatch({
-      type: "PRODUCT_CREATE_FAIL",
-      payload:
-        error.response && error.response.data.detail
-          ? error.response.data.detail
-          : error.message,
-    });
-  }
-};
+      const { data } = await axios.post(
+        `/product/api/products/create/`,
+        {
+          name: name,
+          price: price,
+          brand: brand,
+          category: category,
+          subCategory: subCategory,
+          stock: stock,
+          description: description,
+          image: image,
+        },
+        config
+      );
+      dispatch({
+        type: "PRODUCT_CREATE_SUCCESS",
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: "PRODUCT_CREATE_FAIL",
+        payload:
+          error.response && error.response.data.detail
+            ? error.response.data.detail
+            : error.message,
+      });
+    }
+  };
 
 export const updateProduct = (product) => async (dispatch, getState) => {
   try {

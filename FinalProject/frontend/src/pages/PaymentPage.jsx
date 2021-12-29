@@ -12,22 +12,6 @@ function PaymentScreen({ history }) {
 
   const dispatch = useDispatch();
   const [paymentMethod, setPaymentMethod] = useState("");
-  // const [paymob, setPaymob] = useState("");
-  // const paymobFunction = useEffect(() => {
-  //   const getData = async () => {
-  //     await axios
-  //       .get("/order/api/orders/payment/")
-  //       .then((res) => {
-  //         setPaymob(res.data);
-  //         console.log(res);
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   };
-  //   getData();
-
-  // }, []);
 
   if (!shippingAddress.address) {
     history.push("/shipping");
@@ -73,14 +57,6 @@ function PaymentScreen({ history }) {
                 ></Form.Check>
               </Col>
             </Form.Group>
-            {/* <input
-        type="button"
-        value="Paymob"
-        className="btn text-success btn_color"
-        onclick={window.open(
-          "http://127.0.0.1:8000/order/api/orders/payment/"
-        )}
-      /> */}
 
             <br></br>
             <Button

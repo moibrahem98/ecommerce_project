@@ -79,7 +79,7 @@ function PlaceOrderScreen({ history }) {
                         {" "}
                         {cart.paymentMethod}
                         <br />
-                        <button
+                        {/* <button
                           value="Paymob"
                           className="btn disabled text-success btn_color"
                           onclick={window.open(
@@ -87,7 +87,7 @@ function PlaceOrderScreen({ history }) {
                           )}
                         >
                           Paymob
-                        </button>
+                        </button> */}
                       </Col>
                     </Row>
                   ) : (

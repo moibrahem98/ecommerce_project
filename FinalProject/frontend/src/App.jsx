@@ -32,6 +32,8 @@ import SubCategoryPage from "./pages/SubCategoryPage";
 import UserPanal from "./pages/UserPages/UserPanal/UserPanal";
 import BrandsListPage from "./pages/BrandPages/BrandListPage";
 import BrandDetailsPage from "./pages/BrandPages/BrandDetailsPage";
+import ProductCreatePage from "./pages/ProductPages/ProductCreatePage";
+import ProductImageAddPage from "./pages/ProductPages/ProductImageAddPage";
 // import AddBrandPage from "./pages/BrandPages/AddBrandPage";
 function App() {
   return (
@@ -64,6 +66,8 @@ function App() {
           <Route path="/admin/returnslist" component={ReturnsListPage} />
           <Route path="/myreturns" component={MyReturnsPage} />
           <Route path="/createreturn" component={ReturnCreatePage} />
+          <Route path="/admin/createproduct" component={ProductCreatePage} />
+          <Route path="/admin/productimage" component={ProductImageAddPage} />
           <Route path="/admin/adminpanal" component={AdminPanalPage} />
 
           <Route path="/admin/productlist" component={ProductListScreen} />

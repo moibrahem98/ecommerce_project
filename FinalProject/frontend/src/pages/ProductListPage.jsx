@@ -2,14 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Table, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-import {
-  listProducts,
-  deleteProduct,
-  createProduct,
-} from "../actions/productActions";
+import { listProducts, deleteProduct } from "../actions/productActions";
 import { LinkContainer } from "react-router-bootstrap";
 
 function ProductListScreen({ history, match }) {
@@ -25,50 +22,24 @@ function ProductListScreen({ history, match }) {
     success: successDelete,
   } = productDelete;
 
-  const productCreate = useSelector((state) => state.productCreate);
-  const {
-    loading: loadingCreate,
-    error: errorCreate,
-    success: successCreate,
-    product: createdProduct,
-  } = productCreate;
-
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   let hist = useHistory();
 
-  // let keyword = history.location.search;
-
   useEffect(() => {
     dispatch({ type: "PRODUCT_CREATE_RESET" });
 
-    if (!userInfo.isAdmin) {
+    if (userInfo && userInfo.isAdmin) {
+      dispatch(listProducts());
+    } else {
       history.push("/login");
     }
-
-    if (successCreate) {
-      history.push(`/admin/product/${createdProduct._id}/edit`);
-    } else {
-      dispatch(listProducts());
-    }
-  }, [
-    dispatch,
-    history,
-    userInfo,
-    successDelete,
-    successCreate,
-    createdProduct,
-    // keyword,
-  ]);
+  }, [dispatch, history, userInfo, successDelete]);
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure you want to delete this product?")) {
       dispatch(deleteProduct(id));
     }
-  };
-
-  const createProductHandler = () => {
-    dispatch(createProduct());
   };
 
   return (
@@ -82,17 +53,16 @@ function ProductListScreen({ history, match }) {
         </Col>
 
         <Col className="text-right" md={3}>
-          <Button className="my-3 btn_color" onClick={createProductHandler}>
-            <i className="fas fa-plus"></i> Create Product
-          </Button>
+          <Link to="/admin/createproduct">
+            <Button className="my-3 btn_color">
+              <i className="fas fa-plus"></i> Create Product
+            </Button>
+          </Link>
         </Col>
       </Row>
 
       {loadingDelete && <Loader />}
       {errorDelete && <Message variant="danger">{errorDelete}</Message>}
-
-      {loadingCreate && <Loader />}
-      {errorCreate && <Message variant="danger">{errorCreate}</Message>}
 
       {loading ? (
         <Loader />

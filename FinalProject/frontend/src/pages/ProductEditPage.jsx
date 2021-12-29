@@ -181,6 +181,7 @@ function ProductEditScreen({ match, history }) {
             <Form.Group controlId="image">
               <Form.Label>Image</Form.Label>
               <Form.Control
+                disabled
                 type="text"
                 placeholder="Enter image"
                 value={image}
@@ -240,7 +241,7 @@ function ProductEditScreen({ match, history }) {
                 className="form-control"
                 onChange={(e) => setSubCategory(e.target.value)}
               >
-                <option>None</option>
+                <option>-----</option>
                 {subcat.map((subcategory) => (
                   <optgroup label={subcategory.category1.name}>
                     <option value={subcategory.id}>{subcategory.name}</option>

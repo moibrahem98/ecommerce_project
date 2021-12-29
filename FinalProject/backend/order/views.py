@@ -70,6 +70,7 @@ def getOredeById(request, pk):
     user = request.user
     try:
         order = Order.objects.get(_id=pk)
+        print(order, "getordergetordergetordergetordergetorder")
         if user.is_staff or order.user == user:
             serializer = OrderSerializer(order, many=False)
             return Response(serializer.data)
@@ -146,7 +147,11 @@ def getCouponByName(request, name):
 
 @api_view(['GET'])
 # @permission_classes([IsAuthenticated])
-def payment(request):
+def payment(request, pk):
+    # user = request.user
+   
+    order = Order.objects.get(_id=pk)
+    print(order, "orororororororro")
     r1 = requests.post('https://accept.paymob.com/api/auth/tokens',
                     json={
                         'api_key': 'ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6VXhNaUo5LmV5SndjbTltYVd4bFgzQnJJam94TkRVd01UTXNJbU5zWVhOeklqb2lUV1Z5WTJoaGJuUWlMQ0p1WVcxbElqb2lhVzVwZEdsaGJDSjkuMlQzcTdKVGx4MEdSUWR3aFpFUFNLYUJSeGNvMVZpTDBzSEcxbmtVSnlEQWZDUG9pYUFYRFowR1JOakxDN2FKWThUSjVrNGRBaFlXYlhKRWlFbjkzNXc='})

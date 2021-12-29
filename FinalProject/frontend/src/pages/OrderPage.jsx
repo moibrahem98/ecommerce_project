@@ -9,11 +9,11 @@ import {
 } from "../actions/orderActions";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
+import axios from "axios";
 
 function OrderScreen({ match }) {
   const orderId = match.params.id;
   const dispatch = useDispatch();
-
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, error, loading } = orderDetails;
 
@@ -32,7 +32,21 @@ function OrderScreen({ match }) {
       .toFixed(2);
   }
 
+  const [paymob, setPaymob] = useState("");
+
   useEffect(() => {
+    const getData = (orderId) => async () => {
+      await axios
+        .get(`/order/api/orders/payment/${orderId}/`)
+        .then((res) => {
+          setPaymob(res.data);
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+
     if (
       !order ||
       order._id !== Number(orderId) ||
@@ -42,6 +56,7 @@ function OrderScreen({ match }) {
       dispatch({ type: "ORDER_PAY_RESET" });
       dispatch({ type: "ORDER_DELIVER_RESET" });
       dispatch(getOrderDetails(orderId));
+      dispatch(getData(orderId));
     }
   }, [dispatch, order, orderId, successPay, successDeliver]);
 
@@ -52,6 +67,7 @@ function OrderScreen({ match }) {
   const payHandler = () => {
     dispatch(payOrder(order));
   };
+  console.log(paymob, "paypaupaupauaaopdaodas");
 
   if (loading) {
     return <Loader />;

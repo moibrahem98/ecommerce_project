@@ -71,23 +71,40 @@ def getTopProducts(request):
 
 
 @api_view(['POST'])
-@permission_classes([IsAdminUser])
+# @permission_classes([IsAdminUser])
 def createProduct(request):
     user = request.user
-    category = Category.objects.get(id=1)
-    subCategory = SubCategory.objects.get(id=2)
-    brand = Brand.objects.get(id=1)
+    data = request.data
+    print(data, "ddddddlddddddddddddddddllllll")
+    # category = Category.objects.get(id=data['category'])
+    # subCategory = SubCategory.objects.get(id=data['subCategory'])
+    # brand = Brand.objects.get(id=data['brand'])
+    # product = Product.objects.create(
+    #     name = data['name'],
+    #     price = data['price'],
+    #     brand = Brand.objects.get(id=data['brand']),
+    #     stock = data['stock'],
+    #     category = Category.objects.get(id=data['category']),
+    #     sub_category = SubCategory.objects.get(id=data['subCategory']),
+    #     description = data['description'],
+    # )
+   
+
+    # product.save()
+    # category = Category.objects.get(id=1)
+    # subCategory = SubCategory.objects.get(id=2)
+    # brand = Brand.objects.get(id=1)
     product = Product.objects.create(
         user=user,
-        name="product",
-        price=0,
-        brand=brand,
-        stock=0,
-        category=category,
-        sub_category=subCategory,
-        description=''
-
+        name=data['name'],
+        price=data['price'],
+        brand=Brand.objects.get(id=data['brand']),
+        stock=data['stock'],
+        category=Category.objects.get(id=data['category']),
+        sub_category=SubCategory.objects.get(id=data['subCategory']),
+        description=data['description']
     )
+    product.save()
     serializer = ProductSerializer(product, many=False)
     return Response(serializer.data)
 
