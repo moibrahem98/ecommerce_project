@@ -1,4 +1,5 @@
 import random
+from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
@@ -148,7 +149,7 @@ def getCouponByName(request, name):
 # @permission_classes([IsAuthenticated])
 def payment(request, pk):
     # user = request.user
-   
+
     order = Order.objects.get(_id=pk)
     r1 = requests.post('https://accept.paymob.com/api/auth/tokens',
                     json={
@@ -231,4 +232,10 @@ def payment(request, pk):
 
     payment_token = r3.json()['token']
 
-    return redirect(f'https://accept.paymob.com/api/acceptance/iframes/324147?payment_token={payment_token}')
+    return redirect(f'https://accept.paymob.com/api/acceptance/iframes/324146?payment_token={payment_token}')
+
+def callback(request):
+    if request.GET['success'] == 'true':
+        return HttpResponse('payment_success') 
+    return HttpResponse('payment_failed')    
+        
