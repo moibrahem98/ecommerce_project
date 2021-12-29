@@ -73,26 +73,7 @@ function PlaceOrderScreen({ history }) {
                 <h4>Payment Method</h4>
                 <p>
                   {" "}
-                  {cart.paymentMethod === "paymob" ? (
-                    <Row>
-                      <Col>
-                        {" "}
-                        {cart.paymentMethod}
-                        <br />
-                        {/* <button
-                          value="Paymob"
-                          className="btn disabled text-success btn_color"
-                          onclick={window.open(
-                            "http://127.0.0.1:8000/order/api/orders/payment/"
-                          )}
-                        >
-                          Paymob
-                        </button> */}
-                      </Col>
-                    </Row>
-                  ) : (
-                    <p>{cart.paymentMethod} </p>
-                  )}
+                  {cart.paymentMethod}
                 </p>
               </ListGroup.Item>
             </ListGroup>

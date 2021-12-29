@@ -65,7 +65,7 @@ def getMyOrders(request):
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def getOredeById(request, id):
     user = request.user
     try:
@@ -150,7 +150,6 @@ def payment(request, pk):
     # user = request.user
    
     order = Order.objects.get(_id=pk)
-    print(order, "orororororororro")
     r1 = requests.post('https://accept.paymob.com/api/auth/tokens',
                     json={
                         'api_key': 'ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6VXhNaUo5LmV5SndjbTltYVd4bFgzQnJJam94TkRVd01UTXNJbU5zWVhOeklqb2lUV1Z5WTJoaGJuUWlMQ0p1WVcxbElqb2lhVzVwZEdsaGJDSjkuMlQzcTdKVGx4MEdSUWR3aFpFUFNLYUJSeGNvMVZpTDBzSEcxbmtVSnlEQWZDUG9pYUFYRFowR1JOakxDN2FKWThUSjVrNGRBaFlXYlhKRWlFbjkzNXc='})
@@ -160,7 +159,7 @@ def payment(request, pk):
                     json={
                         "auth_token": auth_token,
                         "delivery_needed": "false",
-                        "amount_cents": "100",
+                        "amount_cents": int(order.total_price)*100,
                         "currency": "EGP",
                         "merchant_order_id": random.random(),
                         "items": [
@@ -208,7 +207,7 @@ def payment(request, pk):
     r3 = requests.post('https://accept.paymob.com/api/acceptance/payment_keys',
                     json={
                         "auth_token": auth_token,
-                        "amount_cents": "100",
+                        "amount_cents": int(order.total_price)*100,
                         "expiration": 3600,
                         "order_id": order_id,
                         "billing_data": {

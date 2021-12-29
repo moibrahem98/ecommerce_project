@@ -35,17 +35,18 @@ function OrderScreen({ match }) {
   const [paymob, setPaymob] = useState("");
 
   useEffect(() => {
-    const getData = (orderId) => async () => {
-      await axios
-        .get(`/order/api/orders/payment/${orderId}/`)
-        .then((res) => {
-          setPaymob(res.data);
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
+    // const getData = (orderId) => async () => {
+    //   await axios
+    //     .get(`/order/api/payment/${orderId}/`)
+    //     .then((res) => {
+    //       setPaymob(res.data);
+    //       console.log(res);
+    //       console.log('paymob');
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
+    // };
 
     if (
       !order ||
@@ -56,7 +57,7 @@ function OrderScreen({ match }) {
       dispatch({ type: "ORDER_PAY_RESET" });
       dispatch({ type: "ORDER_DELIVER_RESET" });
       dispatch(getOrderDetails(orderId));
-      dispatch(getData(orderId));
+      // dispatch(getData(orderId));
     }
   }, [dispatch, order, orderId, successPay, successDeliver]);
 
@@ -108,7 +109,29 @@ function OrderScreen({ match }) {
               <ListGroup variant="flush">
                 <ListGroup.Item>
                   <h2>Payment Method</h2>
-                  <p>Method: {order.payment_method}</p>
+                  {order.payment_method === "paymob" ? (
+                    <Row>
+                      <Col>
+                        {" "}
+                        {order.payment_method}
+                        <br />
+                        {/* <button
+                          value="Paymob"
+                          className="btn disabled text-success btn_color"
+                          onclick={window.open(
+                            `http://127.0.0.1:8000/order/api/payment/${orderId}/`
+                          )}
+                        >
+                          Paymob
+                        </button> */}
+                        {/* <Link to='http://127.0.0.1:8000/order/api/payment/${orderId}/'>Paymob</Link> */}
+                        <a href = {`http://127.0.0.1:8000/order/api/payment/${orderId}/`}>paymob</a>
+                      </Col>
+                    </Row>
+                  ) : (
+                    <p>{orderDeliver.payment_method} </p>
+                  )}
+                  {/* <p>Method: {order.payment_method}</p> */}
 
                   {order.is_paid ? (
                     <Message variant="success">

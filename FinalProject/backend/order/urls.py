@@ -7,7 +7,7 @@ from rest_framework_simplejwt.views import (
 urlpatterns = [
 
     path('api/orders/add/', addOrderItems, name='orders-add'),
-    path('api/orders/payment/<str:pk>/', payment, name='payment'),
+    path('api/payment/<str:pk>/', payment, name='payment'),
     path('api/orders/myorders/', getMyOrders, name='myorders'),
     path('api/orders/<str:id>/', getOredeById, name='user-order'),
     path('api/orders/<str:id>/pay/', updateOrderPay, name='pay-order'),
