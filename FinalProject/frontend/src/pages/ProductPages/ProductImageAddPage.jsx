@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Form, Container } from "react-bootstrap";
+import { Button, Form, Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader";
 import axios from "axios";
@@ -56,38 +56,43 @@ function ProductImageAddPage({ match, history }) {
   if (!myvar) return null;
   if (!products) return null;
   return (
-    <FormContainer>
+    <Container>
       {" "}
       <h1 style={{ textAlign: "center" }} className="h1">
         Add Product Image
       </h1>
       <hr />
-      <Form onSubmit={submitHandler}>
-        <Form.Group controlId="image">
-          <Form.Label>Image</Form.Label>
-          <Form.Control
-            disabled
-            type="text"
-            placeholder="Enter image"
-            value={image}
-            onChange={(event) => setImage(event.target.value)}
-          ></Form.Control>
-          <br></br>
-          <Form.File
-            id="image-file"
-            custom
-            label="Choose Image"
-            onChange={uploadFileHandler}
-          ></Form.File>
-          {uploading && <Loader />}
-        </Form.Group>
-        <div style={{ textAlign: "right" }}>
-          <Button type="submit" variant="primary" className="btn_color">
-            Add Proudct
-          </Button>
-        </div>
-      </Form>
-    </FormContainer>
+      <Row className="mt-5">
+        {" "}
+        <Col lg={5} md={6} sm={12} className="p-3 m-auto shadow rounded-lg">
+          <Form onSubmit={submitHandler}>
+            <Form.Group controlId="image">
+              <Form.Label>Image</Form.Label>
+              <Form.Control
+                disabled
+                type="text"
+                placeholder="Enter image"
+                value={image}
+                onChange={(event) => setImage(event.target.value)}
+              ></Form.Control>
+              <br></br>
+              <Form.File
+                id="image-file"
+                custom
+                label="Choose Image"
+                onChange={uploadFileHandler}
+              ></Form.File>
+              {uploading && <Loader />}
+            </Form.Group>
+            <div style={{ textAlign: "right" }}>
+              <Button type="submit" variant="primary" className="btn_color">
+                Add Proudct
+              </Button>
+            </div>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

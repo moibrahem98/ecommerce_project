@@ -4,11 +4,11 @@ import { useHistory } from "react-router-dom";
 
 import { Table, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
-import { listOrders } from "../actions/orderActions";
+import Loader from "../../components/Loader";
+import Message from "../../components/Message";
+import { listOrders } from "../../actions/orderActions";
 
-function OrderListScreen({ history }) {
+function OrderListPage({ history }) {
   const dispatch = useDispatch();
 
   const orderList = useSelector((state) => state.orderList);
@@ -88,4 +88,4 @@ function OrderListScreen({ history }) {
   );
 }
 
-export default OrderListScreen;
+export default OrderListPage;

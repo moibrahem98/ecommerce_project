@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { Row, Col, Container, Card } from "react-bootstrap";
-import Product from "../components/Product";
+import Product from "../../components/Product";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getProductByCategory,
   listSubCategories,
-} from "../actions/productActions";
-import Message from "../components/Message";
-import Loader from "../components/Loader";
+} from "../../actions/productActions";
+import Message from "../../components/Message";
+import Loader from "../../components/Loader";
 // import InternalSearch from "../components/categorySelect";
 
 function CategoryPage({ match, history }) {

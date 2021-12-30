@@ -13,14 +13,15 @@ import {
   Tabs,
   Container,
 } from "react-bootstrap";
-import Rating from "../components/Rating";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
+import Rating from "../../components/Rating";
+import Loader from "../../components/Loader";
+import Message from "../../components/Message";
 import {
   listProductDetails,
+  listOffers,
   createProductReview,
-} from "../actions/productActions";
-function ProductScreen({ match, history }) {
+} from "../../actions/productActions";
+function ProductPage({ match, history }) {
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
@@ -33,6 +34,8 @@ function ProductScreen({ match, history }) {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  const offersList = useSelector((state) => state.offersList);
+  const { offers } = offersList;
   const productReviewCreate = useSelector((state) => state.productReviewCreate);
   const {
     loading: loadingProductReview,
@@ -47,6 +50,7 @@ function ProductScreen({ match, history }) {
       dispatch({ type: "PRODUCT_CREATE_REVIEW_RESET" });
     }
     dispatch(listProductDetails(match.params.id));
+    dispatch(listOffers());
   }, [dispatch, match, successProductReview]);
 
   const addToCartHandler = () => {
@@ -64,7 +68,9 @@ function ProductScreen({ match, history }) {
   };
 
   let hist = useHistory();
-
+  if (!product) return null;
+  if (!offers) return null;
+  console.log(product, ";;;;;;;;;;;;;;;;;;");
   return (
     <Container>
       <div>
@@ -110,7 +116,22 @@ function ProductScreen({ match, history }) {
                       <Row>
                         <Col>Price:</Col>
                         <Col>
-                          <strong>{product.price} L.E</strong>
+                          {product.offer.value === 1 ? (
+                            <Row>
+                              <strong>{product.price} </strong>
+                              <strong>&nbsp; L.E</strong>
+                            </Row>
+                          ) : (
+                            <Row>
+                              <strike>{product.price}&nbsp;</strike>
+                              {/* <strong>&nbsp; L.E</strong> */}
+
+                              <strong>
+                                &nbsp;{product.price * product.offer.value}
+                                &nbsp; L.E
+                              </strong>
+                            </Row>
+                          )}
                         </Col>
                       </Row>
                     </ListGroup.Item>
@@ -267,4 +288,4 @@ function ProductScreen({ match, history }) {
   );
 }
 
-export default ProductScreen;
+export default ProductPage;

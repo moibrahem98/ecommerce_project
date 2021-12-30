@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { Row, Col, Container } from "react-bootstrap";
-import Product from "../components/Product";
+import Product from "../../components/Product";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductBySubCategory } from "../actions/productActions";
-import Message from "../components/Message";
-import Loader from "../components/Loader";
+import { getProductBySubCategory } from "../../actions/productActions";
+import Message from "../../components/Message";
+import Loader from "../../components/Loader";
 
 function SubCategoryPage({ match, history }) {
   const dispatch = useDispatch();

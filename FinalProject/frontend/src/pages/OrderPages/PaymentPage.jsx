@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import FormContainer from "../components/FormContainer";
-import CheckoutSteps from "../components/CheckoutSteps";
-import { savePaymentMethod } from "../actions/cartActions";
+import FormContainer from "../../components/FormContainer";
+import CheckoutSteps from "../../components/CheckoutSteps";
+import { savePaymentMethod } from "../../actions/cartActions";
 import axios from "axios";
 
-function PaymentScreen({ history }) {
+function PaymentPage({ history }) {
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
 
@@ -73,4 +73,4 @@ function PaymentScreen({ history }) {
   );
 }
 
-export default PaymentScreen;
+export default PaymentPage;

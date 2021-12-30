@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-import Loader from "../components/Loader";
-import Message from "../components/Message";
-import { listProducts, deleteProduct } from "../actions/productActions";
+import Loader from "../../components/Loader";
+import Message from "../../components/Message";
+import { listProducts, deleteProduct } from "../../actions/productActions";
 import { LinkContainer } from "react-router-bootstrap";
 
-function ProductListScreen({ history, match }) {
+function ProductListPage({ history, match }) {
   const dispatch = useDispatch();
 
   const productList = useSelector((state) => state.productList);
@@ -124,4 +124,4 @@ function ProductListScreen({ history, match }) {
   );
 }
 
-export default ProductListScreen;
+export default ProductListPage;

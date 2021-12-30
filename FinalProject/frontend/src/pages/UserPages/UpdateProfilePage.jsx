@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
-import { getUserDetails, updateUserProfile } from "../actions/userActions";
+import Loader from "../../components/Loader";
+import Message from "../../components/Message";
+import { getUserDetails, updateUserProfile } from "../../actions/userActions";
 
-function UpdateProfileScreen({ history }) {
+function UpdateProfilePage({ history }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -122,4 +122,4 @@ function UpdateProfileScreen({ history }) {
   );
 }
 
-export default UpdateProfileScreen;
+export default UpdateProfilePage;

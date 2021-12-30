@@ -23,6 +23,7 @@ urlpatterns = [
 
     path('api/categories/', getCategories.as_view({'get': 'list'}), name='categories'),
     path('api/sub_categories/', getSubCategories.as_view({'get': 'list'}), name='subcategories'),
+    path('api/offers/', getOffers.as_view({'get': 'list'}), name='offers'),
 
     # ****** returns ***************
 

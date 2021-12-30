@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
+import Loader from "../../components/Loader";
+import Message from "../../components/Message";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../actions/userActions";
-import { FormContainer } from "../components/FormContainer";
-function LoginScreen({ location, history }) {
+import { login } from "../../actions/userActions";
+import { FormContainer } from "../../components/FormContainer";
+
+function LoginPage({ location, history }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -81,4 +82,4 @@ function LoginScreen({ location, history }) {
   );
 }
 
-export default LoginScreen;
+export default LoginPage;

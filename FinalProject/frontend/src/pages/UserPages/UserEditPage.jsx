@@ -7,7 +7,7 @@ import Message from "../../components/Message";
 import FormContainer from "../../components/FormContainer";
 import { getUserDetails, updateUser } from "../../actions/userActions";
 
-function UserEditScreen({ match, history }) {
+function UserEditPage({ match, history }) {
   const userId = match.params.id;
 
   const [name, setName] = useState("");
@@ -102,4 +102,4 @@ function UserEditScreen({ match, history }) {
   );
 }
 
-export default UserEditScreen;
+export default UserEditPage;

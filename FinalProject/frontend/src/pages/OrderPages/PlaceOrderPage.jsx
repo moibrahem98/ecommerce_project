@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Col, Row, ListGroup, Image, Card, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { createOrder } from "../actions/orderActions";
-import Message from "../components/Message";
-import CheckoutSteps from "../components/CheckoutSteps";
+import { createOrder } from "../../actions/orderActions";
+import Message from "../../components/Message";
+import CheckoutSteps from "../../components/CheckoutSteps";
 
-function PlaceOrderScreen({ history }) {
+function PlaceOrderPage({ history }) {
   const orderCreate = useSelector((state) => state.orderCreate);
   const { order, error, success } = orderCreate;
 
@@ -71,10 +71,7 @@ function PlaceOrderScreen({ history }) {
             <ListGroup variant="flush">
               <ListGroup.Item>
                 <h4>Payment Method</h4>
-                <p>
-                  {" "}
-                  {cart.paymentMethod}
-                </p>
+                <p> {cart.paymentMethod}</p>
               </ListGroup.Item>
             </ListGroup>
 
@@ -159,4 +156,4 @@ function PlaceOrderScreen({ history }) {
   );
 }
 
-export default PlaceOrderScreen;
+export default PlaceOrderPage;

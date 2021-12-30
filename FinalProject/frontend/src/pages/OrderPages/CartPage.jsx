@@ -11,10 +11,10 @@ import {
   Card,
   Container,
 } from "react-bootstrap";
-import Message from "../components/Message";
-import { addToCart, removeFromCart } from "../actions/cartActions";
+import Message from "../../components/Message";
+import { addToCart, removeFromCart } from "../../actions/cartActions";
 
-function CartScreen({ match, location, history }) {
+function CartPage({ match, location, history }) {
   const productId = match.params.id;
   const qty = location.search ? Number(location.search.split("=")[1]) : 1;
   const dispatch = useDispatch();
@@ -144,4 +144,4 @@ function CartScreen({ match, location, history }) {
   );
 }
 
-export default CartScreen;
+export default CartPage;

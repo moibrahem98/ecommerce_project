@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import FormContainer from "../components/FormContainer";
-import CheckoutSteps from "../components/CheckoutSteps";
-import { saveShippingAddress } from "../actions/cartActions";
+import CheckoutSteps from "../../components/CheckoutSteps";
+import { saveShippingAddress } from "../../actions/cartActions";
 
-function ShippingScreen({ history }) {
+function ShippingPage({ history }) {
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
 
@@ -90,4 +89,4 @@ function ShippingScreen({ history }) {
   );
 }
 
-export default ShippingScreen;
+export default ShippingPage;

@@ -21,6 +21,10 @@ class getSubCategories(viewsets.ModelViewSet):
     serializer_class = SubCategorySerializer
     queryset = SubCategory.objects.all()
 
+class getOffers(viewsets.ModelViewSet):
+    serializer_class = OfferSerializer
+    queryset = Offer.objects.all()
+
 
 @api_view(['GET'])
 def product_list(request):
@@ -98,6 +102,7 @@ def createProduct(request):
         user=user,
         name=data['name'],
         price=data['price'],
+        offer=data['offer'],
         brand=Brand.objects.get(id=data['brand']),
         stock=data['stock'],
         category=Category.objects.get(id=data['category']),
@@ -114,12 +119,14 @@ def createProduct(request):
 def updateProduct(request, id):
     data = request.data
     product = Product.objects.get(_id=id)
+    offer = Offer.objects.get(id=data['offer'])
     category = Category.objects.get(id=data['category'])
     subCategory = SubCategory.objects.get(id=data['subCategory'])
     brand = Brand.objects.get(id=data['brand'])
 
     product.name = data['name']
     product.price = data['price']
+    product.offer= offer
     product.brand = brand
     product.stock = data['stock']
     product.category = category
@@ -329,11 +336,14 @@ def createbrand(request):
 
     print(data, 'ssssssssssssssssssssss')
     print(request.FILES)
+    
     brand = Brand.objects.create(
         name=data['name'],
-        img=request.FILES.get('img')
-        # img=data['img']
+        # img = img 
     )
+    brand.save()
+    print(brand,'sbbbbbbbbbbbbbbbbbbbbbbb')
+    brand.img=request.FILES.get('img')
     brand.save()
 
     serializer = BrandSerializer(brand)

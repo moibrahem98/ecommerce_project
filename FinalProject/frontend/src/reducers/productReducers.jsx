@@ -462,3 +462,29 @@ export const brandCreateReducer = (state = {}, action) => {
       return state;
   }
 };
+
+// OFFERS:
+
+export const offersListReducer = (state = { categories: [] }, action) => {
+  switch (action.type) {
+    case "OFFERS_REQUEST":
+      return {
+        loading: true,
+      };
+
+    case "OFFERS_SUCCESS":
+      return {
+        loading: false,
+        offers: action.payload,
+      };
+
+    case "OFFERS_FAIL":
+      return {
+        loading: false,
+        error: action.payload,
+      };
+
+    default:
+      return state;
+  }
+};

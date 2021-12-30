@@ -8,7 +8,7 @@ import axios from "axios";
 function AddBrandPage({ location, history }) {
   const [name, setName] = useState("");
   const [uploading, setUploading] = useState(false);
-  const [img, setImg] = useState("");
+  const [img, setImg] = useState();
 
   const dispatch = useDispatch();
 
@@ -23,9 +23,7 @@ function AddBrandPage({ location, history }) {
   const uploadFileHandler = async (event) => {
     const file = event.target.files[0];
     const formData = new FormData();
-
     formData.append("img", file);
-    // formData.append("brand_id", brand_id);
 
     setUploading(true);
 
@@ -50,23 +48,21 @@ function AddBrandPage({ location, history }) {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(addBrandFunction(name, img));
+    dispatch(addBrandFunction(name));
   };
-
+  console.log(img, "iiiiiiiiiiiiiii");
   return (
     <Container>
       <Row className="mt-5">
         <Col lg={5} md={6} sm={12} className="p-3 m-auto shadow rounded-lg">
-          <h3 className=" text-success mt-1 p-1 text-center ">
-            File Return Request
-          </h3>
+          <h3 className=" text-success mt-1 p-1 text-center ">Add Brand</h3>
           <Form onSubmit={submitHandler}>
             <Form.Group controlId="name">
-              <Form.Label>Name</Form.Label>
+              <Form.Label>Brand Name</Form.Label>
               <Form.Control
                 required
                 type="text"
-                placeholder="Enter Complain"
+                placeholder="Enter Brand Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></Form.Control>
@@ -75,6 +71,7 @@ function AddBrandPage({ location, history }) {
               <Form.Label>Image</Form.Label>
               <Form.Control
                 type="text"
+                disabled
                 placeholder="Enter image"
                 value={img}
                 onChange={(event) => setImg(event.target.value)}
@@ -92,7 +89,7 @@ function AddBrandPage({ location, history }) {
               variant="dark"
               className="w-100 text-success btn_color"
             >
-              File Return
+              Add Brand
             </Button>
           </Form>
         </Col>

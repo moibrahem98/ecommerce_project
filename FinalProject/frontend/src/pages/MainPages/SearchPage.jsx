@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, Container } from "react-bootstrap";
-import Product from "../components/Product";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
-import { listProducts } from "../actions/productActions";
+import Product from "../../components/Product";
+import Loader from "../../components/Loader";
+import Message from "../../components/Message";
+import { listProducts } from "../../actions/productActions";
 
-import SearchBox from "../components/SearchBox";
+import SearchBox from "../../components/SearchBox";
 
 function SearchPage({ history }) {
   const dispatch = useDispatch();

@@ -7,8 +7,9 @@ export default function Loader() {
       animation="border"
       role="status"
       style={{
-        height: "100px",
-        width: "100px",
+        color: "#418993",
+        height: "50px",
+        width: "50px",
         margin: "auto",
         display: "block",
       }}

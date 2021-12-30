@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import "./AdminPanalPage.css";
 import { Row, Col } from "react-bootstrap";
-import { listReturns } from "../../actions/productActions";
+import { listReturns } from "../../../actions/productActions";
 import { useDispatch, useSelector } from "react-redux";
-import { listOrders } from "../../actions/orderActions";
-import { listUsers } from "../../actions/userActions";
-import { listProducts } from "../../actions/productActions";
+import { listOrders } from "../../../actions/orderActions";
+import { listUsers } from "../../../actions/userActions";
+import { listProducts } from "../../../actions/productActions";
 export default function AdminPanalPage({ history }) {
   const dispatch = useDispatch();
 

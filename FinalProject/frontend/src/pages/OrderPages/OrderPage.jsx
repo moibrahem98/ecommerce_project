@@ -6,12 +6,12 @@ import {
   getOrderDetails,
   deliverOrder,
   payOrder,
-} from "../actions/orderActions";
-import Message from "../components/Message";
-import Loader from "../components/Loader";
+} from "../../actions/orderActions";
+import Message from "../../components/Message";
+import Loader from "../../components/Loader";
 import axios from "axios";
 
-function OrderScreen({ match }) {
+function OrderPage({ match }) {
   const orderId = match.params.id;
   const dispatch = useDispatch();
   const orderDetails = useSelector((state) => state.orderDetails);
@@ -125,7 +125,11 @@ function OrderScreen({ match }) {
                           Paymob
                         </button> */}
                         {/* <Link to='http://127.0.0.1:8000/order/api/payment/${orderId}/'>Paymob</Link> */}
-                        <a href = {`http://127.0.0.1:8000/order/api/payment/${orderId}/`}>paymob</a>
+                        <a
+                          href={`http://127.0.0.1:8000/order/api/payment/${orderId}/`}
+                        >
+                          paymob
+                        </a>
                       </Col>
                     </Row>
                   ) : (
@@ -258,4 +262,4 @@ function OrderScreen({ match }) {
   }
 }
 
-export default OrderScreen;
+export default OrderPage;

@@ -1,12 +1,12 @@
-import { listMyOrders } from "../actions/orderActions";
+import { listMyOrders } from "../../actions/orderActions";
 import React, { useState, useEffect } from "react";
 import { Button, Row, Col, Table } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
+import Loader from "../../components/Loader";
+import Message from "../../components/Message";
 
-function MyOrdersScreen({ history }) {
+function MyOrdersPage({ history }) {
   const dispatch = useDispatch();
 
   const userDetails = useSelector((state) => state.userDetails);
@@ -86,4 +86,4 @@ function MyOrdersScreen({ history }) {
   );
 }
 
-export default MyOrdersScreen;
+export default MyOrdersPage;

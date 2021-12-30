@@ -1,5 +1,5 @@
 import axios from "axios";
-
+// Product Actions:
 export const listProducts =
   (name = "") =>
   async (dispatch) => {
@@ -19,23 +19,6 @@ export const listProducts =
       });
     }
   };
-export const listCategory = () => async (dispatch) => {
-  try {
-    dispatch({ type: "CATEGORY_LIST_REQUEST" });
-
-    const { data } = await axios.get(`/product/api/categories`);
-
-    dispatch({ type: "CATEGORY_LIST_SUCCESS", payload: data });
-  } catch (error) {
-    dispatch({
-      type: "CATEGORY_LIST_FAIL",
-      payload:
-        error.response && error.response.data.detail
-          ? error.response.data.detail
-          : error.message,
-    });
-  }
-};
 export const listTopProducts = () => async (dispatch) => {
   try {
     dispatch({ type: "PRODUCT_TOP_REQUEST" });
@@ -135,7 +118,17 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
 };
 
 export const createProduct =
-  (name, price, brand, category, subCategory, stock, description, image) =>
+  (
+    name,
+    price,
+    offer,
+    brand,
+    category,
+    subCategory,
+    stock,
+    description,
+    image
+  ) =>
   async (dispatch, getState) => {
     try {
       dispatch({
@@ -159,6 +152,7 @@ export const createProduct =
           name: name,
           price: price,
           brand: brand,
+          offer: offer,
           category: category,
           subCategory: subCategory,
           stock: stock,
@@ -624,7 +618,7 @@ export const getProductByBrand = (id) => async (dispatch) => {
   }
 };
 
-export const addBrandFunction = (name, img) => async (dispatch, getState) => {
+export const addBrandFunction = (name) => async (dispatch, getState) => {
   try {
     dispatch({
       type: "BRAND_ADD_REQUEST",
@@ -645,7 +639,6 @@ export const addBrandFunction = (name, img) => async (dispatch, getState) => {
       `/product/api/createbrand/`,
       {
         name: name,
-        img: img,
       },
       config
     );
@@ -657,6 +650,31 @@ export const addBrandFunction = (name, img) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: "BRAND_ADD_FAIL",
+      payload:
+        error.response && error.response.data.detail
+          ? error.response.data.detail
+          : error.message,
+    });
+  }
+};
+
+// offers:
+// /product/api/offers/
+
+export const listOffers = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: "OFFERS_REQUEST",
+    });
+
+    const { data } = await axios.get(`/product/api/offers/`);
+    dispatch({
+      type: "OFFERS_SUCCESS",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "OFFERS_FAIL",
       payload:
         error.response && error.response.data.detail
           ? error.response.data.detail
