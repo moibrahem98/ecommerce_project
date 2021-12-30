@@ -624,43 +624,43 @@ export const getProductByBrand = (id) => async (dispatch) => {
   }
 };
 
-// export const addBrandFunction = (name, img) => async (dispatch, getState) => {
-//   try {
-//     dispatch({
-//       type: "BRAND_ADD_REQUEST",
-//     });
+export const addBrandFunction = (name, img) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: "BRAND_ADD_REQUEST",
+    });
 
-//     const {
-//       userLogin: { userInfo },
-//     } = getState();
+    const {
+      userLogin: { userInfo },
+    } = getState();
 
-//     const config = {
-//       headers: {
-//         "Content-type": "application/json",
-//         Authorization: `Bearer ${userInfo.token}`,
-//       },
-//     };
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
 
-//     const { data } = await axios.post(
-//       `/product/api/brands/create/`,
-//       {
-//         name: name,
-//         img: img,
-//       },
-//       config
-//     );
+    const { data } = await axios.post(
+      `/product/api/createbrand/`,
+      {
+        name: name,
+        img: img,
+      },
+      config
+    );
 
-//     dispatch({
-//       type: "BRAND_ADD_SUCCESS",
-//       payload: data,
-//     });
-//   } catch (error) {
-//     dispatch({
-//       type: "BRAND_ADD_FAIL",
-//       payload:
-//         error.response && error.response.data.detail
-//           ? error.response.data.detail
-//           : error.message,
-//     });
-//   }
-// };
+    dispatch({
+      type: "BRAND_ADD_SUCCESS",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "BRAND_ADD_FAIL",
+      payload:
+        error.response && error.response.data.detail
+          ? error.response.data.detail
+          : error.message,
+    });
+  }
+};

@@ -11,7 +11,9 @@ class ProductSerializer(serializers.ModelSerializer):
     category1 = serializers.SerializerMethodField(read_only=True)
     subcategory1 = serializers.SerializerMethodField(read_only=True)
     brand1 = serializers.SerializerMethodField(read_only=True)
-    
+
+    offer = serializers.SerializerMethodField(read_only=True)
+
     class Meta:
         model = Product
         fields = '__all__'
@@ -28,12 +30,18 @@ class ProductSerializer(serializers.ModelSerializer):
 
     def get_subcategory1(self, obj):
         category1 = SubCategory.objects.get(name=obj.sub_category)
-        serializer = CategorySerializer(category1, many=False)
+        serializer = SubCategorySerializer(category1, many=False)
         return serializer.data
 
     def get_brand1(self, obj):
         brand1 = Brand.objects.get(name=obj.brand)
-        serializer = CategorySerializer(brand1, many=False)
+        serializer = BrandSerializer(brand1, many=False)
+        print(obj.offer, "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-")
+        return serializer.data
+
+    def get_offer(self, obj):
+        offer = Offer.objects.get(name=obj.offer)
+        serializer = OfferSerializer(offer, many=False)
         return serializer.data
 
 
@@ -84,4 +92,10 @@ class BrandSerializer(serializers.ModelSerializer):
 class BannerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Banner
+        fields = '__all__'
+
+
+class OfferSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Offer
         fields = '__all__'

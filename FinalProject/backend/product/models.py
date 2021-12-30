@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-
 def saveCatImg(instance, filename):
     return f"category/{instance.name}/{filename}"
 
@@ -20,8 +19,7 @@ def saveBrandImg(instance, filename):
 
 
 def savOfferImg(instance, filename):
-    return f"offer/{instance.name}/{filename}"    
-
+    return f"offer/{instance.name}/{filename}"
 
 
 class Product(models.Model):
@@ -38,12 +36,13 @@ class Product(models.Model):
     reviews_number = models.IntegerField(null=True, blank=True, default=0)
     price = models.DecimalField(
         max_digits=7, decimal_places=2, null=True, blank=True)
-    discount = models.DecimalField(max_digits=3, decimal_places=0, null=True, blank=True, default=0)  
+    offer = models.ForeignKey('Offer', on_delete=models.CASCADE,null=True, blank=True)
     stock = models.IntegerField(null=True, blank=True, default=0)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return str(self.name)
+
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -64,7 +63,7 @@ class SubCategory(models.Model):
 
 class Review(models.Model):
     _id = models.AutoField(primary_key=True, editable=False)
-    product = models.ForeignKey(Product, related_name='review',on_delete=models.SET_NULL, null=True)
+    product = models.ForeignKey(Product, related_name='review', on_delete=models.SET_NULL, null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200, null=True, blank=True)
     rating = models.IntegerField(null=True, blank=True, default=0)
@@ -82,9 +81,11 @@ class Brand(models.Model):
     def __str__(self):
         return str(self.name)
 
+
 class Banner(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     img = models.ImageField(upload_to=savOfferImg)
+
 
 class Returns(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
@@ -100,3 +101,9 @@ class Returns(models.Model):
         return str(self.title)
 
 
+class Offer(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    value = models.FloatField(default=1.0)
+
+    def __str__(self):
+        return str(self.name)

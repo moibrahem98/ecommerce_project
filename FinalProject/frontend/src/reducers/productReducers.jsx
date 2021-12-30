@@ -444,21 +444,21 @@ export const getProductByBrandReducer = (state = {}, action) => {
   }
 };
 
-// export const brandCreateReducer = (state = {}, action) => {
-//   switch (action.type) {
-//     case "BRAND_ADD_REQUEST":
-//       return { loading: true };
+export const brandCreateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "BRAND_ADD_REQUEST":
+      return { loading: true };
 
-//     case "BRAND_ADD_SUCCESS":
-//       return { loading: false, success: true, brand: action.payload };
+    case "BRAND_ADD_SUCCESS":
+      return { loading: false, success: true, brand: action.payload };
 
-//     case "BRAND_ADD_FAIL":
-//       return { loading: false, error: action.payload };
+    case "BRAND_ADD_FAIL":
+      return { loading: false, error: action.payload };
 
-//     case "BRAND_ADD_RESET":
-//       return {};
+    case "BRAND_ADD_RESET":
+      return {};
 
-//     default:
-//       return state;
-//   }
-// };
+    default:
+      return state;
+  }
+};

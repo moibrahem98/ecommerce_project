@@ -14,7 +14,7 @@ urlpatterns = [
     path('api/orders/<str:id>/pay/', updateOrderPay, name='pay-order'),
     path('api/orders/', getOrders, name='getOrders'),
     path('api/orders/<str:id>/deliver/',
-        updateOrderToDelivered, name='order-delivered'),
+         updateOrderToDelivered, name='order-delivered'),
     path('api/coupons/', listcoupons, name="coupons"),
     path('api/coupons/<str:name>/', getCouponByName, name="couponsByName"),
     path('api/coupons/create/', createcoupons, name="create_coupons"),

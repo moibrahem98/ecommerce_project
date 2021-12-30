@@ -1,4 +1,5 @@
 from django.core import paginator
+from django.core.mail import send_mail
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
@@ -25,6 +26,7 @@ class getSubCategories(viewsets.ModelViewSet):
 def product_list(request):
     queryset = Product.objects.all()
     filterset = ProductFilter(request.GET, queryset=queryset)
+
     if filterset.is_valid():
         queryset = filterset.qs
 
@@ -42,7 +44,6 @@ def product_list(request):
     #     page = 1
 
     # # page = int(page)
-
 
     serializer = ProductSerializer(queryset, many=True)
     return Response(serializer.data)
@@ -88,7 +89,6 @@ def createProduct(request):
     #     sub_category = SubCategory.objects.get(id=data['subCategory']),
     #     description = data['description'],
     # )
-   
 
     # product.save()
     # category = Category.objects.get(id=1)
@@ -160,6 +160,7 @@ def deleteProduct(request, id):
 @api_view(['POST'])
 def uploadImage(request):
     data = request.data
+    print(request.FILES, "***************************************")
     product_id = data['product_id']
     product = Product.objects.get(_id=product_id)
     product.image = request.FILES.get('image')
@@ -325,18 +326,18 @@ def GetbrandById(request, id):
 # @permission_classes([IsAdminUser])
 def createbrand(request):
     data = request.data
+
     print(data, 'ssssssssssssssssssssss')
+    print(request.FILES)
     brand = Brand.objects.create(
         name=data['name'],
-        img = request.FILES.get('img')
+        img=request.FILES.get('img')
         # img=data['img']
     )
     brand.save()
 
     serializer = BrandSerializer(brand)
     return Response(serializer.data)
-
-
 
 # @api_view(['POST'])
 # def uploadBrandImage(request):

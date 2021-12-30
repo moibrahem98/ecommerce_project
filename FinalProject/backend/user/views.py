@@ -1,5 +1,10 @@
+from django.conf import settings
+from django.contrib.sites.shortcuts import get_current_site
+from django.core.mail import send_mail
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
+from django.template.loader import render_to_string
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
@@ -11,6 +16,10 @@ from django.contrib.auth.hashers import make_password
 from rest_framework import status
 from datetime import datetime
 from rest_framework import viewsets
+from django.utils.encoding import force_bytes, force_text
+
+from .tokengenerator import generate_token
+
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
@@ -34,9 +43,12 @@ def register(request):
             first_name=data['name'],
             username=data['email'],
             email=data['email'],
+            is_active=False,
             password=make_password(data['password'])
         )
+
         serializers = UserSerializerWithToken(user, many=False)
+        send_activation_email(user, request)
         return Response(serializers.data)
     except:
         message = {'user with this email already exist'}
@@ -102,3 +114,33 @@ def deleteUser(request, id):
     userForDeletion = User.objects.get(id=id)
     userForDeletion.delete()
     return Response('user was deleted')
+
+
+#  ********************* send activation mail *********************
+
+def send_activation_email(user, request):
+    current_site = get_current_site(request)
+    email_subject = 'Activate your account'
+    email_body = render_to_string('activate.html', {
+        'user': user,
+        'domain': current_site,
+        'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+        'token': generate_token.make_token(user)
+    })
+
+    email = send_mail(email_subject, email_body, settings.EMAIL_HOST_USER, [user.email])
+    print(email)
+
+
+def activate_user(request, uidb64, token):
+    try:
+        uid = force_text(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(id=uid)
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+    if user is not None and generate_token.check_token(user, token):
+        user.is_active = True
+        user.save()
+        return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+    else:
+        return HttpResponse('Activation link is invalid!')

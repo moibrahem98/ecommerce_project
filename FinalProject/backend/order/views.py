@@ -1,4 +1,6 @@
 import random
+
+from django.core.mail import send_mail
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from rest_framework.decorators import api_view, permission_classes
@@ -52,6 +54,12 @@ def addOrderItems(request):
             product.stock -= item.quantity
             product.save()
 
+        """admin = User.objects.filter(is_staff=1)
+        arr = []
+        for item in admin.iterator():
+            arr.append(item.email)
+            print(arr, "***********************")
+        send_mail('Subject here', 'Here is the message', 'from@example.com', arr)"""
         serializer = OrderSerializer(order, many=False)
         return Response(serializer.data)
 
@@ -84,7 +92,7 @@ def getOredeById(request, id):
 @api_view(['GET'])
 @permission_classes([IsAdminUser])
 def getOrders(request):
-    orders = Order.objects.all()
+    orders = Order.objects.order_by("-created_at")
     serializer = OrderSerializer(orders, many=True)
     return Response(serializer.data)
 

@@ -34,11 +34,12 @@ urlpatterns = [
 
     # ****** brand ***************
 
+    path('api/createbrand/', createbrand, name="create-brands"),
+
     path('api/brands/', getbrands, name="all_brands"),
     path('api/brand/<str:id>', GetbrandById, name="brand"),
     path('api/brand/<str:id>/products', getProductByBrand, name='products_by_brand'),
     # path('api/brand/upload/', uploadBrandImage, name='brand-image-upload'),
-    path('api/brands/create/', createbrand, name="create-brands"),
 
 
     path('api/banners/create', createBanner, name="create_banner"),

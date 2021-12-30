@@ -13,10 +13,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 from datetime import timedelta
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -28,7 +26,6 @@ SECRET_KEY = 'django-insecure-y$dkr3db=@o%&#o9vzov)t2(vz6f6ce@1r4=c&n$7z3#*%x$9q
 DEBUG = True
 
 ALLOWED_HOSTS = ['74e5-197-61-111-147.ngrok.io', '127.0.0.1']
-
 
 # Application definition
 
@@ -59,10 +56,9 @@ REST_FRAMEWORK = {
     ),
 
     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',
-                                                'rest_framework.filters.OrderingFilter',
-                                                'rest_framework.filters.SearchFilter'
-)
-
+                                'rest_framework.filters.OrderingFilter',
+                                'rest_framework.filters.SearchFilter'
+                                )
 
 }
 
@@ -128,7 +124,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -138,7 +133,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -158,7 +152,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -169,7 +162,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
@@ -188,6 +180,9 @@ MEDIA_ROOT = 'static/images'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 CORS_ALLOW_ALL_ORIGINS = True
 
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = 'aa3550828bc8ed'
+EMAIL_HOST_PASSWORD = '95d6a9645ede25'
+EMAIL_PORT = '2525'

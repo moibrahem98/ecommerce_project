@@ -7,15 +7,16 @@ from .views import *
 
 urlpatterns = [
     path('api/users/login/', MyTokenObtainPairView.as_view(),
-        name='token_obtain_pair'),
+         name='token_obtain_pair'),
     path('api/users/profile/', getUserProfile, name='user_profile'),
     path('api/users/profile/update/',
-        updateUserProfile, name='update_user_profile'),
+         updateUserProfile, name='update_user_profile'),
     path('api/users/all/', getUsers, name='all_users'),
     path('api/users/register/', register, name='register'),
     path('api/users/<str:id>/', getUserByID, name='user'),
     path('api/users/delete/<str:id>/', deleteUser, name='update-user'),
     path('api/users/update/<str:id>/', updateUser, name='delete-user'),
 
+    path('activate-user/<uidb64>/<token>', activate_user, name='activate'),
 
 ]

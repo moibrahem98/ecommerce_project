@@ -34,7 +34,7 @@ import BrandsListPage from "./pages/BrandPages/BrandListPage";
 import BrandDetailsPage from "./pages/BrandPages/BrandDetailsPage";
 import ProductCreatePage from "./pages/ProductPages/ProductCreatePage";
 import ProductImageAddPage from "./pages/ProductPages/ProductImageAddPage";
-// import AddBrandPage from "./pages/BrandPages/AddBrandPage";
+import AddBrandPage from "./pages/BrandPages/AddBrandPage";
 function App() {
   return (
     <Router>
@@ -79,7 +79,7 @@ function App() {
           {/* Brand: */}
           <Route path="/admin/brands" component={BrandsListPage} />
           <Route path="/brand/:id" component={BrandDetailsPage} />
-          {/* <Route path="/brand/addbrand" component={AddBrandPage} /> */}
+           <Route path="/addbrand" component={AddBrandPage} />
         </Switch>
       </Container>
       <Footer />

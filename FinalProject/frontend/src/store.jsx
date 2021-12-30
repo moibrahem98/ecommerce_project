@@ -22,7 +22,7 @@ import {
   listBrandsReducer,
   brandDetailsReducer,
   getProductByBrandReducer,
-  // brandCreateReducer,
+  brandCreateReducer,
 } from "./reducers/productReducers";
 import { cartReducer } from "./reducers/cartReducers";
 import {
@@ -65,7 +65,7 @@ const reducer = combineReducers({
   listBrands: listBrandsReducer,
   brandDetails: brandDetailsReducer,
   brandProducts: getProductByBrandReducer,
-  // brandCreate: brandCreateReducer,
+  brandCreate: brandCreateReducer,
 
   // cart
   cart: cartReducer,
