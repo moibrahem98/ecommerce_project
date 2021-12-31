@@ -25,7 +25,7 @@ function SearchBox() {
           placeholder="search"
           onChange={(event) => setName(event.target.value)}
         />
-        <button className="btn btn-outline-primary">
+        <button className="btn btn_color">
           <i className="fas fa-search "></i>
         </button>
       </div>

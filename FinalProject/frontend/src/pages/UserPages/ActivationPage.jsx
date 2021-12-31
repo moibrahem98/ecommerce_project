@@ -10,7 +10,7 @@ function ActivationPage() {
           <h3 className=" text-success mt-1 p-1 text-center ">
             Please Activate Your Email Then Login
           </h3>{" "}
-          <Link to={"/"} className="btn btn-outline-primary btn-block">
+          <Link to={"/"} className="btn btn_color btn-block">
             Head To Home Page
           </Link>
         </Col>
