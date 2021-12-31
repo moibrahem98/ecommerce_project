@@ -3,7 +3,7 @@ import { Card, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
-import { getUserDetails } from "../../actions/userActions";
+import { getUserDetails } from "../../redux/actions/userActions";
 
 function ProfilePage({ history }) {
   const [name, setName] = useState("");

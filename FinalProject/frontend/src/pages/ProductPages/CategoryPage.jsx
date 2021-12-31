@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { Row, Col, Container, Card } from "react-bootstrap";
-import Product from "../../components/Product";
+import Product from "../../components/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getProductByCategory,
   listSubCategories,
-} from "../../actions/productActions";
+} from "../../redux/actions/productActions";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
 // import InternalSearch from "../components/categorySelect";
@@ -16,11 +16,7 @@ function CategoryPage({ match, history }) {
   const categoryProducts = useSelector((state) => state.categoryProducts);
   const { loading, error, products } = categoryProducts;
   const subcategoriesList = useSelector((state) => state.subcategoriesList);
-  const {
-    loading: subcategoriesLoading,
-    error: subcategoriesError,
-    subcategories,
-  } = subcategoriesList;
+  const { subcategories } = subcategoriesList;
 
   let name = history.location.search;
   useEffect(() => {
@@ -40,27 +36,18 @@ function CategoryPage({ match, history }) {
         <Message variant="danger">{error}</Message>
       ) : (
         <Container>
-          {/* <InternalSearch /> */}
           <Row md={8}>
             {subcategories.map((subcategory) => (
-              <p>
+              <p key={subcategory.id} style={{ textAlign: "center" }}>
                 {subcategory.category == match.params.id && (
                   <Row sm={12} md={6} lg={4} xl={3}>
-                    <Col className="" style={{ width: "250px" }}>
+                    <Col className="btn btn-outline-primary m-4 ">
                       <a
                         className="nav-link"
+                        style={{ color: "black" }}
                         href={`/subcategoryproducts/${subcategory.id}`}
                       >
-                        <Card.Img src={subcategory.img} />
-                        <h5
-                          style={{
-                            textAlign: "center",
-                            color: "black",
-                            marginTop: "20px",
-                          }}
-                        >
-                          {subcategory.name}
-                        </h5>
+                        {subcategory.name}
                       </a>
                     </Col>
                   </Row>

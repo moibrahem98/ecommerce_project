@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 
-import { addBrandFunction } from "../../actions/productActions";
+import { addBrandFunction } from "../../redux/actions/productActions";
 import axios from "axios";
 
 function AddBrandPage({ location, history }) {
@@ -22,9 +22,11 @@ function AddBrandPage({ location, history }) {
 
   const uploadFileHandler = async (event) => {
     const file = event.target.files[0];
+    console.log(file, "/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*");
     const formData = new FormData();
     formData.append("img", file);
-
+    formData.append("name", name);
+    console.log(formData);
     setUploading(true);
 
     try {
@@ -50,7 +52,6 @@ function AddBrandPage({ location, history }) {
     e.preventDefault();
     dispatch(addBrandFunction(name));
   };
-  console.log(img, "iiiiiiiiiiiiiii");
   return (
     <Container>
       <Row className="mt-5">
@@ -74,14 +75,14 @@ function AddBrandPage({ location, history }) {
                 disabled
                 placeholder="Enter image"
                 value={img}
-                onChange={(event) => setImg(event.target.value)}
+                onSubmit={(event) => setImg(event.target.value)}
               ></Form.Control>
               <br></br>
               <Form.File
                 id="image-file"
                 custom
                 label="Choose Image"
-                onChange={uploadFileHandler}
+                onSubmit={uploadFileHandler}
               ></Form.File>
             </Form.Group>
             <Button

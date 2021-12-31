@@ -18,6 +18,7 @@ urlpatterns = [
     path('api/products/top/', getTopProducts, name='top-products'),
     path('api/products/category/<str:id>/', getProductByCategory, name="produsts_by_category"),
     path('api/products/subcategory/<str:id>/', getProductBySubCategory, name="produsts_by_subcategory"),
+    path('api/products/offers/<str:id>/', getProductByOffer, name="produsts_by_offers"),
     path('api/products/', product_list, name='products'),
     path('api/products/latest/', latestProduct, name='latest-products'),
 

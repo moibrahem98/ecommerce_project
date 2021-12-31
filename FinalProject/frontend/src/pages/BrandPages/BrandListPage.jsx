@@ -6,7 +6,7 @@ import { Button, Card, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
-import { listBrandsFunction } from "../../actions/productActions";
+import { listBrandsFunction } from "../../redux/actions/productActions";
 
 function BrandsListPage({ history }) {
   const dispatch = useDispatch();
@@ -40,7 +40,7 @@ function BrandsListPage({ history }) {
         <Row>
           {" "}
           {brands.map((brand) => (
-            <Card md={4} className="pt-2 rounded text-center">
+            <Card md={4} key={brand.id} className="pt-2 rounded text-center">
               <Card.Title style={{ marginTop: "5px" }}>
                 <a style={{ color: "black" }} href={`/brand/${brand.id}`}>
                   {" "}

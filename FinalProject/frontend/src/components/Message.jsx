@@ -1,6 +1,10 @@
 import React from "react";
-import { Alert } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 function Message({ variant, children }) {
-  return <Alert variant={variant}>{children}</Alert>;
+  return (
+    <Button disabled variant={variant}>
+      {children}
+    </Button>
+  );
 }
 export default Message;

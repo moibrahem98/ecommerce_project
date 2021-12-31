@@ -4,7 +4,7 @@ import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../actions/userActions";
+import { login } from "../../redux/actions/userActions";
 import { FormContainer } from "../../components/FormContainer";
 
 function LoginPage({ location, history }) {

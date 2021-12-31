@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, Container } from "react-bootstrap";
-import Product from "../../components/Product";
+import Product from "../../components/ProductCard";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
-import { listProducts } from "../../actions/productActions";
+import { listProducts } from "../../redux/actions/productActions";
 
 import SearchBox from "../../components/SearchBox";
 

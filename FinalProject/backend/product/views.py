@@ -10,6 +10,7 @@ from rest_framework import status
 from rest_framework import viewsets
 from order.models import Order
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.conf import settings
 
 
 class getCategories(viewsets.ModelViewSet):
@@ -21,6 +22,7 @@ class getSubCategories(viewsets.ModelViewSet):
     serializer_class = SubCategorySerializer
     queryset = SubCategory.objects.all()
 
+
 class getOffers(viewsets.ModelViewSet):
     serializer_class = OfferSerializer
     queryset = Offer.objects.all()
@@ -30,7 +32,6 @@ class getOffers(viewsets.ModelViewSet):
 def product_list(request):
     queryset = Product.objects.all()
     filterset = ProductFilter(request.GET, queryset=queryset)
-
     if filterset.is_valid():
         queryset = filterset.qs
 
@@ -76,33 +77,16 @@ def getTopProducts(request):
 
 
 @api_view(['POST'])
-# @permission_classes([IsAdminUser])
+@permission_classes([IsAdminUser])
 def createProduct(request):
     user = request.user
     data = request.data
-    print(data, "ddddddlddddddddddddddddllllll")
-    # category = Category.objects.get(id=data['category'])
-    # subCategory = SubCategory.objects.get(id=data['subCategory'])
-    # brand = Brand.objects.get(id=data['brand'])
-    # product = Product.objects.create(
-    #     name = data['name'],
-    #     price = data['price'],
-    #     brand = Brand.objects.get(id=data['brand']),
-    #     stock = data['stock'],
-    #     category = Category.objects.get(id=data['category']),
-    #     sub_category = SubCategory.objects.get(id=data['subCategory']),
-    #     description = data['description'],
-    # )
-
-    # product.save()
-    # category = Category.objects.get(id=1)
-    # subCategory = SubCategory.objects.get(id=2)
-    # brand = Brand.objects.get(id=1)
+   
     product = Product.objects.create(
         user=user,
         name=data['name'],
         price=data['price'],
-        offer=data['offer'],
+        offer_id=data['offer'],
         brand=Brand.objects.get(id=data['brand']),
         stock=data['stock'],
         category=Category.objects.get(id=data['category']),
@@ -126,7 +110,7 @@ def updateProduct(request, id):
 
     product.name = data['name']
     product.price = data['price']
-    product.offer= offer
+    product.offer = offer
     product.brand = brand
     product.stock = data['stock']
     product.category = category
@@ -155,6 +139,12 @@ def getProductBySubCategory(request, id):
     serializer = ProductSerializer(product, many=True)
     return Response(serializer.data)
 
+@api_view(['GET'])
+def getProductByOffer(request, id):
+    product = Product.objects.filter(offer_id=id)
+    serializer = ProductSerializer(product, many=True)
+    return Response(serializer.data)
+
 
 @api_view(['DELETE'])
 @permission_classes([IsAdminUser])
@@ -167,7 +157,6 @@ def deleteProduct(request, id):
 @api_view(['POST'])
 def uploadImage(request):
     data = request.data
-    print(request.FILES, "***************************************")
     product_id = data['product_id']
     product = Product.objects.get(_id=product_id)
     product.image = request.FILES.get('image')
@@ -333,21 +322,15 @@ def GetbrandById(request, id):
 # @permission_classes([IsAdminUser])
 def createbrand(request):
     data = request.data
+    img = request.FILES.get('img')
 
-    print(data, 'ssssssssssssssssssssss')
-    print(request.FILES)
-    
-    brand = Brand.objects.create(
-        name=data['name'],
-        # img = img 
-    )
-    brand.save()
-    print(brand,'sbbbbbbbbbbbbbbbbbbbbbbb')
-    brand.img=request.FILES.get('img')
-    brand.save()
 
-    serializer = BrandSerializer(brand)
-    return Response(serializer.data)
+    # brand = Brand.objects.create(
+    #     name=data['name'],
+    #     img=request.FILES.get('img')
+    # )
+    # serializer = BrandSerializer(brand)
+    return Response("serializer.data")
 
 # @api_view(['POST'])
 # def uploadBrandImage(request):

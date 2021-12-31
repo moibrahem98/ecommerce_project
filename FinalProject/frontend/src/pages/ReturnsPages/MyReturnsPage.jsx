@@ -4,7 +4,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
-import { listMyReturnsFunction } from "../../actions/productActions";
+import { listMyReturnsFunction } from "../../redux/actions/productActions";
 
 function MyReturnsPage({ history }) {
   const dispatch = useDispatch();
@@ -44,7 +44,7 @@ function MyReturnsPage({ history }) {
           <Row>
             {" "}
             {returns.map((ret) => (
-              <Card md={4} className="pt-2 rounded text-center">
+              <Card key={ret.id} md={4} className="pt-2 rounded text-center">
                 <Card.Title style={{ marginTop: "5px" }}>
                   <a
                     style={{ color: "black" }}

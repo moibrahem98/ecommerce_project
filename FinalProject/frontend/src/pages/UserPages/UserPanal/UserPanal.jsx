@@ -2,9 +2,9 @@ import { Col, Row } from "react-bootstrap";
 import "./UserPanal.css";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
-import { listMyReturnsFunction } from "../../../actions/productActions";
+import { listMyReturnsFunction } from "../../../redux/actions/productActions";
 
-import { listMyOrders } from "../../../actions/orderActions";
+import { listMyOrders } from "../../../redux/actions/orderActions";
 
 function UserPanal({ history }) {
   const dispatch = useDispatch();

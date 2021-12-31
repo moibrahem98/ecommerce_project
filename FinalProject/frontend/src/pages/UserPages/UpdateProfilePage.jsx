@@ -3,7 +3,10 @@ import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
-import { getUserDetails, updateUserProfile } from "../../actions/userActions";
+import {
+  getUserDetails,
+  updateUserProfile,
+} from "../../redux/actions/userActions";
 
 function UpdateProfilePage({ history }) {
   const [name, setName] = useState("");

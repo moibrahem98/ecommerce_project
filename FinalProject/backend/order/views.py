@@ -54,12 +54,21 @@ def addOrderItems(request):
             product.stock -= item.quantity
             product.save()
 
-        """admin = User.objects.filter(is_staff=1)
-        arr = []
-        for item in admin.iterator():
-            arr.append(item.email)
-            print(arr, "***********************")
-        send_mail('Subject here', 'Here is the message', 'from@example.com', arr)"""
+        '''
+            send message to admin with order created
+            admin = User.objects.filter(is_staff=1)
+            arr = []
+            for item in admin.iterator():
+                arr.append(item.email)
+
+            email_subject = 'order created'
+            email_body = render_to_string('order.html', {
+                'user': order.user,
+               
+                'orderid': order._id
+            })
+
+            email = send_mail(email_subject, email_body, settings.EMAIL_HOST_USER, arr)'''
         serializer = OrderSerializer(order, many=False)
         return Response(serializer.data)
 
@@ -74,7 +83,7 @@ def getMyOrders(request):
 
 
 @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 def getOredeById(request, id):
     user = request.user
     try:
@@ -154,7 +163,7 @@ def getCouponByName(request, name):
 
 
 @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 def payment(request, pk):
     # user = request.user
 
@@ -247,3 +256,4 @@ def callback(request):
         return HttpResponse('payment_success') 
     return HttpResponse('payment_failed')    
         
+

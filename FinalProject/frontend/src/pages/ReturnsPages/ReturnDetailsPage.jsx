@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Col, Row, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { payOrder } from "../../actions/orderActions";
-import { getReturnsDetails, issueStatus } from "../../actions/productActions";
+import { payOrder } from "../../redux/actions/orderActions";
+import {
+  getReturnsDetails,
+  issueStatus,
+} from "../../redux/actions/productActions";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Container, Form, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { createProduct, listOffers } from "../../actions/productActions";
+import { createProduct, listOffers } from "../../redux/actions/productActions";
 import axios from "axios";
 
 function ProductCreatePage({ history }) {
