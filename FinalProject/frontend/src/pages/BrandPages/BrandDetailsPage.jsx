@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getBrandDetails,
   getProductByBrand,
-} from "../../actions/productActions";
-import Product from "../../components/Product";
+} from "../../redux/actions/productActions";
+import Product from "../../components/ProductCard";
 function BrandDetailsPage({ match, history }) {
   const dispatch = useDispatch();
 

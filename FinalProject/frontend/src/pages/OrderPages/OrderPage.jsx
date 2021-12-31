@@ -6,7 +6,7 @@ import {
   getOrderDetails,
   deliverOrder,
   payOrder,
-} from "../../actions/orderActions";
+} from "../../redux/actions/orderActions";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
 import axios from "axios";

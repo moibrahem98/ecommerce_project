@@ -1,4 +1,4 @@
-import { listMyOrders } from "../../actions/orderActions";
+import { listMyOrders } from "../../redux/actions/orderActions";
 import React, { useState, useEffect } from "react";
 import { Button, Row, Col, Table } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";

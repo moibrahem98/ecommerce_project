@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 
-import { addBrandFunction } from "../../actions/productActions";
+import { addBrandFunction } from "../../redux/actions/productActions";
 import axios from "axios";
 
 function AddBrandPage({ location, history }) {
@@ -22,11 +22,11 @@ function AddBrandPage({ location, history }) {
 
   const uploadFileHandler = async (event) => {
     const file = event.target.files[0];
-    console.log(file,"/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*")
+    console.log(file, "/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*");
     const formData = new FormData();
     formData.append("img", file);
-    formData.append("name",name)
-console.log(formData)
+    formData.append("name", name);
+    console.log(formData);
     setUploading(true);
 
     try {

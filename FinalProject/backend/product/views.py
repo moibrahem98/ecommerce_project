@@ -82,24 +82,7 @@ def getTopProducts(request):
 def createProduct(request):
     user = request.user
     data = request.data
-    print(data, "ddddddlddddddddddddddddllllll")
-    # category = Category.objects.get(id=data['category'])
-    # subCategory = SubCategory.objects.get(id=data['subCategory'])
-    # brand = Brand.objects.get(id=data['brand'])
-    # product = Product.objects.create(
-    #     name = data['name'],
-    #     price = data['price'],
-    #     brand = Brand.objects.get(id=data['brand']),
-    #     stock = data['stock'],
-    #     category = Category.objects.get(id=data['category']),
-    #     sub_category = SubCategory.objects.get(id=data['subCategory']),
-    #     description = data['description'],
-    # )
-
-    # product.save()
-    # category = Category.objects.get(id=1)
-    # subCategory = SubCategory.objects.get(id=2)
-    # brand = Brand.objects.get(id=1)
+   
     product = Product.objects.create(
         user=user,
         name=data['name'],
@@ -169,7 +152,6 @@ def deleteProduct(request, id):
 @api_view(['POST'])
 def uploadImage(request):
     data = request.data
-    print(request.FILES, "***************************************")
     product_id = data['product_id']
     product = Product.objects.get(_id=product_id)
     product.image = request.FILES.get('image')
@@ -337,8 +319,6 @@ def createbrand(request):
     data = request.data
     img = request.FILES.get('img')
 
-    print(data['name'], 'ssssssssssssssssssssss')
-    print(img, "/*///*/*//*//*/*/*/*/*/*/*/*/*/")
 
     # brand = Brand.objects.create(
     #     name=data['name'],

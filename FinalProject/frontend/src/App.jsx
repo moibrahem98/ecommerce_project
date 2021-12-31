@@ -45,11 +45,17 @@ import BrandsListPage from "./pages/BrandPages/BrandListPage";
 import BrandDetailsPage from "./pages/BrandPages/BrandDetailsPage";
 //  7. Admin Pages
 import AdminPanalPage from "./pages/AdminPages/AdminPanalPage/AdminPanalPage";
+// import MessengerCustomerChat from "react-messenger-customer-chat";
 
 function App() {
   return (
     <Router>
       <Header />
+      {/* <MessengerCustomerChat
+        pageId="<PAGE_ID>"
+        appId="<APP_ID>"
+      /> */}
+
       <Switch>
         <Route path="/" component={HomePage} exact />
       </Switch>

@@ -6,7 +6,7 @@ import { Table, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
-import { listReturns } from "../../actions/productActions";
+import { listReturns } from "../../redux/actions/productActions";
 
 function ReturnsListPage({ history }) {
   const dispatch = useDispatch();

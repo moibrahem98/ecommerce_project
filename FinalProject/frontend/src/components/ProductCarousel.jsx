@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Loader from "./Loader";
 import Message from "./Message";
-import { listTopProducts } from "../actions/productActions";
+import { listTopProducts } from "../redux/actions/productActions";
 import Slider from "react-slick";
-import Product from "./Product";
+import Product from "./ProductCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 function ProductCarousel() {

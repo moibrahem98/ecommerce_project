@@ -4,7 +4,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
-import { listMyReturnsFunction } from "../../actions/productActions";
+import { listMyReturnsFunction } from "../../redux/actions/productActions";
 
 function MyReturnsPage({ history }) {
   const dispatch = useDispatch();

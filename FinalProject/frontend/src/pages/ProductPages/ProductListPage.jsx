@@ -6,7 +6,10 @@ import { Link } from "react-router-dom";
 
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
-import { listProducts, deleteProduct } from "../../actions/productActions";
+import {
+  listProducts,
+  deleteProduct,
+} from "../../redux/actions/productActions";
 import { LinkContainer } from "react-router-bootstrap";
 
 function ProductListPage({ history, match }) {
@@ -96,8 +99,11 @@ function ProductListPage({ history, match }) {
                     </a>
                   </td>
                   <td>{product.price} L.E</td>
-                  <td>  &nbsp;{product.price * product.offer.value}
-                                &nbsp; L.E</td>
+                  <td>
+                    {" "}
+                    &nbsp;{product.price * product.offer.value}
+                    &nbsp; L.E
+                  </td>
                   <td>{product.category1.name}</td>
                   <td>{product.subcategory1.name}</td>
                   <td>{product.brand1.name}</td>

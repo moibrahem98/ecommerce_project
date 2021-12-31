@@ -12,7 +12,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-import { listCategories } from "../actions/productActions";
+import { listCategories } from "../redux/actions/productActions";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 

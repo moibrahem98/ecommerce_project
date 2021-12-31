@@ -10,7 +10,7 @@ import {
   listProductDetails,
   updateProduct,
   listOffers,
-} from "../../actions/productActions";
+} from "../../redux/actions/productActions";
 
 function ProductEditPage({ match, history }) {
   const productId = match.params.id;

@@ -3,7 +3,7 @@ import { Button, Form, Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader";
 import axios from "axios";
-import { listProducts } from "../../actions/productActions";
+import { listProducts } from "../../redux/actions/productActions";
 import FormContainer from "../../components/FormContainer";
 
 function ProductImageAddPage({ match, history }) {

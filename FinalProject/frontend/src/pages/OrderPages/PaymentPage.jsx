@@ -3,7 +3,7 @@ import { Form, Button, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../../components/FormContainer";
 import CheckoutSteps from "../../components/CheckoutSteps";
-import { savePaymentMethod } from "../../actions/cartActions";
+import { savePaymentMethod } from "../../redux/actions/cartActions";
 import axios from "axios";
 
 function PaymentPage({ history }) {

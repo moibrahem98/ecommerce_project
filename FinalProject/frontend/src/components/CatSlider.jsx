@@ -4,7 +4,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col } from "react-bootstrap";
 
-import { listCategories } from "../actions/productActions";
+import { listCategories } from "../redux/actions/productActions";
 
 export default function CarouselSlider() {
   const dispatch = useDispatch();

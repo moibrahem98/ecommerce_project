@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import { Carousel, Image } from "react-bootstrap";
 import Loader from "./Loader";
 import Message from "./Message";
-import { listLatestProducts } from "../actions/productActions";
+import { listLatestProducts } from "../redux/actions/productActions";
 import Slider from "react-slick";
-import Product from "./Product";
+import Product from "./ProductCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 

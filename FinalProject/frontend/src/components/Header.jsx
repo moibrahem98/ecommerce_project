@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navbar, Nav, Container, NavDropdown, L } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { logout } from "../actions/userActions";
+import { logout } from "../redux/actions/userActions";
 import logo from "../images/brand.png";
 // import SearchBox from "./SearchBox";
-import { listCategories } from "../actions/productActions";
+import { listCategories } from "../redux/actions/productActions";
 import { Link } from "react-router-dom";
 // import DarkMode from "../DarkMode";
 

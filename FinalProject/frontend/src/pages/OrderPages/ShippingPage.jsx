@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import CheckoutSteps from "../../components/CheckoutSteps";
-import { saveShippingAddress } from "../../actions/cartActions";
+import { saveShippingAddress } from "../../redux/actions/cartActions";
 
 function ShippingPage({ history }) {
   const cart = useSelector((state) => state.cart);

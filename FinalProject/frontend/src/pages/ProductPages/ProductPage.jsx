@@ -20,7 +20,7 @@ import {
   listProductDetails,
   listOffers,
   createProductReview,
-} from "../../actions/productActions";
+} from "../../redux/actions/productActions";
 function ProductPage({ match, history }) {
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
