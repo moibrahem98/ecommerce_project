@@ -34,13 +34,9 @@ function SubCategoryPage({ match, history }) {
         </p>
       ))}
       {product.length === 0 ? (
-        <div
-          className=" p-3 m-auto shadow rounded-lg"
-          style={{ textAlign: "center" }}
-        >
-          {" "}
+        <div className=" p-3 m-auto rounded-lg" style={{ textAlign: "center" }}>
           <h4>Sorry This Category does not have products yet.</h4>
-          <a href="/" className="btn btn-outline-primary ">
+          <a href="/" className="btn btn_color ">
             Go To Home Page
           </a>
         </div>

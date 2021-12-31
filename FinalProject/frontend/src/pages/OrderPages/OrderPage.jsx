@@ -215,10 +215,10 @@ function OrderPage({ match }) {
                 <ListGroup.Item>
                   <Link
                     variant="dark"
-                    className="btn btn-block text-success btn_color"
+                    className="btn btn-block btn_color"
                     to="/createreturn"
                   >
-                    File Return Request{" "}
+                    File Return Request
                   </Link>
                 </ListGroup.Item>
               )}

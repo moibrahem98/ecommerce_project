@@ -41,10 +41,9 @@ function CategoryPage({ match, history }) {
               <p key={subcategory.id} style={{ textAlign: "center" }}>
                 {subcategory.category == match.params.id && (
                   <Row sm={12} md={6} lg={4} xl={3}>
-                    <Col className="btn btn-outline-primary m-4 ">
+                    <Col className="btn m-4 ">
                       <a
-                        className="nav-link"
-                        style={{ color: "black" }}
+                        className="nav-link btn_color"
                         href={`/subcategoryproducts/${subcategory.id}`}
                       >
                         {subcategory.name}

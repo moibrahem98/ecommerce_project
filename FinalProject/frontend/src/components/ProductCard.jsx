@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Row, Col } from "react-bootstrap";
-// import Rating from "./Rating";
+import Rating from "./Rating";
 
 function ProductCard({ product }) {
   return (
@@ -13,6 +13,9 @@ function ProductCard({ product }) {
         <a className="nav-link ellipsis" href={`/product/${product._id}`}>
           <Card.Title as="div">
             <strong style={{ color: "black" }}>{product.name}</strong>
+            <div>
+              <Rating value={`${product.rating} `} color={"#e36f10"} />
+            </div>
           </Card.Title>
         </a>
         <hr></hr>
@@ -39,11 +42,7 @@ function ProductCard({ product }) {
 
           {/*<em style={{ fontFamily: "fantasy" }}> &nbsp;{product.price * product.offer.value} &nbsp;L.E</em>*/}
         </Card.Text>
-        {/* <Card.Text as="div">
-          <div>
-            <Rating value={`${product.rating} `} color={"#e36f10"} />
-          </div>
-        </Card.Text> */}
+        <Card.Text as="div"></Card.Text>
       </Card.Body>
     </Card>
   );

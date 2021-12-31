@@ -29,7 +29,7 @@ function ReturnsDetailsPage({ match, history }) {
   if (!returns) return null;
   return (
     <div>
-      <Row className="mt-5">
+      <Row className="my-5">
         <Col lg={5} md={6} sm={12} className="p-3 m-auto shadow rounded-lg">
           <Row>
             <Col>

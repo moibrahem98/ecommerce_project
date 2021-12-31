@@ -12,6 +12,7 @@ body {
   background-color: #418993 !important;
   color: #fff !important;
   transition: 0.3s all ease-in-out;
+  border-radius: 3px;
 }
 
 .btn_color:hover {
@@ -92,6 +93,18 @@ h3 {
   max-width: 300px;
 }
 
+.card-body {
+  padding: 0;
+}
+
+.card-body hr {
+  margin-top: 0;
+}
+
+.card-body .card-title {
+  margin-bottom: 0;
+}
+
 .ellipsis {
   overflow: hidden;
   white-space: nowrap;
@@ -108,11 +121,24 @@ h3 {
   margin: 0 auto;
 }
 
+/* 
 .offers_card:hover {
   background-color: #418993;
   color: #fff !important;
   transition: .2s background ease-in-out;
   font-weight: bold;
+} */
+.cart_bg {
+  background-color: #418993;
+  color: #fff;
+}
+
+
+.offer_img {
+  width: 300px;
+  max-width: 100%;
+  border: none;
+  outline: none;
 }
 
 .slick-next {
@@ -169,12 +195,14 @@ h3 {
   margin-top: 130px;
 }
 
+.banner {
+  max-width: 100%;
+}
+
 footer {
   background: #f8f8f8;
   border-top: 1px solid #d6d5d5;
   color: #202020;
-  padding-top: 30px;
-  margin-top: 30px;
 }
 
 .blackiconcolor {

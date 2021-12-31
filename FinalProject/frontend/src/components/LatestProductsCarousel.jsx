@@ -27,6 +27,8 @@ function LatestProductsCarousel() {
     slidesToShow: 4,
     slidesToScroll: 4,
     initialSlide: 0,
+    centerMode: true,
+
     responsive: [
       {
         breakpoint: 1024,

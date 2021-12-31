@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Image } from "react-bootstrap";
 import Product from "../../components/ProductCard";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
@@ -10,6 +10,7 @@ import LatestProductsCarousel from "../../components/LatestProductsCarousel";
 import OffersCarousel from "../../components/OffersCarousel";
 import CatSlider from "../../components/CatSlider";
 import CarouselSlider from "../../components/CarouselSlider";
+import before from "../../images/before.jpg";
 
 function HomePage({ history }) {
   const dispatch = useDispatch();
@@ -25,34 +26,19 @@ function HomePage({ history }) {
     <>
       <CarouselSlider />
 
-      <Container style={{ marginTop: " 20px" }}>
-        <h3 style={{ textAlign: "center" }} className="heading_1">
-          Shop By Category
-        </h3>
+      <Container className="text-center" style={{ marginTop: " 20px" }}>
+        <h3 className="heading_1 mt-5 text-center">Offers</h3>
+        {!name && <OffersCarousel />}
+        <h3 className="heading_1 mt-3">Shop By Category</h3>
         <CatSlider />
         <hr />
-        <h3 style={{ textAlign: "center" }} className="heading_1">
-          Top Rated Products
-        </h3>
+        <h3 className="heading_1">Top Rated Products</h3>
         {!name && <ProductCarousel />}
         <br /> <hr />
-        <h3 style={{ textAlign: "center" }} className="heading_1 mt-5">
-          Latest Products
-        </h3>
+        <h3 className="heading_1 mt-5">Latest Products</h3>
         {!name && <LatestProductsCarousel />}
-        <br /> <hr />
-        <h3
-          style={{
-            textAlign: "center",
-            fontFamily: "Hind Guntur Semi-bold 600",
-            fontSize: "2em",
-          }}
-          className="heading_1 mt-5 "
-        >
-          <em>Offers</em>
-        </h3>
-        {!name && <OffersCarousel />}
       </Container>
+      <Image src={before} className="banner" />
     </>
   );
 }

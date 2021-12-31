@@ -26,7 +26,7 @@ function OffersProductPage({ match, history }) {
     <div>
       {offers.map((offer) => (
         <p>
-          {offer.id == match.params.id && (
+          {offer.id === match.params.id && (
             <p key={offer.id}>
               <h2 style={{ fontFamily: "Hind Guntur " }}>
                 Discount {offer.value * 100}%
@@ -37,13 +37,9 @@ function OffersProductPage({ match, history }) {
         </p>
       ))}
       {product.length === 0 ? (
-        <div
-          className=" p-3 m-auto shadow rounded-lg"
-          style={{ textAlign: "center" }}
-        >
-          {" "}
+        <div className="py-5 text-center mx-auto">
           <h4>Sorry There Are No Offers At This Discount Yet.</h4>
-          <a href="/" className="btn btn-outline-primary ">
+          <a href="/" className="btn btn_color ">
             Go To Home Page
           </a>
         </div>

@@ -16,7 +16,7 @@ export default function App() {
 
   if (!categories) return null;
   return (
-    <footer className="text-lg-left pt-5 foot">
+    <footer className="text-lg-left foot">
       <Container>
         <Row>
           <Col lg="6" md="12" className="mb-4 mb-md-0">

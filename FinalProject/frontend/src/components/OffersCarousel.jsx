@@ -9,6 +9,9 @@ import Slider from "react-slick";
 import Product from "./ProductCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import twenty from "../images/25.jpg";
+import fifty from "../images/50.jpg";
+import seventy from "../images/70.jpg";
 
 function OffersCarousel() {
   const dispatch = useDispatch();
@@ -26,6 +29,8 @@ function OffersCarousel() {
     slidesToShow: 3,
     slidesToScroll: 4,
     initialSlide: 0,
+    centerMode: true,
+
     responsive: [
       {
         breakpoint: 1024,
@@ -62,14 +67,8 @@ function OffersCarousel() {
     <Slider {...settings} style={{ textAlign: "center" }}>
       {offers.slice(1).map((offer) => (
         <div key={offer.id} style={{ textAlign: "center" }}>
-          <a style={{ color: "black" }} href={`/offersproducts/${offer.id}`}>
-            {" "}
-            <Card
-              style={{ padding: "15px", color: "black" }}
-              className="pt-2 rounded text-center offers_card"
-            >
-              Discount {offer.value * 100}%
-            </Card>
+          <a href={`/offersproducts/${offer.id}`}>
+            <Card.Img className="offer_img" src={offer.img} lazy />
           </a>
         </div>
       ))}
