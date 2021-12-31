@@ -18,19 +18,21 @@ export default function CarouselSlider() {
 
   return (
     <>
-      <Row className="container" className="position-relative">
+      <Row className="position-relative container">
         {categories.map((category) => (
           <Col xs={12} sm={6} lg={3}>
-            <a href={`/categoryproducts/${category.id}`}>
-              <img
-                className="d-block w-100 carousel_img mb-4"
-                src={category.img}
-                alt="First slide"
-              />
-              <div class="middle">
-                <div class="text">{category.name}</div>
-              </div>
-            </a>
+            <div className="cont">
+              <a href={`/categoryproducts/${category.id}`}>
+                <img
+                  className="d-block w-100 carousel_img mb-4"
+                  src={category.img}
+                  alt="First slide"
+                />
+                <div className="middle">
+                  <div className="text">{category.name}</div>
+                </div>
+              </a>
+            </div>
           </Col>
         ))}
       </Row>

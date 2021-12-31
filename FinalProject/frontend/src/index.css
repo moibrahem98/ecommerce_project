@@ -207,13 +207,14 @@ footer {
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   text-align: center;
+  width: 75%;
 }
 
-.container:hover .image {
+.cont:hover .image {
   opacity: 0.3;
 }
 
-.container:hover .middle {
+.cont:hover .middle {
   opacity: 1;
 }
 
