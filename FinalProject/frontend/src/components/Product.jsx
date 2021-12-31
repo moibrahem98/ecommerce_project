@@ -15,6 +15,10 @@ function Product({ product }) {
         </a>
         <Card.Text as="h6">
           <em style={{ fontFamily: "fantasy" }}>{product.price} L.E</em>
+
+          {/*handel price */}
+
+          {/*<em style={{ fontFamily: "fantasy" }}> &nbsp;{product.price * product.offer.value} &nbsp;L.E</em>*/}
         </Card.Text>
         <Card.Text as="div">
           <div>

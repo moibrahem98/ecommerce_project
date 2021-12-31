@@ -10,6 +10,7 @@ from rest_framework import status
 from rest_framework import viewsets
 from order.models import Order
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.conf import settings
 
 
 class getCategories(viewsets.ModelViewSet):
@@ -21,6 +22,7 @@ class getSubCategories(viewsets.ModelViewSet):
     serializer_class = SubCategorySerializer
     queryset = SubCategory.objects.all()
 
+
 class getOffers(viewsets.ModelViewSet):
     serializer_class = OfferSerializer
     queryset = Offer.objects.all()
@@ -30,7 +32,7 @@ class getOffers(viewsets.ModelViewSet):
 def product_list(request):
     queryset = Product.objects.all()
     filterset = ProductFilter(request.GET, queryset=queryset)
-
+    send_mail('Subject here', 'Here is the message', settings.EMAIL_HOST_USER, ['alaashaheen2205@gmail.com'])
     if filterset.is_valid():
         queryset = filterset.qs
 
@@ -102,7 +104,7 @@ def createProduct(request):
         user=user,
         name=data['name'],
         price=data['price'],
-        offer=data['offer'],
+        offer_id=data['offer'],
         brand=Brand.objects.get(id=data['brand']),
         stock=data['stock'],
         category=Category.objects.get(id=data['category']),
@@ -126,7 +128,7 @@ def updateProduct(request, id):
 
     product.name = data['name']
     product.price = data['price']
-    product.offer= offer
+    product.offer = offer
     product.brand = brand
     product.stock = data['stock']
     product.category = category
@@ -333,21 +335,17 @@ def GetbrandById(request, id):
 # @permission_classes([IsAdminUser])
 def createbrand(request):
     data = request.data
+    img = request.FILES.get('img')
 
-    print(data, 'ssssssssssssssssssssss')
-    print(request.FILES)
-    
-    brand = Brand.objects.create(
-        name=data['name'],
-        # img = img 
-    )
-    brand.save()
-    print(brand,'sbbbbbbbbbbbbbbbbbbbbbbb')
-    brand.img=request.FILES.get('img')
-    brand.save()
+    print(data['name'], 'ssssssssssssssssssssss')
+    print(img, "/*///*/*//*//*/*/*/*/*/*/*/*/*/")
 
-    serializer = BrandSerializer(brand)
-    return Response(serializer.data)
+    # brand = Brand.objects.create(
+    #     name=data['name'],
+    #     img=request.FILES.get('img')
+    # )
+    # serializer = BrandSerializer(brand)
+    return Response("serializer.data")
 
 # @api_view(['POST'])
 # def uploadBrandImage(request):

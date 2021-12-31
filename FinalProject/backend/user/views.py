@@ -129,7 +129,7 @@ def send_activation_email(user, request):
     })
 
     email = send_mail(email_subject, email_body, settings.EMAIL_HOST_USER, [user.email])
-    print(email)
+    print(email,"eeeeeeeeeeeeeeeeeeeeeeeeeemmmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
 
 
 def activate_user(request, uidb64, token):

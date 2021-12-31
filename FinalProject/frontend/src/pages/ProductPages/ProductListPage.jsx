@@ -42,6 +42,7 @@ function ProductListPage({ history, match }) {
     }
   };
 
+  // @ts-ignore
   return (
     <div>
       <Button onClick={() => hist.goBack()} className="btn btn-light my-3">
@@ -76,6 +77,7 @@ function ProductListPage({ history, match }) {
                 <th>ID</th>
                 <th>NAME</th>
                 <th>PRICE</th>
+                <th>PRICE After offer</th>
                 <th>CATEGORY</th>
                 <th>SUB CATEGORY</th>
                 <th>BRAND</th>
@@ -94,6 +96,8 @@ function ProductListPage({ history, match }) {
                     </a>
                   </td>
                   <td>{product.price} L.E</td>
+                  <td>  &nbsp;{product.price * product.offer.value}
+                                &nbsp; L.E</td>
                   <td>{product.category1.name}</td>
                   <td>{product.subcategory1.name}</td>
                   <td>{product.brand1.name}</td>
