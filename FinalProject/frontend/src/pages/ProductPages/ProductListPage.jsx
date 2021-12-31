@@ -80,7 +80,7 @@ function ProductListPage({ history, match }) {
                 <th>ID</th>
                 <th>NAME</th>
                 <th>PRICE</th>
-                <th>PRICE After offer</th>
+                <th>PRICE After Offer</th>
                 <th>CATEGORY</th>
                 <th>SUB CATEGORY</th>
                 <th>BRAND</th>

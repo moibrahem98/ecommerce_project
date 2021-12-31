@@ -44,7 +44,7 @@ function MyReturnsPage({ history }) {
           <Row>
             {" "}
             {returns.map((ret) => (
-              <Card md={4} className="pt-2 rounded text-center">
+              <Card key={ret.id} md={4} className="pt-2 rounded text-center">
                 <Card.Title style={{ marginTop: "5px" }}>
                   <a
                     style={{ color: "black" }}

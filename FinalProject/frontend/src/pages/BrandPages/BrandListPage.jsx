@@ -40,7 +40,7 @@ function BrandsListPage({ history }) {
         <Row>
           {" "}
           {brands.map((brand) => (
-            <Card md={4} className="pt-2 rounded text-center">
+            <Card md={4} key={brand.id} className="pt-2 rounded text-center">
               <Card.Title style={{ marginTop: "5px" }}>
                 <a style={{ color: "black" }} href={`/brand/${brand.id}`}>
                   {" "}

@@ -7,6 +7,7 @@ import Message from "../../components/Message";
 import { listProducts } from "../../redux/actions/productActions";
 import ProductCarousel from "../../components/ProductCarousel";
 import LatestProductsCarousel from "../../components/LatestProductsCarousel";
+import OffersCarousel from "../../components/OffersCarousel";
 import CatSlider from "../../components/CatSlider";
 import CarouselSlider from "../../components/CarouselSlider";
 
@@ -39,6 +40,18 @@ function HomePage({ history }) {
           Latest Products
         </h3>
         {!name && <LatestProductsCarousel />}
+        <br /> <hr />
+        <h3
+          style={{
+            textAlign: "center",
+            fontFamily: "Hind Guntur Semi-bold 600",
+            fontSize: "2em",
+          }}
+          className="heading_1 mt-5 "
+        >
+          <em>Offers</em>
+        </h3>
+        {!name && <OffersCarousel />}
       </Container>
     </>
   );

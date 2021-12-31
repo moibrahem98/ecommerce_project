@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Col, Row, ListGroup, Image, Card, Button } from "react-bootstrap";
+import {
+  Col,
+  Row,
+  ListGroup,
+  Image,
+  Card,
+  Button,
+  Table,
+} from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -9,7 +17,6 @@ import {
 } from "../../redux/actions/orderActions";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
-import axios from "axios";
 
 function OrderPage({ match }) {
   const orderId = match.params.id;
@@ -35,19 +42,6 @@ function OrderPage({ match }) {
   const [paymob, setPaymob] = useState("");
 
   useEffect(() => {
-    // const getData = (orderId) => async () => {
-    //   await axios
-    //     .get(`/order/api/payment/${orderId}/`)
-    //     .then((res) => {
-    //       setPaymob(res.data);
-    //       console.log(res);
-    //       console.log('paymob');
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //     });
-    // };
-
     if (
       !order ||
       order._id !== Number(orderId) ||
@@ -68,7 +62,6 @@ function OrderPage({ match }) {
   const payHandler = () => {
     dispatch(payOrder(order));
   };
-  console.log(paymob, "paypaupaupauaaopdaodas");
 
   if (loading) {
     return <Loader />;
@@ -77,19 +70,106 @@ function OrderPage({ match }) {
   } else {
     return (
       <div className="py-5">
-        <Message variant="success">
-          <p> order placed successfully &#10004; </p>
-        </Message>
         <Row>
-          <Col md={8}>
+          <Col md={12}>
             <Card>
               <ListGroup variant="flush">
                 <ListGroup.Item>
-                  <h2>Shipping Address</h2>
+                  <h2>Order Details</h2>
+                  {order.orderItems.length === 0 ? (
+                    <Message variant="info">Your Order Is Empty</Message>
+                  ) : (
+                    <ListGroup variant="flush">
+                      <Table
+                        striped
+                        bordered
+                        hover
+                        responsive
+                        className="table-sm"
+                      >
+                        <thead>
+                          <tr>
+                            <td>#</td>
+                            <td>Product Name</td>
+                            <td>Quantity</td>
+                            <td>Price</td>
+                            <td>Total</td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {order.orderItems.map((item, index) => (
+                            <tr key={index}>
+                              <td>{index + 1}</td>
+                              <td>
+                                <Link
+                                  className="d-inline"
+                                  to={`/product/${item.product}`}
+                                >
+                                  {item.name}
+                                </Link>
+                              </td>
+                              <td>{item.quantity}</td>
+                              <td>{item.price} L.E</td>
+                              <td>
+                                {" "}
+                                {(item.quantity * item.price).toFixed(2)} L.E
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </Table>
+                    </ListGroup>
+                  )}
+                </ListGroup.Item>
+              </ListGroup>
+            </Card>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={6}>
+            <Card>
+              {" "}
+              <ListGroup variant="flush">
+                <ListGroup.Item>
                   <p>
+                    <h2>Customer:</h2>
+
                     <span>Name: </span>
+
                     {order.user.name}
                   </p>
+                </ListGroup.Item>
+
+                <ListGroup.Item>
+                  <h2>Payment Method</h2>
+                  {order.payment_method === "paymob" ? (
+                    <Row>
+                      <Col>
+                        {" "}
+                        {order.payment_method}
+                        <br />
+                        <a
+                          href={`http://127.0.0.1:8000/order/api/payment/${orderId}/`}
+                        >
+                          paymob
+                        </a>
+                      </Col>
+                    </Row>
+                  ) : (
+                    <p>{order.payment_method} </p>
+                  )}
+
+                  {order.is_paid ? (
+                    <Message variant="success">
+                      Paid at {order.paid_at.substring(0, 10)}
+                    </Message>
+                  ) : (
+                    <Message variant="warning">Not Paid</Message>
+                  )}
+                </ListGroup.Item>
+
+                <ListGroup.Item>
+                  <h2>Shippment Details:</h2>
                   <p>Phone Number: {order.shippingAddress.telephone_number}</p>
                   <p>
                     {order.shippingAddress.address} ,{" "}
@@ -105,103 +185,15 @@ function OrderPage({ match }) {
                   )}
                 </ListGroup.Item>
               </ListGroup>
-
-              <ListGroup variant="flush">
-                <ListGroup.Item>
-                  <h2>Payment Method</h2>
-                  {order.payment_method === "paymob" ? (
-                    <Row>
-                      <Col>
-                        {" "}
-                        {order.payment_method}
-                        <br />
-                        {/* <button
-                          value="Paymob"
-                          className="btn disabled text-success btn_color"
-                          onclick={window.open(
-                            `http://127.0.0.1:8000/order/api/payment/${orderId}/`
-                          )}
-                        >
-                          Paymob
-                        </button> */}
-                        {/* <Link to='http://127.0.0.1:8000/order/api/payment/${orderId}/'>Paymob</Link> */}
-                        <a
-                          href={`http://127.0.0.1:8000/order/api/payment/${orderId}/`}
-                        >
-                          paymob
-                        </a>
-                      </Col>
-                    </Row>
-                  ) : (
-                    <p>{orderDeliver.payment_method} </p>
-                  )}
-                  {/* <p>Method: {order.payment_method}</p> */}
-
-                  {order.is_paid ? (
-                    <Message variant="success">
-                      Paid at {order.paid_at.substring(0, 10)}
-                    </Message>
-                  ) : (
-                    <Message variant="warning">Not Paid</Message>
-                  )}
-                </ListGroup.Item>
-              </ListGroup>
-
-              <ListGroup variant="flush">
-                <ListGroup.Item>
-                  <h2>Items</h2>
-                  {order.orderItems.length === 0 ? (
-                    <Message variant="info">Your order Is Empty</Message>
-                  ) : (
-                    <ListGroup variant="flush">
-                      {order.orderItems.map((item, index) => (
-                        <ListGroup.Item key={index}>
-                          <Row>
-                            <Col md={4}>Product Name</Col>
-                            <Col className="justify-contnet-center" md={2}>
-                              QTY
-                            </Col>
-                            <Col className="justify-contnet-center" md={2}>
-                              Unit Price
-                            </Col>
-                            <Col className="justify-contnet-center" md={2}>
-                              Price
-                            </Col>
-                          </Row>
-                          <br></br>
-                          <Row>
-                            <Col md={1}>
-                              <Image
-                                src={item.image}
-                                alt={item.name}
-                                fluid
-                                rounded
-                              />
-                            </Col>
-                            <Col md={3}>
-                              <Link to={`/product/${item.product}`}>
-                                {item.name}
-                              </Link>
-                            </Col>
-                            <Col md={2}>{item.quantity}</Col>
-                            <Col md={2}>{item.price} L.E </Col>
-                            <Col md={2}>
-                              {(item.quantity * item.price).toFixed(2)} L.E
-                            </Col>
-                          </Row>
-                        </ListGroup.Item>
-                      ))}
-                    </ListGroup>
-                  )}
-                </ListGroup.Item>
-              </ListGroup>
             </Card>
           </Col>
-          <Col md={4}>
+          <Col md={6}>
             <Card className=" shadow rounded-sm">
               <ListGroup variant="secondary">
                 <ListGroup.Item>
-                  <h2>Total</h2>
+                  <h2 style={{ textAlign: "center", fontFamily: "monospace" }}>
+                    Total
+                  </h2>
                 </ListGroup.Item>
 
                 <ListGroup.Item>
@@ -254,6 +246,23 @@ function OrderPage({ match }) {
                   </Button>
                 </ListGroup.Item>
               )}
+              <div>
+                {" "}
+                <p
+                  style={{
+                    margin: "15px",
+                    padding: "5px",
+                    color: "white",
+                    fontWeight: "bold",
+                    borderRadius: "5px",
+                    textAlign: "center",
+                  }}
+                  className="bg-success  "
+                >
+                  {" "}
+                  order is placed successfully <i className="far fa-check "></i>{" "}
+                </p>
+              </div>
             </Card>
           </Col>
         </Row>

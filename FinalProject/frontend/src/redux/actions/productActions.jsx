@@ -659,7 +659,6 @@ export const addBrandFunction = (name) => async (dispatch, getState) => {
 };
 
 // offers:
-// /product/api/offers/
 
 export const listOffers = () => async (dispatch, getState) => {
   try {
@@ -675,6 +674,29 @@ export const listOffers = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: "OFFERS_FAIL",
+      payload:
+        error.response && error.response.data.detail
+          ? error.response.data.detail
+          : error.message,
+    });
+  }
+};
+
+export const getProductByOffers = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: "OFFERS_PRODUCT_LIST_REQUEST",
+    });
+
+    const { data } = await axios.get(`/product/api/products/offers/${id}/`);
+
+    dispatch({
+      type: "OFFERS_PRODUCT_LIST_SUCCESS",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "OFFERS_PRODUCT_LIST_FAIL",
       payload:
         error.response && error.response.data.detail
           ? error.response.data.detail

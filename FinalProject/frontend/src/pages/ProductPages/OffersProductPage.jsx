@@ -3,33 +3,36 @@ import { Row, Col, Container } from "react-bootstrap";
 import Product from "../../components/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getProductBySubCategory,
-  listSubCategories,
+  getProductByOffers,
+  listOffers,
 } from "../../redux/actions/productActions";
-import Message from "../../components/Message";
-import Loader from "../../components/Loader";
+import { convertToObject } from "typescript";
 
-function SubCategoryPage({ match, history }) {
+function OffersProductPage({ match, history }) {
   const dispatch = useDispatch();
 
-  const subcategoryProducts = useSelector((state) => state.subcategoryProducts);
-  const { loading, error, product } = subcategoryProducts;
-  const subcategoriesList = useSelector((state) => state.subcategoriesList);
-  const { subcategories } = subcategoriesList;
+  const offersProducts = useSelector((state) => state.offersProducts);
+  const { product } = offersProducts;
+  const offersList = useSelector((state) => state.offersList);
+  const { offers } = offersList;
   useEffect(() => {
-    dispatch(listSubCategories());
-    dispatch(getProductBySubCategory(match.params.id));
+    dispatch(listOffers());
+    dispatch(getProductByOffers(match.params.id));
   }, [dispatch, match]);
-  console.log(product, "lllllllllllllllllllllllllllllllll");
   if (!product) return null;
-  if (!subcategories) return null;
-  console.log(product, "[ppppppppppppppp");
+  if (!offers) return null;
+
   return (
     <div>
-      {subcategories.map((subcategory) => (
-        <p key={subcategory.id}>
-          {subcategory.id == match.params.id && (
-            <h1 style={{ fontFamily: "monospace" }}>{subcategory.name}</h1>
+      {offers.map((offer) => (
+        <p>
+          {offer.id == match.params.id && (
+            <p key={offer.id}>
+              <h2 style={{ fontFamily: "Hind Guntur " }}>
+                Discount {offer.value * 100}%
+              </h2>
+              <hr></hr>
+            </p>
           )}
         </p>
       ))}
@@ -39,7 +42,7 @@ function SubCategoryPage({ match, history }) {
           style={{ textAlign: "center" }}
         >
           {" "}
-          <h4>Sorry This Category does not have products yet.</h4>
+          <h4>Sorry There Are No Offers At This Discount Yet.</h4>
           <a href="/" className="btn btn-outline-primary ">
             Go To Home Page
           </a>
@@ -59,4 +62,4 @@ function SubCategoryPage({ match, history }) {
   );
 }
 
-export default SubCategoryPage;
+export default OffersProductPage;

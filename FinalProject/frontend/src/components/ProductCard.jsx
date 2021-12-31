@@ -1,6 +1,6 @@
 import React from "react";
-import { Card } from "react-bootstrap";
-import Rating from "./Rating";
+import { Card, Row, Col } from "react-bootstrap";
+// import Rating from "./Rating";
 
 function ProductCard({ product }) {
   return (
@@ -17,7 +17,23 @@ function ProductCard({ product }) {
         </a>
         <hr></hr>
         <Card.Text as="h6">
-          <p style={{ fontFamily: "cairo" }}>{product.price} L.E</p>
+          {product.offer.value === 1 ? (
+            <p style={{ fontFamily: "cairo" }}>
+              <strong>{product.price} </strong>
+              <strong>&nbsp; L.E</strong>
+            </p>
+          ) : (
+            <p style={{ fontFamily: "cairo" }}>
+              <strike>{product.price}&nbsp;</strike>
+              {/* <strong>&nbsp; L.E</strong> */}
+
+              <strong>
+                &nbsp;{product.price * product.offer.value}
+                &nbsp; L.E
+              </strong>
+            </p>
+          )}
+          {/* <p style={{ fontFamily: "cairo" }}>{product.price} L.E</p> */}
 
           {/*handel price */}
 

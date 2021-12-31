@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // Components:
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import InternalSearch from "./components/categorySelect";
 // Pages:
 //  1. Main Pages:
 import HomePage from "./pages/MainPages/HomePage";
@@ -26,6 +25,7 @@ import ProductEditPage from "./pages/ProductPages/ProductEditPage";
 import ProductPage from "./pages/ProductPages/ProductPage";
 import CategoryPage from "./pages/ProductPages/CategoryPage";
 import SubCategoryPage from "./pages/ProductPages/SubCategoryPage";
+import OffersProductPage from "./pages/ProductPages/OffersProductPage";
 //  4. Order Pages:
 import CartPage from "./pages/OrderPages/CartPage";
 import ShippingPage from "./pages/OrderPages/ShippingPage";
@@ -45,16 +45,11 @@ import BrandsListPage from "./pages/BrandPages/BrandListPage";
 import BrandDetailsPage from "./pages/BrandPages/BrandDetailsPage";
 //  7. Admin Pages
 import AdminPanalPage from "./pages/AdminPages/AdminPanalPage/AdminPanalPage";
-// import MessengerCustomerChat from "react-messenger-customer-chat";
 
 function App() {
   return (
     <Router>
       <Header />
-      {/* <MessengerCustomerChat
-        pageId="<PAGE_ID>"
-        appId="<APP_ID>"
-      /> */}
 
       <Switch>
         <Route path="/" component={HomePage} exact />
@@ -73,13 +68,13 @@ function App() {
           <Route path="/admin/returnslist" component={ReturnsListPage} />
 
           {/* Main */}
-          <Route path="/cat" component={InternalSearch} />
           <Route path="/search" component={SearchPage} />
           <Route path="/contactus" component={ContactUs} />
 
           {/* Products */}
           <Route path="/categoryproducts/:id" component={CategoryPage} />
           <Route path="/subcategoryproducts/:id" component={SubCategoryPage} />
+          <Route path="/offersproducts/:id" component={OffersProductPage} />
           <Route path="/product/:id" component={ProductPage} />
 
           {/* Users */}

@@ -38,7 +38,7 @@ function CategoryPage({ match, history }) {
         <Container>
           <Row md={8}>
             {subcategories.map((subcategory) => (
-              <p style={{ textAlign: "center" }}>
+              <p key={subcategory.id} style={{ textAlign: "center" }}>
                 {subcategory.category == match.params.id && (
                   <Row sm={12} md={6} lg={4} xl={3}>
                     <Col className="btn btn-outline-primary m-4 ">

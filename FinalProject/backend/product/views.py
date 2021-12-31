@@ -32,7 +32,6 @@ class getOffers(viewsets.ModelViewSet):
 def product_list(request):
     queryset = Product.objects.all()
     filterset = ProductFilter(request.GET, queryset=queryset)
-    send_mail('Subject here', 'Here is the message', settings.EMAIL_HOST_USER, ['alaashaheen2205@gmail.com'])
     if filterset.is_valid():
         queryset = filterset.qs
 
@@ -78,7 +77,7 @@ def getTopProducts(request):
 
 
 @api_view(['POST'])
-# @permission_classes([IsAdminUser])
+@permission_classes([IsAdminUser])
 def createProduct(request):
     user = request.user
     data = request.data
@@ -137,6 +136,12 @@ def getProductByCategory(request, id):
 @api_view(['GET'])
 def getProductBySubCategory(request, id):
     product = Product.objects.filter(sub_category_id=id)
+    serializer = ProductSerializer(product, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getProductByOffer(request, id):
+    product = Product.objects.filter(offer_id=id)
     serializer = ProductSerializer(product, many=True)
     return Response(serializer.data)
 

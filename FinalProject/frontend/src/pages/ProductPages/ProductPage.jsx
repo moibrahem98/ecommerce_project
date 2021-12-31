@@ -70,7 +70,6 @@ function ProductPage({ match, history }) {
   let hist = useHistory();
   if (!product) return null;
   if (!offers) return null;
-  console.log(product, ";;;;;;;;;;;;;;;;;;");
   return (
     <Container>
       <div>

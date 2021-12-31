@@ -24,6 +24,7 @@ import {
   getProductByBrandReducer,
   brandCreateReducer,
   offersListReducer,
+  getProductByOffersReducer,
 } from "../reducers/productReducers";
 import { cartReducer } from "../reducers/cartReducers";
 import {
@@ -68,6 +69,7 @@ const reducer = combineReducers({
   brandProducts: getProductByBrandReducer,
   brandCreate: brandCreateReducer,
   offersList: offersListReducer,
+  offersProducts: getProductByOffersReducer,
 
   // cart
   cart: cartReducer,

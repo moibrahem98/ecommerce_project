@@ -488,3 +488,28 @@ export const offersListReducer = (state = { categories: [] }, action) => {
       return state;
   }
 };
+
+export const getProductByOffersReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "OFFERS_PRODUCT_LIST_REQUEST":
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case "OFFERS_PRODUCT_LIST_SUCCESS":
+      return {
+        loading: false,
+        product: action.payload,
+      };
+
+    case "OFFERS_PRODUCT_LIST_FAIL":
+      return {
+        loading: false,
+        error: action.payload,
+      };
+
+    default:
+      return state;
+  }
+};
