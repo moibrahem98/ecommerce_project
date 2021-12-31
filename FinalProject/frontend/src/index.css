@@ -108,6 +108,13 @@ h3 {
   margin: 0 auto;
 }
 
+.offers_card:hover {
+  background-color: #418993;
+  color: #fff !important;
+  transition: .2s background ease-in-out;
+  font-weight: bold;
+}
+
 .slick-next {
   right: 0;
   z-index: 1;

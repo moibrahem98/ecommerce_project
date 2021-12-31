@@ -66,7 +66,7 @@ function OffersCarousel() {
             {" "}
             <Card
               style={{ padding: "15px", color: "black" }}
-              className="pt-2 rounded text-center product_card  btn-outline-primary"
+              className="pt-2 rounded text-center offers_card"
             >
               Discount {offer.value * 100}%
             </Card>
