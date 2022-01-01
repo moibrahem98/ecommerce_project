@@ -36,6 +36,7 @@ function CartPage({ match, location, history }) {
     history.push("/login?redirect=shipping");
   };
 
+  console.log(cartItems, "llllllllllllllllll");
   return (
     <Container className="pt-5">
       <Row>

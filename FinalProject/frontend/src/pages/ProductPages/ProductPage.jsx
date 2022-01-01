@@ -173,7 +173,7 @@ function ProductPage({ match, history }) {
                       <Button
                         onClick={addToCartHandler}
                         className="btn-block w-100 btn_color"
-                        disabled={product.stock === 0}
+                        disabled={product.stock === 0 ? true : false}
                         type="button"
                       >
                         Add to Cart
