@@ -21,21 +21,10 @@ function OffersProductPage({ match, history }) {
   }, [dispatch, match]);
   if (!product) return null;
   if (!offers) return null;
-
+  console.log(offers, " ssssssssssssssssssssssss");
+  console.log(match.params.id);
   return (
-    <div>
-      {offers.map((offer) => (
-        <p>
-          {offer.id === match.params.id && (
-            <p key={offer.id}>
-              <h2 style={{ fontFamily: "Hind Guntur " }}>
-                Discount {offer.value * 100}%
-              </h2>
-              <hr></hr>
-            </p>
-          )}
-        </p>
-      ))}
+    <div style={{ marginTop: "200px" }}>
       {product.length === 0 ? (
         <div className="py-5 text-center mx-auto">
           <h4>Sorry There Are No Offers At This Discount Yet.</h4>
@@ -45,6 +34,20 @@ function OffersProductPage({ match, history }) {
         </div>
       ) : (
         <Container>
+          <p style={{ textAlign: "center" }}>
+            {offers.map((offer) => (
+              <p style={{ textAlign: "center" }}>
+                {offer.id == match.params.id && (
+                  <p>
+                    <h2 style={{ fontFamily: "Hind Guntur " }}>
+                      Discounts at {offer.value * 100}%
+                    </h2>
+                    <hr></hr>
+                  </p>
+                )}
+              </p>
+            ))}
+          </p>
           <Row>
             {product.map((product) => (
               <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
