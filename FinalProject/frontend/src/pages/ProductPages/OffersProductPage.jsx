@@ -21,8 +21,7 @@ function OffersProductPage({ match, history }) {
   }, [dispatch, match]);
   if (!product) return null;
   if (!offers) return null;
-  console.log(offers, " ssssssssssssssssssssssss");
-  console.log(match.params.id);
+
   return (
     <div style={{ marginTop: "200px" }}>
       {product.length === 0 ? (
