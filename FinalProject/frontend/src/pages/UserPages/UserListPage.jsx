@@ -36,22 +36,28 @@ function UserListPage({ history }) {
   return (
     <div>
       <Button onClick={() => hist.goBack()} className="btn btn-light my-3">
-        Go Back
+        الرجوع
       </Button>
-      <h2>Users</h2>
+      <h2 className="text-right">المستخدمين</h2>
       {loading ? (
         <Loader />
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
-        <Table striped bordered hover responsive className="table-sm">
+        <Table
+          striped
+          bordered
+          hover
+          responsive
+          className="table-sm text-center"
+        >
           <thead>
             <tr>
-              <th>ID</th>
-              <th>NAME</th>
-              <th>EMAIL</th>
-              <th>ADMIN</th>
-              <th></th>
+              <th>رقم</th>
+              <th>الاسم</th>
+              <th>البريد الالكترونى</th>
+              <th>ادمن</th>
+              <th>تعديل او حذف</th>
             </tr>
           </thead>
 

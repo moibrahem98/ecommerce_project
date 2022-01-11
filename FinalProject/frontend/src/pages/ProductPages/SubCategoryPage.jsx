@@ -20,24 +20,24 @@ function SubCategoryPage({ match, history }) {
     dispatch(listSubCategories());
     dispatch(getProductBySubCategory(match.params.id));
   }, [dispatch, match]);
-  console.log(product, "lllllllllllllllllllllllllllllllll");
   if (!product) return null;
   if (!subcategories) return null;
-  console.log(product, "[ppppppppppppppp");
   return (
     <div>
       {subcategories.map((subcategory) => (
         <p key={subcategory.id}>
           {subcategory.id == match.params.id && (
-            <h1 style={{ fontFamily: "monospace" }}>{subcategory.name}</h1>
+            <h2 style={{ fontFamily: "monospace" }} className="text-right">
+              {subcategory.name}
+            </h2>
           )}
         </p>
       ))}
       {product.length === 0 ? (
         <div className=" p-3 m-auto rounded-lg" style={{ textAlign: "center" }}>
-          <h4>Sorry This Category does not have products yet.</h4>
+          <h4>عفوا هذا القسم لا يحتوى على منتجات بعد</h4>
           <a href="/" className="btn btn_color ">
-            Go To Home Page
+            الرجوع للصفحه الرئيسيه
           </a>
         </div>
       ) : (

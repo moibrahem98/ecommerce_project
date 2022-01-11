@@ -29,28 +29,29 @@ function ReturnsListPage({ history }) {
   return (
     <div>
       <Button onClick={() => hist.goBack()} className="btn btn-light my-3">
-        Go Back
+        الرجوع
       </Button>
-      <h2>Returns Requests</h2>
+      <h2 className="text-right">طلبات الاسترجاع</h2>
       {loading ? (
         <Loader />
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
         <Table striped bordered hover responsive className="table-sm">
-          <thead>
+          <thead className="text-center">
             <tr>
-              <th>ID</th>
-              <th>TITLE</th>
-              <th>USER</th>
-              <th>FILE DATE</th>
-              <th>PRODUCT NAME</th>
-              <th>ORDER NUMBER</th>
-              <th>STATUS</th>
+              <th>رقم</th>
+              <th>عنوان</th>
+              <th>اسم المستخدم</th>
+              <th>معلومات</th>
+              <th>اسم المنتج</th>
+              <th>ررقم الاوردر</th>
+              <th>الحاله</th>
+              <th>تفاصيل</th>
             </tr>
           </thead>
 
-          <tbody>
+          <tbody className="text-center">
             {returns.map((ret) => (
               <tr key={ret.id}>
                 <td>{ret.id}</td>
@@ -69,7 +70,7 @@ function ReturnsListPage({ history }) {
                 <td>
                   <LinkContainer to={`/returndetails/${ret.id}`}>
                     <Button variant="light" className="btn-sm btn_color">
-                      Details{" "}
+                      تفاصيل{" "}
                     </Button>
                   </LinkContainer>
                 </td>

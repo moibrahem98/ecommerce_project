@@ -72,20 +72,20 @@ function PlaceOrderPage({ history }) {
         <Col md={12}>
           <ListGroup variant="flush">
             <ListGroup.Item>
-              <h2>Order Details</h2>
+              <h2>تفاصيل الطلب</h2>
               <hr />
               {cart.cartItems.length === 0 ? (
-                <Message variant="info">Your Cart Is Empty</Message>
+                <Message variant="info">السله فارغه</Message>
               ) : (
                 <ListGroup variant="flush">
                   <Table striped bordered hover responsive className="table-sm">
                     <thead>
                       <tr>
                         <td>#</td>
-                        <td>Product Name</td>
-                        <td>Quantity</td>
-                        <td>Price</td>
-                        <td>Total</td>
+                        <td>اسم المنتج</td>
+                        <td>الكميه</td>
+                        <td>السعر</td>
+                        <td>اجمالى</td>
                       </tr>
                     </thead>{" "}
                     <tbody>
@@ -116,18 +116,17 @@ function PlaceOrderPage({ history }) {
           <Card>
             <ListGroup variant="flush">
               <ListGroup.Item>
-                <h4>Payment Method</h4>
+                <h4>وسيله الدفع</h4>
                 <p> {cart.paymentMethod}</p>
               </ListGroup.Item>
 
               <ListGroup.Item>
-                <h2>Shippment Details:</h2>
-                <p>Phone Number: {cart.shippingAddress.telephoneNumber}</p>
+                <h2>تفاصيل الطلب</h2>
+                <p>رقم التليفون {cart.shippingAddress.telephoneNumber}</p>
                 <p>
                   {" "}
-                  Address: {cart.shippingAddress.address} ,{" "}
-                  {cart.shippingAddress.city}, {cart.shippingAddress.country} ,
-                  Egypt.{" "}
+                  عنوان: {cart.shippingAddress.address} ,{" "}
+                  {cart.shippingAddress.city}, {cart.shippingAddress.country}
                 </p>
               </ListGroup.Item>
             </ListGroup>
@@ -138,22 +137,22 @@ function PlaceOrderPage({ history }) {
             <ListGroup variant="secondary">
               <ListGroup.Item>
                 <h2 style={{ textAlign: "center", fontFamily: "monospace" }}>
-                  Total
+                  اجمالى
                 </h2>
               </ListGroup.Item>
 
               <ListGroup.Item>
-                <Col>Sub-Total</Col>
-                <Col>{cart.itemsPrice} L.E</Col>
+                <Col>الاجمالى</Col>
+                <Col>{cart.itemsPrice} جنيه</Col>
               </ListGroup.Item>
 
               <ListGroup.Item>
-                <Col>Shipping:</Col>
-                <Col>{cart.shippingPrice} L.E</Col>
+                <Col>مصاريف شحن</Col>
+                <Col>{cart.shippingPrice}جنيه</Col>
               </ListGroup.Item>
 
               <ListGroup.Item>
-                <Col>Total:</Col>
+                <Col>الكلى</Col>
                 <Col>{cart.totalPrice} L.E</Col>
               </ListGroup.Item>
 
@@ -165,7 +164,7 @@ function PlaceOrderPage({ history }) {
                   disapled={cart.cartItems === 0}
                   onClick={placeOrder}
                 >
-                  Place Ordrer
+                  متابعه
                 </Button>
               </ListGroup.Item>
               <ListGroup.Item>

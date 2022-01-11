@@ -29,7 +29,7 @@ function SearchPage({ history }) {
         }}
       >
         <h3 style={{ textAlign: "center" }} className="heading_1">
-          Search
+          بحث
         </h3>
         <div
           style={{

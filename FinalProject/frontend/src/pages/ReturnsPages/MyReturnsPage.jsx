@@ -34,7 +34,7 @@ function MyReturnsPage({ history }) {
 
   return (
     <div className="py-5 text-center" style={{ alignItems: "center" }}>
-      <h2 style={{ textAlign: "center" }}>My Returns</h2>
+      <h2 style={{ textAlign: "center" }}>المرتجعات</h2>
       <Row md={9}>
         {loadingReturns ? (
           <Loader />
@@ -51,26 +51,26 @@ function MyReturnsPage({ history }) {
                     href={`/returndetails/${ret.id}`}
                   >
                     {" "}
-                    <h5>Issue:{ret.title}</h5>
+                    <h5>المشكله{ret.title}</h5>
                   </a>
                 </Card.Title>
                 <Card.Body>
-                  <h6>Details:</h6>
+                  <h6>تفاصيل</h6>
                   <p>
                     <strong> {ret.issue}</strong>
                     <hr />
-                    <strong>Product: </strong>
+                    <strong>اسم المنتج </strong>
                     {ret.product_name}
                     <hr />
-                    <strong>Order Number: </strong>
+                    <strong>رقم الطلب</strong>
                     {ret.order_num}
                   </p>
                 </Card.Body>
                 <Card.Footer>
                   {" "}
-                  <strong> Issue State : </strong>
+                  <strong> حاله الشكوى</strong>
                   <h6 className="d-inline">
-                    {ret.issue_status ? <i> Solved </i> : <i>Not Solved </i>}
+                    {ret.issue_status ? <i> تم الحل </i> : <i>قيد الحل </i>}
                   </h6>
                   <br></br>
                 </Card.Footer>

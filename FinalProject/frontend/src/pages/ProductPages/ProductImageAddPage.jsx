@@ -59,7 +59,7 @@ function ProductImageAddPage({ match, history }) {
     <Container>
       {" "}
       <h1 style={{ textAlign: "center" }} className="h1">
-        Add Product Image
+        أضافه صوره للمنتج
       </h1>
       <hr />
       <Row className="mt-5">
@@ -67,7 +67,7 @@ function ProductImageAddPage({ match, history }) {
         <Col lg={5} md={6} sm={12} className="p-3 m-auto shadow rounded-lg">
           <Form onSubmit={submitHandler}>
             <Form.Group controlId="image">
-              <Form.Label>Image</Form.Label>
+              <Form.Label>صوره</Form.Label>
               <Form.Control
                 disabled
                 type="text"
@@ -86,7 +86,7 @@ function ProductImageAddPage({ match, history }) {
             </Form.Group>
             <div style={{ textAlign: "right" }}>
               <Button type="submit" variant="primary" className="btn_color">
-                Add Proudct
+                أضافه المنتج
               </Button>
             </div>
           </Form>

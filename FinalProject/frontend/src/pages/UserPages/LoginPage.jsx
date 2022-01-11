@@ -31,26 +31,26 @@ function LoginPage({ location, history }) {
     <Container className="py-5">
       <Row>
         <Col lg={5} md={6} sm={12} className="p-5 m-auto shadow rounded-lg">
-          <h3 className="mt-1 p-2 text-center">CUSTOMER LOGIN</h3>{" "}
-          <Form onSubmit={submitHandler}>
+          <h3 className="mt-1 p-2 text-center">تسجيل الدخول</h3>{" "}
+          <Form onSubmit={submitHandler} className="text-right">
             {error && <Message variant="danger">{error}</Message>}
             {loading && <Loader></Loader>}
 
             <Form.Group controlId="email">
-              <Form.Label>Email</Form.Label>
+              <Form.Label>البريد الالكترونى</Form.Label>
               <Form.Control
                 type="email"
-                placeholder="Email"
+                placeholder="البريد الالكترونى"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
               ></Form.Control>
             </Form.Group>
             <br></br>
             <Form.Group controlId="password">
-              <Form.Label>Password</Form.Label>
+              <Form.Label>كلمه المرور</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="Password"
+                placeholder="كلمه المرور"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
               ></Form.Control>
@@ -61,20 +61,20 @@ function LoginPage({ location, history }) {
               variant="dark"
               className="w-100 text-success btn_color"
             >
-              LOGLN{" "}
+              تسجيل الدخول
             </Button>
           </Form>
           <br></br>
           <Row>
             <Col>
-              Don't Have Account ?{" "}
+              لست مسجل بالفعل ؟{" "}
               <Link
                 className="btn btn-secondary "
                 to={redirect ? `/register?redirect=${redirect}` : "/register"}
               >
-                CREATE ACCOUNT
+                انشاء حساب
               </Link>
-            </Col>{" "}
+            </Col>
           </Row>
         </Col>
       </Row>

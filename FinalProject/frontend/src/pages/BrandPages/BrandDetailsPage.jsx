@@ -46,7 +46,7 @@ function BrandDetailsPage({ match, history }) {
             fontSize: "7em",
           }}
         >
-          See More Products From {brand.name}
+          تصفح المزيد من {brand.name}
         </p>
       </div>
       <hr />

@@ -59,7 +59,7 @@ function AddBrandPage({ location, history }) {
           <h3 className=" text-success mt-1 p-1 text-center ">Add Brand</h3>
           <Form onSubmit={submitHandler}>
             <Form.Group controlId="name">
-              <Form.Label>Brand Name</Form.Label>
+              <Form.Label>أسم البراند</Form.Label>
               <Form.Control
                 required
                 type="text"
@@ -69,7 +69,7 @@ function AddBrandPage({ location, history }) {
               ></Form.Control>
             </Form.Group>
             <Form.Group controlId="image">
-              <Form.Label>Image</Form.Label>
+              <Form.Label>صوره</Form.Label>
               <Form.Control
                 type="text"
                 disabled
@@ -90,7 +90,7 @@ function AddBrandPage({ location, history }) {
               variant="dark"
               className="w-100 text-success btn_color"
             >
-              Add Brand
+              اضافه براند
             </Button>
           </Form>
         </Col>

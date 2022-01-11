@@ -38,9 +38,8 @@ function OffersProductPage({ match, history }) {
       ))}
       {product.length === 0 ? (
         <div className="py-5 text-center mx-auto">
-          <h4>Sorry There Are No Offers At This Discount Yet.</h4>
           <a href="/" className="btn btn_color ">
-            Go To Home Page
+            الرجوع للصفحه الرئيسيه
           </a>
         </div>
       ) : (

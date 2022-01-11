@@ -29,9 +29,9 @@ function OrderListPage({ history }) {
   return (
     <div>
       <Button onClick={() => hist.goBack()} className="btn btn-light my-3">
-        Go Back
+        رجوع
       </Button>
-      <h2>Orders</h2>
+      <h2 className="text-right">الطلبات</h2>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -40,12 +40,12 @@ function OrderListPage({ history }) {
         <Table striped bordered hover responsive className="table-sm">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>USER</th>
-              <th>DATE</th>
-              <th>TOTAL</th>
-              <th>PAID</th>
-              <th>DELIVERED</th>
+              <th>رقم</th>
+              <th>مستخدم</th>
+              <th>تاريخ</th>
+              <th>اجمالى</th>
+              <th>تم الدفع</th>
+              <th>تم التوصيل</th>
               <th></th>
             </tr>
           </thead>
@@ -56,7 +56,7 @@ function OrderListPage({ history }) {
                 <td>{order._id}</td>
                 <td>{order.user && order.user.name}</td>
                 <td>{order.created_at.substring(0, 10)}</td>
-                <td>{order.total_price} L.E</td>
+                <td>{order.total_price} جنيه</td>
                 <td>
                   {order.is_paid ? (
                     order.paid_at.substring(0, 10)
@@ -75,7 +75,7 @@ function OrderListPage({ history }) {
                 <td>
                   <LinkContainer to={`/order/${order._id}`}>
                     <Button variant="light" className="btn-sm btn_color">
-                      Details{" "}
+                      تفاصيل{" "}
                     </Button>
                   </LinkContainer>
                 </td>

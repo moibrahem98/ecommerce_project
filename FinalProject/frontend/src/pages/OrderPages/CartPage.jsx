@@ -38,14 +38,14 @@ function CartPage({ match, location, history }) {
 
   return (
     <Container className="pt-5">
-      <Row>
+      <Row className="text-right">
         <Col md={8} sm={12}>
-          <h3>Shopping Cart</h3>
+          <h3>السله</h3>
           {cartItems.length === 0 ? (
             <Message variant="info">
-              Your cart is empty{" "}
+              السله فارغه{" "}
               <Link className="text-light pl-3" to="">
-                Back
+                رجوع
               </Link>
             </Message>
           ) : (
@@ -60,7 +60,7 @@ function CartPage({ match, location, history }) {
                       <Link to={`/product/${item.product}`}>{item.name}</Link>
                     </Col>
 
-                    <Col md={2}>{item.price} L.E</Col>
+                    <Col md={2}>{item.price}جنيه</Col>
 
                     <Col md={3} className="d-flex justify-content-between my-3">
                       <Form.Control
@@ -94,10 +94,6 @@ function CartPage({ match, location, history }) {
                         </Button>
                       </div>
                     </Col>
-                    {/* 
-                    <Col md={1}>
-
-                    </Col> */}
                   </Row>
                 </ListGroup.Item>
               ))}
@@ -117,16 +113,16 @@ function CartPage({ match, location, history }) {
                     backgroundColor: "WhiteSmoke",
                   }}
                 >
-                  Sub-Total
+                  المجموع
                 </h3>
                 <hr />
                 <p>
-                  {cartItems.reduce((acc, item) => acc + item.qty, 0)} items
+                  {cartItems.reduce((acc, item) => acc + item.qty, 0)} منتجات
                 </p>
                 {cartItems
                   .reduce((acc, item) => acc + item.qty * item.price, 0)
                   .toFixed(2)}{" "}
-                L.E
+                جنيه
               </ListGroup.Item>
             </ListGroup>
 
@@ -137,7 +133,7 @@ function CartPage({ match, location, history }) {
                 disabled={cartItems.length === 0}
                 onClick={checkoutHandler}
               >
-                Checkout
+                متابعه
               </Button>
             </ListGroup.Item>
           </Card>

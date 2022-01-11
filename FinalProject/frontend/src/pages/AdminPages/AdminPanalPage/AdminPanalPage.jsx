@@ -38,19 +38,21 @@ export default function AdminPanalPage({ history }) {
   return (
     <div style={{ marginTop: "150px" }}>
       <h2 className="h2" style={{ textAlign: "center" }}>
-        Admin Panal
+        لوحه التحكم
         <hr />
       </h2>
 
       <div className="container">
-        <Row>
+        <Row className="text-right">
           <Col md={6}>
             <div className="ad_card bg-success">
               <div className="card-statistic-3">
                 <div>
                   <a href="/admin/userlist">
-                    <h2 className="ad_card_title d-inline-block pr-1">Users</h2>
                     <i class="far fa-user-circle text-light ad_icon"></i>
+                    <h2 className="ad_card_title d-inline-block pr-1">
+                      المستخدمين
+                    </h2>
                   </a>
                 </div>
                 <div className="row align-items-center d-flex">
@@ -68,11 +70,10 @@ export default function AdminPanalPage({ history }) {
               <div className="card-statistic-3">
                 <div>
                   <a href="/admin/orderlist">
-                    <h2 className="ad_card_title d-inline-block pr-2">
-                      {" "}
-                      Orders
-                    </h2>
                     <i class="far fa-shopping-bag text-light ad_icon"></i>
+                    <h2 className="ad_card_title d-inline-block pr-2">
+                      الطلبات
+                    </h2>
                   </a>
                 </div>
                 <div className="row align-items-center d-flex">
@@ -90,10 +91,10 @@ export default function AdminPanalPage({ history }) {
               <div className="card-statistic-3">
                 <div>
                   <a href="/admin/returnslist">
-                    <h2 className="ad_card_title d-inline-block pr-2">
-                      Returns
-                    </h2>
                     <i class="far fa-undo-alt text-light ad_icon"></i>
+                    <h2 className="ad_card_title d-inline-block pr-2">
+                      المرتجعات
+                    </h2>
                   </a>
                 </div>
                 <div className="row align-items-centr d-flex">
@@ -110,12 +111,11 @@ export default function AdminPanalPage({ history }) {
             <div className="ad_card bg-info">
               <div className="card-statistic-3">
                 <div>
-                  {" "}
                   <a href="/admin/productlist">
-                    <h2 className="ad_card_title d-inline-block pr-2">
-                      Products{" "}
-                    </h2>
                     <i className="far fa-box-check text-light ad_icon"></i>
+                    <h2 className="ad_card_title d-inline-block pr-2">
+                      المنتجات
+                    </h2>
                   </a>
                 </div>
                 <div className="row align-items-centr d-flex">

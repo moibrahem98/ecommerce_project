@@ -157,12 +157,12 @@ function ProductEditPage({ match, history }) {
 
   return (
     <>
-      <Link to="/admin/productlist">Go Back</Link>
+      <Link to="/admin/productlist">لرجوع للخلف</Link>
 
       <Container>
-        <h1 style={{ textAlign: "center" }} className="h1">
-          Update Product
-        </h1>
+        <h2 style={{ textAlign: "center" }} className="h1">
+          تعديل المنتج
+        </h2>
         <hr /> {loadingUpdate && <Loader />}
         {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
         {loading ? (
@@ -174,27 +174,27 @@ function ProductEditPage({ match, history }) {
             <Col lg={5} md={6} sm={12} className="p-3 m-auto shadow rounded-lg">
               <Form onSubmit={submitHandler}>
                 <Form.Group controlId="name">
-                  <Form.Label>Name</Form.Label>
+                  <Form.Label>الاسم</Form.Label>
                   <Form.Control
                     type="name"
-                    placeholder="Enter name"
+                    placeholder="اضافه اسم"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   ></Form.Control>
                 </Form.Group>
                 <br></br>
                 <Form.Group controlId="price">
-                  <Form.Label>Price</Form.Label>
+                  <Form.Label>السعر</Form.Label>
                   <Form.Control
                     type="number"
-                    placeholder="Enter price"
+                    placeholder="اضافه السعر"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
                   ></Form.Control>
                 </Form.Group>
                 <br></br>
                 <Form.Group controlId="offer">
-                  <Form.Label>Offer Type</Form.Label>
+                  <Form.Label>نوع العرض</Form.Label>
                   <select
                     className="form-control"
                     onChange={(e) => setOffer(e.target.value)}
@@ -209,11 +209,11 @@ function ProductEditPage({ match, history }) {
 
                 <br></br>
                 <Form.Group controlId="image">
-                  <Form.Label>Image</Form.Label>
+                  <Form.Label>صوره</Form.Label>
                   <Form.Control
                     disabled
                     type="text"
-                    placeholder="Enter image"
+                    placeholder="اضافه صوره"
                     value={image}
                     onChange={(event) => setImage(event.target.value)}
                   ></Form.Control>
@@ -228,7 +228,7 @@ function ProductEditPage({ match, history }) {
                 </Form.Group>
                 <br></br>
                 <Form.Group controlId="brand">
-                  <Form.Label>Brand</Form.Label>
+                  <Form.Label>براند</Form.Label>
                   <select
                     className="form-control"
                     onChange={(e) => setBrand(e.target.value)}
@@ -240,10 +240,10 @@ function ProductEditPage({ match, history }) {
                 </Form.Group>
                 <br></br>
                 <Form.Group controlId="stock">
-                  <Form.Label>Stock</Form.Label>
+                  <Form.Label>المخزن</Form.Label>
                   <Form.Control
                     type="number"
-                    placeholder="Enter stock"
+                    placeholder="اضافه حاله المنتج فى المخزن"
                     value={stock}
                     onChange={(e) => setStock(e.target.value)}
                   ></Form.Control>
@@ -251,7 +251,7 @@ function ProductEditPage({ match, history }) {
                 <br></br>
 
                 <Form.Group controlId="category">
-                  <Form.Label>Category</Form.Label>
+                  <Form.Label>القسم</Form.Label>
 
                   <select
                     className="form-control"
@@ -265,7 +265,7 @@ function ProductEditPage({ match, history }) {
                 </Form.Group>
                 <br></br>
                 <Form.Group controlId="subCategory">
-                  <Form.Label>Sub Category</Form.Label>
+                  <Form.Label>القسم الفرعى</Form.Label>
 
                   <select
                     className="form-control"
@@ -283,10 +283,10 @@ function ProductEditPage({ match, history }) {
                 </Form.Group>
 
                 <Form.Group controlId="description">
-                  <Form.Label>Description</Form.Label>
+                  <Form.Label>الوصف</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter description"
+                    placeholder="اضافه وصف"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                   ></Form.Control>
@@ -294,7 +294,7 @@ function ProductEditPage({ match, history }) {
                 <br></br>
                 <div style={{ textAlign: "right" }}>
                   <Button type="submit" variant="primary" className="btn_color">
-                    Update Product
+                    تحديث المنتج
                   </Button>
                 </div>
               </Form>

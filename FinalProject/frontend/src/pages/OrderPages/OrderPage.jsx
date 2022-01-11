@@ -75,9 +75,9 @@ function OrderPage({ match }) {
             <Card>
               <ListGroup variant="flush">
                 <ListGroup.Item>
-                  <h2>Order Details</h2>
+                  <h2 className="text-right">تفاصيل الطلب</h2>
                   {order.orderItems.length === 0 ? (
-                    <Message variant="info">Your Order Is Empty</Message>
+                    <Message variant="info">صفحه الطلبات فارغه</Message>
                   ) : (
                     <ListGroup variant="flush">
                       <Table
@@ -89,11 +89,11 @@ function OrderPage({ match }) {
                       >
                         <thead>
                           <tr>
-                            <td>#</td>
-                            <td>Product Name</td>
-                            <td>Quantity</td>
-                            <td>Price</td>
-                            <td>Total</td>
+                            <td>رقم</td>
+                            <td>اسم المنتج</td>
+                            <td>الكميه</td>
+                            <td>السعر</td>
+                            <td>الاجمالى</td>
                           </tr>
                         </thead>
                         <tbody>
@@ -109,10 +109,10 @@ function OrderPage({ match }) {
                                 </Link>
                               </td>
                               <td>{item.quantity}</td>
-                              <td>{item.price} L.E</td>
+                              <td>{item.price} جنيه</td>
                               <td>
                                 {" "}
-                                {(item.quantity * item.price).toFixed(2)} L.E
+                                {(item.quantity * item.price).toFixed(2)} جنيه
                               </td>
                             </tr>
                           ))}
@@ -132,20 +132,19 @@ function OrderPage({ match }) {
               <ListGroup variant="flush">
                 <ListGroup.Item>
                   <p>
-                    <h2>Customer:</h2>
+                    <h2>عميل</h2>
 
-                    <span>Name: </span>
+                    <span>الاسم </span>
 
                     {order.user.name}
                   </p>
                 </ListGroup.Item>
 
                 <ListGroup.Item>
-                  <h2>Payment Method</h2>
+                  <h2>وسيله الدفع</h2>
                   {order.payment_method === "paymob" ? (
                     <Row>
                       <Col>
-                        {" "}
                         {order.payment_method}
                         <br />
                         <a
@@ -164,24 +163,24 @@ function OrderPage({ match }) {
                       Paid at {order.paid_at.substring(0, 10)}
                     </Message>
                   ) : (
-                    <Message variant="warning">Not Paid</Message>
+                    <Message variant="warning">لم يتم الدفع</Message>
                   )}
                 </ListGroup.Item>
 
                 <ListGroup.Item>
-                  <h2>Shippment Details:</h2>
-                  <p>Phone Number: {order.shippingAddress.telephone_number}</p>
+                  <h2>تفاصيل الطلب</h2>
+                  <p>تليفون {order.shippingAddress.telephone_number}</p>
                   <p>
                     {order.shippingAddress.address} ,{" "}
                     {order.shippingAddress.city},{" "}
-                    {order.shippingAddress.country} , Egypt.
+                    {order.shippingAddress.country}
                   </p>
                   {order.is_delivered ? (
                     <Message variant="success">
                       Deliverd at {order.delivered_at.substring(0, 10)}
                     </Message>
                   ) : (
-                    <Message variant="warning">Not Deliverd</Message>
+                    <Message variant="warning">لم يتم التوصيل</Message>
                   )}
                 </ListGroup.Item>
               </ListGroup>
@@ -192,23 +191,23 @@ function OrderPage({ match }) {
               <ListGroup variant="secondary">
                 <ListGroup.Item>
                   <h2 style={{ textAlign: "center", fontFamily: "monospace" }}>
-                    Total
+                    الفاتوره
                   </h2>
                 </ListGroup.Item>
 
                 <ListGroup.Item>
-                  <Col>Sub-Total:</Col>
-                  <Col>{order.itemsPrice} L.E</Col>
+                  <Col>اجمالى</Col>
+                  <Col>{order.itemsPrice} جنيه</Col>
                 </ListGroup.Item>
 
                 <ListGroup.Item>
-                  <Col>Shipping:</Col>
-                  <Col>{order.shipping_price} L.E</Col>
+                  <Col>مصاريف الشحن</Col>
+                  <Col>{order.shipping_price} جنيه</Col>
                 </ListGroup.Item>
 
                 <ListGroup.Item>
-                  <Col>Total:</Col>
-                  <Col>{order.total_price} L.E</Col>
+                  <Col>الكلى</Col>
+                  <Col>{order.total_price} جنيه</Col>
                 </ListGroup.Item>
               </ListGroup>
               {userInfo && order.is_paid && order.is_delivered && (
@@ -218,7 +217,7 @@ function OrderPage({ match }) {
                     className="btn btn-block btn_color"
                     to="/createreturn"
                   >
-                    File Return Request
+                    طلب ارجاع
                   </Link>
                 </ListGroup.Item>
               )}
@@ -230,7 +229,7 @@ function OrderPage({ match }) {
                     className="btn btn-block text-success btn_color"
                     onClick={payHandler}
                   >
-                    Mark As Paid
+                    تم الدفع ؟
                   </Button>
                 </ListGroup.Item>
               )}
@@ -242,7 +241,7 @@ function OrderPage({ match }) {
                     className="btn btn-block btn_color"
                     onClick={deliverHandler}
                   >
-                    Mark As Delivered
+                    تم الوصول ؟
                   </Button>
                 </ListGroup.Item>
               )}
@@ -260,7 +259,7 @@ function OrderPage({ match }) {
                   className="bg-success  "
                 >
                   {" "}
-                  order is placed successfully <i className="far fa-check "></i>{" "}
+                  تم بنجاح <i className="far fa-check "></i>{" "}
                 </p>
               </div>
             </Card>

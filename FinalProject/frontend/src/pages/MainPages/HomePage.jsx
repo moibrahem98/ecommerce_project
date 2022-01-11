@@ -27,15 +27,15 @@ function HomePage({ history }) {
       <CarouselSlider />
 
       <Container className="text-center" style={{ marginTop: " 20px" }}>
-        <h3 className="heading_1 mt-5 text-center">Offers</h3>
+        <h3 className="heading_1 mt-5 text-center">العروض</h3>
         {!name && <OffersCarousel />}
-        <h3 className="heading_1 mt-3">Shop By Category</h3>
+        <h3 className="heading_1 mt-3">الأقسام</h3>
         <CatSlider />
         <hr />
-        <h3 className="heading_1">Top Rated Products</h3>
+        <h3 className="heading_1">أعلى التقييمات</h3>
         {!name && <ProductCarousel />}
         <br /> <hr />
-        <h3 className="heading_1 mt-5">Latest Products</h3>
+        <h3 className="heading_1 mt-5">أحدث الأضافات</h3>
         {!name && <LatestProductsCarousel />}
       </Container>
       <Image src={before} className="banner" />

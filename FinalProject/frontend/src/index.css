@@ -1,6 +1,9 @@
 body {
   font-family: "Cairo", sans-serif;
+  direction: rtl;
+  overflow-x: hidden;
 }
+
 
 .heading_2,
 .heading_1 {
@@ -176,6 +179,12 @@ h3 {
   font-size: 1.3rem;
 }
 
+.drop_down {
+  width: fit-content;
+  width: 30px;
+  background-color: #418993 !important;
+}
+
 .butn_cart {
   position: relative;
   left: 100px;
@@ -197,12 +206,15 @@ h3 {
 
 .banner {
   max-width: 100%;
+  margin-bottom: -100px;
 }
 
 footer {
   background: #f8f8f8;
   border-top: 1px solid #d6d5d5;
   color: #202020;
+  margin-top: 100px;
+  direction: ltr;
 }
 
 .blackiconcolor {

@@ -27,49 +27,49 @@ function ShippingPage({ history }) {
   return (
     <Container>
       <CheckoutSteps step1 step2 />
-      <Row className="mt-5">
+      <Row className="mt-5 text-right">
         <Col lg={5} md={6} sm={12} className="p-3 m-auto shadow rounded-lg">
-          <h1 className=" text-succes mt-1 p-1 text-center ">Shipping</h1>
+          <h1 className=" text-succes mt-1 p-1 text-center ">تفاصيل الشحن</h1>
           <Form onSubmit={submitHandler}>
             <Form.Group controlId="address">
-              <Form.Label>Address</Form.Label>
+              <Form.Label>عنوان</Form.Label>
               <Form.Control
                 required
                 type="text"
-                placeholder="Enter address"
+                placeholder="ادخل العنوان"
                 value={address ? address : ""}
                 onChange={(e) => setAddress(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId="city">
-              <Form.Label>City</Form.Label>
+              <Form.Label>مدينه</Form.Label>
               <Form.Control
                 required
                 type="text"
-                placeholder="Enter city"
+                placeholder="ادخل المدينه"
                 value={city ? city : ""}
                 onChange={(e) => setCity(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId="telephoneNumber">
-              <Form.Label>Phone Number</Form.Label>
+              <Form.Label>رقم التليفون</Form.Label>
               <Form.Control
                 required
                 type="text"
-                placeholder="Enter Phone Number"
+                placeholder="ادخل رقم التليفون"
                 value={telephoneNumber ? telephoneNumber : ""}
                 onChange={(e) => setTelephoneNumber(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId="country">
-              <Form.Label>Government</Form.Label>
+              <Form.Label>محافظه</Form.Label>
               <Form.Control
                 required
                 type="text"
-                placeholder="Enter country"
+                placeholder="ادخل اسم المحافظه"
                 value={country ? country : ""}
                 onChange={(e) => setCountry(e.target.value)}
               ></Form.Control>
@@ -80,7 +80,7 @@ function ShippingPage({ history }) {
               variant="dark"
               className="w-100 text-success btn_color"
             >
-              Continue
+              متابعه
             </Button>
           </Form>
         </Col>

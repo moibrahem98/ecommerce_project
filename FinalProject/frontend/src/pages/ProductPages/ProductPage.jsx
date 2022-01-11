@@ -74,7 +74,7 @@ function ProductPage({ match, history }) {
     <Container>
       <div>
         <Button onClick={() => hist.goBack()} className="btn btn-light my-3">
-          Go Back
+          الرجوع
         </Button>
         {loading ? (
           <Loader />
@@ -94,7 +94,7 @@ function ProductPage({ match, history }) {
               </Col>
 
               <Col md={6}>
-                <Card>
+                <Card className="text-right">
                   <ListGroup variant="flush">
                     <ListGroup.Item>
                       <h3>{product.name}</h3>
@@ -103,31 +103,29 @@ function ProductPage({ match, history }) {
                     <ListGroup.Item>
                       <Rating
                         value={product.rating}
-                        text={`${product.reviews_number} Reviews`}
+                        text={`${product.reviews_number} تقييمات`}
                         color={"#e36f10"}
                       />
                     </ListGroup.Item>
                   </ListGroup>
                 </Card>
-                <Card>
+                <Card className="text-right">
                   <ListGroup variant="flush">
                     <ListGroup.Item>
                       <Row>
-                        <Col>Price:</Col>
+                        <Col>السعر</Col>
                         <Col>
                           {product.offer.value === 1 ? (
                             <Row>
                               <strong>{product.price} </strong>
-                              <strong>&nbsp; L.E</strong>
+                              <strong>&nbsp;جنيه</strong>
                             </Row>
                           ) : (
                             <Row>
                               <strike>{product.price}&nbsp;</strike>
-                              {/* <strong>&nbsp; L.E</strong> */}
-
                               <strong>
                                 &nbsp;{product.price * product.offer.value}
-                                &nbsp; L.E
+                                &nbsp; جنيه
                               </strong>
                             </Row>
                           )}
@@ -136,16 +134,16 @@ function ProductPage({ match, history }) {
                     </ListGroup.Item>
                     <ListGroup.Item>
                       <Row>
-                        <Col>Status:</Col>
+                        <Col>متوفر</Col>
                         <Col>
-                          {product.stock > 0 ? "In Stock" : "Out of Stock"}
+                          {product.stock > 0 ? "نعم متوفر" : "ليس متوفر"}
                         </Col>
                       </Row>
                     </ListGroup.Item>
                     {product.stock > 0 && (
                       <ListGroup.Item>
                         <Row>
-                          <Col className="m-2">Quantity</Col>
+                          <Col className="m-2">الكميه</Col>
                           <Col xs="auto" className="">
                             <Form.Control
                               rounded
@@ -153,7 +151,6 @@ function ProductPage({ match, history }) {
                               style={{
                                 textAlign: "center",
                                 border: "1px solid  #e3e3e3",
-                                borderRadius: "15px",
                               }}
                               as="select"
                               value={qty}
@@ -176,7 +173,7 @@ function ProductPage({ match, history }) {
                         disabled={product.stock === 0}
                         type="button"
                       >
-                        Add to Cart
+                        أضافه الى السله
                       </Button>
                     </ListGroup.Item>
                   </ListGroup>
@@ -190,18 +187,18 @@ function ProductPage({ match, history }) {
               id="uncontrolled-tab-example"
               className="mb-3"
             >
-              <Tab eventKey="profile" title="Description">
-                <h3>Description</h3>
-                {product.description}
+              <Tab eventKey="profile" title="وصف">
+                <h3 className="text-right">وصف المنتج</h3>
+                <p className="text-right">{product.description}</p>
               </Tab>
-              <Tab eventKey="home" title="Reviews">
+              <Tab eventKey="home" title="التقيمات">
                 <Row>
                   <Col md={6}>
-                    <h4>Reviews</h4>
+                    <h4 className="text-right">التقييمات</h4>
                     {product.reviews.length === 0 && (
-                      <Message variant="info"> No Reviews Yet.</Message>
+                      <Message variant="info"> لاتوجد تقييمات حتى الان</Message>
                     )}
-                    <ListGroup variant="flush">
+                    <ListGroup variant="flush" className="text-right">
                       {product.reviews.map((review) => (
                         <ListGroup.Item key={review._id}>
                           <strong>{review.name}</strong>
@@ -216,7 +213,7 @@ function ProductPage({ match, history }) {
 
                       <ListGroup.Item>
                         <br></br>
-                        <h4>Add a review</h4>
+                        <h4>اضافه تقييم</h4>
                         {loadingProductReview && <Loader></Loader>}
                         {successProductReview && (
                           <Message variant="success">review is added</Message>
@@ -229,7 +226,7 @@ function ProductPage({ match, history }) {
                         {userInfo ? (
                           <Form onSubmit={submitHandler}>
                             <Form.Group controlId="rating">
-                              <Form.Label>Rating:</Form.Label>
+                              <Form.Label>تقييم</Form.Label>
                               <Form.Control
                                 as="select"
                                 value={rating}
@@ -237,17 +234,17 @@ function ProductPage({ match, history }) {
                                   setRating(event.target.value)
                                 }
                               >
-                                <option value="">Select</option>
-                                <option value="1">1 Not Good</option>
-                                <option value="2">2 Fair</option>
-                                <option value="3">3 Good</option>
-                                <option value="4">4 Very Good</option>
-                                <option value="5">5 Excellent</option>
+                                <option value="">اختر</option>
+                                <option value="1">1 سيئ</option>
+                                <option value="2">2 معقول</option>
+                                <option value="3">3 جيد</option>
+                                <option value="4">جيد جدا</option>
+                                <option value="5">5 ممتاز</option>
                               </Form.Control>
                             </Form.Group>
                             <br></br>
                             <Form.Group controlId="comment">
-                              <Form.Label>Comment:</Form.Label>
+                              <Form.Label>تعليق</Form.Label>
                               <Form.Control
                                 as="textarea"
                                 rows="5"
@@ -264,14 +261,14 @@ function ProductPage({ match, history }) {
                               variant="primary"
                               className="btn_color w-25"
                             >
-                              Add
+                              أضافه
                             </Button>
                           </Form>
                         ) : (
                           <Message variant="info">
-                            Please
-                            <Link to="/login"> login </Link>
-                            to review this product
+                            من فضلك
+                            <Link to="/login"> تسجيل الدخول </Link>
+                            سجل الدخول
                           </Message>
                         )}
                       </ListGroup.Item>

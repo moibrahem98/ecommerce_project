@@ -32,32 +32,27 @@ function UserPanal({ history }) {
     }
   }, [dispatch, history, userInfo, user]);
 
-  console.log(userInfo, "llllllllllllllllllll");
   if (!orders) return null;
   if (!userInfo) return null;
   if (!returns) return null;
   return (
     <div>
-      <h2 className="h2">Profile</h2>
+      <h2 className="h2 text-right">الصفحه الشخصيه</h2>
 
-      <div className="container">
+      <div className="container text-right">
         <Row>
           <Col md={6}>
             <div className="ad_card bg-success">
               <div className="card-statistic-3">
                 <div>
                   <a href="/profile">
-                    <h2 className="ad_card_title d-inline-block pr-1">
-                      Profile
-                    </h2>
                     <i class="far fa-user-circle text-light ad_icon"></i>
+                    <h2 className="ad_card_title d-inline-block pr-1">صفحتى</h2>
                   </a>
                 </div>
                 <div className="row align-items-center d-flex">
                   <div className="col-8">
-                    <h2 className="d-flex align-items-center">
-                      {userInfo.name}
-                    </h2>
+                    <h2 className="">{userInfo.name}</h2>
                   </div>
                 </div>
               </div>
@@ -68,11 +63,10 @@ function UserPanal({ history }) {
               <div className="card-statistic-3">
                 <div>
                   <a href="/myorders">
-                    <h2 className="ad_card_title d-inline-block pr-2">
-                      {" "}
-                      Orders
-                    </h2>
                     <i class="far fa-shopping-bag text-light ad_icon"></i>
+                    <h2 className="ad_card_title d-inline-block pr-2">
+                      طلباتى
+                    </h2>
                   </a>
                 </div>
                 <div className="row align-items-center d-flex">
@@ -90,10 +84,10 @@ function UserPanal({ history }) {
               <div className="card-statistic-3">
                 <div>
                   <a href="/myreturns">
-                    <h2 className="ad_card_title d-inline-block pr-2">
-                      My Returns
-                    </h2>
                     <i class="far fa-undo-alt text-light ad_icon"></i>
+                    <h2 className="ad_card_title d-inline-block pr-2">
+                      مرتجعات
+                    </h2>
                   </a>
                 </div>
                 <div className="row align-items-centr d-flex">
@@ -111,12 +105,11 @@ function UserPanal({ history }) {
               <div className="card-statistic-3">
                 <div>
                   <a href="/update">
-                    {" "}
-                    <h2 className="ad_card_title d-inline-block pr-2">
-                      Update Profile
-                    </h2>
                     <i className="far fa-pencil text-light ad_icon"></i>
-                    <button className="btn btn-block btn-light">Click</button>
+                    <h2 className="ad_card_title d-inline-block pr-2">
+                      تحديث الملف الشخصى
+                    </h2>
+                    <button className="btn btn-block btn-light">تحديث</button>
                   </a>
                 </div>
               </div>

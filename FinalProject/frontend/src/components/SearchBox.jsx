@@ -22,7 +22,7 @@ function SearchBox() {
           className="form-control w-80"
           type="text"
           name="q"
-          placeholder="search"
+          placeholder="بحث بالأسم"
           onChange={(event) => setName(event.target.value)}
         />
         <button className="btn btn_color">

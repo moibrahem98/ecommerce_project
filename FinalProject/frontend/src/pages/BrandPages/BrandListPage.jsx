@@ -29,9 +29,9 @@ function BrandsListPage({ history }) {
   return (
     <div>
       <Button onClick={() => hist.goBack()} className="btn btn-light my-3">
-        Go Back
+        الرجوع
       </Button>
-      <h2>Brands</h2>
+      <h2>براندات</h2>
       {loading ? (
         <Loader />
       ) : error ? (

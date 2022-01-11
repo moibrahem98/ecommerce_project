@@ -95,29 +95,29 @@ function ProductCreatePage({ history }) {
 
   return (
     <Container>
-      <h1 style={{ textAlign: "center" }} className="h1">
-        Add New Product
-      </h1>
+      <h3 style={{ textAlign: "center" }} className="h1">
+        اضافه منتج جديد
+      </h3>
       <hr />
       <Row className="mt-5">
         <Col lg={5} md={6} sm={12} className="p-3 m-auto shadow rounded-lg">
           <Form onSubmit={submitHandler}>
             <Form.Group controlId="name">
-              <Form.Label>Name</Form.Label>
+              <Form.Label>الاسم</Form.Label>
               <Form.Control
                 type="name"
-                placeholder="Enter name"
+                placeholder="ادخل الاسم"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></Form.Control>
             </Form.Group>
             <br></br>
             <Form.Group controlId="price">
-              <Form.Label>Price</Form.Label>
+              <Form.Label>السعر</Form.Label>
               <Form.Control
                 type="number"
                 min="0"
-                placeholder="Enter price"
+                placeholder="السعر"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
               ></Form.Control>
@@ -139,7 +139,7 @@ function ProductCreatePage({ history }) {
 
             <br></br>
             <Form.Group controlId="brand">
-              <Form.Label>Brand</Form.Label>
+              <Form.Label>براند</Form.Label>
               <select
                 className="form-control"
                 onChange={(e) => setBrand(e.target.value)}
@@ -153,11 +153,11 @@ function ProductCreatePage({ history }) {
             </Form.Group>
             <br></br>
             <Form.Group controlId="stock">
-              <Form.Label>Stock</Form.Label>
+              <Form.Label>المخرن</Form.Label>
               <Form.Control
                 type="number"
                 min="0"
-                placeholder="Enter stock"
+                placeholder="العدد الموجود"
                 value={stock}
                 onChange={(e) => setStock(e.target.value)}
               ></Form.Control>
@@ -165,7 +165,7 @@ function ProductCreatePage({ history }) {
             <br></br>
 
             <Form.Group controlId="category">
-              <Form.Label>Category</Form.Label>
+              <Form.Label>القسم</Form.Label>
 
               <select
                 className="form-control"
@@ -181,7 +181,7 @@ function ProductCreatePage({ history }) {
             </Form.Group>
             <br></br>
             <Form.Group controlId="subCategory">
-              <Form.Label>Sub Category</Form.Label>
+              <Form.Label>القسم الفرعى</Form.Label>
 
               <select
                 className="form-control"
@@ -197,10 +197,10 @@ function ProductCreatePage({ history }) {
             </Form.Group>
 
             <Form.Group controlId="description">
-              <Form.Label>Description</Form.Label>
+              <Form.Label>الوصف</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter description"
+                placeholder="وصف المنتج"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               ></Form.Control>
@@ -209,7 +209,7 @@ function ProductCreatePage({ history }) {
             <div style={{ textAlign: "right" }}>
               {" "}
               <Button type="submit" variant="primary" className="btn_color">
-                Next
+                التالى
               </Button>
             </div>
           </Form>

@@ -49,17 +49,17 @@ function ProductListPage({ history, match }) {
   return (
     <div>
       <Button onClick={() => hist.goBack()} className="btn btn-light my-3">
-        Go Back
+        الرجوع
       </Button>
-      <Row className="align-items-center">
+      <Row className="align-items-center text-center">
         <Col md={9}>
-          <h1>Products</h1>
+          <h3>المنتجات</h3>
         </Col>
 
         <Col className="text-right" md={3}>
           <Link to="/admin/createproduct">
             <Button className="my-3 btn_color">
-              <i className="fas fa-plus"></i> Create Product
+              <i className="fas fa-plus"></i> اضافه منتج
             </Button>
           </Link>
         </Col>
@@ -75,17 +75,17 @@ function ProductListPage({ history, match }) {
       ) : (
         <div>
           <Table striped bordered hover responsive className="table-sm">
-            <thead>
+            <thead className="text-center">
               <tr>
-                <th>ID</th>
-                <th>NAME</th>
-                <th>PRICE</th>
-                <th>PRICE After Offer</th>
-                <th>CATEGORY</th>
-                <th>SUB CATEGORY</th>
-                <th>BRAND</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th>رقم</th>
+                <th>الاسم</th>
+                <th>السعر</th>
+                <th>السعر بعد الخصم</th>
+                <th>القسم</th>
+                <th>القسم الفرعى</th>
+                <th>براند</th>
+                <th>تعديل</th>
+                <th>حذف</th>
               </tr>
             </thead>
 
@@ -98,11 +98,11 @@ function ProductListPage({ history, match }) {
                       <strong>{product.name}</strong>
                     </a>
                   </td>
-                  <td>{product.price} L.E</td>
+                  <td>{product.price} جنيه</td>
                   <td>
                     {" "}
                     &nbsp;{product.price * product.offer.value}
-                    &nbsp; L.E
+                    &nbsp; جنيه
                   </td>
                   <td>{product.category1.name}</td>
                   <td>{product.subcategory1.name}</td>

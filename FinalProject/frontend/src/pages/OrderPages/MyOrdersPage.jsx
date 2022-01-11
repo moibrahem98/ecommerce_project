@@ -31,7 +31,7 @@ function MyOrdersPage({ history }) {
   return (
     <div className="py-5">
       <Row md={9}>
-        <h2>My Orders</h2>
+        <h2>طلباتى</h2>
         {loadingOrders ? (
           <Loader />
         ) : errorOrders ? (
@@ -40,12 +40,12 @@ function MyOrdersPage({ history }) {
           <Table striped responsive className="table-sm">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Date</th>
-                <th>Total</th>
-                <th>Paid</th>
-                <th>Delivered</th>
-                <th>order details</th>
+                <th>رقم</th>
+                <th>تاريخ</th>
+                <th>اجمالى</th>
+                <th>مدفوع</th>
+                <th>تم التوصيل</th>
+                <th>بيانات الطلب</th>
               </tr>
             </thead>
             <tbody>
@@ -53,7 +53,7 @@ function MyOrdersPage({ history }) {
                 <tr key={order._id}>
                   <td>{order._id}</td>
                   <td>{order.created_at.substring(0, 10)}</td>
-                  <td>{order.total_price} L.E</td>
+                  <td>{order.total_price}جنيه</td>
                   <td>
                     {order.is_paid ? (
                       order.paid_at.substring(0, 10)
@@ -72,7 +72,7 @@ function MyOrdersPage({ history }) {
                     <LinkContainer to={`/order/${order._id}`}>
                       <Button variant="light" className=" btn-sm ">
                         {" "}
-                        Details{" "}
+                        تفاصيل{" "}
                       </Button>
                     </LinkContainer>
                   </td>

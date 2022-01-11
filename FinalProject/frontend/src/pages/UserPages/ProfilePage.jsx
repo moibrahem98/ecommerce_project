@@ -47,22 +47,20 @@ function ProfilePage({ history }) {
                 textAlign: "center",
               }}
             >
-              User Profile
+              الصفحه الشخصيه
             </h2>
             <Card md={4}>
-              <Card.Body>
+              <Card.Body className="p-3 text-right">
                 <Card.Text>
-                  {" "}
-                  <strong>Name:</strong> {name}
+                  <strong>ألاسم</strong> {name}
                 </Card.Text>
                 <hr></hr>
                 <Card.Text>
-                  {" "}
-                  <strong>Email:</strong> {email}
+                  <strong>البريد الالكترونى</strong> {email}
                 </Card.Text>
                 <hr></hr>
                 <a className="btn btn_color" href="/update">
-                  Update Data
+                  تحديث البيانات
                 </a>
               </Card.Body>
             </Card>
