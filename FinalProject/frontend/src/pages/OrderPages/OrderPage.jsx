@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Col, Row, ListGroup, Card, Button, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -166,9 +166,7 @@ function OrderPage({ match }) {
             <Card className=" shadow rounded-sm">
               <ListGroup variant="secondary">
                 <ListGroup.Item>
-                  <h2 style={{ textAlign: "center", fontFamily: "monospace" }}>
-                    الفاتوره
-                  </h2>
+                  <h2 style={{ textAlign: "center" }}>الفاتوره</h2>
                 </ListGroup.Item>
 
                 <ListGroup.Item>

@@ -19,7 +19,6 @@ function ShippingPage({ history }) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("submit");
     dispatch(saveShippingAddress({ address, city, telephoneNumber, country }));
     history.push("/payment");
   };

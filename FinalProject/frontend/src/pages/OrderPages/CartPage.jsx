@@ -36,7 +36,6 @@ function CartPage({ match, location, history }) {
     history.push("/login?redirect=shipping");
   };
 
-  console.log(cartItems, "llllllllllllllllll");
   return (
     <Container className="pt-5">
       <Row className="text-right">
@@ -109,7 +108,6 @@ function CartPage({ match, location, history }) {
                 <h3
                   className="rounded p-3"
                   style={{
-                    fontFamily: "monospace",
                     textAlign: "center",
                     backgroundColor: "WhiteSmoke",
                   }}

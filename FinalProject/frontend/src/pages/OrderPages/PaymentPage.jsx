@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Form, Button, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import FormContainer from "../../components/FormContainer";
 import CheckoutSteps from "../../components/CheckoutSteps";
 import { savePaymentMethod } from "../../redux/actions/cartActions";
-import axios from "axios";
 
 function PaymentPage({ history }) {
   const cart = useSelector((state) => state.cart);
@@ -48,7 +46,6 @@ function PaymentPage({ history }) {
                 ></Form.Check>
               </Col>
             </Form.Group>
-
             <br></br>
             <Button
               type="submit"

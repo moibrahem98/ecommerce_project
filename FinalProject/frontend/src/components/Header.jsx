@@ -82,8 +82,6 @@ function Header() {
             id="basic-navbar-nav"
             className="justify-content-end bottom_nav"
           >
-            {/* <SearchBox /> */}
-
             <Nav className="main_icons ">
               <LinkContainer to="/search">
                 <Nav.Link>
@@ -116,36 +114,14 @@ function Header() {
                   </Nav.Link>
                 </LinkContainer>
               )}
-              {/* <DarkMode /> */}
+
               {userInfo && userInfo.isAdmin && (
                 <LinkContainer to="/admin/adminpanal">
                   <Nav.Link>
                     <i className="fal fa-user-shield icon_size"></i>{" "}
                   </Nav.Link>
                 </LinkContainer>
-                // <NavDropdown
-                //   className="dropdown-toggle-split"
-                //   title={<i className="fal fa-user-shield icon_size"></i>}
-                //   id="adminmenue"
-                // >
-                //   <LinkContainer to="/admin/userlist">
-                //     <NavDropdown.Item>Users</NavDropdown.Item>
-                //   </LinkContainer>
-
-                //   <LinkContainer to="/admin/productlist">
-                //     <NavDropdown.Item>Products</NavDropdown.Item>
-                //   </LinkContainer>
-
-                //   <LinkContainer to="/admin/orderlist">
-                //     <NavDropdown.Item>Orders</NavDropdown.Item>
-                //   </LinkContainer>
-                //   <LinkContainer to="/admin/returnslist">
-                //     <NavDropdown.Item>Returns</NavDropdown.Item>
-                //   </LinkContainer>
-                // </NavDropdown>
               )}
-
-              {/* <DarkMode /> */}
             </Nav>
           </Navbar.Collapse>
         </Container>

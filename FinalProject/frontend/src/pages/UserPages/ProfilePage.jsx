@@ -43,7 +43,6 @@ function ProfilePage({ history }) {
             <h2
               className="h2 mt-2"
               style={{
-                fontFamily: "monospace",
                 textAlign: "center",
               }}
             >

@@ -30,9 +30,7 @@ function ProductCreatePage({ history }) {
           .then((res) => {
             setCat(res.data);
           })
-          .catch((err) => {
-            console.log(err);
-          });
+          .catch((err) => {});
       };
       getData();
       const getSubCat = async () => {
@@ -41,9 +39,7 @@ function ProductCreatePage({ history }) {
           .then((res) => {
             setsubCat(res.data);
           })
-          .catch((err) => {
-            console.log(err);
-          });
+          .catch((err) => {});
       };
       getSubCat();
       const getBrand = async () => {
@@ -52,9 +48,7 @@ function ProductCreatePage({ history }) {
           .then((res) => {
             setGetBrand(res.data);
           })
-          .catch((err) => {
-            console.log(err);
-          });
+          .catch((err) => {});
       };
       getBrand();
 

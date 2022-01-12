@@ -128,9 +128,7 @@ function PlaceOrderPage({ history }) {
           <Card className="shadow rounded-sm">
             <ListGroup variant="secondary">
               <ListGroup.Item>
-                <h2 style={{ textAlign: "center", fontFamily: "monospace" }}>
-                  اجمالى
-                </h2>
+                <h2 style={{ textAlign: "center" }}>اجمالى</h2>
               </ListGroup.Item>
 
               <ListGroup.Item>

@@ -7,8 +7,6 @@ import {
   listSubCategories,
   listCategories,
 } from "../../redux/actions/productActions";
-import Message from "../../components/Message";
-import Loader from "../../components/Loader";
 
 function CategoryPage({ match, history }) {
   const dispatch = useDispatch();
@@ -16,7 +14,7 @@ function CategoryPage({ match, history }) {
   const categoriesList = useSelector((state) => state.categoriesList);
   const { categories } = categoriesList;
   const categoryProducts = useSelector((state) => state.categoryProducts);
-  const { loading, error, products } = categoryProducts;
+  const { products } = categoryProducts;
   const subcategoriesList = useSelector((state) => state.subcategoriesList);
   const { subcategories } = subcategoriesList;
 
@@ -38,9 +36,7 @@ function CategoryPage({ match, history }) {
       {categories.map((category) => (
         <p key={category.id}>
           {category.id == match.params.id && (
-            <h2 style={{ fontFamily: "monospace" }} className="text-right">
-              {category.name}
-            </h2>
+            <h2 className="text-right">{category.name}</h2>
           )}
         </p>
       ))}{" "}

@@ -22,7 +22,6 @@ function BrandDetailsPage({ match, history }) {
 
   if (!brand) return null;
   if (!product) return null;
-  console.log(product, "pppppppppppppppp");
   return (
     <div style={{ marginTop: "100px" }}>
       <div style={{ textAlign: "center", alignItems: "center" }}>

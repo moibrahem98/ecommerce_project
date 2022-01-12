@@ -45,11 +45,8 @@ function ProductEditPage({ match, history }) {
         .get("/product/api/categories/")
         .then((res) => {
           setCat(res.data);
-          console.log(res);
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => {});
     };
     getData();
     const getSubCat = async () => {
@@ -57,11 +54,8 @@ function ProductEditPage({ match, history }) {
         .get(`/product/api/sub_categories/`)
         .then((res) => {
           setsubCat(res.data);
-          console.log(res);
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => {});
     };
     getSubCat();
     const getBrand = async () => {
@@ -69,11 +63,8 @@ function ProductEditPage({ match, history }) {
         .get(`/product/api/brands/`)
         .then((res) => {
           setGetBrand(res.data);
-          console.log(res);
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => {});
     };
     getBrand();
 

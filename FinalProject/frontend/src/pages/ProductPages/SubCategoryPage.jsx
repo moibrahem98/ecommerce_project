@@ -25,9 +25,7 @@ function SubCategoryPage({ match, history }) {
       {subcategories.map((subcategory) => (
         <p key={subcategory.id}>
           {subcategory.id == match.params.id && (
-            <h2 style={{ fontFamily: "monospace" }} className="text-right">
-              {subcategory.name}
-            </h2>
+            <h2 className="text-right">{subcategory.name}</h2>
           )}
         </p>
       ))}

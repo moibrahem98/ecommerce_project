@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Form, Button } from "react-bootstrap";
+import { Container, Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
-import FormContainer from "../../components/FormContainer";
 import { getUserDetails, updateUser } from "../../redux/actions/userActions";
 
 function UserEditPage({ match, history }) {
@@ -39,7 +38,7 @@ function UserEditPage({ match, history }) {
         setIsAdmin(user.isAdmin);
       }
     }
-  }, [user, userId, successUpdate, history]);
+  }, [user, userId, successUpdate, history, dispatch]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -52,7 +51,7 @@ function UserEditPage({ match, history }) {
       <Button onClick={() => hist.goBack()} className="btn btn-light my-3">
         Go Back
       </Button>
-      <FormContainer>
+      <Container>
         <h2>Edit User</h2>
         {loadingUpdate && <Loader />}
         {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
@@ -97,7 +96,7 @@ function UserEditPage({ match, history }) {
             </Button>
           </Form>
         )}
-      </FormContainer>
+      </Container>
     </div>
   );
 }
