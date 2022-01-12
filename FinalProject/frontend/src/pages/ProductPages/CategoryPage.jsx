@@ -8,7 +8,6 @@ import {
 } from "../../redux/actions/productActions";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
-// import InternalSearch from "../components/categorySelect";
 
 function CategoryPage({ match, history }) {
   const dispatch = useDispatch();

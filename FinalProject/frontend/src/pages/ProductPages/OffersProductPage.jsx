@@ -6,7 +6,6 @@ import {
   getProductByOffers,
   listOffers,
 } from "../../redux/actions/productActions";
-import { convertToObject } from "typescript";
 
 function OffersProductPage({ match, history }) {
   const dispatch = useDispatch();

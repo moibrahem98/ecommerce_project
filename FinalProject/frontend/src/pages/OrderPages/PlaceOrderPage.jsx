@@ -1,13 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {
-  Col,
-  Row,
-  ListGroup,
-  Image,
-  Card,
-  Button,
-  Table,
-} from "react-bootstrap";
+import React, { useEffect } from "react";
+import { Col, Row, ListGroup, Card, Button, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { createOrder } from "../../redux/actions/orderActions";
@@ -43,7 +35,7 @@ function PlaceOrderPage({ history }) {
       history.push(`/order/${order._id}`);
       dispatch({ type: "ORDER_CREATE_RESET" });
     }
-  }, [success, history]);
+  }, [success, history, dispatch, order._id]);
 
   const placeOrder = () => {
     dispatch(

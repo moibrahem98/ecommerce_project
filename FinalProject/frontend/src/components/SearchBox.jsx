@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 function SearchBox() {

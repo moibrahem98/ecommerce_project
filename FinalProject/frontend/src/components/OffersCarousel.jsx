@@ -1,18 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { Card, Carousel, Image } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import Loader from "./Loader";
 import Message from "./Message";
 import { listOffers } from "../redux/actions/productActions";
 import Slider from "react-slick";
-import Product from "./ProductCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import twenty from "../images/25.jpg";
-import fifty from "../images/50.jpg";
-import seventy from "../images/70.jpg";
-
 function OffersCarousel() {
   const dispatch = useDispatch();
   const offersList = useSelector((state) => state.offersList);

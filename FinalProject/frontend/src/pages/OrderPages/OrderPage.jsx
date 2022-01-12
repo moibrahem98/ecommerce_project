@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Col,
-  Row,
-  ListGroup,
-  Image,
-  Card,
-  Button,
-  Table,
-} from "react-bootstrap";
+import { Col, Row, ListGroup, Card, Button, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -25,10 +17,10 @@ function OrderPage({ match }) {
   const { order, error, loading } = orderDetails;
 
   const orderPay = useSelector((state) => state.orderPay);
-  const { loading: loadingPay, success: successPay } = orderPay;
+  const { success: successPay } = orderPay;
 
   const orderDeliver = useSelector((state) => state.orderDeliver);
-  const { loading: loadingDeliver, success: successDeliver } = orderDeliver;
+  const { success: successDeliver } = orderDeliver;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -38,8 +30,6 @@ function OrderPage({ match }) {
       .reduce((sum, item) => sum + item.price * item.quantity, 0)
       .toFixed(2);
   }
-
-  const [paymob, setPaymob] = useState("");
 
   useEffect(() => {
     if (
@@ -51,7 +41,6 @@ function OrderPage({ match }) {
       dispatch({ type: "ORDER_PAY_RESET" });
       dispatch({ type: "ORDER_DELIVER_RESET" });
       dispatch(getOrderDetails(orderId));
-      // dispatch(getData(orderId));
     }
   }, [dispatch, order, orderId, successPay, successDeliver]);
 
@@ -142,21 +131,8 @@ function OrderPage({ match }) {
 
                 <ListGroup.Item>
                   <h2>وسيله الدفع</h2>
-                  {order.payment_method === "paymob" ? (
-                    <Row>
-                      <Col>
-                        {order.payment_method}
-                        <br />
-                        <a
-                          href={`http://127.0.0.1:8000/order/api/payment/${orderId}/`}
-                        >
-                          paymob
-                        </a>
-                      </Col>
-                    </Row>
-                  ) : (
-                    <p>{order.payment_method} </p>
-                  )}
+
+                  <p>{order.payment_method} </p>
 
                   {order.is_paid ? (
                     <Message variant="success">

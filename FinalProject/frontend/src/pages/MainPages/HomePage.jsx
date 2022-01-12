@@ -1,10 +1,6 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Row, Col, Container, Image } from "react-bootstrap";
-import Product from "../../components/ProductCard";
-import Loader from "../../components/Loader";
-import Message from "../../components/Message";
-import { listProducts } from "../../redux/actions/productActions";
+import React from "react";
+import { Container, Image } from "react-bootstrap";
+
 import ProductCarousel from "../../components/ProductCarousel";
 import LatestProductsCarousel from "../../components/LatestProductsCarousel";
 import OffersCarousel from "../../components/OffersCarousel";
@@ -13,30 +9,21 @@ import CarouselSlider from "../../components/CarouselSlider";
 import before from "../../images/before.jpg";
 
 function HomePage({ history }) {
-  const dispatch = useDispatch();
-  const productList = useSelector((state) => state.productList);
-  const { error, loading, products } = productList;
-
-  let name = history.location.search;
-
-  useEffect(() => {
-    dispatch(listProducts(name));
-  }, [dispatch, name]);
   return (
     <>
       <CarouselSlider />
 
       <Container className="text-center" style={{ marginTop: " 20px" }}>
         <h3 className="heading_1 mt-5 text-center">العروض</h3>
-        {!name && <OffersCarousel />}
+        <OffersCarousel />
         <h3 className="heading_1 mt-3">الأقسام</h3>
         <CatSlider />
         <hr />
         <h3 className="heading_1">أعلى التقييمات</h3>
-        {!name && <ProductCarousel />}
+        <ProductCarousel />
         <br /> <hr />
         <h3 className="heading_1 mt-5">أحدث الأضافات</h3>
-        {!name && <LatestProductsCarousel />}
+        <LatestProductsCarousel />
       </Container>
       <Image src={before} className="banner" />
     </>

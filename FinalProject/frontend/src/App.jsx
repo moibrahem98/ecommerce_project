@@ -16,7 +16,6 @@ import ProfilePage from "./pages/UserPages/ProfilePage";
 import UpdateProfilePage from "./pages/UserPages/UpdateProfilePage";
 import UserListPage from "./pages/UserPages/UserListPage";
 import UserEditPage from "./pages/UserPages/UserEditPage";
-import ActivationPage from "./pages/UserPages/ActivationPage";
 //  3. Product Pages:
 import ProductCreatePage from "./pages/ProductPages/ProductCreatePage";
 import ProductImageAddPage from "./pages/ProductPages/ProductImageAddPage";
@@ -40,7 +39,6 @@ import ReturnDetailsPage from "./pages/ReturnsPages/ReturnDetailsPage";
 import ReturnCreatePage from "./pages/ReturnsPages/ReturnCreatePage";
 import ReturnsListPage from "./pages/ReturnsPages/ReturnsListPage";
 //  6. Brand Pages:
-import AddBrandPage from "./pages/BrandPages/AddBrandPage";
 import BrandsListPage from "./pages/BrandPages/BrandListPage";
 import BrandDetailsPage from "./pages/BrandPages/BrandDetailsPage";
 //  7. Admin Pages
@@ -83,7 +81,6 @@ function App() {
           <Route path="/register/" component={RegisterPage} />
           <Route path="/profile" component={ProfilePage} />
           <Route path="/update" component={UpdateProfilePage} />
-          <Route path="/activation" component={ActivationPage} />
 
           {/* Order */}
           <Route path="/shipping" component={ShippingPage} />
@@ -101,7 +98,6 @@ function App() {
           {/* Brand: */}
           <Route path="/admin/brands" component={BrandsListPage} />
           <Route path="/brand/:id" component={BrandDetailsPage} />
-          <Route path="/addbrand" component={AddBrandPage} />
         </Switch>
       </Container>
       <Footer />

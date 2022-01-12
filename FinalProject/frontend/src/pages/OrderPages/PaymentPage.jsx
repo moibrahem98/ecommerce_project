@@ -31,26 +31,17 @@ function PaymentPage({ history }) {
           <Form onSubmit={submitHandler}>
             <Form.Group>
               <h1 className=" text-succes mt-1 p-1 text-center ">
-                Select Payment Method
+                إختار وسيلة الدفع
               </h1>
               <hr></hr>
               <Col>
                 <Form.Check
                   type="radio"
-                  label="Cash on Delievery"
+                  label="الدفع عند الاستلام"
                   id="cod" // cod is cash on delievery
                   name="paymentMethod"
                   value="Cash on Delievery"
-                  onChange={(event) => {
-                    setPaymentMethod(event.target.value);
-                  }}
-                ></Form.Check>
-                <Form.Check
-                  type="radio"
-                  label="Paymob"
-                  id="paymob"
-                  value="paymob"
-                  name="paymentMethod"
+                  style={{ padding: "5px", margin: "5px", direction: "ltr" }}
                   onChange={(event) => {
                     setPaymentMethod(event.target.value);
                   }}
@@ -64,7 +55,7 @@ function PaymentPage({ history }) {
               variant="dark"
               className="w-100 text-success btn_color"
             >
-              Continue
+              متابعة{" "}
             </Button>
           </Form>
         </Col>

@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader";
 import axios from "axios";
 import { listProducts } from "../../redux/actions/productActions";
-import FormContainer from "../../components/FormContainer";
 
 function ProductImageAddPage({ match, history }) {
   const dispatch = useDispatch();
@@ -13,7 +12,7 @@ function ProductImageAddPage({ match, history }) {
   const [uploading, setUploading] = useState(false);
 
   const productList = useSelector((state) => state.productList);
-  const { loading, error, products } = productList;
+  const { products } = productList;
 
   let myvar = products[products.length - 1];
 

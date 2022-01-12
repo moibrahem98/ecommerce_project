@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navbar, Nav, Container, NavDropdown, L } from "react-bootstrap";
+import { Navbar, Nav, Container } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../redux/actions/userActions";
 import logo from "../images/brand.png";
-// import SearchBox from "./SearchBox";
 import { listCategories } from "../redux/actions/productActions";
 import { Link } from "react-router-dom";
-// import DarkMode from "../DarkMode";
 
 function Header() {
   const categoriesList = useSelector((state) => state.categoriesList);
@@ -15,13 +13,6 @@ function Header() {
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-  const [show, setShow] = useState(false);
-  const showDropdown = (e) => {
-    setShow(!show);
-  };
-  const hideDropdown = (e) => {
-    setShow(false);
-  };
   const dispatch = useDispatch();
 
   const logoutHandler = () => {
@@ -43,7 +34,7 @@ function Header() {
     return () => {
       document.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [dispatch]);
   if (!categories) return null;
 
   return (

@@ -22,7 +22,7 @@ function RegisterPage({ location, history }) {
 
   useEffect(() => {
     if (userInfo) {
-      history.push("/avtivation");
+      history.push("/");
     }
   }, [history, userInfo, redirect]);
 
@@ -41,7 +41,7 @@ function RegisterPage({ location, history }) {
       <Row className="mt-5">
         <Col lg={5} md={6} sm={12} className="p-3 m-auto shadow rounded-lg">
           <h3 className=" text-success mt-1 p-1 text-center ">
-            CREATE ACCOUNT
+            تسجيل حساب جديد
           </h3>{" "}
           <Form onSubmit={submitHandler}>
             {message && <Message variant="danger">{message}</Message>}
@@ -49,7 +49,7 @@ function RegisterPage({ location, history }) {
             {loading && <Loader />}
 
             <Form.Group controlId="name">
-              <Form.Label>Name</Form.Label>
+              <Form.Label>الاسم</Form.Label>
               <Form.Control
                 required
                 type="name"
@@ -60,7 +60,7 @@ function RegisterPage({ location, history }) {
             </Form.Group>
 
             <Form.Group controlId="email">
-              <Form.Label>Email Address</Form.Label>
+              <Form.Label>البريد الالكترونى</Form.Label>
               <Form.Control
                 required
                 type="email"
@@ -71,7 +71,7 @@ function RegisterPage({ location, history }) {
             </Form.Group>
 
             <Form.Group controlId="password">
-              <Form.Label>Password</Form.Label>
+              <Form.Label>كلمة السر</Form.Label>
               <Form.Control
                 required
                 type="password"
@@ -82,7 +82,7 @@ function RegisterPage({ location, history }) {
             </Form.Group>
 
             <Form.Group controlId="passwordConfirm">
-              <Form.Label>Confirm Password</Form.Label>
+              <Form.Label>تأكيد كلمة السر</Form.Label>
               <Form.Control
                 required
                 type="password"
@@ -97,17 +97,17 @@ function RegisterPage({ location, history }) {
               variant="dark"
               className="w-100 text-success btn_color"
             >
-              CREATE
+              تسجيل
             </Button>
           </Form>
           <Row className="py-3">
             <Col>
-              Have Account?{" "}
+              ليك حساب بالفعل?{" "}
               <Link
                 to={redirect ? `/login?redirect=${redirect}` : "/login"}
                 className="btn btn-secondary"
               >
-                LOGIN
+                تسجيل الدخول
               </Link>
             </Col>
           </Row>

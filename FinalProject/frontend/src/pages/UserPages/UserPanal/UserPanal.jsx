@@ -12,15 +12,11 @@ function UserPanal({ history }) {
   const userDetails = useSelector((state) => state.userDetails);
   const { user } = userDetails;
   const listMyReturns = useSelector((state) => state.listMyReturns);
-  const {
-    loading: loadingReturns,
-    error: errorReturns,
-    returns,
-  } = listMyReturns;
+  const { returns } = listMyReturns;
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   const orderListMy = useSelector((state) => state.orderListMy);
-  const { loading: loadingOrders, error: errorOrders, orders } = orderListMy;
+  const { orders } = orderListMy;
   useEffect(() => {
     if (!userInfo) {
       history.push("/login");

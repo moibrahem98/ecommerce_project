@@ -6,14 +6,12 @@ import {
   getProductBySubCategory,
   listSubCategories,
 } from "../../redux/actions/productActions";
-import Message from "../../components/Message";
-import Loader from "../../components/Loader";
 
 function SubCategoryPage({ match, history }) {
   const dispatch = useDispatch();
 
   const subcategoryProducts = useSelector((state) => state.subcategoryProducts);
-  const { loading, error, product } = subcategoryProducts;
+  const { product } = subcategoryProducts;
   const subcategoriesList = useSelector((state) => state.subcategoriesList);
   const { subcategories } = subcategoriesList;
   useEffect(() => {

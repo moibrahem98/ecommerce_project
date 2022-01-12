@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-import { LinkContainer } from "react-router-bootstrap";
-import { Button, Card, Row, Col } from "react-bootstrap";
+import { Button, Card, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
