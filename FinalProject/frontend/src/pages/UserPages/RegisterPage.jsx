@@ -39,10 +39,13 @@ function RegisterPage({ location, history }) {
   return (
     <Container>
       <Row className="mt-5">
-        <Col lg={5} md={6} sm={12} className="p-3 m-auto shadow rounded-lg">
-          <h3 className=" text-success mt-1 p-1 text-center ">
-            تسجيل حساب جديد
-          </h3>{" "}
+        <Col
+          lg={5}
+          md={6}
+          sm={12}
+          className="p-3 m-auto shadow rounded-lg text-right"
+        >
+          <h3 className="mt-1 p-1 text-center ">تسجيل حساب جديد</h3>{" "}
           <Form onSubmit={submitHandler}>
             {message && <Message variant="danger">{message}</Message>}
             {error && <Message variant="danger">{error}</Message>}
@@ -53,7 +56,7 @@ function RegisterPage({ location, history }) {
               <Form.Control
                 required
                 type="name"
-                placeholder="Enter name"
+                placeholder="الاسم بالكامل"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></Form.Control>
@@ -64,7 +67,7 @@ function RegisterPage({ location, history }) {
               <Form.Control
                 required
                 type="email"
-                placeholder="Enter Email"
+                placeholder="البريد الالكترونى"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               ></Form.Control>
@@ -75,7 +78,7 @@ function RegisterPage({ location, history }) {
               <Form.Control
                 required
                 type="password"
-                placeholder="Enter Password"
+                placeholder="كلمه السر"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               ></Form.Control>
@@ -86,7 +89,7 @@ function RegisterPage({ location, history }) {
               <Form.Control
                 required
                 type="password"
-                placeholder="Confirm Password"
+                placeholder="اعاده تأكيد كلمه السر"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
               ></Form.Control>
