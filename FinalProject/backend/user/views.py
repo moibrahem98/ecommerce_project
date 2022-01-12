@@ -43,12 +43,10 @@ def register(request):
             first_name=data['name'],
             username=data['email'],
             email=data['email'],
-            is_active=False,
             password=make_password(data['password'])
         )
 
         serializers = UserSerializerWithToken(user, many=False)
-        send_activation_email(user, request)
         return Response(serializers.data)
     except:
         message = {'user with this email already exist'}
@@ -115,32 +113,3 @@ def deleteUser(request, id):
     userForDeletion.delete()
     return Response('user was deleted')
 
-
-#  ********************* send activation mail *********************
-
-def send_activation_email(user, request):
-    current_site = get_current_site(request)
-    email_subject = 'Activate your account'
-    email_body = render_to_string('activate.html', {
-        'user': user,
-        'domain': current_site,
-        'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-        'token': generate_token.make_token(user)
-    })
-
-    email = send_mail(email_subject, email_body, settings.EMAIL_HOST_USER, [user.email])
-    print(email,"eeeeeeeeeeeeeeeeeeeeeeeeeemmmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
-
-
-def activate_user(request, uidb64, token):
-    try:
-        uid = force_text(urlsafe_base64_decode(uidb64))
-        user = User.objects.get(id=uid)
-    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
-        user = None
-    if user is not None and generate_token.check_token(user, token):
-        user.is_active = True
-        user.save()
-        return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
-    else:
-        return HttpResponse('Activation link is invalid!')

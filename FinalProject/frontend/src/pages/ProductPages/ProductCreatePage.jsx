@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Button, Container, Form, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { createProduct, listOffers } from "../../redux/actions/productActions";
+import { createProduct } from "../../redux/actions/productActions";
 import axios from "axios";
 
 function ProductCreatePage({ history }) {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
-  const [offer, setOffer] = useState(0);
   const [brand, setBrand] = useState(0);
   const [category, setCategory] = useState();
   const [subCategory, setSubCategory] = useState(0);
@@ -21,14 +20,10 @@ function ProductCreatePage({ history }) {
   const productCreate = useSelector((state) => state.productCreate);
   const { success: successCreate } = productCreate;
 
-  const offersList = useSelector((state) => state.offersList);
-  const { offers } = offersList;
-
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
-      dispatch(listOffers());
       const getData = async () => {
         await axios
           .get("/product/api/categories/")
@@ -79,7 +74,7 @@ function ProductCreatePage({ history }) {
         name,
         price,
         brand,
-        offer,
+
         category,
         subCategory,
         stock,
@@ -91,7 +86,6 @@ function ProductCreatePage({ history }) {
   if (!subcat) return null;
   if (!getbrand) return null;
   if (!userInfo) return null;
-  if (!offers) return null;
 
   return (
     <Container>
@@ -123,28 +117,14 @@ function ProductCreatePage({ history }) {
               ></Form.Control>
             </Form.Group>
             <br></br>
-            <Form.Group controlId="offer">
-              <Form.Label>Offer Type</Form.Label>
-              <select
-                className="form-control"
-                onChange={(e) => setOffer(e.target.value)}
-              >
-                <option>----</option>
 
-                {offers.map((offer) => (
-                  <option value={parseInt(offer.id)}>{offer.name}</option>
-                ))}
-              </select>
-            </Form.Group>
-
-            <br></br>
             <Form.Group controlId="brand">
               <Form.Label>براند</Form.Label>
               <select
                 className="form-control"
                 onChange={(e) => setBrand(e.target.value)}
               >
-                <option>----</option>
+                <option value="1">----</option>
 
                 {getbrand.map((brand) => (
                   <option value={parseInt(brand.id)}>{brand.name}</option>
@@ -172,7 +152,7 @@ function ProductCreatePage({ history }) {
                 onChange={(e) => setCategory(e.target.value)}
                 id="category_input"
               >
-                <option>-----</option>
+                <option value="1">-----</option>
 
                 {cat.map((category) => (
                   <option value={category.id}>{category.name}</option>
@@ -187,7 +167,7 @@ function ProductCreatePage({ history }) {
                 className="form-control"
                 onChange={(e) => setSubCategory(e.target.value)}
               >
-                <option>None</option>
+                <option value="1">-----</option>
                 {subcat.map((subcategory) => (
                   <optgroup label={subcategory.category1.name}>
                     <option value={subcategory.id}>{subcategory.name}</option>

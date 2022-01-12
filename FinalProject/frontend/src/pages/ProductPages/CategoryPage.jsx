@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getProductByCategory,
   listSubCategories,
+  listCategories,
 } from "../../redux/actions/productActions";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
@@ -12,6 +13,8 @@ import Loader from "../../components/Loader";
 function CategoryPage({ match, history }) {
   const dispatch = useDispatch();
 
+  const categoriesList = useSelector((state) => state.categoriesList);
+  const { categories } = categoriesList;
   const categoryProducts = useSelector((state) => state.categoryProducts);
   const { loading, error, products } = categoryProducts;
   const subcategoriesList = useSelector((state) => state.subcategoriesList);
@@ -20,19 +23,34 @@ function CategoryPage({ match, history }) {
   let name = history.location.search;
   useEffect(() => {
     dispatch(listSubCategories());
+    dispatch(listCategories());
+
     dispatch(getProductByCategory(match.params.id, name));
   }, [dispatch, match, name]);
 
   if (!products) return null;
+  if (!categories) return null;
+
   if (!subcategories) return null;
 
   return (
     <div className="py-5">
-      <h2 className="h1 heading_1 text-right">{products[0].category1.name}</h2>
-      {loading ? (
-        <Loader></Loader>
-      ) : error ? (
-        <Message variant="danger">{error}</Message>
+      {categories.map((category) => (
+        <p key={category.id}>
+          {category.id == match.params.id && (
+            <h2 style={{ fontFamily: "monospace" }} className="text-right">
+              {category.name}
+            </h2>
+          )}
+        </p>
+      ))}{" "}
+      {products.length === 0 ? (
+        <div className=" p-3 m-auto rounded-lg" style={{ textAlign: "center" }}>
+          <h4>عفوا هذا القسم لا يحتوى على منتجات بعد</h4>
+          <a href="/" className="btn btn_color ">
+            الرجوع للصفحه الرئيسيه
+          </a>
+        </div>
       ) : (
         <Container>
           <DropdownButton

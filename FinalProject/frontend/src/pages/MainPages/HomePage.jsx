@@ -3,7 +3,6 @@ import { Container, Image } from "react-bootstrap";
 
 import ProductCarousel from "../../components/ProductCarousel";
 import LatestProductsCarousel from "../../components/LatestProductsCarousel";
-import OffersCarousel from "../../components/OffersCarousel";
 import CatSlider from "../../components/CatSlider";
 import CarouselSlider from "../../components/CarouselSlider";
 import before from "../../images/before.jpg";
@@ -14,8 +13,6 @@ function HomePage({ history }) {
       <CarouselSlider />
 
       <Container className="text-center" style={{ marginTop: " 20px" }}>
-        <h3 className="heading_1 mt-5 text-center">العروض</h3>
-        <OffersCarousel />
         <h3 className="heading_1 mt-3">الأقسام</h3>
         <CatSlider />
         <hr />

@@ -23,9 +23,6 @@ class getSubCategories(viewsets.ModelViewSet):
     queryset = SubCategory.objects.all()
 
 
-class getOffers(viewsets.ModelViewSet):
-    serializer_class = OfferSerializer
-    queryset = Offer.objects.all()
 
 
 @api_view(['GET'])
@@ -35,24 +32,8 @@ def product_list(request):
     if filterset.is_valid():
         queryset = filterset.qs
 
-    # page = request.query_params.get('page')
-    # paginator = Paginator(queryset, 100)
-
-    # try:
-    #     queryset = paginator.page(page)
-    # except PageNotAnInteger:
-    #     queryset = paginator.page(1)
-    # except EmptyPage:
-    #     queryset = paginator.page(paginator.num_pages)
-
-    # if page == None or '':
-    #     page = 1
-
-    # # page = int(page)
-
     serializer = ProductSerializer(queryset, many=True)
     return Response(serializer.data)
-    # return Response({"products" : serializer.data, 'page' : page, 'pages': paginator.num_pages})
 
 
 @api_view(['GET'])
@@ -165,7 +146,7 @@ def uploadImage(request):
 
 
 @api_view(['POST'])
-# @permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 def createProductReview(request, id):
     user = request.user
     product = Product.objects.get(_id=id)
@@ -202,7 +183,7 @@ def createProductReview(request, id):
 
 
 @api_view(['GET'])
-# @permission_classes([IsAdminUser])
+@permission_classes([IsAdminUser])
 def list_returns(request):
     returns = Returns.objects.order_by('-created_at')
     serializer = ReturnsSerializer(returns, many=True)
@@ -210,7 +191,7 @@ def list_returns(request):
 
 
 @api_view(['POST'])
-# @permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 def createreturns(request):
     data = request.data
     user = request.user
@@ -265,34 +246,6 @@ def getMyReturns(request):
     return Response(serializer.data)
 
 
-@api_view(['GET'])
-def getbanners(request):
-    banners = Banner.objects.all()
-    serializer = BrandSerializer(banners, many=True)
-    return Response(serializer.data)
-
-
-@api_view(['POST'])
-@permission_classes([IsAdminUser])
-def createBanner(request):
-    user = request.user
-    data = request.data
-    banner = Banner.objects.create(
-        user=user,
-        img=data['img']
-    )
-
-    serializer = BannerSerializer(banner, many=False)
-    return Response(serializer.data)
-
-
-@api_view(['DELETE'])
-@permission_classes([IsAdminUser])
-def deleteBanner(request, id):
-    banner = Banner.objects.get(_id=id)
-    banner.delete()
-    return Response('Banner Deleted')
-
 
 # ************ brand ****************
 
@@ -318,24 +271,3 @@ def GetbrandById(request, id):
     return Response(serializer.data)
 
 
-@api_view(['POST'])
-# @permission_classes([IsAdminUser])
-def createbrand(request):
-    data = request.data
-    img = request.FILES.get('img')
-
-
-    # brand = Brand.objects.create(
-    #     name=data['name'],
-    #     img=request.FILES.get('img')
-    # )
-    # serializer = BrandSerializer(brand)
-    return Response("serializer.data")
-
-# @api_view(['POST'])
-# def uploadBrandImage(request):
-#     data = request.data
-#     brand = Brand.objects.get(id=data['name'])
-#     brand.img = request.FILES.get('img')
-#     brand.save()
-#     return Response('Image Uploaded')

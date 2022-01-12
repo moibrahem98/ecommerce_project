@@ -46,8 +46,3 @@ class OrderSerializer(serializers.ModelSerializer):
         serializer = UserSerializer(user, many=False)
         return serializer.data
 
-
-class CouponsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Coupons
-        fields = '__all__'

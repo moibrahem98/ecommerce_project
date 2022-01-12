@@ -17,6 +17,5 @@ urlpatterns = [
     path('api/users/delete/<str:id>/', deleteUser, name='update-user'),
     path('api/users/update/<str:id>/', updateUser, name='delete-user'),
 
-    path('activate-user/<uidb64>/<token>', activate_user, name='activate'),
 
 ]

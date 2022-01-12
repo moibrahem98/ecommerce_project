@@ -36,13 +36,9 @@ class ProductSerializer(serializers.ModelSerializer):
     def get_brand1(self, obj):
         brand1 = Brand.objects.get(name=obj.brand)
         serializer = BrandSerializer(brand1, many=False)
-        print(obj.offer, "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-")
+      
         return serializer.data
 
-    def get_offer(self, obj):
-        offer = Offer.objects.get(name=obj.offer)
-        serializer = OfferSerializer(offer, many=False)
-        return serializer.data
 
 
 class ReviewSerializer(serializers.ModelSerializer):
@@ -88,14 +84,3 @@ class BrandSerializer(serializers.ModelSerializer):
         model = Brand
         fields = '__all__'
 
-
-class BannerSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Banner
-        fields = '__all__'
-
-
-class OfferSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Offer
-        fields = '__all__'

@@ -18,7 +18,6 @@ import Loader from "../../components/Loader";
 import Message from "../../components/Message";
 import {
   listProductDetails,
-  listOffers,
   createProductReview,
 } from "../../redux/actions/productActions";
 function ProductPage({ match, history }) {
@@ -34,8 +33,6 @@ function ProductPage({ match, history }) {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  const offersList = useSelector((state) => state.offersList);
-  const { offers } = offersList;
   const productReviewCreate = useSelector((state) => state.productReviewCreate);
   const {
     loading: loadingProductReview,
@@ -50,7 +47,6 @@ function ProductPage({ match, history }) {
       dispatch({ type: "PRODUCT_CREATE_REVIEW_RESET" });
     }
     dispatch(listProductDetails(match.params.id));
-    dispatch(listOffers());
   }, [dispatch, match, successProductReview]);
 
   const addToCartHandler = () => {
@@ -69,7 +65,6 @@ function ProductPage({ match, history }) {
 
   let hist = useHistory();
   if (!product) return null;
-  if (!offers) return null;
   return (
     <Container>
       <div>
@@ -115,20 +110,10 @@ function ProductPage({ match, history }) {
                       <Row>
                         <Col>السعر</Col>
                         <Col>
-                          {product.offer.value === 1 ? (
-                            <Row>
-                              <strong>{product.price} </strong>
-                              <strong>&nbsp;جنيه</strong>
-                            </Row>
-                          ) : (
-                            <Row>
-                              <strike>{product.price}&nbsp;</strike>
-                              <strong>
-                                &nbsp;{product.price * product.offer.value}
-                                &nbsp; جنيه
-                              </strong>
-                            </Row>
-                          )}
+                          <Row>
+                            <strong>{product.price} </strong>
+                            <strong>&nbsp;جنيه</strong>
+                          </Row>
                         </Col>
                       </Row>
                     </ListGroup.Item>

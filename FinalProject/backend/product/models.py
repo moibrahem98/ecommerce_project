@@ -22,8 +22,6 @@ def saveBrandImg(instance, filename):
     return f"brand/{instance.name}/{filename}"
 
 
-def savOfferImg(instance, filename):
-    return f"offer/{instance.name}/{filename}"
 
 
 class Product(models.Model):
@@ -43,8 +41,7 @@ class Product(models.Model):
     reviews_number = models.IntegerField(null=True, blank=True, default=0)
     price = models.DecimalField(
         max_digits=7, decimal_places=2, null=True, blank=True)
-    offer = models.ForeignKey(
-        'Offer', on_delete=models.CASCADE, null=True, blank=True)
+    
     stock = models.IntegerField(null=True, blank=True, default=0)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -91,9 +88,6 @@ class Brand(models.Model):
         return str(self.name)
 
 
-class Banner(models.Model):
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    img = models.ImageField(upload_to=savOfferImg)
 
 
 class Returns(models.Model):
@@ -110,10 +104,3 @@ class Returns(models.Model):
         return str(self.title)
 
 
-class Offer(models.Model):
-    name = models.CharField(max_length=50, unique=True)
-    value = models.FloatField(default=1.0)
-    img = models.ImageField(upload_to=saveOfferImg)
-
-    def __str__(self):
-        return str(self.name)

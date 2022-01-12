@@ -24,7 +24,6 @@ urlpatterns = [
 
     path('api/categories/', getCategories.as_view({'get': 'list'}), name='categories'),
     path('api/sub_categories/', getSubCategories.as_view({'get': 'list'}), name='subcategories'),
-    path('api/offers/', getOffers.as_view({'get': 'list'}), name='offers'),
 
     # ****** returns ***************
 
@@ -36,16 +35,9 @@ urlpatterns = [
 
     # ****** brand ***************
 
-    path('api/createbrand/', createbrand, name="create-brands"),
 
     path('api/brands/', getbrands, name="all_brands"),
     path('api/brand/<str:id>', GetbrandById, name="brand"),
     path('api/brand/<str:id>/products', getProductByBrand, name='products_by_brand'),
-    # path('api/brand/upload/', uploadBrandImage, name='brand-image-upload'),
-
-
-    path('api/banners/create', createBanner, name="create_banner"),
-    path('api/banners/<str:id>', deleteBanner, name="delete_banner"),
-    path('api/banners/', getbanners, name="banner"),
 
 ]

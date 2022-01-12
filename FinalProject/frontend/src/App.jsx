@@ -24,7 +24,6 @@ import ProductEditPage from "./pages/ProductPages/ProductEditPage";
 import ProductPage from "./pages/ProductPages/ProductPage";
 import CategoryPage from "./pages/ProductPages/CategoryPage";
 import SubCategoryPage from "./pages/ProductPages/SubCategoryPage";
-import OffersProductPage from "./pages/ProductPages/OffersProductPage";
 //  4. Order Pages:
 import CartPage from "./pages/OrderPages/CartPage";
 import ShippingPage from "./pages/OrderPages/ShippingPage";
@@ -72,7 +71,6 @@ function App() {
           {/* Products */}
           <Route path="/categoryproducts/:id" component={CategoryPage} />
           <Route path="/subcategoryproducts/:id" component={SubCategoryPage} />
-          <Route path="/offersproducts/:id" component={OffersProductPage} />
           <Route path="/product/:id" component={ProductPage} />
 
           {/* Users */}

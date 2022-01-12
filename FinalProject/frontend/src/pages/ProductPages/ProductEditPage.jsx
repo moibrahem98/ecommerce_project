@@ -8,7 +8,6 @@ import Message from "../../components/Message";
 import {
   listProductDetails,
   updateProduct,
-  listOffers,
 } from "../../redux/actions/productActions";
 
 function ProductEditPage({ match, history }) {
@@ -16,7 +15,6 @@ function ProductEditPage({ match, history }) {
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
-  const [offer, setOffer] = useState(0);
 
   const [image, setImage] = useState("");
   const [brand, setBrand] = useState(0);
@@ -31,8 +29,6 @@ function ProductEditPage({ match, history }) {
 
   const dispatch = useDispatch();
 
-  const offersList = useSelector((state) => state.offersList);
-  const { offers } = offersList;
   const productDetails = useSelector((state) => state.productDetails);
   const { error, loading, product } = productDetails;
 
@@ -80,7 +76,6 @@ function ProductEditPage({ match, history }) {
         });
     };
     getBrand();
-    dispatch(listOffers());
 
     if (successUpdate) {
       dispatch({ type: "PRODUCT_UPDATE_RESET" });
@@ -91,7 +86,6 @@ function ProductEditPage({ match, history }) {
       } else {
         setName(product.name);
         setPrice(product.price);
-        setPrice(product.offer);
         setImage(product.image);
         setBrand(product.brand);
         setCategory(product.category);
@@ -110,7 +104,6 @@ function ProductEditPage({ match, history }) {
         name,
         price,
         image,
-        offer,
         brand,
         category,
         subCategory,
@@ -152,7 +145,6 @@ function ProductEditPage({ match, history }) {
   if (!cat) return null;
   if (!subcat) return null;
   if (!getbrand) return null;
-  if (!offers) return null;
 
   return (
     <>
@@ -192,21 +184,7 @@ function ProductEditPage({ match, history }) {
                   ></Form.Control>
                 </Form.Group>
                 <br></br>
-                <Form.Group controlId="offer">
-                  <Form.Label>نوع العرض</Form.Label>
-                  <select
-                    className="form-control"
-                    onChange={(e) => setOffer(e.target.value)}
-                  >
-                    <option>----</option>
 
-                    {offers.map((offer) => (
-                      <option value={offer.id}>{offer.name}</option>
-                    ))}
-                  </select>
-                </Form.Group>
-
-                <br></br>
                 <Form.Group controlId="image">
                   <Form.Label>صوره</Form.Label>
                   <Form.Control

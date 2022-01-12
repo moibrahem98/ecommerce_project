@@ -51,11 +51,3 @@ class ShippingAddress(models.Model):
     def __str__(self):
         return str(self.address)
 
-
-class Coupons(models.Model):
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    name = models.CharField(max_length=20,unique=True)
-    percentage = models.DecimalField(max_digits=7, decimal_places=2)
-    start_date = models.DateField()
-    end_date = models.DateField()
-    status = models.BooleanField(default=True)
