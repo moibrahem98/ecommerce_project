@@ -15,7 +15,7 @@ A full stack Ecommerce web app for beauty and perfume shop
 
 ## Demo
 
-https://www.mid4night.store
+https://mid4night.store
 ## Run Locally for frontend
 
 Clone the project
